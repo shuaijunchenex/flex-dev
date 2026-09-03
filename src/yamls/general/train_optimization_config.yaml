@@ -1,0 +1,12 @@
+#-----------------------------
+# Training optimization configuration
+# Controls GPU performance optimizations that may affect bit-exact reproducibility.
+# Set individual switches to false to disable specific optimizations.
+#-----------------------------
+general:
+  train_optimization:
+    cudnn_benchmark: false           # Auto-tune cuDNN conv algorithms (non-deterministic)
+    pin_memory: true                # DataLoader pinned memory for async CPU→GPU transfer
+    fused_optimizer: false           # Fused Adam/AdamW CUDA kernels (incompatible with LoRA frozen params)
+    torch_compile: false            # torch.compile JIT (PyTorch 2.0+, experimental)
+    non_blocking_transfer: true     # Async tensor.to(device) calls

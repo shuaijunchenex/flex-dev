@@ -1,0 +1,9 @@
+# =============================================================================
+# requirements/cuda121.txt
+# GPU dependencies — CUDA 12.1 (e.g. AWS g4dn, g5, p3)
+# =============================================================================
+--index-url https://download.pytorch.org/whl/cu121
+
+torch==2.5.1
+torchvision==0.20.1
+torchaudio==2.5.1

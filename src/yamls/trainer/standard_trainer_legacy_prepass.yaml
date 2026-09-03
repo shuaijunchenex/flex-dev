@@ -1,0 +1,4 @@
+trainer:
+  trainer_type: "standard_legacy_prepass"
+  save_path: "./.training_results/"
+  legacy_eval_rng_compat: true

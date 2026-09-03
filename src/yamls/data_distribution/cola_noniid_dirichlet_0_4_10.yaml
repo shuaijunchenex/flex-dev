@@ -1,0 +1,21 @@
+#-----------------------------
+# Data distribution section (Dirichlet alpha=0.4, 10 clients)
+# Total Label 1: 2528, Total Label 2: 6022
+#-----------------------------
+data_distribution:
+
+  use: custom_dirichlet_0_4
+
+  custom_define:
+    custom_dirichlet_0_4: [
+        [420,  150],  # Client 1
+        [ 85, 1850],  # Client 2 (样本最多)
+        [710,  120],  # Client 3
+        [ 35, 1650],  # Client 4
+        [290,  380],  # Client 5
+        [ 12,  720],  # Client 6
+        [540,   45],  # Client 7
+        [180,  910],  # Client 8
+        [230,  110],  # Client 9
+        [ 26,   87]   # Client 10
+    ]

@@ -1,0 +1,29 @@
+#-----------------------------
+# Client node selection - AdaFL
+# AdaFL: Adaptive Selection Size + Historical Contribution Evaluation
+# Reference: "AdaFL: Adaptive Client Selection and Dynamic Contribution
+#             Evaluation for Efficient Federated Learning"
+#
+# m_t formula (piecewise):
+#   t <= T0  → m_t = m0
+#   t >  T0  → m_t = min(floor((t - T0) / deltaT + m0), m_max)
+#
+# theta schedule (engineering version, recommended over paper's 1/beta^t):
+#   theta_t = 1 - beta^t
+#
+# contribution update:
+#   v_k^{1:t} = theta_t * sqrt(n_k) * loss_k^t  +  (1 - theta_t) * v_k^{1:t-1}
+#-----------------------------
+client_selection:
+  method: adafl
+  round: 1
+  number: 3             # Informational only; AdaFL ignores this — use m_max below.
+  random_seed: 42
+
+  adafl:
+    m0: 2               # Initial selection size (warm-up phase)
+    T0: 10              # Warm-up rounds (keep m0 for first T0 rounds)
+    deltaT: 10          # Rounds per +1 client increase
+    m_max: 3            # Maximum selection size ceiling
+    beta: 0.7           # theta schedule decay factor (0 < beta < 1)
+    use_paper_theta: false  # true → theta = clip(1/beta^t, 1); false → theta = 1 - beta^t

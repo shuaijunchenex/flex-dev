@@ -1,0 +1,18 @@
+#-----------------------------
+# Optimizer — VGG on CIFAR-10 / CINIC-10 (32x32)
+# Reference: original VGG paper + standard FL benchmark settings.
+#   - High initial LR (0.1) with cosine / step decay in training script
+#   - Nesterov momentum stabilises convergence on small batches
+#   - Weight decay 5e-4 is standard for CIFAR-scale VGG
+#-----------------------------
+optimizer:
+  type: SGD
+  lr: 0.1                # Initial learning rate
+  momentum: 0.9          # SGD momentum
+  weight_decay: 0.0005   # L2 regularisation (5e-4)
+  nesterov: True         # Nesterov accelerated gradient
+  betas: [0.9, 0.999]
+  amsgrad: False
+  eps: 1.0e-8
+  alpha: ~
+  centered: ~

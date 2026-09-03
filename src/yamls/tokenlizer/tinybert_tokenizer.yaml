@@ -1,0 +1,11 @@
+# HuggingFace TinyBERT tokenizer configuration
+# prajjwal1/bert-tiny shares the same vocab as bert-base-uncased and does NOT
+# ship its own tokenizer files, so we load the tokenizer from bert-base-uncased.
+
+tokenizer:
+  type: bert
+  use_hf_tokenizer: true
+  pretrained: "bert-base-uncased"   # same 30522-token vocab; tiny has no tokenizer files
+  use_fast: true
+  return_type: tokens
+  max_len: 256

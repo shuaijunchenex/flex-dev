@@ -1,0 +1,5 @@
+# Strong data-volume/rank mismatch for FMNIST Dirichlet alpha=0.4.
+# Sample counts: [3954, 6935, 5789, 11474, 5242, 5047, 5769, 4776, 7727, 3287]
+# Inverse min-max ratios with rho_min=0.25, ordered by client 0..9.
+rank_distribution:
+  rank_ratio_list: [0.9389, 0.6658, 0.7708, 0.2500, 0.8209, 0.8388, 0.7726, 0.8636, 0.5933, 1.0000]

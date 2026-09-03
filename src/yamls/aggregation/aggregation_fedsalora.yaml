@@ -1,0 +1,6 @@
+#-----------------------------
+# Aggregation section args — FedSA-LoRA
+#-----------------------------
+aggregation:
+  method: fedsalora
+  device: cpu

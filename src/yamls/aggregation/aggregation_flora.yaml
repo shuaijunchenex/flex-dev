@@ -1,0 +1,6 @@
+#-----------------------------
+# Aggregation section args — Flora
+#-----------------------------
+aggregation:
+  method: flora
+  device: cpu

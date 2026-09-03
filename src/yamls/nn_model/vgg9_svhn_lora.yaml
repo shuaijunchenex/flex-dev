@@ -1,0 +1,22 @@
+#-----------------------------
+# NN Model — VGG-9 with LoRA for SVHN / CIFAR / CINIC (10 classes, 32×32 input)
+#
+# LoRA applied to all 6 Conv2d layers + 3 Linear layers.
+# Compatible with SP / FedSS aggregation (sp_aggregated keys).
+#-----------------------------
+nn_model:
+  name: vgg9_lora
+  num_classes: 10
+  dropout: 0.5
+
+  # LoRA parameters
+  lora_mode: standard
+  lora_rank_conv: 8
+  lora_rank_fc: 16
+  lora_alpha_conv: 8
+  lora_alpha_fc: 16
+  lora_dropout: 0.0
+  merge_weights: false
+  use_bias: true
+
+  share_model: False

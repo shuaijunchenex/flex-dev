@@ -1,0 +1,4 @@
+strategy:
+  role: server
+  strategy_name: rbla_refdiag_analysis
+

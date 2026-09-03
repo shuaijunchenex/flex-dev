@@ -1,0 +1,14 @@
+#-----------------------------
+# Optimizer - AdamW lr=5e-5 for RoBERTa-large LoRA fine-tuning
+#-----------------------------
+optimizer:
+  type: AdamW
+  lr: 0.00002        # 2e-5，不要太大，宁可学得慢一点，也不能让权重瞬间飞掉
+  weight_decay: 0.1  # 开启重度正则化（1e-1），强行限制 LoRA 权重的偏移幅度
+  momentum: ~
+  nesterov: ~
+  betas: [0.0, 0.95] # 【关键调整】将 beta1 降为 0.0，beta2 降为 0.95！
+  amsgrad: False
+  eps: 1.0e-6        # 增大防分母为零的平滑项，抵抗极端数据的数值抖动
+  alpha: ~
+  centered: ~

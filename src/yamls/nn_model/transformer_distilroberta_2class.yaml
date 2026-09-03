@@ -1,0 +1,8 @@
+#-----------------------------
+# DistilRoBERTa (distilroberta-base) - Binary Classification
+#-----------------------------
+nn_model:
+  name: transformer_classification
+  pretrained_model: "distilroberta-base"
+  num_classes: 2
+  pad_id: 0

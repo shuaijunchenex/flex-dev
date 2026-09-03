@@ -1,0 +1,82 @@
+# -------------------------------------------------------
+# SFL Client node config – unittest_fl_vs_sfl.py
+# Sections follow sfl_r001_epoch1.yaml client_yaml combination:
+#   role_client + general + training_logger + dataset_loader_mnist
+#   + nn_model_sfl_client + cross_entropy + sgd + training_epoch1
+#   + mnist_one_label + sfl_client_strategy + trainer_sl_client
+# -------------------------------------------------------
+
+role: client
+
+general:
+  device: cpu
+  training_rounds: 3
+
+training_logger:
+  name: "train"
+  path: "./.training_results/"
+  prefix: ""
+
+data_loader:
+  name: mnist
+  root: "../../../.dataset"
+  split: ""
+  batch_size: 64
+  shuffle: True
+  num_workers: 0
+  is_download: True
+  is_load_train_set: True
+  is_load_test_set: False
+  task_type: cv
+
+nn_model:
+  name: sfl_mlp_client
+  input_dim: 784
+  hidden_dim: 200
+  output_dim: 200
+  softmax_dim: 1
+  share_model: False
+
+loss_func:
+  type: CrossEntropyLoss
+  reduction: mean
+  weight: None
+
+optimizer:
+  type: SGD
+  lr: 0.01
+  weight_decay: 0.0001
+  momentum: 0.9
+  nesterov: False
+  betas: [0.9, 0.999]
+  amsgrad: False
+  eps: 1e-8
+  alpha: None
+  centered: None
+
+training:
+  epochs: 1
+  batch_size: 64
+  shuffle: True
+  lr: 0.01
+
+trainer:
+  trainer_type: "sl_client"
+  device: "cpu"
+  save_path: "./.training_results/"
+
+data_distribution:
+  use: mnist_one_label
+  custom_define:
+    mnist_one_label: [
+       [5923, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+       [0, 6742, 0, 0, 0, 0, 0, 0, 0, 0]]
+
+data_handler:
+  type: "noniid"
+  data_volum_list: None
+  verify_allocate: True
+
+strategy:
+  role: "client"
+  strategy_name: "sfl"

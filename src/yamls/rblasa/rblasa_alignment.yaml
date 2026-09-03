@@ -1,0 +1,21 @@
+#-----------------------------
+# rblasa alignment hyperparameters
+#-----------------------------
+rblasa:
+  # ── Slot-level alignment ──
+  lambda_slot_0: 0.1         # initial slot alignment weight
+  lambda_slot_min: 0.01      # floor
+  slot_weight_type: "1/s"    # "1/s", "uniform", or "linear"
+
+  # ── Subspace-level alignment ──
+  lambda_sub_0: 0.1          # initial subspace alignment weight
+  lambda_sub_min: 0.01       # floor
+
+  # ── Decay schedule ──
+  beta: 0.01                 # λ(t) = max(λ_min, λ_0 · exp(−β·t))
+
+  # ── B-space warm-up (B starts at 0 �?QR would fail) ──
+  warmup_rounds: 5
+
+  # ── Rank expansion (optional) ──
+  enable_rank_expansion: false

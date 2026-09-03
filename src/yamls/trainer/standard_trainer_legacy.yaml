@@ -1,0 +1,6 @@
+#-----------------------------
+# Trainer — standard (legacy, pre-July-7, no AMP / no set_to_none)
+#-----------------------------
+trainer:
+  trainer_type: "standard_legacy"
+  save_path: "./.training_results/"

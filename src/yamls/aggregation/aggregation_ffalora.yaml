@@ -1,0 +1,6 @@
+#-----------------------------
+# Aggregation section args — FFA-LoRA
+#-----------------------------
+aggregation:
+  method: ffalora
+  device: cpu

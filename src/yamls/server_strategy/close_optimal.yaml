@@ -1,0 +1,4 @@
+strategy:
+  role: "server"
+  strategy_name: "close_optimal"
+  maintain_lora_scale_ratio: true

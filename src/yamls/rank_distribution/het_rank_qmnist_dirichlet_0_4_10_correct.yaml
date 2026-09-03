@@ -1,0 +1,5 @@
+# Data-volume/rank matched configuration for QMNIST Dirichlet alpha=0.4.
+# Sample counts: [6965, 4711, 5556, 13889, 2721, 5574, 3646, 3625, 5910, 7403]
+# Direct min-max ratios with rho_min=0.25, ordered by client 0..9.
+rank_distribution:
+  rank_ratio_list: [0.5350, 0.3836, 0.4404, 1.0000, 0.2500, 0.4416, 0.3121, 0.3107, 0.4642, 0.5644]

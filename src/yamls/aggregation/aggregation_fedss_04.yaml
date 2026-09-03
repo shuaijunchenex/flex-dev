@@ -1,0 +1,8 @@
+#-----------------------------
+# Aggregation section args
+#-----------------------------
+aggregation:
+  method: close_optimal
+  device: cpu
+  is_wbab: False
+  lambda: 0.4

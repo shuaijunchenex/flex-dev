@@ -1,0 +1,7 @@
+nn_model:
+  name: sfl_mlp_server
+  input_dim: 200   # must match client output_dim
+  hidden_dim: 200
+  output_dim: 10
+  softmax_dim: 1
+  share_model: False

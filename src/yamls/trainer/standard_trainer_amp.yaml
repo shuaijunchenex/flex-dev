@@ -1,0 +1,4 @@
+trainer:
+  trainer_type: "standard"
+  save_path: "./.training_results/"
+  use_amp: true           # BF16 on Ampere+ CUDA (A10G, L4, A100); auto-fallback to FP32

@@ -1,0 +1,6 @@
+#-----------------------------
+# RBLA-SASG aggregation
+#-----------------------------
+aggregation:
+  method: rbla_sasg
+  max_rank: 0               # 0 = auto-detect from clients

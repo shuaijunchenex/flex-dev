@@ -1,0 +1,11 @@
+#-----------------------------
+# Client node selection — FedGRA standard with min_participate_round=100
+#-----------------------------
+client_selection:
+  method: fedgra_standard
+  round: 1
+  client_selection_round: 2
+  number: 2
+  random_seed: 42
+  fedgra_mode: all_participate
+  min_participate_round: 100

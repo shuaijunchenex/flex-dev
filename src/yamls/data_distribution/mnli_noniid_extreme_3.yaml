@@ -1,0 +1,14 @@
+#-----------------------------
+# Data distribution section (MNLI extreme non-iid)
+# Each client owns all samples of a single label
+#-----------------------------
+data_distribution:
+
+  use: custom
+
+  custom_define:
+    custom: [
+       [130899, 0, 0],    # Client 1: label 0
+       [0, 130900, 0],    # Client 2: label 1
+       [0, 0, 130903]     # Client 3: label 2
+    ]

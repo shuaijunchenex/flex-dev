@@ -1,0 +1,8 @@
+strategy:
+  role: "client"
+  strategy_name: "pyramidfl"
+  # Set to true to disable adaptive epoch adjustment from the server (always use config epochs).
+  disable_adaptive_epochs: false
+  # Cap: adaptive epochs cannot exceed config_epochs * max_epoch_ratio.
+  # e.g. 1.5 means at most 1.5× the base epoch count. Set to ~ (null) to disable.
+  max_epoch_ratio: 1.5

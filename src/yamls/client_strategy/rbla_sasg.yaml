@@ -1,0 +1,6 @@
+#-----------------------------
+# rbla_sasg client strategy
+#-----------------------------
+strategy:
+  strategy_name: rbla_sasg
+  role: client

@@ -1,0 +1,3 @@
+trainer:
+  trainer_type: "standard"
+  save_path: "./.training_results/"

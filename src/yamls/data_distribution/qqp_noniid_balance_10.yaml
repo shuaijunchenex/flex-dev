@@ -1,0 +1,13 @@
+#-----------------------------
+# Data distribution section (QQP 10 clients balance)
+# Each label is distributed equally among 10 clients
+#-----------------------------
+data_distribution:
+
+  use: custom
+
+  custom_define:
+    custom: [
+       [22946, 13437], [22946, 13437], [22946, 13437], [22946, 13437], [22946, 13437],
+       [22946, 13437], [22946, 13437], [22946, 13437], [22946, 13437], [22946, 13437]
+    ]

@@ -1,0 +1,3 @@
+trainer:
+  trainer_type: "sl_client"
+  save_path: "./.training_results/"

@@ -1,0 +1,7 @@
+#-----------------------------
+# Aggregation section args
+#-----------------------------
+aggregation:
+  method: rbla
+  device: cpu
+  is_wbab: False

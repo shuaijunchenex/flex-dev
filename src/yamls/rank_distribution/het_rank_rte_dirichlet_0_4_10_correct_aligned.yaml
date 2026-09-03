@@ -1,0 +1,7 @@
+# RTE Dirichlet alpha=0.4, data-volume/rank matched.
+# Frozen rerun copy aligned with the corrected FLoRA experiment.
+# Client volumes, ordered by client.1..client.10: [530, 480, 355, 305, 265, 205, 145, 140, 43, 22]
+# rho_i = 0.25 + 0.75 * (n_i - n_min) / (n_max - n_min)
+# n_min=22; n_max=530; volume-rank Spearman=+1.0
+rank_distribution:
+  rank_ratio_list: [1.0000, 0.9262, 0.7416, 0.6678, 0.6088, 0.5202, 0.4316, 0.4242, 0.2810, 0.2500]

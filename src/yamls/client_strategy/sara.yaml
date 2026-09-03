@@ -1,0 +1,6 @@
+#-----------------------------
+# SARA client strategy
+#-----------------------------
+strategy:
+  strategy_name: sara
+  role: client

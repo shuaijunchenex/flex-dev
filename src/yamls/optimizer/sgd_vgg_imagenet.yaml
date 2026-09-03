@@ -1,0 +1,18 @@
+#-----------------------------
+# Optimizer — VGG on Tiny-ImageNet (64x64) / ImageNet (224x224)
+# Reference: original VGG paper training recipe.
+#   - Lower LR (0.01) suitable for higher-resolution, more complex datasets
+#   - Nesterov momentum recommended for deeper VGG nets
+#   - Lighter weight decay (1e-4) for larger datasets
+#-----------------------------
+optimizer:
+  type: SGD
+  lr: 0.01               # Initial learning rate
+  momentum: 0.9          # SGD momentum
+  weight_decay: 0.0001   # L2 regularisation (1e-4)
+  nesterov: True         # Nesterov accelerated gradient
+  betas: [0.9, 0.999]
+  amsgrad: False
+  eps: 1.0e-8
+  alpha: ~
+  centered: ~

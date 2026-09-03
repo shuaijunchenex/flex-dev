@@ -1,0 +1,16 @@
+#-----------------------------
+# TinyBERT (prajjwal1/bert-tiny) - 4-Class Classification
+#-----------------------------
+nn_model:
+  name: tiny_bert_lora
+  pretrained_model: "prajjwal1/bert-tiny"
+  num_classes: 3
+  pad_id: 0
+  # LoRA parameters
+  lora_r: 16
+  lora_alpha: 16
+  lora_dropout: 0.1
+  merge_weights: true
+  lora_embedding: true
+  # lora_target_modules: ["query", "value"]   # uncomment to restrict LoRA to specific modules
+

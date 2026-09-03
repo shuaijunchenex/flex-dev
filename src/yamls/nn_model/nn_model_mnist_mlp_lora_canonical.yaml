@@ -1,0 +1,12 @@
+# MNIST LoRA MLP for compact canonicalization experiments.
+# Only overcomplete ranks are capped; the historical model defaults are unchanged.
+nn_model:
+  name: simple_lora_mlp
+  input_dim: 0
+  hidden_dim: 0
+  output_dim: 0
+  softmax_dim: 1
+  lora_mode: standard
+  rank_ratio: 1
+  cap_lora_rank_to_matrix_dim: true
+  share_model: false

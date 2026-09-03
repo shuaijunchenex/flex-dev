@@ -1,0 +1,34 @@
+#-----------------------------
+# Adaptive SARA reverse alignment hyperparameters
+# Low-rank clients receive stronger alignment; high-rank clients receive weaker alignment.
+#-----------------------------
+sara:
+  # ── Slot-level alignment: rank_decay mode ──
+  #     λ_k = λ_min + (λ_max - λ_min) · (1 - k/(R-1))^γ
+  #     Slot 0 → λ_max (strongest), Slot R-1 → λ_min (weakest)
+  slot_weight_type: "rank_decay"
+  rank_decay_lambda_max: 0.1
+  rank_decay_lambda_min: 0.01
+  rank_decay_gamma: 1.0
+
+  # ── Original SARA slot-level (unused in rank_decay mode) ──
+  lambda_slot_0: 0.1
+  lambda_slot_min: 0.01
+
+  # ── Original SARA subspace-level alignment ──
+  lambda_sub_0: 0.1
+  lambda_sub_min: 0.01
+
+  # ── Decay schedule ──
+  beta: 0.01
+
+  # ── B-space warm-up ──
+  warmup_rounds: 5
+
+  # ── Rank expansion ──
+  enable_rank_expansion: false
+
+  # ── Reverse adaptive matrix-level weighting ──
+  rank_weight_min: 1.5
+  rank_weight_max: 0.5
+  rank_weight_gamma: 1.0

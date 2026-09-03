@@ -1,0 +1,14 @@
+#-----------------------------
+# Data distribution section (MRPC 10 clients balance)
+# Use every MRPC training sample while keeping client volumes nearly equal.
+# Local dataset counts: label 0 = 1285, label 1 = 2677, total = 3962.
+#-----------------------------
+data_distribution:
+
+  use: custom
+
+  custom_define:
+    custom: [
+       [129, 268], [129, 268], [129, 268], [129, 268], [129, 268],
+       [128, 268], [128, 268], [128, 267], [128, 267], [128, 267]
+    ]

@@ -1,0 +1,5 @@
+#-----------------------------
+# SARA trainer (standard training + alignment regularization)
+#-----------------------------
+trainer:
+  trainer_type: sara

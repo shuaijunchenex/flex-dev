@@ -1,0 +1,7 @@
+# MNLI Dirichlet alpha=0.4, data-volume/rank mismatch.
+# Client volumes, ordered by client.1..client.10: [47124, 41888, 48433, 49742, 47124, 62833, 30108, 30107, 30107, 5236]
+# rho_mismatch_i = 1.25 - rho_correct_i
+# rho_correct_i = 0.25 + 0.75 * (n_i - n_min) / (n_max - n_min)
+# n_min=5236; n_max=62833; volume-rank Spearman=-1.0
+rank_distribution:
+  rank_ratio_list: [0.454555, 0.522736, 0.437510, 0.420465, 0.454555, 0.250000, 0.676129, 0.676142, 0.676142, 1.000000]

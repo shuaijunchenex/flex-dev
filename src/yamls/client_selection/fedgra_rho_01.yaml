@@ -1,0 +1,12 @@
+#-----------------------------
+# Client node selection - FedGRA rho=0.1
+#-----------------------------
+client_selection:
+  method: fedgra_standard
+  round: 1
+  client_selection_round: 1
+  number: 2
+  random_seed: 42
+  fedgra_mode: all_participate
+  min_participate_round: 5
+  fedgra_eps: 0.1

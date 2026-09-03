@@ -1,0 +1,20 @@
+#-----------------------------
+# Data distribution section (MNLI Dirichlet alpha=0.1, 10 clients)
+#-----------------------------
+data_distribution:
+
+  use: mnli_dirichlet_0_1
+
+  custom_define:
+    mnli_dirichlet_0_1: [
+      [107337,    131,    131], # Client 1
+      [ 19635,   2618,     65], # Client 2
+      [  2618,     65,  36653], # Client 3
+      [  1047,     26,     26], # Client 4
+      [   131,  98175,     26], # Client 5
+      [    65,     26,     13], # Client 6
+      [    26,     13,   1047], # Client 7
+      [    26,  28798,      1], # Client 8
+      [    13,   1047,  89014], # Client 9
+      [     1,      1,   3927]  # Client 10
+    ]

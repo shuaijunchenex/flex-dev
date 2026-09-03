@@ -1,0 +1,4 @@
+trainer:
+  trainer_type: "vit"
+  deivce: "cpu"
+  save_path: "./.training_results/"

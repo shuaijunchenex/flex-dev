@@ -1,0 +1,14 @@
+#-----------------------------
+# Optimizer - AdamW lr=2e-5 for BERT/Transformer fine-tuning
+#-----------------------------
+optimizer:
+  type: AdamW
+  lr: 0.00002
+  weight_decay: 0.01
+  momentum: ~
+  nesterov: ~
+  betas: [0.9, 0.999]
+  amsgrad: False
+  eps: 1.0e-8
+  alpha: ~
+  centered: ~

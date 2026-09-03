@@ -1,0 +1,7 @@
+#-----------------------------
+# Aggregation section args
+#-----------------------------
+aggregation:
+  method: "sp"
+  device: cpu
+  is_wbab: False

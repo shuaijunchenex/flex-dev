@@ -1,0 +1,13 @@
+#-----------------------------
+# Data loader section args
+#-----------------------------
+data_loader:
+  name: cifar10
+  root: "../../../.dataset"      # Data set folder
+  split: ""
+  batch_size: 64
+  shuffle: True
+  num_workers: 0
+  is_download: True             # Is download from internet
+  is_load_train_set: True
+  is_load_test_set: True

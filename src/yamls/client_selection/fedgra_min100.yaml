@@ -1,0 +1,11 @@
+#-----------------------------
+# Client node selection — FedGRA with min_participate_round=100 (effectively disabled)
+#-----------------------------
+client_selection:
+  method: fedgra
+  round: 1
+  client_selection_round: 2
+  number: 2
+  random_seed: 42
+  fedgra_mode: all_participate
+  min_participate_round: 100

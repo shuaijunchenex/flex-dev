@@ -1,0 +1,8 @@
+#-----------------------------
+# Client node selection
+#-----------------------------
+client_selection:
+  method: low_loss
+  round: 1
+  number: 2
+  random_seed: 42
