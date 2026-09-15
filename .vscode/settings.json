@@ -1,0 +1,6 @@
+{
+    "python.defaultInterpreterPath": "C:\\Users\\FlexRunner\\miniconda3\\envs\\flex_env\\python.exe",
+    "python.condaPath": "C:\\Users\\FlexRunner\\miniconda3\\Scripts\\conda.exe",
+    "python-envs.defaultEnvManager": "ms-python.python:conda",
+    "python-envs.defaultPackageManager": "ms-python.python:conda"
+}

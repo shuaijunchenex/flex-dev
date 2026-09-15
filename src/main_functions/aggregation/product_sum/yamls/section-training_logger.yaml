@@ -1,0 +1,7 @@
+#-----------------------------
+# Training logger section args
+#-----------------------------
+training_logger:
+  name: "train"
+  path: "./.training_results/"     # Log path
+  prefix: ""              # Log file name prefix

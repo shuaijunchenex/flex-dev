@@ -1,0 +1,3 @@
+support_scaling:
+  scaling_type: q_power
+  gamma: 0.5

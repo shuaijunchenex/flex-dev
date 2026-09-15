@@ -1,0 +1,5 @@
+# RblaRunner iterates from zero through training_rounds inclusive.
+# 19 therefore executes exactly 20 communication rounds (0--19).
+general:
+  device: cpu
+  training_rounds: 19

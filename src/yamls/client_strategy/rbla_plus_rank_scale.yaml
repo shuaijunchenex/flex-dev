@@ -1,0 +1,4 @@
+strategy:
+  role: "client"
+  strategy_name: "rbla_plus_rank_scale"
+

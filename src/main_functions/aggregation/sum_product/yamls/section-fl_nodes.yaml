@@ -1,0 +1,13 @@
+#-----------------------------
+# Define client nodes with node id and config file
+# which reference to node_yamls section
+#-----------------------------
+client_nodes:
+  group-1:                 # Node group id
+    number: 10
+    id_prefix: client      # Client id format: <prefix>.<number> i.e. client.1, client.2 etc
+    link_to: server-1
+  
+# Define server node, only ONE node
+server_node:
+  id: server-1         # Server node id

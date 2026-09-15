@@ -1,0 +1,5 @@
+# Strong data-volume/rank mismatch for QMNIST Dirichlet alpha=0.4.
+# Sample counts: [6965, 4711, 5556, 13889, 2721, 5574, 3646, 3625, 5910, 7403]
+# Inverse min-max ratios with rho_min=0.25, ordered by client 0..9.
+rank_distribution:
+  rank_ratio_list: [0.7150, 0.8664, 0.8096, 0.2500, 1.0000, 0.8084, 0.9379, 0.9393, 0.7858, 0.6856]

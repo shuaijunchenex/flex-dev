@@ -1,0 +1,7 @@
+# SST2 Dirichlet alpha=0.4, data-volume/rank mismatch.
+# Client volumes, ordered by client.1..client.10: [20010, 8175, 24, 8986, 986, 817, 4336, 5249, 11632, 7134]
+# rho_mismatch_i = 1.25 - rho_correct_i
+# rho_correct_i = 0.25 + 0.75 * (n_i - n_min) / (n_max - n_min)
+# n_min=24; n_max=20010; volume-rank Spearman=-1.0
+rank_distribution:
+  rank_ratio_list: [0.2500, 0.6941, 1.0000, 0.6637, 0.9639, 0.9702, 0.8382, 0.8039, 0.5644, 0.7332]

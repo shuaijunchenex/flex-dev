@@ -1,0 +1,3 @@
+trainer:
+  trainer_type: rbla_strong_a
+  device: cpu

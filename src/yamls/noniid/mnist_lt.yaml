@@ -1,0 +1,18 @@
+#-----------------------------
+# Non-IID data split config
+#-----------------------------
+noniid:
+  # Distribution pattern applied by NoniidDataGenerator
+  # Options (see noniid_distribution_generator.py): mnist_lt | mnist_lt_one_label | mnist_data_volum_balance | custom
+  distribution: mnist_lt
+
+  # Custom distribution list used when distribution == "custom"
+  data_volum_list: null
+
+  # Whether to print allocation details per client
+  verify_allocate: true
+
+  # DataLoader parameters for per-client loaders
+  batch_size: 64
+  shuffle: false
+  num_workers: 0

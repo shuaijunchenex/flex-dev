@@ -1,0 +1,12 @@
+#-----------------------------
+# Trainer section — FedGRA (standard trainer + pre-training initial loss)
+#
+# FedGRA client selection needs the pre-training "surprise" loss
+# (initial_loss) for EWM / GRA scoring.  This trainer computes it
+# before each round of local training.
+#
+# Non-FedGRA strategies should use standard_trainer.yaml instead.
+#-----------------------------
+trainer:
+  trainer_type: "fedgra"
+  save_path: "./.training_results/"

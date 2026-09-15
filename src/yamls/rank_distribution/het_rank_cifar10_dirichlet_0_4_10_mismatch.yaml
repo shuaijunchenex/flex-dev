@@ -1,0 +1,7 @@
+# CIFAR10 Dirichlet alpha=0.4, data-volume/rank mismatch.
+# Client volumes, ordered by client.1..client.10: [1917, 7772, 3984, 5768, 8965, 2658, 6741, 2186, 4023, 5986]
+# rho_mismatch_i = 1.25 - rho_correct_i
+# rho_correct_i = 0.25 + 0.75 * (n_i - n_min) / (n_max - n_min)
+# n_min=1917; n_max=8965; volume-rank Spearman=-1.0
+rank_distribution:
+  rank_ratio_list: [1.0000, 0.3770, 0.7800, 0.5902, 0.2500, 0.9211, 0.4867, 0.9714, 0.7759, 0.5670]

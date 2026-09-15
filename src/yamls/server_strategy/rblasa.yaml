@@ -1,0 +1,6 @@
+#-----------------------------
+# rblasa server strategy (uses RBLA aggregation)
+#-----------------------------
+strategy:
+  strategy_name: rbla  # rblasa reuses RBLA server-side aggregation
+  role: server

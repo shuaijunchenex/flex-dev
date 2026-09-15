@@ -1,0 +1,6 @@
+#-----------------------------
+# general section args
+#-----------------------------
+general:
+  device: cpu
+  training_rounds: 500      # Training round

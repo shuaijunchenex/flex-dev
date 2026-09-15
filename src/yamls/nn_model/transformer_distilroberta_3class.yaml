@@ -1,0 +1,8 @@
+#-----------------------------
+# DistilRoBERTa (distilroberta-base) - 3-Class Classification
+#-----------------------------
+nn_model:
+  name: transformer_classification
+  pretrained_model: "distilroberta-base"
+  num_classes: 3
+  pad_id: 0

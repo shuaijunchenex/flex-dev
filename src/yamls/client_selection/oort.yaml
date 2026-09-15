@@ -1,0 +1,9 @@
+#-----------------------------
+# Client node selection - Oort
+#-----------------------------
+client_selection:
+  method: oort
+  round: 1
+  client_selection_round: 1
+  number: 2
+  random_seed: 42

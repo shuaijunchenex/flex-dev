@@ -1,0 +1,15 @@
+#-----------------------------
+# TinyBERT (prajjwal1/bert-tiny) with LoRA
+#-----------------------------
+nn_model:
+  name: tiny_bert_lora
+  pretrained_model: "prajjwal1/bert-tiny"
+  num_classes: 2
+  pad_id: 0
+  # LoRA parameters
+  lora_r: 8
+  lora_alpha: 16
+  lora_dropout: 0.1
+  merge_weights: false
+  lora_embedding: true
+  # lora_target_modules: ["query", "value"]   # uncomment to restrict LoRA to specific modules

@@ -1,0 +1,3 @@
+# Uniform-rank control: 10 clients with total rank-ratio budget 5.5.
+rank_distribution:
+  rank_ratio_list: [0.55, 0.55, 0.55, 0.55, 0.55, 0.55, 0.55, 0.55, 0.55, 0.55]

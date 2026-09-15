@@ -1,0 +1,4 @@
+aggregation:
+  method: rbla_freeze_a
+  device: cpu
+  pad_mode: nan

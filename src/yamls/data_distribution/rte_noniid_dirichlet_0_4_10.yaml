@@ -1,0 +1,21 @@
+#-----------------------------
+# Data distribution section (RTE Dirichlet alpha=0.4, 10 clients)
+# Total Label 0: 1249, Total Label 1: 1241
+#-----------------------------
+data_distribution:
+
+  use: rte_dirichlet_0_4
+
+  custom_define:
+    rte_dirichlet_0_4: [
+        [410,  120],  # Client 1 (样本最多: 530)
+        [ 60,  420],  # Client 2
+        [320,   35],  # Client 3
+        [ 15,  290],  # Client 4
+        [210,   55],  # Client 5
+        [ 25,  180],  # Client 6
+        [125,   20],  # Client 7
+        [ 50,   90],  # Client 8
+        [ 22,   21],  # Client 9
+        [ 12,   10]   # Client 10
+    ]

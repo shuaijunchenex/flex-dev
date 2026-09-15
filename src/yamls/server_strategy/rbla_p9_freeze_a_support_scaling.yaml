@@ -1,0 +1,3 @@
+strategy:
+  role: server
+  strategy_name: rbla_p9_freeze_a_support_scaling

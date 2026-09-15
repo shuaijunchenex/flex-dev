@@ -1,0 +1,23 @@
+#-----------------------------
+# Data distribution section
+#-----------------------------
+data_distribution:
+
+  # Use custom distribution
+  use: custom
+
+  # define custom data list for 2 clients
+  # Each row represents a client, each column represents a class (mapped to actual available labels)
+  custom_define:
+    custom: [
+       [252, 602],
+       [252, 602],
+       [253, 602],
+       [253, 602],
+       [253, 602],
+       [253, 602],
+       [253, 602],
+       [253, 602],
+       [253, 603],
+       [253, 603]
+    ]

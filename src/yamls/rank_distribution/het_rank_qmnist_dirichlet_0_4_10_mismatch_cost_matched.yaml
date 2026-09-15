@@ -1,0 +1,8 @@
+# Cost-matched Dirichlet rank distribution.
+# dataset=qmnist; alpha=0.4; assignment=mismatch
+# Corrects the legacy mismatch profile while preserving its files.
+# client volumes, ordered by client.1..client.10: [6965, 4711, 5556, 13889, 2721, 5574, 3646, 3625, 5910, 7403]
+# all assignments share one ratio multiset and total LoRA parameter cost
+# volume-rank Spearman: -1.000000000; aggregate LoRA parameters: 1056232
+rank_distribution:
+  rank_ratio_list: [0.3121, 0.4642, 0.4416, 0.2500, 1.0000, 0.4404, 0.5350, 0.5644, 0.3836, 0.3107]

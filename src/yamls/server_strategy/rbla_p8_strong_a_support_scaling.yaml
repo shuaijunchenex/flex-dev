@@ -1,0 +1,3 @@
+strategy:
+  role: server
+  strategy_name: rbla_p8_strong_a_support_scaling

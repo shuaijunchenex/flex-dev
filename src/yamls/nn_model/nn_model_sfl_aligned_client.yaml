@@ -1,0 +1,7 @@
+nn_model:
+  name: sfl_aligned_client
+  input_dim: 784
+  hidden_dim: 200
+  output_dim: 200   # cut-layer output, matches NNModel_MnistNNBrenden fc1 output
+  softmax_dim: 1
+  share_model: False

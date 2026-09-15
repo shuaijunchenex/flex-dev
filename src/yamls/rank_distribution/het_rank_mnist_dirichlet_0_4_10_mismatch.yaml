@@ -1,0 +1,5 @@
+# Strong data-volume/rank mismatch for MNIST Dirichlet alpha=0.4.
+# Sample counts: [3799, 9003, 4244, 4592, 6661, 5335, 3960, 9977, 3345, 9084]
+# Inverse min-max ratios with rho_min=0.25, ordered by client 0..9.
+rank_distribution:
+  rank_ratio_list: [0.9487, 0.3601, 0.8983, 0.8590, 0.6250, 0.7750, 0.9305, 0.2500, 1.0000, 0.3510]

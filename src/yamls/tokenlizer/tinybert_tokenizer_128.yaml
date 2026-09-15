@@ -1,0 +1,9 @@
+# HuggingFace TinyBERT tokenizer configuration for short GLUE tasks.
+tokenizer:
+  type: bert
+  use_hf_tokenizer: true
+  pretrained: "bert-base-uncased"
+  use_fast: true
+  return_type: tokens
+  max_len: 128
+

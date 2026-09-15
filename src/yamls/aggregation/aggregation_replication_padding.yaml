@@ -1,0 +1,9 @@
+#-----------------------------
+# Aggregation section args - Replication Padding
+#-----------------------------
+aggregation:
+  method: replication_padding
+  device: cpu
+  # Keep the same data-volume weighting used by the aligned RBLA/ZP experiments.
+  # Set to client_count only for a paper-style equal-client-weight reproduction.
+  weighting_mode: data_volume

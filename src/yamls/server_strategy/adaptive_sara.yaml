@@ -1,0 +1,7 @@
+#-----------------------------
+# Adaptive SARA server strategy
+# Uses RBLA aggregation, matching original SARA.
+#-----------------------------
+strategy:
+  strategy_name: rbla
+  role: server

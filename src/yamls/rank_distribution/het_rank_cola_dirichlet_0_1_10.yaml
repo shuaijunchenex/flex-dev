@@ -1,0 +1,3 @@
+rank_distribution:
+  # 基于 cola Dirichlet alpha=0.1 计算的 rank_ratio 列表
+  rank_ratio_list: [0.01, 0.01, 0.13, 1.00, 0.04, 0.10, 0.01, 0.11, 0.12, 0.10]

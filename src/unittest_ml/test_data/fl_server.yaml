@@ -1,0 +1,92 @@
+# -------------------------------------------------------
+# FL (FedAvg) Server node config – unittest_fl_vs_sfl.py
+# Sections follow fedavg_r001_epoch1.yaml server_yaml combination:
+#   role_server + general + training_logger + dataset_loader_mnist
+#   + mnist_2nn + cross_entropy + sgd + training_epoch1
+#   + mnist_one_label + trainer_standard + client_selection_all_participate
+#   + fedavg_server_strategy + aggregation_fedavg
+# -------------------------------------------------------
+
+role: server
+
+general:
+  device: cpu
+  training_rounds: 3
+
+training_logger:
+  name: "train"
+  path: "./.training_results/"
+  prefix: ""
+
+data_loader:
+  name: mnist
+  root: "../../../.dataset"
+  split: ""
+  batch_size: 64
+  shuffle: True
+  num_workers: 0
+  is_download: True
+  is_load_train_set: True
+  is_load_test_set: True
+  task_type: cv
+
+nn_model:
+  name: mnist_nn_brenden
+  input_dim: 0
+  hidden_dim: 0
+  output_dim: 0
+  softmax_dim: 1
+  rank_ratio: 1
+  lora_mode: standard
+  share_model: True
+
+loss_func:
+  type: CrossEntropyLoss
+  reduction: mean
+  weight: None
+
+optimizer:
+  type: SGD
+  lr: 0.01
+  weight_decay: 0.0001
+  momentum: 0.9
+  nesterov: False
+  betas: [0.9, 0.999]
+  amsgrad: False
+  eps: 1e-8
+  alpha: None
+  centered: None
+
+training:
+  epochs: 1
+  batch_size: 64
+  shuffle: True
+  lr: 0.01
+
+trainer:
+  trainer_type: "standard"
+  device: "cpu"
+  save_path: "./.training_results/"
+
+data_distribution:
+  use: mnist_one_label
+  custom_define:
+    mnist_one_label: [
+       [5923, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+       [0, 6742, 0, 0, 0, 0, 0, 0, 0, 0]]
+
+client_selection:
+  method: random
+  round: 1
+  client_selection_round: 1
+  number: 2
+  random_seed: 42
+
+strategy:
+  role: "server"
+  strategy_name: "fedavg"
+
+aggregation:
+  method: fedavg
+  device: cpu
+  is_wbab: False

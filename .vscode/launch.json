@@ -1,0 +1,19 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "Python: Run src/main.py",
+        "type": "debugpy",
+        "request": "launch",
+        "program": "${workspaceFolder}/src/main.py",
+        "cwd": "${workspaceFolder}",
+        "console": "integratedTerminal",
+        "args": "${command:pickArgs}",
+        "env": {
+          "PYTHONPATH": "${workspaceFolder}/src"
+        },
+        "justMyCode": false
+      }
+    ]
+  }
+  

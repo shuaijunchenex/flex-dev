@@ -1,0 +1,4 @@
+strategy:
+  role: client
+  strategy_name: rbla_freeze_a_analysis
+

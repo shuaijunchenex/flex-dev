@@ -1,0 +1,9 @@
+#-----------------------------
+# trainer section (GLUE + BF16 autocast when CUDA supports it)
+#-----------------------------
+trainer:
+  use: glue
+  trainer_type: "glue"
+  device: "cuda"
+  amp_enabled: true
+  use_grad_scaler: false

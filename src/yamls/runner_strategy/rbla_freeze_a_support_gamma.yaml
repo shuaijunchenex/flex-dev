@@ -1,0 +1,4 @@
+strategy:
+  role: runner
+  strategy_name: rbla_freeze_a_support_gamma
+

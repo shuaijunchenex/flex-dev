@@ -1,0 +1,17 @@
+#-----------------------------
+# IMDB loader - BERT/TinyBERT fine-tuning defaults
+#-----------------------------
+data_loader:
+  name: imdb
+  root: ".dataset"
+  split: ""
+  batch_size: 32
+  max_len: 256
+  shuffle: True
+  num_workers: 0
+  is_download: True
+  is_load_train_set: True
+  is_load_test_set: True
+  task_type: nlp
+  vocab_size: None
+

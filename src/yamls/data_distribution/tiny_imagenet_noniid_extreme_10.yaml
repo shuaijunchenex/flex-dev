@@ -1,0 +1,29 @@
+#-----------------------------
+# Data distribution section — Tiny-ImageNet extreme non-IID (10 clients)
+# Each client holds ALL training samples of exactly ONE class (500 images/class).
+# Tiny-ImageNet: 200 classes total, 500 train images per class.
+# This config uses the first 10 classes (class index 0–9) only.
+# Clients that hold classes 10–199 are not covered here; those classes
+# will effectively be excluded from training.
+# Columns represent class indices 0–9 (out of 200 total).
+#
+# To use all 200 classes assign one or more classes per client and expand
+# the matrix to 200 columns accordingly.
+#-----------------------------
+data_distribution:
+
+  use: custom
+
+  custom_define:
+    custom: [
+      [500,   0,   0,   0,   0,   0,   0,   0,   0,   0],
+      [  0, 500,   0,   0,   0,   0,   0,   0,   0,   0],
+      [  0,   0, 500,   0,   0,   0,   0,   0,   0,   0],
+      [  0,   0,   0, 500,   0,   0,   0,   0,   0,   0],
+      [  0,   0,   0,   0, 500,   0,   0,   0,   0,   0],
+      [  0,   0,   0,   0,   0, 500,   0,   0,   0,   0],
+      [  0,   0,   0,   0,   0,   0, 500,   0,   0,   0],
+      [  0,   0,   0,   0,   0,   0,   0, 500,   0,   0],
+      [  0,   0,   0,   0,   0,   0,   0,   0, 500,   0],
+      [  0,   0,   0,   0,   0,   0,   0,   0,   0, 500]
+    ]

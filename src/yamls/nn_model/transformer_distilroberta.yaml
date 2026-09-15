@@ -1,0 +1,12 @@
+#-----------------------------
+# nn_model section
+#-----------------------------
+nn_model:
+
+  # Use nn model name
+  name: transformer_classification
+
+  # params
+  pretrained_model: "distilroberta-base"
+  num_classes: 2
+  pad_id: 0

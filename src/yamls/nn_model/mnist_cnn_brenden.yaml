@@ -1,0 +1,8 @@
+#-----------------------------
+# NN Model - MNIST CNN (Brendan McMahan CNN variant)
+#-----------------------------
+nn_model:
+  name: cnn_brenden
+  num_classes: 10
+  in_channels: 1
+  share_model: True

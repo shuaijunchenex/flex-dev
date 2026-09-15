@@ -1,0 +1,46 @@
+general:
+  device: cpu
+  
+# Dataset used by node
+data_loader:
+  name: mnist
+  root: "../../../.dataset"      # Data set folder
+  split: ""
+  batch_size: 64
+  shuffle: True
+  num_workers: 4
+  is_download: True             # Is download from internet
+  
+#define globle NN Model and paras
+nn_model:
+  name: mnist_nn_brenden
+  input_dim: 0
+  hidden_dim: 0
+  output_dim: 0
+  softmax_dim : 1
+  rank_ratio: 1
+  lora_mode: standard
+  share_model: True
+
+training:
+  epochs: 5
+  batch_size: 64
+  shuffle: True
+  lr: 0.01
+
+optimizer:
+  type: SGD             # Options: SGD, Adam, Adagrad, RMSprop, etc.
+  lr: 0.01              # Learning rate
+  weight_decay: 0.0001  # Weight decay (set to None if not used)
+  momentum: 0.9         # Momentum (for SGD and RMSprop, set to None if not used)
+  nesterov: False       # Whether to use Nesterov momentum (only applicable for SGD; set to None if not used)
+  betas: [0.9, 0.999]   # Betas parameter for Adam (set to None if not used)
+  amsgrad: False        # Whether to use AMSGrad (only applicable for Adam; set to None if not used)
+  eps: 1e-8             # Epsilon parameter for Adam (set to None if not used)
+  alpha: None           # Alpha parameter for RMSprop (set to None if not used)
+  centered: None        # Centered parameter for RMSprop (set to None if not used)
+
+loss_func:
+  type: CrossEntropyLoss  # Options: CrossEntropyLoss, MSELoss, etc.
+  reduction: mean         # Options: mean, sum, none
+  weight: None            # Optional: Define class weights for imbalanced datasets

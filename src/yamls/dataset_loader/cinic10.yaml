@@ -1,0 +1,22 @@
+#-----------------------------
+# Data loader section args — CINIC-10
+# 32x32 RGB, 10 classes (same as CIFAR-10), 270k images total
+#
+# Auto-download sources (tried in order when is_download: True):
+#   1. TensorFlow Datasets  (pip install tensorflow-datasets tensorflow pillow)
+#   2. HuggingFace Hub      (pip install huggingface_hub)
+#   3. Google Drive         (pip install gdown)
+#   4. Direct HTTPS         Edinburgh DataShare (~480 MB, no extra deps)
+#
+# Manual download: https://datashare.ed.ac.uk/handle/10283/3192
+# Extract to: <root>/cinic-10/{train,valid,test}/<class>/
+#-----------------------------
+data_loader:
+  name: cinic10
+  root: ".dataset"      # Data set folder
+  split: ""             # "" or "train" → train split; "valid" / "test" for eval
+  batch_size: 64
+  shuffle: True
+  num_workers: 0
+  is_download: True     # Set True to auto-download if dataset not present
+  task_type: cv

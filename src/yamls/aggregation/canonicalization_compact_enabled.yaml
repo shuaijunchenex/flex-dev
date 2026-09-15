@@ -1,0 +1,10 @@
+canonicalization:
+  enabled: true
+  start_round: 0
+  interval: 1
+  deterministic_sign: true
+  svd_fallback: true
+  log_diagnostics: true
+  ordering: singular_value
+  activation_chunk_size: 4096
+  activation_fallback: true

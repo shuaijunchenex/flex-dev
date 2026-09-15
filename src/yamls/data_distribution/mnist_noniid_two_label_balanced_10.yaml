@@ -1,0 +1,16 @@
+# Balanced-volume MNIST Non-IID split: two adjacent labels per client.
+# Every client receives 5,000 samples and every class contributes 5,000 total.
+data_distribution:
+  use: mnist_two_label_balanced
+  custom_define:
+    mnist_two_label_balanced:
+      - [2500, 2500, 0, 0, 0, 0, 0, 0, 0, 0]
+      - [0, 2500, 2500, 0, 0, 0, 0, 0, 0, 0]
+      - [0, 0, 2500, 2500, 0, 0, 0, 0, 0, 0]
+      - [0, 0, 0, 2500, 2500, 0, 0, 0, 0, 0]
+      - [0, 0, 0, 0, 2500, 2500, 0, 0, 0, 0]
+      - [0, 0, 0, 0, 0, 2500, 2500, 0, 0, 0]
+      - [0, 0, 0, 0, 0, 0, 2500, 2500, 0, 0]
+      - [0, 0, 0, 0, 0, 0, 0, 2500, 2500, 0]
+      - [0, 0, 0, 0, 0, 0, 0, 0, 2500, 2500]
+      - [2500, 0, 0, 0, 0, 0, 0, 0, 0, 2500]

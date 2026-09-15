@@ -1,0 +1,16 @@
+#-----------------------------
+# rbla_sasg — Strong semantic anchoring + Adaptive Grid
+#-----------------------------
+rbla_sasg:
+  # ── Alignment coefficient decay ──
+  lambda_0: 0.5              # strong initial alignment
+  lambda_min: 0.05           # keep a floor (never fully disable)
+  beta: 0.005                # slow decay — anchoring persists longer
+
+  # ── Slot importance weights ──
+  alpha: 0.5                 # front slots weighted higher: ω_s = 1/(1+0.5*(s-1))
+
+  # ── Semantic grid strategy ──
+  adaptive_grid: true        # AdaptiveSemanticGrid (EMA-based dynamic slot selection)
+  warmup_rounds: 3           # rounds before switching from uniform to adaptive
+  grid_rho: 0.9              # EMA momentum for slot update strength

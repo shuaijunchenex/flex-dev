@@ -1,0 +1,24 @@
+#-----------------------------
+# Optimizer — Adam lr=2e-5 for BERT/Transformer fine-tuning
+#
+# Design rationale
+# ----------------
+# • lr 2e-5  — standard recommendation for fine-tuning pre-trained
+#              Transformer models (BERT, TinyBERT, DistilRoBERTa).
+#              Hugging Face and the original BERT paper both suggest
+#              2e-5 ~ 5e-5 for downstream classification tasks.
+# • weight_decay 0.01 — AdamW-style regularisation for transformers.
+# • eps 1e-8  — PyTorch default; keeps numerical stability during
+#              the small-gradient regime of fine-tuning.
+#-----------------------------
+optimizer:
+  type: Adam
+  lr: 0.00002            # Learning rate — 2e-5 for BERT fine-tuning
+  weight_decay: 0.01     # L2 regularisation
+  momentum: ~            # Not used by Adam
+  nesterov: ~            # Not used by Adam
+  betas: [0.9, 0.999]    # (β1, β2) — PyTorch default
+  amsgrad: False
+  eps: 1.0e-8
+  alpha: ~
+  centered: ~

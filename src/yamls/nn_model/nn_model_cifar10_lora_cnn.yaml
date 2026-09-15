@@ -1,0 +1,24 @@
+#-----------------------------
+#define globle NN Model and paras
+#-----------------------------
+nn_model:
+  name: cifar_lora_cnn
+  input_dim: 0
+  hidden_dim: 0
+  output_dim: 0
+  softmax_dim : 1
+  lora_mode: standard
+  rank_ratio: 1
+
+  # LoRA parameters for CIFAR-10 CNN
+  lora_rank_conv: 64
+  lora_rank_fc: 16
+  lora_alpha_conv: 64
+  lora_alpha_fc: 16
+  lora_dropout: 0.0
+  dropout: 0.25
+  merge_weights: false
+  use_bias: true
+
+  # Share model bentween nodes
+  share_model: False

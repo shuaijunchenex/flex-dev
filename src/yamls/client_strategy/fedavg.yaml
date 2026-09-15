@@ -1,0 +1,5 @@
+strategy:
+  role: "client"
+  strategy_name: "fedavg"
+  preserve_optimizer_state: false   # true: keep optimizer momentum/buffers across rounds (like SFL)
+  offload_weights_to_cpu: true      # true: move trained weights to CPU + free GPU after each client (saves VRAM for multi-client runs)

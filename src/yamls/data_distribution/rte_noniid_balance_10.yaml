@@ -1,0 +1,14 @@
+#-----------------------------
+# Data distribution section (RTE 10 clients balance)
+# Use every RTE training sample while keeping every client at 249 samples.
+# Label counts: label 0 = 1249, label 1 = 1241, total = 2490.
+#-----------------------------
+data_distribution:
+
+  use: custom
+
+  custom_define:
+    custom: [
+       [125, 124], [125, 124], [125, 124], [125, 124], [125, 124],
+       [125, 124], [125, 124], [125, 124], [125, 124], [124, 125]
+    ]

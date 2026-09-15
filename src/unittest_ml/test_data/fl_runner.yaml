@@ -1,0 +1,28 @@
+# FL (FedAvg) runner config for unittest_fl_vs_sfl.py
+general:
+  training_rounds: 3
+  device: cpu
+
+logger:
+  name: "fl_vs_sfl_fl"
+  path: "./.training_results/"
+  prefix: "fl"
+
+node_yamls:
+  client_yaml: ./test_data/node_config_template_client.yaml
+  server_yaml: ./test_data/fl_server.yaml
+
+client_nodes:
+  group-1:
+    number: 2
+    id_prefix: client
+    yaml: client_yaml
+    link_to: server-1
+
+server_node:
+  id: server-1
+  yaml: server_yaml
+
+strategy:
+  strategy_name: fedavg
+  role: runner

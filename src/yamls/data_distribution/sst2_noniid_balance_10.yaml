@@ -1,0 +1,13 @@
+#-----------------------------
+# Data distribution section (SST2 10 clients balance)
+# Each label is distributed equally among 10 clients
+#-----------------------------
+data_distribution:
+
+  use: custom
+
+  custom_define:
+    custom: [
+       [2978, 3756], [2978, 3756], [2978, 3756], [2978, 3756], [2978, 3756],
+       [2978, 3756], [2978, 3756], [2978, 3756], [2978, 3756], [2978, 3756]
+    ]

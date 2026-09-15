@@ -1,0 +1,3 @@
+reference_diagnostics:
+  eps: 1.0e-8
+  compute_pinv: true

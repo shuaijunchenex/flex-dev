@@ -1,0 +1,16 @@
+#-----------------------------
+# Client node selection - RepuFL
+# Reputation-Aware Client Selection (IEEE ICWS 2025)
+#-----------------------------
+client_selection:
+  method: repufl
+  round: 1
+  number: 2
+  random_seed: 42
+  # EWMA decay for historical accuracy and willingness factors (keep-old weight)
+  repufl_ewma_alpha: 0.7
+  # Weights for the four reputation factors (should sum to 1.0)
+  repufl_weight_accuracy:    0.25
+  repufl_weight_quality:     0.25
+  repufl_weight_willingness: 0.25
+  repufl_weight_consistency: 0.25

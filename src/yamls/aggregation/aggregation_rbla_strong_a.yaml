@@ -1,0 +1,4 @@
+aggregation:
+  method: rbla_strong_a
+  device: cpu
+  pad_mode: nan

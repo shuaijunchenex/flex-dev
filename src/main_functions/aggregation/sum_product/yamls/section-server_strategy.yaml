@@ -1,0 +1,3 @@
+strategy:
+  role: "server"
+  strategy_name: "fedavg"

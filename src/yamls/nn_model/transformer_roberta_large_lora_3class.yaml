@@ -1,0 +1,17 @@
+#-----------------------------
+# RoBERTa-large with LoRA for MNLI 3-class sequence classification
+#-----------------------------
+nn_model:
+  name: roberta_large_lora
+  pretrained_model: "roberta-large"
+  num_classes: 3
+  pad_id: 1
+  # LoRA parameters
+  lora_r: 64
+  lora_alpha: 16
+  lora_dropout: 0.1
+  merge_weights: true
+  lora_embedding: true
+  freeze_base_model: true
+  train_classifier: true
+  # lora_target_modules: ["query", "value"]   # uncomment to restrict LoRA to Q/V only
