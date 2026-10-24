@@ -1,0 +1,16 @@
+#-----------------------------
+# RoBERTa-large with LoRA for sequence classification, lower-memory variant
+#-----------------------------
+nn_model:
+  name: roberta_large_lora
+  pretrained_model: "roberta-large"
+  num_classes: 2
+  pad_id: 1
+  lora_r: 64
+  lora_alpha: 16
+  lora_dropout: 0.1
+  merge_weights: false
+  lora_embedding: false
+  lora_target_modules: ["query", "value"]
+  freeze_base_model: true
+  train_classifier: true

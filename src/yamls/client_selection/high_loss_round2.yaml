@@ -1,0 +1,9 @@
+#-----------------------------
+# Client node selection — High-Loss, selection every 2 rounds
+#-----------------------------
+client_selection:
+  method: high_loss
+  round: 1
+  client_selection_round: 2
+  number: 2
+  random_seed: 42

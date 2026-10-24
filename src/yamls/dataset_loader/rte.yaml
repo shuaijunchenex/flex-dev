@@ -1,0 +1,17 @@
+#-----------------------------
+# Data loader section args for RTE (GLUE)
+#-----------------------------
+data_loader:
+  name: rte
+  root: ".dataset"
+  split: ""
+  batch_size: 64
+  shuffle: True
+  num_workers: 0
+  is_download: True
+  is_load_train_set: True
+  is_load_test_set: True
+  train_split: train
+  test_split: validation
+  task_type: nlp
+  vocab_size: None

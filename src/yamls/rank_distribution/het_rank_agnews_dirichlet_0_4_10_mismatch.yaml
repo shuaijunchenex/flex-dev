@@ -1,0 +1,7 @@
+# AGNEWS Dirichlet alpha=0.4, data-volume/rank mismatch.
+# Client volumes, ordered by client.1..client.10: [22973, 11926, 10301, 25516, 5050, 1643, 4588, 10883, 8016, 19104]
+# rho_mismatch_i = 1.25 - rho_correct_i
+# rho_correct_i = 0.25 + 0.75 * (n_i - n_min) / (n_max - n_min)
+# n_min=1643; n_max=25516; volume-rank Spearman=-1.0
+rank_distribution:
+  rank_ratio_list: [0.3299, 0.6769, 0.7280, 0.2500, 0.8930, 1.0000, 0.9075, 0.7097, 0.7998, 0.4514]

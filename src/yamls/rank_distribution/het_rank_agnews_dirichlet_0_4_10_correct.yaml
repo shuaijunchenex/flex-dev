@@ -1,0 +1,7 @@
+# AG News Dirichlet alpha=0.4, data-volume/rank matched.
+# Client volumes, ordered by client.1..client.10: [22973, 11926, 10301, 25516, 5050, 1643, 4588, 10883, 8016, 19104]
+# rho_i = 0.25 + 0.75 * (n_i - n_min) / (n_max - n_min)
+# n_min=1643; n_max=25516; volume-rank Spearman=+1.0
+rank_distribution:
+  rank_ratio_list: [0.9201, 0.5731, 0.5220, 1.0000, 0.3570, 0.2500, 0.3425, 0.5403, 0.4502, 0.7986]
+

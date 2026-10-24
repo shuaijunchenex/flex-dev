@@ -1,0 +1,6 @@
+aggregation:
+  method: rbla_freeze_a_support_gamma
+  device: cpu
+  pad_mode: nan
+  gamma: 0.5
+

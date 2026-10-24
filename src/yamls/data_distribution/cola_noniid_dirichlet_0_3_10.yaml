@@ -1,0 +1,20 @@
+data_distribution:
+
+  # Use custom distribution
+  use: custom
+
+  # Dirichlet distribution with alpha = 0.3
+  # Total Label 1: 2528, Total Label 2: 6022
+  custom_define:
+    custom: [
+      [2, 1717],
+      [30, 727],
+      [1516, 6],
+      [9, 0],
+      [608, 2],
+      [19, 421],
+      [10, 75],
+      [0, 2766],
+      [331, 1],
+      [3, 307]
+    ]

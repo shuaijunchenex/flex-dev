@@ -1,0 +1,27 @@
+# Seeded Dirichlet training-data distribution.
+# dataset=agnews; alpha=0.8; seed=1; clients=10; split=train
+# Column label IDs: [0, 1, 2, 3]
+# Column label names: ["World","Sports","Business","Sci/Tech"]
+# Class totals: [30000, 30000, 30000, 30000]; total_samples=120000
+# Source: .dataset/datasets/AG_NEWS/train.csv
+# RNG: Python 3.9 random.Random(seed); reset for each dataset/alpha/seed.
+# Per class in ascending label order: draw 10 gammavariate(alpha, 1.0)
+# weights, then random.choices(range(10), weights=weights, k=class_total).
+# Redraw the whole matrix with the continuing RNG if any client is empty; attempts=1.
+# Client sample counts: [1736, 7559, 9633, 8371, 9238, 9570, 12160, 27622, 21574, 12537]
+
+data_distribution:
+  use: agnews_dirichlet_0_8_0_seed1
+  custom_define:
+    agnews_dirichlet_0_8_0_seed1: [
+      [428, 117, 157, 1034],
+      [3497, 329, 2887, 846],
+      [2107, 2864, 1676, 2986],
+      [243, 1753, 996, 5379],
+      [4578, 2475, 356, 1829],
+      [3546, 2790, 1803, 1431],
+      [6571, 2014, 2584, 991],
+      [47, 7067, 9549, 10959],
+      [8220, 5438, 6945, 971],
+      [763, 5153, 3047, 3574]
+    ]

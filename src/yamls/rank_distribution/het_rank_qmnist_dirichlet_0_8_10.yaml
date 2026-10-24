@@ -1,0 +1,5 @@
+# Rank distribution matched to QMNIST Dirichlet alpha=0.8.
+# Sample counts: [5978, 7395, 6705, 5247, 7918, 5784, 5504, 3312, 8004, 4153]
+# Each ratio is the client sample count normalized by the maximum count.
+rank_distribution:
+  rank_ratio_list: [0.7469, 0.9239, 0.8377, 0.6555, 0.9893, 0.7226, 0.6877, 0.4138, 1.0000, 0.5189]

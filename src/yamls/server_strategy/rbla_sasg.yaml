@@ -1,0 +1,6 @@
+#-----------------------------
+# rbla_sasg server strategy
+#-----------------------------
+strategy:
+  strategy_name: rbla_sasg
+  role: server

@@ -1,0 +1,5 @@
+# Deterministic medium-confusion configuration for FMNIST Dirichlet alpha=0.4.
+# Preserves the matched ratio multiset; data-volume/rank Spearman is +0.006061.
+# Ordered by client 0..9; this is a controlled permutation, not a random assignment.
+rank_distribution:
+  rank_ratio_list: [0.4792, 0.4774, 1.0000, 0.4291, 0.2500, 0.6567, 0.3864, 0.5842, 0.4112, 0.3111]

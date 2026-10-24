@@ -1,0 +1,7 @@
+nn_model:
+  name: sfl_mlp_client
+  input_dim: 784
+  hidden_dim: 200
+  output_dim: 200  # smashed feature dimension
+  softmax_dim: 1
+  share_model: False

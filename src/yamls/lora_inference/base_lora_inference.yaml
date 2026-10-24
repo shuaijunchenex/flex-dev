@@ -1,0 +1,10 @@
+#-----------------------------
+# LoRA section args
+#-----------------------------
+lora_inference:
+   device: cpu
+   lora_mode: standard     # lora_mode (str): Determines the LoRA inference mode. Options: "standard", "alternate", etc.
+   scaling: 0.5            # alpha (float): Scaling factor for the low-rank update.
+   rank_ratio: 1          # rank_ratio (int): Ratio to determine the rank of the LoRA matrices.
+   use_bias: True          # use_bias (bool): If True, includes a bias parameter.
+   alpha: 0

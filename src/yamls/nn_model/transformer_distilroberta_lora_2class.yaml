@@ -1,0 +1,17 @@
+#-----------------------------
+# DistilRoBERTa (distilroberta-base) with LoRA - 4-Class Classification
+#-----------------------------
+nn_model:
+  name: distilroberta_lora
+  pretrained_model: "distilroberta-base"
+  num_classes: 2
+  pad_id: 1
+  # LoRA parameters
+  lora_r: 16
+  lora_alpha: 32
+  lora_dropout: 0.1
+  merge_weights: false
+  freeze_base_model: true
+  train_classifier: true
+  # lora_embedding: false   # DistilRoBERTa embedding is usually not LoRA-tuned
+  # lora_target_modules: ["query", "value"]   # uncomment to restrict LoRA to Q/V only

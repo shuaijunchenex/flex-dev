@@ -1,0 +1,7 @@
+# MNLI Dirichlet alpha=0.4, data-volume/rank matched.
+# Client volumes, ordered by client.1..client.10: [47124, 41888, 48433, 49742, 47124, 62833, 30108, 30107, 30107, 5236]
+# rho_i = 0.25 + 0.75 * (n_i - n_min) / (n_max - n_min)
+# Six decimals distinguish clients with 30108 and 30107 samples.
+# n_min=5236; n_max=62833; volume-rank Spearman=+1.0
+rank_distribution:
+  rank_ratio_list: [0.795445, 0.727264, 0.812490, 0.829535, 0.795445, 1.000000, 0.573871, 0.573858, 0.573858, 0.250000]

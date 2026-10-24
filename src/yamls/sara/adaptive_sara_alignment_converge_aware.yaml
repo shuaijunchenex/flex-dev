@@ -1,0 +1,26 @@
+#-----------------------------
+# Adaptive SARA alignment hyperparameters
+#-----------------------------
+sara:
+  # ── Original SARA slot-level alignment ──
+  lambda_slot_0: 0.1
+  lambda_slot_min: 0.01
+  slot_weight_type: "coverage_aware"
+
+  # ── Original SARA subspace-level alignment ──
+  lambda_sub_0: 0.1
+  lambda_sub_min: 0.01
+
+  # ── Decay schedule ──
+  beta: 0.01
+
+  # ── B-space warm-up ──
+  warmup_rounds: 5
+
+  # ── Rank expansion ──
+  enable_rank_expansion: false
+
+  # ── Adaptive matrix-level weighting ──
+  rank_weight_min: 0.5
+  rank_weight_max: 1.5
+  rank_weight_gamma: 1.0

@@ -1,0 +1,4 @@
+strategy:
+  role: "server"
+  strategy_name: "sp_plus"
+

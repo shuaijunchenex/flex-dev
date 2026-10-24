@@ -1,0 +1,473 @@
+\begin{table*}[!t]
+\centering
+\caption{Highest test accuracy (\%) under the mismatched rank assignment. Entries with uncertainty report the mean and standard deviation over three seeds. Bold marks the largest reported value in each row.}
+\label{tab:mismatched-rank-assignment}
+\begingroup
+\scriptsize
+\setlength{\tabcolsep}{3.5pt}
+\renewcommand{\arraystretch}{1.05}
+
+\newcommand{\acc}[2]{\ensuremath{#1 \pm #2}}
+\newcommand{\bestacc}[2]{\ensuremath{\mathbf{#1 \pm #2}}}
+\newcommand{\best}[1]{\textbf{#1}}
+
+\begin{tabular}{@{}llrrrrrr@{}}
+\toprule
+Dataset
+& $\alpha$
+& RBLA
+& RBLA+
+& FlexLoRA
+& Zero Padding
+& Rep. Padding
+& FLoRA \\
+\midrule
+
+\multirow{3}{*}{MNIST}
+& 0.1
+& \bestacc{56.31}{4.91}
+& \acc{55.44}{4.04}
+& \acc{28.36}{3.50}
+& \acc{54.85}{6.92}
+& \acc{55.63}{6.68}
+& \acc{40.79}{16.80} \\
+
+& 0.4
+& \acc{75.00}{1.95}
+& \bestacc{77.58}{3.52}
+& \acc{39.03}{19.25}
+& \acc{73.90}{2.51}
+& \acc{74.21}{2.59}
+& \acc{46.23}{8.96} \\
+
+& 0.8
+& \acc{79.67}{2.54}
+& \bestacc{80.19}{2.10}
+& \acc{19.41}{4.94}
+& \acc{78.95}{2.90}
+& \acc{79.44}{2.62}
+& \acc{52.34}{7.46} \\
+
+\cmidrule(lr){1-8}
+
+\multirow{3}{*}{FMNIST}
+& 0.1
+& \acc{45.20}{1.38}
+& \acc{46.82}{4.08}
+& \acc{32.35}{0.68}
+& \bestacc{47.25}{3.58}
+& \acc{46.14}{2.35}
+& \acc{44.50}{9.98} \\
+
+& 0.4
+& \bestacc{58.91}{7.41}
+& \acc{58.26}{8.80}
+& \acc{33.38}{3.19}
+& \acc{57.54}{8.55}
+& \acc{58.49}{7.71}
+& \acc{48.50}{6.57} \\
+
+& 0.8
+& \bestacc{66.74}{2.33}
+& \acc{65.10}{1.07}
+& \acc{31.30}{3.81}
+& \acc{65.39}{1.17}
+& \acc{66.57}{2.44}
+& \acc{45.13}{1.70} \\
+
+\cmidrule(lr){1-8}
+
+\multirow{3}{*}{KMNIST}
+& 0.1
+& \bestacc{27.63}{3.96}
+& \acc{27.23}{1.22}
+& \acc{16.23}{1.03}
+& \acc{27.30}{4.36}
+& \acc{27.36}{4.27}
+& \acc{19.99}{6.35} \\
+
+& 0.4
+& \acc{37.44}{1.50}
+& \bestacc{39.94}{1.71}
+& \acc{22.00}{4.63}
+& \acc{36.93}{1.26}
+& \acc{37.23}{1.05}
+& \acc{19.95}{1.66} \\
+
+& 0.8
+& \bestacc{42.26}{5.00}
+& \acc{36.78}{4.13}
+& \acc{13.51}{4.41}
+& \acc{41.43}{4.61}
+& \acc{41.95}{4.82}
+& \acc{27.12}{2.94} \\
+
+\cmidrule(lr){1-8}
+
+\multirow{3}{*}{QMNIST}
+& 0.1
+& \bestacc{56.18}{4.84}
+& \acc{55.20}{3.90}
+& \acc{28.45}{2.53}
+& \acc{54.61}{6.70}
+& \acc{55.56}{6.14}
+& \acc{39.67}{18.11} \\
+
+& 0.4
+& \acc{74.69}{2.55}
+& \bestacc{77.37}{3.03}
+& \acc{38.32}{18.10}
+& \acc{73.74}{2.70}
+& \acc{74.10}{2.81}
+& \acc{46.03}{8.34} \\
+
+& 0.8
+& \acc{79.01}{2.41}
+& \bestacc{79.31}{2.14}
+& \acc{19.22}{4.84}
+& \acc{78.15}{2.86}
+& \acc{78.76}{2.41}
+& \acc{52.13}{7.11} \\
+
+\midrule
+
+CIFAR-10
+& 0.4
+& 57.63
+& \best{78.95}
+& 78.53
+& 78.22
+& 41.08
+& 78.29 \\
+
+\cmidrule(lr){1-8}
+
+CINIC-10
+& 0.4
+& 42.10
+& \best{68.89}
+& 68.33
+& 68.46
+& 34.03
+& 68.61 \\
+
+\cmidrule(lr){1-8}
+
+SVHN
+& 0.4
+& 90.35
+& \best{93.20}
+& 91.99
+& 90.44
+& 90.97
+& 91.84 \\
+
+\midrule
+
+AG News
+& 0.4
+& 90.28
+& 91.68
+& 89.32
+& 85.36
+& 88.21
+& \best{91.86} \\
+
+\cmidrule(lr){1-8}
+
+IMDB
+& 0.4
+& 83.10
+& \best{83.64}
+& 80.97
+& 81.84
+& 83.33
+& 82.38 \\
+
+\cmidrule(lr){1-8}
+
+MNLI
+& 0.4
+& 57.80
+& 64.37
+& 46.32
+& 43.53
+& 56.51
+& \best{65.49} \\
+
+\cmidrule(lr){1-8}
+
+QQP
+& 0.4
+& 73.78
+& 81.02
+& 72.57
+& 63.40
+& 73.22
+& \best{82.39} \\
+
+\cmidrule(lr){1-8}
+
+RTE
+& 0.4
+& 53.43
+& \best{55.60}
+& 54.51
+& 54.87
+& 53.79
+& 49.82 \\
+
+\cmidrule(lr){1-8}
+
+SST-2
+& 0.4
+& \best{81.08}
+& 80.50
+& 80.16
+& 79.36
+& 80.28
+& \best{81.08} \\
+
+\bottomrule
+\end{tabular}
+\par\vspace{2pt}
+\parbox{\textwidth}{\scriptsize\raggedright Uncertainty is computed across three per-run highest test accuracies. RBLA+ point estimates for CIFAR-10, CINIC-10, SVHN, AG News, IMDB, MNLI, QQP, RTE, and SST-2 report the highest accuracy from the latest RankScale run for each condition; all these runs include logged rounds 0--100. Other entries retain the supplied values.}
+\endgroup
+\end{table*}
+
+\begin{table*}[!t]
+\centering
+\caption{Highest test accuracy (\%) under the correct rank assignment. Entries with uncertainty report the mean and standard deviation over three seeds. Bold marks the largest reported value in each row.}
+\label{tab:correct-rank-assignment}
+\begingroup
+\scriptsize
+\setlength{\tabcolsep}{3.5pt}
+\renewcommand{\arraystretch}{1.05}
+
+\newcommand{\acc}[2]{\ensuremath{#1 \pm #2}}
+\newcommand{\bestacc}[2]{\ensuremath{\mathbf{#1 \pm #2}}}
+\newcommand{\best}[1]{\textbf{#1}}
+
+\begin{tabular}{@{}llrrrrrr@{}}
+\toprule
+Dataset
+& $\alpha$
+& RBLA
+& RBLA+
+& FlexLoRA
+& Zero Padding
+& Rep. Padding
+& FLoRA \\
+\midrule
+
+\multirow{3}{*}{MNIST}
+& 0.1
+& \acc{61.67}{3.20}
+& \bestacc{75.10}{2.97}
+& \acc{43.02}{15.91}
+& \acc{67.74}{3.78}
+& \acc{61.58}{3.64}
+& \acc{51.95}{3.26} \\
+
+& 0.4
+& \acc{79.54}{2.91}
+& \bestacc{82.01}{2.27}
+& \acc{42.76}{22.57}
+& \acc{79.18}{3.36}
+& \acc{78.90}{3.32}
+& \acc{44.32}{8.32} \\
+
+& 0.8
+& \bestacc{81.58}{1.91}
+& \acc{81.40}{1.22}
+& \acc{18.52}{2.45}
+& \acc{80.62}{2.02}
+& \acc{81.42}{2.05}
+& \acc{55.87}{5.15} \\
+
+\cmidrule(lr){1-8}
+
+\multirow{3}{*}{FMNIST}
+& 0.1
+& \acc{55.65}{8.20}
+& \bestacc{60.35}{7.49}
+& \acc{46.99}{8.70}
+& \acc{57.24}{10.86}
+& \acc{55.94}{7.78}
+& \acc{52.99}{7.10} \\
+
+& 0.4
+& \acc{62.53}{1.48}
+& \bestacc{65.89}{2.98}
+& \acc{40.06}{11.18}
+& \acc{62.70}{3.40}
+& \acc{62.29}{1.30}
+& \acc{48.72}{5.99} \\
+
+& 0.8
+& \acc{71.58}{1.95}
+& \acc{69.64}{2.64}
+& \acc{35.33}{1.98}
+& \acc{69.49}{3.73}
+& \bestacc{71.66}{1.98}
+& \acc{46.00}{0.86} \\
+
+\cmidrule(lr){1-8}
+
+\multirow{3}{*}{KMNIST}
+& 0.1
+& \acc{34.26}{2.89}
+& \bestacc{37.40}{5.95}
+& \acc{18.00}{6.19}
+& \acc{33.32}{5.51}
+& \acc{33.54}{4.32}
+& \acc{29.69}{5.21} \\
+
+& 0.4
+& \acc{41.59}{4.81}
+& \bestacc{43.85}{2.78}
+& \acc{16.01}{1.19}
+& \acc{41.21}{5.03}
+& \acc{41.71}{4.98}
+& \acc{19.05}{2.35} \\
+
+& 0.8
+& \acc{45.13}{4.55}
+& \acc{41.35}{0.52}
+& \acc{14.49}{1.79}
+& \acc{43.11}{3.19}
+& \bestacc{45.24}{4.51}
+& \acc{27.06}{3.53} \\
+
+\cmidrule(lr){1-8}
+
+\multirow{3}{*}{QMNIST}
+& 0.1
+& \acc{60.87}{3.98}
+& \bestacc{74.58}{3.18}
+& \acc{42.82}{15.96}
+& \acc{67.13}{3.98}
+& \acc{60.53}{4.29}
+& \acc{51.68}{3.21} \\
+
+& 0.4
+& \acc{79.29}{3.27}
+& \bestacc{81.63}{2.19}
+& \acc{42.49}{22.45}
+& \acc{78.81}{3.76}
+& \acc{78.65}{3.41}
+& \acc{44.01}{8.01} \\
+
+& 0.8
+& \bestacc{80.79}{1.75}
+& \acc{80.77}{1.20}
+& \acc{18.27}{3.12}
+& \acc{79.88}{2.00}
+& \acc{80.67}{1.86}
+& \acc{55.55}{4.86} \\
+
+\midrule
+
+CIFAR-10
+& 0.4
+& 38.33
+& \best{79.12}
+& 78.84
+& 78.39
+& 45.61
+& 77.25 \\
+
+\cmidrule(lr){1-8}
+
+CINIC-10
+& 0.4
+& 31.54
+& \best{69.65}
+& 69.33
+& 68.06
+& 26.31
+& 68.51 \\
+
+\cmidrule(lr){1-8}
+
+SVHN
+& 0.4
+& 72.39
+& \best{92.98}
+& 92.70
+& 91.89
+& 73.05
+& 92.23 \\
+
+\midrule
+
+AG News
+& 0.4
+& 90.68
+& 91.33
+& 90.75
+& 89.50
+& 90.50
+& \best{91.39} \\
+
+\cmidrule(lr){1-8}
+
+IMDB
+& 0.4
+& 84.15
+& \best{84.32}
+& 81.89
+& 81.22
+& 84.16
+& 83.65 \\
+
+\cmidrule(lr){1-8}
+
+MNLI
+& 0.4
+& 50.25
+& 65.16
+& 61.67
+& 62.34
+& 47.52
+& \best{65.28} \\
+
+\cmidrule(lr){1-8}
+
+QQP
+& 0.4
+& 78.50
+& 82.48
+& 81.20
+& 77.94
+& 77.14
+& \best{83.47} \\
+
+\cmidrule(lr){1-8}
+
+RTE
+& 0.4
+& 55.23
+& \best{57.04}
+& 55.60
+& 55.96
+& 55.60
+& 53.07 \\
+
+\cmidrule(lr){1-8}
+
+SST-2
+& 0.4
+& 78.44
+& 80.62
+& 79.70
+& 80.62
+& 77.98
+& \best{81.31} \\
+
+\bottomrule
+\end{tabular}
+\par\vspace{2pt}
+\parbox{\textwidth}{\scriptsize\raggedright Uncertainty is computed across three per-run highest test accuracies. RBLA+ point estimates for CIFAR-10, CINIC-10, SVHN, AG News, IMDB, MNLI, QQP, RTE, and SST-2 report the highest accuracy from the latest RankScale run for each condition; all these runs include logged rounds 0--100. Other entries retain the supplied values.}
+\endgroup
+\end{table*}

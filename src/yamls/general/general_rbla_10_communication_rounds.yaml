@@ -1,0 +1,6 @@
+# RblaRunner currently iterates from zero through training_rounds inclusive.
+# A value of 9 therefore executes exactly 10 communication rounds (0--9).
+general:
+  device: cpu
+  training_rounds: 9
+

@@ -1,0 +1,14 @@
+#-----------------------------
+# Client node selection — FedGRA with Historical Percentile Calibration (HPC)
+#-----------------------------
+client_selection:
+  method: fedgra_hpc
+  round: 1
+  client_selection_round: 1
+  number: 2
+  random_seed: 42
+  fedgra_mode: all_participate
+  min_participate_round: 5
+  # ── HPC (Historical Percentile Calibration) ──
+  use_historical_percentile_calibration: true
+  hpc_window_size: 5

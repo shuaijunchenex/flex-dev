@@ -1,0 +1,27 @@
+# Seeded Dirichlet training-data distribution.
+# dataset=imdb; alpha=0.8; seed=2; clients=10; split=train
+# Column label IDs: [0, 1]
+# Column label names: ["neg","pos"]
+# Class totals: [12500, 12500]; total_samples=25000
+# Source: .dataset/hf_datasets/imdb/plain_text/0.0.0/e6281661ce1c48d982bc483cf8a173c1bbeb5d31/imdb-train.arrow
+# RNG: Python 3.9 random.Random(seed); reset for each dataset/alpha/seed.
+# Per class in ascending label order: draw 10 gammavariate(alpha, 1.0)
+# weights, then random.choices(range(10), weights=weights, k=class_total).
+# Redraw the whole matrix with the continuing RNG if any client is empty; attempts=1.
+# Client sample counts: [474, 2300, 4022, 3127, 1290, 5247, 2685, 1818, 1419, 2618]
+
+data_distribution:
+  use: imdb_dirichlet_0_8_0_seed2
+  custom_define:
+    imdb_dirichlet_0_8_0_seed2: [
+      [58, 416],
+      [2289, 11],
+      [1482, 2540],
+      [1218, 1909],
+      [862, 428],
+      [4424, 823],
+      [843, 1842],
+      [39, 1779],
+      [904, 515],
+      [381, 2237]
+    ]

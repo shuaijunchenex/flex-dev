@@ -1,0 +1,8 @@
+#-----------------------------
+# Generic Encoder-only Transformer (BERT-style)
+#-----------------------------
+nn_model:
+  name: transformer_classification
+  pretrained_model: "bert-base-uncased" # Can be changed to "prajjwal1/bert-tiny" for <5M params
+  num_classes: 2 # Adjust based on dataset: IMDB/SST2/MRPC=2, DBpedia=14
+  pad_id: 0

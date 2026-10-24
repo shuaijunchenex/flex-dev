@@ -1,0 +1,21 @@
+#-----------------------------
+# Data distribution section (SST2 extreme non-iid, 10 clients)
+# Each client owns samples of a single label
+#-----------------------------
+data_distribution:
+
+  use: custom
+
+  custom_define:
+    custom: [
+       [5956, 0],
+       [5956, 0],
+       [5956, 0],
+       [5956, 0],
+       [5956, 0],
+       [0, 7514],
+       [0, 7514],
+       [0, 7514],
+       [0, 7514],
+       [0, 7513]
+    ]

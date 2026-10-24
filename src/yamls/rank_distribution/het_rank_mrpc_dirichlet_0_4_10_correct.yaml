@@ -1,0 +1,7 @@
+# MRPC Dirichlet alpha=0.4, data-volume/rank matched.
+# Client volumes, ordered by client.1..client.10: [495, 405, 340, 400, 475, 840, 535, 345, 165, 76]
+# rho_i = 0.25 + 0.75 * (n_i - n_min) / (n_max - n_min)
+# n_min=76; n_max=840; volume-rank Spearman=+1.0
+rank_distribution:
+  rank_ratio_list: [0.6613, 0.5730, 0.5092, 0.5681, 0.6417, 1.0000, 0.7006, 0.5141, 0.3374, 0.2500]
+

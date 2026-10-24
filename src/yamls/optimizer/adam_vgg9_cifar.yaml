@@ -1,0 +1,42 @@
+#-----------------------------
+# Optimizer — Adam for VGG-9 on CIFAR-10 / CIFAR-100 / SVHN (32×32)
+#
+# Design rationale
+# ----------------
+# • lr 0.001  — canonical Adam default; widely used in FL benchmarks
+#               (FedAdam, SCAFFOLD, FedProx papers all start here).
+# • weight_decay 1e-4  — lighter than SGD 5e-4; Adam already adapts
+#               per-parameter scale, so strong WD is less needed.
+# • betas [0.9, 0.999] — PyTorch / paper default; first-moment decay
+#               is slightly higher than second for faster warm-up.
+# • eps 1e-7   — slightly larger than default (1e-8) to improve
+#               numerical stability on small FL mini-batches.
+# • amsgrad False — standard; turn on only if loss becomes non-convex
+#               and oscillates (rarely needed for VGG on CIFAR).
+#
+# Dataset notes
+# -------------
+# CIFAR-10  (10 classes)  — same lr is fine; converges ~100 rounds.
+# CIFAR-100 (100 classes) — same lr; increase local epochs to 5+
+#               if accuracy is low due to class imbalance in non-IID.
+# SVHN      (10 classes)  — real-world digits; same lr works well;
+#               slightly higher weight_decay (2e-4) can reduce overfit
+#               but 1e-4 is a safe universal default.
+#
+# Reference configs
+# -----------------
+# • Reddi et al. "Adaptive Federated Optimization" (ICLR 2021)
+# • Li et al. "Federated Optimization in Heterogeneous Networks" (MLSys 2020)
+# • LEAF benchmark: https://leaf.cmu.edu
+#-----------------------------
+optimizer:
+  type: Adam
+  lr: 0.001              # Learning rate — Adam canonical default
+  weight_decay: 0.0001   # L2 regularisation (1e-4)
+  momentum: ~            # Not used by Adam; kept for schema compatibility
+  nesterov: ~            # Not used by Adam; kept for schema compatibility
+  betas: [0.9, 0.999]    # (β1, β2) — first/second moment decay rates
+  amsgrad: False         # Use standard Adam (not AMSGrad variant)
+  eps: 1.0e-7            # Numerical stability constant
+  alpha: ~               # Not used by Adam; kept for schema compatibility
+  centered: ~            # Not used by Adam; kept for schema compatibility

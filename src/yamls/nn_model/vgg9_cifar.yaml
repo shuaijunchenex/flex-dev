@@ -1,0 +1,8 @@
+#-----------------------------
+# NN Model — VGG-9 for CIFAR-10 / CINIC-10 (10 classes, 32x32 input)
+#-----------------------------
+nn_model:
+  name: vgg9
+  num_classes: 10
+  dropout: 0.5
+  share_model: True

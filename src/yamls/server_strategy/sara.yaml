@@ -1,0 +1,6 @@
+#-----------------------------
+# SARA server strategy (uses RBLA aggregation)
+#-----------------------------
+strategy:
+  strategy_name: rbla  # SARA reuses RBLA server-side aggregation
+  role: server

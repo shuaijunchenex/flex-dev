@@ -1,0 +1,16 @@
+#-----------------------------
+# Client node selection — FedGRA (fairness + GRG)
+#
+# Selection logic:
+#   - fairness: staleness >= min_participate_round → unconditionally selected
+#   - GRG:      top-`number` from the remaining pool always added
+#   - total = fairness_clients + GRG_clients (may exceed `number`)
+#-----------------------------
+client_selection:
+  method: fedgra
+  round: 1
+  client_selection_round: 1
+  number: 2                     # GRG selection count per round
+  random_seed: 42
+  fedgra_mode: all_participate
+  min_participate_round: 10     # staleness threshold for fairness

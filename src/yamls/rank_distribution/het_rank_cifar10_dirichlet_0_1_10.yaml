@@ -1,0 +1,5 @@
+# CIFAR-10 Dirichlet alpha=0.1, rank ratios normalized by client data volume.
+# Client volumes, ordered by client.1..client.10: [1774, 3338, 3795, 349, 2677, 13863, 7855, 8294, 4062, 3993]
+# Each ratio is n_i / max(n_i); client.6 has the maximum volume.
+rank_distribution:
+  rank_ratio_list: [0.1280, 0.2408, 0.2738, 0.0252, 0.1931, 1.0000, 0.5666, 0.5983, 0.2930, 0.2880]

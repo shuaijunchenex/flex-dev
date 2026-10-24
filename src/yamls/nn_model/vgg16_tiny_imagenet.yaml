@@ -1,0 +1,8 @@
+#-----------------------------
+# NN Model — VGG-16 for Tiny-ImageNet (200 classes, 64x64 input)
+#-----------------------------
+nn_model:
+  name: vgg16
+  num_classes: 200
+  dropout: 0.5
+  share_model: True

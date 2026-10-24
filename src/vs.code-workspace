@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": "flex"
+		},
+		{
+			"path": "unit_test"
+		},
+		{
+			"path": "test"
+		},
+		{
+			"path": "unittest_ml"
+		}
+	]
+}

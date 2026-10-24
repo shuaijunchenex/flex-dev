@@ -1,0 +1,16 @@
+#-----------------------------
+# Client node selection - FedSDR
+# Federated Dynamic Client Selection for Fairness Guarantee
+# in Heterogeneous Edge Computing (JCST 2024)
+#
+# Total clients selected per round = select_number (must be even; m = number/2 groups)
+#-----------------------------
+client_selection:
+  method: fedsdr
+  round: 1
+  number: 2                        # must be even: total selected = 2 × (number/2) groups
+  random_seed: 42
+  # How many rounds before the group partition is rebuilt (1 = every round)
+  fedsdr_group_update_period: 1
+  # Small epsilon to avoid representativity score of exactly 0
+  fedsdr_eps: 0.000001

@@ -1,0 +1,20 @@
+#-----------------------------
+# Data distribution section (MRPC Dirichlet alpha=0.1, 10 clients)
+#-----------------------------
+data_distribution:
+
+  use: mrpc_dirichlet_0_1
+
+  custom_define:
+    mrpc_dirichlet_0_1: [
+      [954,    0], # Client 1
+      [215,    1], # Client 2
+      [118,    2], # Client 3
+      [ 31,   12], # Client 4
+      [  4,   45], # Client 5
+      [  1, 1824], # Client 6 (样本最多)
+      [  0,  521], # Client 7
+      [  0,  268], # Client 8
+      [  0,   72], # Client 9
+      [  0,    8]  # Client 10
+    ]

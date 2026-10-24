@@ -1,0 +1,24 @@
+#-----------------------------
+# Aggregation section args
+#-----------------------------
+aggregation:
+  method: rbla
+  device: cpu
+  is_wbab: False
+  pad_mode: nan        # nan = RBLA mask-normalized padding; zero = ZeroPadding-style ablation
+
+# Compact server-side factor canonicalization. Disabled preserves the original
+# RBLA aggregation and slot ordering bit-for-bit.
+canonicalization:
+  enabled: false
+  start_round: 0
+  interval: 1
+  deterministic_sign: true
+  svd_fallback: true
+  log_diagnostics: true
+  ordering: singular_value       # singular_value | activation_aware
+  overcomplete_policy: error     # error | zero_pad
+  activation_chunk_size: 4096
+  activation_fallback: true
+  # Activation tensors are injected at runtime via
+  # aggregator.set_canonicalization_activation_inputs(...), never through YAML.

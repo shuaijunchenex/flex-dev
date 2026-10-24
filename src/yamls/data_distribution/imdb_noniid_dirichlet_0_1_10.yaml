@@ -1,0 +1,20 @@
+#-----------------------------
+# Data distribution section (IMDB Dirichlet alpha=0.1, 10 clients)
+#-----------------------------
+data_distribution:
+
+  use: imdb_dirichlet_0_1
+
+  custom_define:
+    imdb_dirichlet_0_1: [
+      [1832, 2438],
+      [5172, 0],
+      [0, 1],
+      [1551, 167],
+      [0, 8542],
+      [1, 0],
+      [290, 0],
+      [8, 5],
+      [65, 137],
+      [3581, 1210]
+    ]

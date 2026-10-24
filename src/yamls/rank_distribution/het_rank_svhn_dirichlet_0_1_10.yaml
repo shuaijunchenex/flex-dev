@@ -1,0 +1,4 @@
+rank_distribution:
+  # Sample counts: [2635, 4928, 3801, 496, 3746, 19496, 10162, 17631, 5571, 4791]
+  # Ratios are normalized by the maximum sample count (19496) and clipped to a minimum of 0.01.
+  rank_ratio_list: [0.14, 0.25, 0.19, 0.03, 0.19, 1.00, 0.52, 0.90, 0.29, 0.25]

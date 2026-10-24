@@ -1,0 +1,3 @@
+aggregation:
+  method: "sflavg"
+  device: "cpu"

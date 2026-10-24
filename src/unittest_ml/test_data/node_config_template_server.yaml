@@ -1,0 +1,39 @@
+general:
+  device: cpu
+
+# Dataset used by node
+dataset_loader:
+  name: mnist
+  root: "../../../.dataset"      # Data set folder
+  split: ""
+  batch_size: 64
+  shuffle: True
+  num_workers: 4
+  is_download: True             # Is download from internet
+  is_load_test_set: True
+  is_load_train_set: False
+
+#define globle NN Model and paras
+nn_model:
+  name: mnist_nn_brenden
+  input_dim: 0
+  hidden_dim: 0
+  output_dim: 0
+  softmax_dim : 1
+  rank_ratio: 1
+  lora_mode: standard
+  share_model: True
+
+# Client node selection
+client_selection:
+  method: random
+  round: 1
+  number: 2
+  random_seed: 42
+
+model_aggregation:
+  method: fedavg
+
+strategy:
+  strategy_name: fedavg
+  role: server
