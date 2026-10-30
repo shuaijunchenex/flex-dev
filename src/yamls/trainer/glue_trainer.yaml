@@ -1,0 +1,9 @@
+#-----------------------------
+# trainer section (GLUE)
+#-----------------------------
+trainer:
+
+  # use trainer name: standard, glue
+  use: glue
+  trainer_type: "glue"
+  device: "cuda"

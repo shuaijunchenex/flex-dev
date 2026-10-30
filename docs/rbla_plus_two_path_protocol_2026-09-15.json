@@ -1,0 +1,2068 @@
+{
+  "protocol_id": "rbla_rbla_plus_two_path_broadcast_correct_20260915_v3",
+  "status": "historical_protocol_superseded_by_native_kiss_workflow",
+  "implementation_entry": "src/test/rbla+/ablation/spectum_ablation/run_all.py",
+  "implementation_readme": "src/test/rbla+/ablation/spectum_ablation/README.md",
+  "implementation_note": "The four-cell semantics remain; execution and CSV recording now follow aggregation_broadcast_error. Custom pairing, resume and offline analysis infrastructure was removed at user request. Full training has not started.",
+  "method_definition": {
+    "RBLA": "Original RBLA support-normalized factor aggregation plus fixed-prefix broadcast",
+    "RBLA+": "Current rbla_plus_rank_scale: bidirectional actual-layer scaling alignment plus compact spectral redistribution"
+  },
+  "axis_definition": {
+    "left": "driver_method: method used for the whole training trajectory",
+    "right": "broadcast_method: fixed-prefix RBLA or compact spectral plus downlink scale-aligned RBLA+ applied to the SAME pre-canonicalization aggregated factors from this driver and round",
+    "aggregation_recomputed": false,
+    "upload_scale_alignment_recomputed": false,
+    "cross_results_update_training": false
+  },
+  "interpretation_status": "Confirmed by user: two complete training paths; each evaluates RBLA and RBLA+ broadcasts and records post-broadcast accuracy.",
+  "fixed_seed": 42,
+  "seed_sweep": false,
+  "assignment": "correct",
+  "dirichlet_alpha": 0.4,
+  "datasets": [
+    "cifar10",
+    "mnli",
+    "qqp"
+  ],
+  "training_run_count": 6,
+  "configured_rounds": 100,
+  "actual_training_updates_per_run": 101,
+  "logged_rounds": [
+    0,
+    100
+  ],
+  "cross_error_frequency": "Auxiliary offline diagnostics on saved aggregate checkpoints",
+  "cross_accuracy_frequency": "Every actual update; four broadcast-accuracy curves per dataset",
+  "cross_benchmark_source_updates": [
+    1,
+    10,
+    50,
+    101
+  ],
+  "florist": false,
+  "legacy_no_rankscale_variant_included": false,
+  "cells": [
+    {
+      "label": "RBLA/RBLA",
+      "driver_method": "RBLA",
+      "broadcast_method": "RBLA",
+      "feeds_next_round": true
+    },
+    {
+      "label": "RBLA/RBLA+",
+      "driver_method": "RBLA",
+      "broadcast_method": "RBLA+",
+      "feeds_next_round": false
+    },
+    {
+      "label": "RBLA+/RBLA",
+      "driver_method": "RBLA+",
+      "broadcast_method": "RBLA",
+      "feeds_next_round": false
+    },
+    {
+      "label": "RBLA+/RBLA+",
+      "driver_method": "RBLA+",
+      "broadcast_method": "RBLA+",
+      "feeds_next_round": true
+    }
+  ],
+  "training_jobs": [
+    {
+      "dataset": "cifar10",
+      "driver_method": "RBLA",
+      "implementation": "rbla",
+      "source_config": "src/test/rbla+/experiment/rank_match/dirichlet_0_4/cifar10/cifar10_dirichlet_0_4_rank_correct_rbla.yaml",
+      "resolved_source_config": {
+        "runner": {
+          "general": {
+            "device": "cuda:0",
+            "training_rounds": 100,
+            "train_optimization": {
+              "cudnn_benchmark": true,
+              "pin_memory": true,
+              "fused_optimizer": false,
+              "torch_compile": false,
+              "non_blocking_transfer": true
+            }
+          },
+          "training_logger": {
+            "name": "train",
+            "path": "./experiment_results/",
+            "prefix": "",
+            "save_weights": false
+          },
+          "client_nodes": {
+            "group-1": {
+              "number": 10,
+              "id_prefix": "client",
+              "link_to": "server-1"
+            }
+          },
+          "server_node": {
+            "id": "server-1"
+          },
+          "strategy": {
+            "role": "runner",
+            "strategy_name": "rbla"
+          }
+        },
+        "client_yaml": {
+          "role": "client",
+          "training_logger": {
+            "name": "train",
+            "path": "./experiment_results/",
+            "prefix": "",
+            "save_weights": false
+          },
+          "data_loader": {
+            "name": "cifar10",
+            "root": ".dataset",
+            "split": "",
+            "batch_size": 64,
+            "shuffle": true,
+            "num_workers": 0,
+            "is_download": true,
+            "is_load_train_set": true,
+            "is_load_test_set": true,
+            "task_type": "cv"
+          },
+          "nn_model": {
+            "name": "cifar_lora_cnn",
+            "input_dim": 0,
+            "hidden_dim": 0,
+            "output_dim": 0,
+            "softmax_dim": 1,
+            "lora_mode": "standard",
+            "rank_ratio": 1,
+            "lora_rank_conv": 64,
+            "lora_rank_fc": 16,
+            "lora_alpha_conv": 64,
+            "lora_alpha_fc": 16,
+            "lora_dropout": 0,
+            "dropout": 0.25,
+            "merge_weights": false,
+            "use_bias": true,
+            "share_model": false
+          },
+          "loss_func": {
+            "type": "CrossEntropyLoss",
+            "reduction": "mean",
+            "weight": "None"
+          },
+          "optimizer": {
+            "type": "Adam",
+            "lr": 0.001,
+            "weight_decay": 0.0001,
+            "momentum": 0.9,
+            "nesterov": false,
+            "betas": [
+              0.9,
+              0.999
+            ],
+            "amsgrad": false,
+            "eps": "1e-8",
+            "alpha": "None",
+            "centered": "None"
+          },
+          "training": {
+            "epochs": 5,
+            "batch_size": 64,
+            "shuffle": true,
+            "lr": 0.01
+          },
+          "trainer": {
+            "trainer_type": "standard",
+            "save_path": "./.training_results/",
+            "use_amp": true
+          },
+          "strategy": {
+            "role": "client",
+            "strategy_name": "rbla"
+          }
+        },
+        "server_yaml": {
+          "role": "server",
+          "general": {
+            "device": "cuda:0",
+            "training_rounds": 100,
+            "train_optimization": {
+              "cudnn_benchmark": true,
+              "pin_memory": true,
+              "fused_optimizer": false,
+              "torch_compile": false,
+              "non_blocking_transfer": true
+            }
+          },
+          "training_logger": {
+            "name": "train",
+            "path": "./experiment_results/",
+            "prefix": "",
+            "save_weights": false
+          },
+          "data_loader": {
+            "name": "cifar10",
+            "root": ".dataset",
+            "split": "",
+            "batch_size": 64,
+            "shuffle": true,
+            "num_workers": 0,
+            "is_download": true,
+            "is_load_train_set": true,
+            "is_load_test_set": true,
+            "task_type": "cv"
+          },
+          "nn_model": {
+            "name": "cifar_lora_cnn",
+            "input_dim": 0,
+            "hidden_dim": 0,
+            "output_dim": 0,
+            "softmax_dim": 1,
+            "lora_mode": "standard",
+            "rank_ratio": 1,
+            "lora_rank_conv": 64,
+            "lora_rank_fc": 16,
+            "lora_alpha_conv": 64,
+            "lora_alpha_fc": 16,
+            "lora_dropout": 0,
+            "dropout": 0.25,
+            "merge_weights": false,
+            "use_bias": true,
+            "share_model": false
+          },
+          "loss_func": {
+            "type": "CrossEntropyLoss",
+            "reduction": "mean",
+            "weight": "None"
+          },
+          "optimizer": {
+            "type": "Adam",
+            "lr": 0.001,
+            "weight_decay": 0.0001,
+            "momentum": 0.9,
+            "nesterov": false,
+            "betas": [
+              0.9,
+              0.999
+            ],
+            "amsgrad": false,
+            "eps": "1e-8",
+            "alpha": "None",
+            "centered": "None"
+          },
+          "training": {
+            "epochs": 5,
+            "batch_size": 64,
+            "shuffle": true,
+            "lr": 0.01
+          },
+          "trainer": {
+            "trainer_type": "standard",
+            "save_path": "./.training_results/",
+            "use_amp": true
+          },
+          "data_distribution": {
+            "use": "cifar10_dirichlet_0_4",
+            "custom_define": {
+              "cifar10_dirichlet_0_4": [
+                [
+                  220,
+                  59,
+                  39,
+                  2,
+                  1468,
+                  20,
+                  0,
+                  26,
+                  54,
+                  29
+                ],
+                [
+                  1296,
+                  182,
+                  2477,
+                  897,
+                  5,
+                  37,
+                  121,
+                  1283,
+                  1465,
+                  9
+                ],
+                [
+                  24,
+                  23,
+                  1557,
+                  0,
+                  664,
+                  1592,
+                  5,
+                  92,
+                  27,
+                  0
+                ],
+                [
+                  2,
+                  1,
+                  201,
+                  647,
+                  701,
+                  266,
+                  2414,
+                  276,
+                  643,
+                  617
+                ],
+                [
+                  720,
+                  4097,
+                  1,
+                  892,
+                  225,
+                  611,
+                  209,
+                  1083,
+                  164,
+                  963
+                ],
+                [
+                  0,
+                  66,
+                  0,
+                  111,
+                  0,
+                  1117,
+                  86,
+                  8,
+                  2,
+                  1268
+                ],
+                [
+                  2256,
+                  522,
+                  68,
+                  1560,
+                  0,
+                  625,
+                  188,
+                  196,
+                  1159,
+                  167
+                ],
+                [
+                  36,
+                  6,
+                  622,
+                  91,
+                  63,
+                  47,
+                  313,
+                  1,
+                  54,
+                  953
+                ],
+                [
+                  131,
+                  0,
+                  30,
+                  78,
+                  1751,
+                  20,
+                  0,
+                  632,
+                  394,
+                  987
+                ],
+                [
+                  315,
+                  44,
+                  5,
+                  722,
+                  123,
+                  665,
+                  1664,
+                  1403,
+                  1038,
+                  7
+                ]
+              ]
+            }
+          },
+          "client_selection": {
+            "method": "random",
+            "round": 1,
+            "client_selection_round": 1,
+            "number": 10,
+            "random_seed": 42
+          },
+          "strategy": {
+            "role": "server",
+            "strategy_name": "rbla"
+          },
+          "aggregation": {
+            "method": "rbla",
+            "device": "cpu",
+            "is_wbab": false,
+            "pad_mode": "nan"
+          },
+          "canonicalization": {
+            "enabled": false,
+            "start_round": 0,
+            "interval": 1,
+            "deterministic_sign": true,
+            "svd_fallback": true,
+            "log_diagnostics": true,
+            "ordering": "singular_value",
+            "overcomplete_policy": "error",
+            "activation_chunk_size": 4096,
+            "activation_fallback": true
+          },
+          "rank_distribution": {
+            "rank_ratio_list": [
+              0.25,
+              0.873,
+              0.47,
+              0.6598,
+              1,
+              0.3289,
+              0.7633,
+              0.2786,
+              0.4741,
+              0.683
+            ]
+          },
+          "lora_inference": {
+            "device": "cpu",
+            "lora_mode": "standard",
+            "scaling": 0.5,
+            "rank_ratio": 1,
+            "use_bias": true,
+            "alpha": 0
+          }
+        }
+      },
+      "status": "planned"
+    },
+    {
+      "dataset": "cifar10",
+      "driver_method": "RBLA+",
+      "implementation": "rbla_plus_rank_scale",
+      "source_config": "src/test/rbla+/experiment/rank_match/dirichlet_0_4/cifar10/cifar10_dirichlet_0_4_rank_correct_rbla_plus_rank_scale.yaml",
+      "resolved_source_config": {
+        "runner": {
+          "general": {
+            "device": "cuda:0",
+            "training_rounds": 100,
+            "train_optimization": {
+              "cudnn_benchmark": true,
+              "pin_memory": true,
+              "fused_optimizer": false,
+              "torch_compile": false,
+              "non_blocking_transfer": true
+            }
+          },
+          "training_logger": {
+            "name": "train",
+            "path": "./experiment_results/",
+            "prefix": "",
+            "save_weights": false
+          },
+          "client_nodes": {
+            "group-1": {
+              "number": 10,
+              "id_prefix": "client",
+              "link_to": "server-1"
+            }
+          },
+          "server_node": {
+            "id": "server-1"
+          },
+          "strategy": {
+            "role": "runner",
+            "strategy_name": "rbla_plus_rank_scale"
+          }
+        },
+        "client_yaml": {
+          "role": "client",
+          "training_logger": {
+            "name": "train",
+            "path": "./experiment_results/",
+            "prefix": "",
+            "save_weights": false
+          },
+          "data_loader": {
+            "name": "cifar10",
+            "root": ".dataset",
+            "split": "",
+            "batch_size": 64,
+            "shuffle": true,
+            "num_workers": 0,
+            "is_download": true,
+            "is_load_train_set": true,
+            "is_load_test_set": true,
+            "task_type": "cv"
+          },
+          "nn_model": {
+            "name": "cifar_lora_cnn",
+            "input_dim": 0,
+            "hidden_dim": 0,
+            "output_dim": 0,
+            "softmax_dim": 1,
+            "lora_mode": "standard",
+            "rank_ratio": 1,
+            "lora_rank_conv": 64,
+            "lora_rank_fc": 16,
+            "lora_alpha_conv": 64,
+            "lora_alpha_fc": 16,
+            "lora_dropout": 0,
+            "dropout": 0.25,
+            "merge_weights": false,
+            "use_bias": true,
+            "share_model": false
+          },
+          "loss_func": {
+            "type": "CrossEntropyLoss",
+            "reduction": "mean",
+            "weight": "None"
+          },
+          "optimizer": {
+            "type": "Adam",
+            "lr": 0.001,
+            "weight_decay": 0.0001,
+            "momentum": 0.9,
+            "nesterov": false,
+            "betas": [
+              0.9,
+              0.999
+            ],
+            "amsgrad": false,
+            "eps": "1e-8",
+            "alpha": "None",
+            "centered": "None"
+          },
+          "training": {
+            "epochs": 5,
+            "batch_size": 64,
+            "shuffle": true,
+            "lr": 0.01
+          },
+          "trainer": {
+            "trainer_type": "standard",
+            "save_path": "./.training_results/",
+            "use_amp": true
+          },
+          "strategy": {
+            "role": "client",
+            "strategy_name": "rbla_plus_rank_scale"
+          }
+        },
+        "server_yaml": {
+          "role": "server",
+          "general": {
+            "device": "cuda:0",
+            "training_rounds": 100,
+            "train_optimization": {
+              "cudnn_benchmark": true,
+              "pin_memory": true,
+              "fused_optimizer": false,
+              "torch_compile": false,
+              "non_blocking_transfer": true
+            }
+          },
+          "training_logger": {
+            "name": "train",
+            "path": "./experiment_results/",
+            "prefix": "",
+            "save_weights": false
+          },
+          "data_loader": {
+            "name": "cifar10",
+            "root": ".dataset",
+            "split": "",
+            "batch_size": 64,
+            "shuffle": true,
+            "num_workers": 0,
+            "is_download": true,
+            "is_load_train_set": true,
+            "is_load_test_set": true,
+            "task_type": "cv"
+          },
+          "nn_model": {
+            "name": "cifar_lora_cnn",
+            "input_dim": 0,
+            "hidden_dim": 0,
+            "output_dim": 0,
+            "softmax_dim": 1,
+            "lora_mode": "standard",
+            "rank_ratio": 1,
+            "lora_rank_conv": 64,
+            "lora_rank_fc": 16,
+            "lora_alpha_conv": 64,
+            "lora_alpha_fc": 16,
+            "lora_dropout": 0,
+            "dropout": 0.25,
+            "merge_weights": false,
+            "use_bias": true,
+            "share_model": false
+          },
+          "loss_func": {
+            "type": "CrossEntropyLoss",
+            "reduction": "mean",
+            "weight": "None"
+          },
+          "optimizer": {
+            "type": "Adam",
+            "lr": 0.001,
+            "weight_decay": 0.0001,
+            "momentum": 0.9,
+            "nesterov": false,
+            "betas": [
+              0.9,
+              0.999
+            ],
+            "amsgrad": false,
+            "eps": "1e-8",
+            "alpha": "None",
+            "centered": "None"
+          },
+          "training": {
+            "epochs": 5,
+            "batch_size": 64,
+            "shuffle": true,
+            "lr": 0.01
+          },
+          "trainer": {
+            "trainer_type": "standard",
+            "save_path": "./.training_results/",
+            "use_amp": true
+          },
+          "data_distribution": {
+            "use": "cifar10_dirichlet_0_4",
+            "custom_define": {
+              "cifar10_dirichlet_0_4": [
+                [
+                  220,
+                  59,
+                  39,
+                  2,
+                  1468,
+                  20,
+                  0,
+                  26,
+                  54,
+                  29
+                ],
+                [
+                  1296,
+                  182,
+                  2477,
+                  897,
+                  5,
+                  37,
+                  121,
+                  1283,
+                  1465,
+                  9
+                ],
+                [
+                  24,
+                  23,
+                  1557,
+                  0,
+                  664,
+                  1592,
+                  5,
+                  92,
+                  27,
+                  0
+                ],
+                [
+                  2,
+                  1,
+                  201,
+                  647,
+                  701,
+                  266,
+                  2414,
+                  276,
+                  643,
+                  617
+                ],
+                [
+                  720,
+                  4097,
+                  1,
+                  892,
+                  225,
+                  611,
+                  209,
+                  1083,
+                  164,
+                  963
+                ],
+                [
+                  0,
+                  66,
+                  0,
+                  111,
+                  0,
+                  1117,
+                  86,
+                  8,
+                  2,
+                  1268
+                ],
+                [
+                  2256,
+                  522,
+                  68,
+                  1560,
+                  0,
+                  625,
+                  188,
+                  196,
+                  1159,
+                  167
+                ],
+                [
+                  36,
+                  6,
+                  622,
+                  91,
+                  63,
+                  47,
+                  313,
+                  1,
+                  54,
+                  953
+                ],
+                [
+                  131,
+                  0,
+                  30,
+                  78,
+                  1751,
+                  20,
+                  0,
+                  632,
+                  394,
+                  987
+                ],
+                [
+                  315,
+                  44,
+                  5,
+                  722,
+                  123,
+                  665,
+                  1664,
+                  1403,
+                  1038,
+                  7
+                ]
+              ]
+            }
+          },
+          "client_selection": {
+            "method": "random",
+            "round": 1,
+            "client_selection_round": 1,
+            "number": 10,
+            "random_seed": 42
+          },
+          "strategy": {
+            "role": "server",
+            "strategy_name": "rbla_plus_rank_scale"
+          },
+          "aggregation": {
+            "method": "sp_plus",
+            "device": "cpu",
+            "is_wbab": false,
+            "pad_mode": "nan"
+          },
+          "canonicalization": {
+            "enabled": true,
+            "start_round": 0,
+            "interval": 1,
+            "deterministic_sign": true,
+            "svd_fallback": true,
+            "log_diagnostics": true,
+            "ordering": "singular_value",
+            "overcomplete_policy": "zero_pad",
+            "activation_chunk_size": 4096,
+            "activation_fallback": true
+          },
+          "rank_distribution": {
+            "rank_ratio_list": [
+              0.25,
+              0.873,
+              0.47,
+              0.6598,
+              1,
+              0.3289,
+              0.7633,
+              0.2786,
+              0.4741,
+              0.683
+            ]
+          },
+          "lora_inference": {
+            "device": "cpu",
+            "lora_mode": "standard",
+            "scaling": 0.5,
+            "rank_ratio": 1,
+            "use_bias": true,
+            "alpha": 0
+          }
+        }
+      },
+      "status": "planned"
+    },
+    {
+      "dataset": "mnli",
+      "driver_method": "RBLA",
+      "implementation": "rbla",
+      "source_config": "src/test/rbla+/experiment/rank_match/dirichlet_0_4/mnli/mnli_dirichlet_0_4_rank_correct_rbla.yaml",
+      "resolved_source_config": {
+        "runner": {
+          "general": {
+            "device": "cuda:0",
+            "training_rounds": 100,
+            "train_optimization": {
+              "cudnn_benchmark": true,
+              "pin_memory": true,
+              "fused_optimizer": false,
+              "torch_compile": false,
+              "non_blocking_transfer": true
+            }
+          },
+          "training_logger": {
+            "name": "train",
+            "path": "./experiment_results/",
+            "prefix": "",
+            "save_weights": false
+          },
+          "client_nodes": {
+            "group-1": {
+              "number": 10,
+              "id_prefix": "client",
+              "link_to": "server-1"
+            }
+          },
+          "server_node": {
+            "id": "server-1"
+          },
+          "strategy": {
+            "role": "runner",
+            "strategy_name": "rbla"
+          }
+        },
+        "client_yaml": {
+          "role": "client",
+          "training_logger": {
+            "name": "train",
+            "path": "./experiment_results/",
+            "prefix": "",
+            "save_weights": false
+          },
+          "data_loader": {
+            "name": "mnli",
+            "root": ".dataset",
+            "split": "",
+            "batch_size": 64,
+            "shuffle": true,
+            "num_workers": 0,
+            "is_download": true,
+            "is_load_train_set": true,
+            "is_load_test_set": true,
+            "task_type": "nlp",
+            "vocab_size": "None"
+          },
+          "nn_model": {
+            "name": "tiny_bert_lora",
+            "pretrained_model": "prajjwal1/bert-tiny",
+            "num_classes": 3,
+            "pad_id": 0,
+            "lora_r": 8,
+            "lora_alpha": 16,
+            "lora_dropout": 0.1,
+            "merge_weights": false,
+            "lora_embedding": true
+          },
+          "loss_func": {
+            "type": "CrossEntropyLoss",
+            "reduction": "mean",
+            "weight": "None"
+          },
+          "optimizer": {
+            "type": "AdamW",
+            "lr": 0.0001,
+            "weight_decay": 0.05,
+            "momentum": null,
+            "nesterov": null,
+            "betas": [
+              0.9,
+              0.999
+            ],
+            "amsgrad": false,
+            "eps": 1e-8,
+            "alpha": null,
+            "centered": null
+          },
+          "training": {
+            "epochs": 1,
+            "batch_size": 64,
+            "shuffle": true,
+            "lr": 0.1
+          },
+          "trainer": {
+            "use": "glue",
+            "trainer_type": "glue",
+            "device": "cuda"
+          },
+          "strategy": {
+            "role": "client",
+            "strategy_name": "rbla"
+          },
+          "tokenizer": {
+            "type": "bert",
+            "use_hf_tokenizer": true,
+            "pretrained": "bert-base-uncased",
+            "use_fast": true,
+            "return_type": "tokens",
+            "max_len": 256
+          }
+        },
+        "server_yaml": {
+          "role": "server",
+          "general": {
+            "device": "cuda:0",
+            "training_rounds": 100,
+            "train_optimization": {
+              "cudnn_benchmark": true,
+              "pin_memory": true,
+              "fused_optimizer": false,
+              "torch_compile": false,
+              "non_blocking_transfer": true
+            }
+          },
+          "training_logger": {
+            "name": "train",
+            "path": "./experiment_results/",
+            "prefix": "",
+            "save_weights": false
+          },
+          "data_loader": {
+            "name": "mnli",
+            "root": ".dataset",
+            "split": "",
+            "batch_size": 64,
+            "shuffle": true,
+            "num_workers": 0,
+            "is_download": true,
+            "is_load_train_set": true,
+            "is_load_test_set": true,
+            "task_type": "nlp",
+            "vocab_size": "None"
+          },
+          "nn_model": {
+            "name": "tiny_bert_lora",
+            "pretrained_model": "prajjwal1/bert-tiny",
+            "num_classes": 3,
+            "pad_id": 0,
+            "lora_r": 8,
+            "lora_alpha": 16,
+            "lora_dropout": 0.1,
+            "merge_weights": false,
+            "lora_embedding": true
+          },
+          "loss_func": {
+            "type": "CrossEntropyLoss",
+            "reduction": "mean",
+            "weight": "None"
+          },
+          "optimizer": {
+            "type": "AdamW",
+            "lr": 0.0001,
+            "weight_decay": 0.05,
+            "momentum": null,
+            "nesterov": null,
+            "betas": [
+              0.9,
+              0.999
+            ],
+            "amsgrad": false,
+            "eps": 1e-8,
+            "alpha": null,
+            "centered": null
+          },
+          "training": {
+            "epochs": 1,
+            "batch_size": 64,
+            "shuffle": true,
+            "lr": 0.1
+          },
+          "trainer": {
+            "use": "glue",
+            "trainer_type": "glue",
+            "device": "cuda"
+          },
+          "tokenizer": {
+            "type": "bert",
+            "use_hf_tokenizer": true,
+            "pretrained": "bert-base-uncased",
+            "use_fast": true,
+            "return_type": "tokens",
+            "max_len": 256
+          },
+          "data_distribution": {
+            "use": "mnli_dirichlet_0_4",
+            "custom_define": {
+              "mnli_dirichlet_0_4": [
+                [
+                  32725,
+                  3927,
+                  10472
+                ],
+                [
+                  19635,
+                  6545,
+                  15708
+                ],
+                [
+                  2618,
+                  39270,
+                  6545
+                ],
+                [
+                  45815,
+                  2618,
+                  1309
+                ],
+                [
+                  10472,
+                  32725,
+                  3927
+                ],
+                [
+                  1309,
+                  15708,
+                  45816
+                ],
+                [
+                  5236,
+                  1309,
+                  23563
+                ],
+                [
+                  7854,
+                  19635,
+                  2618
+                ],
+                [
+                  3927,
+                  6545,
+                  19635
+                ],
+                [
+                  1308,
+                  2618,
+                  1310
+                ]
+              ]
+            }
+          },
+          "client_selection": {
+            "method": "random",
+            "round": 1,
+            "client_selection_round": 1,
+            "number": 10,
+            "random_seed": 42
+          },
+          "strategy": {
+            "role": "server",
+            "strategy_name": "rbla"
+          },
+          "aggregation": {
+            "method": "rbla",
+            "device": "cpu",
+            "is_wbab": false,
+            "pad_mode": "nan"
+          },
+          "canonicalization": {
+            "enabled": false,
+            "start_round": 0,
+            "interval": 1,
+            "deterministic_sign": true,
+            "svd_fallback": true,
+            "log_diagnostics": true,
+            "ordering": "singular_value",
+            "overcomplete_policy": "error",
+            "activation_chunk_size": 4096,
+            "activation_fallback": true
+          },
+          "rank_distribution": {
+            "rank_ratio_list": [
+              0.795445,
+              0.727264,
+              0.81249,
+              0.829535,
+              0.795445,
+              1,
+              0.573871,
+              0.573858,
+              0.573858,
+              0.25
+            ]
+          },
+          "lora_inference": {
+            "device": "cpu",
+            "lora_mode": "standard",
+            "scaling": 0.5,
+            "rank_ratio": 1,
+            "use_bias": true,
+            "alpha": 0
+          }
+        }
+      },
+      "status": "planned"
+    },
+    {
+      "dataset": "mnli",
+      "driver_method": "RBLA+",
+      "implementation": "rbla_plus_rank_scale",
+      "source_config": "src/test/rbla+/experiment/rank_match/dirichlet_0_4/mnli/mnli_dirichlet_0_4_rank_correct_rbla_plus_rank_scale.yaml",
+      "resolved_source_config": {
+        "runner": {
+          "general": {
+            "device": "cuda:0",
+            "training_rounds": 100,
+            "train_optimization": {
+              "cudnn_benchmark": true,
+              "pin_memory": true,
+              "fused_optimizer": false,
+              "torch_compile": false,
+              "non_blocking_transfer": true
+            }
+          },
+          "training_logger": {
+            "name": "train",
+            "path": "./experiment_results/",
+            "prefix": "",
+            "save_weights": false
+          },
+          "client_nodes": {
+            "group-1": {
+              "number": 10,
+              "id_prefix": "client",
+              "link_to": "server-1"
+            }
+          },
+          "server_node": {
+            "id": "server-1"
+          },
+          "strategy": {
+            "role": "runner",
+            "strategy_name": "rbla_plus_rank_scale"
+          }
+        },
+        "client_yaml": {
+          "role": "client",
+          "training_logger": {
+            "name": "train",
+            "path": "./experiment_results/",
+            "prefix": "",
+            "save_weights": false
+          },
+          "data_loader": {
+            "name": "mnli",
+            "root": ".dataset",
+            "split": "",
+            "batch_size": 64,
+            "shuffle": true,
+            "num_workers": 0,
+            "is_download": true,
+            "is_load_train_set": true,
+            "is_load_test_set": true,
+            "task_type": "nlp",
+            "vocab_size": "None"
+          },
+          "nn_model": {
+            "name": "tiny_bert_lora",
+            "pretrained_model": "prajjwal1/bert-tiny",
+            "num_classes": 3,
+            "pad_id": 0,
+            "lora_r": 8,
+            "lora_alpha": 16,
+            "lora_dropout": 0.1,
+            "merge_weights": false,
+            "lora_embedding": true
+          },
+          "loss_func": {
+            "type": "CrossEntropyLoss",
+            "reduction": "mean",
+            "weight": "None"
+          },
+          "optimizer": {
+            "type": "AdamW",
+            "lr": 0.0001,
+            "weight_decay": 0.05,
+            "momentum": null,
+            "nesterov": null,
+            "betas": [
+              0.9,
+              0.999
+            ],
+            "amsgrad": false,
+            "eps": 1e-8,
+            "alpha": null,
+            "centered": null
+          },
+          "training": {
+            "epochs": 1,
+            "batch_size": 64,
+            "shuffle": true,
+            "lr": 0.1
+          },
+          "trainer": {
+            "use": "glue",
+            "trainer_type": "glue",
+            "device": "cuda"
+          },
+          "strategy": {
+            "role": "client",
+            "strategy_name": "rbla_plus_rank_scale"
+          },
+          "tokenizer": {
+            "type": "bert",
+            "use_hf_tokenizer": true,
+            "pretrained": "bert-base-uncased",
+            "use_fast": true,
+            "return_type": "tokens",
+            "max_len": 256
+          }
+        },
+        "server_yaml": {
+          "role": "server",
+          "general": {
+            "device": "cuda:0",
+            "training_rounds": 100,
+            "train_optimization": {
+              "cudnn_benchmark": true,
+              "pin_memory": true,
+              "fused_optimizer": false,
+              "torch_compile": false,
+              "non_blocking_transfer": true
+            }
+          },
+          "training_logger": {
+            "name": "train",
+            "path": "./experiment_results/",
+            "prefix": "",
+            "save_weights": false
+          },
+          "data_loader": {
+            "name": "mnli",
+            "root": ".dataset",
+            "split": "",
+            "batch_size": 64,
+            "shuffle": true,
+            "num_workers": 0,
+            "is_download": true,
+            "is_load_train_set": true,
+            "is_load_test_set": true,
+            "task_type": "nlp",
+            "vocab_size": "None"
+          },
+          "nn_model": {
+            "name": "tiny_bert_lora",
+            "pretrained_model": "prajjwal1/bert-tiny",
+            "num_classes": 3,
+            "pad_id": 0,
+            "lora_r": 8,
+            "lora_alpha": 16,
+            "lora_dropout": 0.1,
+            "merge_weights": false,
+            "lora_embedding": true
+          },
+          "loss_func": {
+            "type": "CrossEntropyLoss",
+            "reduction": "mean",
+            "weight": "None"
+          },
+          "optimizer": {
+            "type": "AdamW",
+            "lr": 0.0001,
+            "weight_decay": 0.05,
+            "momentum": null,
+            "nesterov": null,
+            "betas": [
+              0.9,
+              0.999
+            ],
+            "amsgrad": false,
+            "eps": 1e-8,
+            "alpha": null,
+            "centered": null
+          },
+          "training": {
+            "epochs": 1,
+            "batch_size": 64,
+            "shuffle": true,
+            "lr": 0.1
+          },
+          "trainer": {
+            "use": "glue",
+            "trainer_type": "glue",
+            "device": "cuda"
+          },
+          "tokenizer": {
+            "type": "bert",
+            "use_hf_tokenizer": true,
+            "pretrained": "bert-base-uncased",
+            "use_fast": true,
+            "return_type": "tokens",
+            "max_len": 256
+          },
+          "data_distribution": {
+            "use": "mnli_dirichlet_0_4",
+            "custom_define": {
+              "mnli_dirichlet_0_4": [
+                [
+                  32725,
+                  3927,
+                  10472
+                ],
+                [
+                  19635,
+                  6545,
+                  15708
+                ],
+                [
+                  2618,
+                  39270,
+                  6545
+                ],
+                [
+                  45815,
+                  2618,
+                  1309
+                ],
+                [
+                  10472,
+                  32725,
+                  3927
+                ],
+                [
+                  1309,
+                  15708,
+                  45816
+                ],
+                [
+                  5236,
+                  1309,
+                  23563
+                ],
+                [
+                  7854,
+                  19635,
+                  2618
+                ],
+                [
+                  3927,
+                  6545,
+                  19635
+                ],
+                [
+                  1308,
+                  2618,
+                  1310
+                ]
+              ]
+            }
+          },
+          "client_selection": {
+            "method": "random",
+            "round": 1,
+            "client_selection_round": 1,
+            "number": 10,
+            "random_seed": 42
+          },
+          "strategy": {
+            "role": "server",
+            "strategy_name": "rbla_plus_rank_scale"
+          },
+          "aggregation": {
+            "method": "sp_plus",
+            "device": "cpu",
+            "is_wbab": false,
+            "pad_mode": "nan"
+          },
+          "canonicalization": {
+            "enabled": true,
+            "start_round": 0,
+            "interval": 1,
+            "deterministic_sign": true,
+            "svd_fallback": true,
+            "log_diagnostics": true,
+            "ordering": "singular_value",
+            "overcomplete_policy": "zero_pad",
+            "activation_chunk_size": 4096,
+            "activation_fallback": true
+          },
+          "rank_distribution": {
+            "rank_ratio_list": [
+              0.795445,
+              0.727264,
+              0.81249,
+              0.829535,
+              0.795445,
+              1,
+              0.573871,
+              0.573858,
+              0.573858,
+              0.25
+            ]
+          },
+          "lora_inference": {
+            "device": "cpu",
+            "lora_mode": "standard",
+            "scaling": 0.5,
+            "rank_ratio": 1,
+            "use_bias": true,
+            "alpha": 0
+          }
+        }
+      },
+      "status": "planned"
+    },
+    {
+      "dataset": "qqp",
+      "driver_method": "RBLA",
+      "implementation": "rbla",
+      "source_config": "src/test/rbla+/experiment/rank_match/dirichlet_0_4/qqp/qqp_dirichlet_0_4_rank_correct_rbla.yaml",
+      "resolved_source_config": {
+        "runner": {
+          "general": {
+            "device": "cuda:0",
+            "training_rounds": 100,
+            "train_optimization": {
+              "cudnn_benchmark": true,
+              "pin_memory": true,
+              "fused_optimizer": false,
+              "torch_compile": false,
+              "non_blocking_transfer": true
+            }
+          },
+          "training_logger": {
+            "name": "train",
+            "path": "./experiment_results/",
+            "prefix": "",
+            "save_weights": false
+          },
+          "client_nodes": {
+            "group-1": {
+              "number": 10,
+              "id_prefix": "client",
+              "link_to": "server-1"
+            }
+          },
+          "server_node": {
+            "id": "server-1"
+          },
+          "strategy": {
+            "role": "runner",
+            "strategy_name": "rbla"
+          }
+        },
+        "client_yaml": {
+          "role": "client",
+          "training_logger": {
+            "name": "train",
+            "path": "./experiment_results/",
+            "prefix": "",
+            "save_weights": false
+          },
+          "data_loader": {
+            "name": "qqp",
+            "root": ".dataset",
+            "split": "",
+            "batch_size": 64,
+            "shuffle": true,
+            "num_workers": 0,
+            "is_download": true,
+            "is_load_train_set": true,
+            "is_load_test_set": true,
+            "task_type": "nlp",
+            "vocab_size": "None"
+          },
+          "nn_model": {
+            "name": "tiny_bert_lora",
+            "pretrained_model": "prajjwal1/bert-tiny",
+            "num_classes": 2,
+            "pad_id": 0,
+            "lora_r": 8,
+            "lora_alpha": 16,
+            "lora_dropout": 0.1,
+            "merge_weights": false,
+            "lora_embedding": true
+          },
+          "loss_func": {
+            "type": "CrossEntropyLoss",
+            "reduction": "mean",
+            "weight": "None"
+          },
+          "optimizer": {
+            "type": "AdamW",
+            "lr": 0.0001,
+            "weight_decay": 0.05,
+            "momentum": null,
+            "nesterov": null,
+            "betas": [
+              0.9,
+              0.999
+            ],
+            "amsgrad": false,
+            "eps": 1e-8,
+            "alpha": null,
+            "centered": null
+          },
+          "training": {
+            "epochs": 1,
+            "batch_size": 64,
+            "shuffle": true,
+            "lr": 0.1
+          },
+          "trainer": {
+            "use": "glue",
+            "trainer_type": "glue",
+            "device": "cuda"
+          },
+          "strategy": {
+            "role": "client",
+            "strategy_name": "rbla"
+          },
+          "tokenizer": {
+            "type": "bert",
+            "use_hf_tokenizer": true,
+            "pretrained": "bert-base-uncased",
+            "use_fast": true,
+            "return_type": "tokens",
+            "max_len": 256
+          }
+        },
+        "server_yaml": {
+          "role": "server",
+          "general": {
+            "device": "cuda:0",
+            "training_rounds": 100,
+            "train_optimization": {
+              "cudnn_benchmark": true,
+              "pin_memory": true,
+              "fused_optimizer": false,
+              "torch_compile": false,
+              "non_blocking_transfer": true
+            }
+          },
+          "training_logger": {
+            "name": "train",
+            "path": "./experiment_results/",
+            "prefix": "",
+            "save_weights": false
+          },
+          "data_loader": {
+            "name": "qqp",
+            "root": ".dataset",
+            "split": "",
+            "batch_size": 64,
+            "shuffle": true,
+            "num_workers": 0,
+            "is_download": true,
+            "is_load_train_set": true,
+            "is_load_test_set": true,
+            "task_type": "nlp",
+            "vocab_size": "None"
+          },
+          "nn_model": {
+            "name": "tiny_bert_lora",
+            "pretrained_model": "prajjwal1/bert-tiny",
+            "num_classes": 2,
+            "pad_id": 0,
+            "lora_r": 8,
+            "lora_alpha": 16,
+            "lora_dropout": 0.1,
+            "merge_weights": false,
+            "lora_embedding": true
+          },
+          "loss_func": {
+            "type": "CrossEntropyLoss",
+            "reduction": "mean",
+            "weight": "None"
+          },
+          "optimizer": {
+            "type": "AdamW",
+            "lr": 0.0001,
+            "weight_decay": 0.05,
+            "momentum": null,
+            "nesterov": null,
+            "betas": [
+              0.9,
+              0.999
+            ],
+            "amsgrad": false,
+            "eps": 1e-8,
+            "alpha": null,
+            "centered": null
+          },
+          "training": {
+            "epochs": 1,
+            "batch_size": 64,
+            "shuffle": true,
+            "lr": 0.1
+          },
+          "trainer": {
+            "use": "glue",
+            "trainer_type": "glue",
+            "device": "cuda"
+          },
+          "tokenizer": {
+            "type": "bert",
+            "use_hf_tokenizer": true,
+            "pretrained": "bert-base-uncased",
+            "use_fast": true,
+            "return_type": "tokens",
+            "max_len": 256
+          },
+          "data_distribution": {
+            "use": "qqp_dirichlet_0_4",
+            "custom_define": {
+              "qqp_dirichlet_0_4": [
+                [
+                  52300,
+                  4800
+                ],
+                [
+                  41200,
+                  11500
+                ],
+                [
+                  31500,
+                  3200
+                ],
+                [
+                  18400,
+                  24100
+                ],
+                [
+                  29800,
+                  8900
+                ],
+                [
+                  9100,
+                  31200
+                ],
+                [
+                  15600,
+                  18500
+                ],
+                [
+                  3100,
+                  21400
+                ],
+                [
+                  21400,
+                  4300
+                ],
+                [
+                  7068,
+                  6478
+                ]
+              ]
+            }
+          },
+          "client_selection": {
+            "method": "random",
+            "round": 1,
+            "client_selection_round": 1,
+            "number": 10,
+            "random_seed": 42
+          },
+          "strategy": {
+            "role": "server",
+            "strategy_name": "rbla"
+          },
+          "aggregation": {
+            "method": "rbla",
+            "device": "cpu",
+            "is_wbab": false,
+            "pad_mode": "nan"
+          },
+          "canonicalization": {
+            "enabled": false,
+            "start_round": 0,
+            "interval": 1,
+            "deterministic_sign": true,
+            "svd_fallback": true,
+            "log_diagnostics": true,
+            "ordering": "singular_value",
+            "overcomplete_policy": "error",
+            "activation_chunk_size": 4096,
+            "activation_fallback": true
+          },
+          "rank_distribution": {
+            "rank_ratio_list": [
+              1,
+              0.9242,
+              0.6143,
+              0.7486,
+              0.6832,
+              0.7107,
+              0.6039,
+              0.4386,
+              0.4593,
+              0.25
+            ]
+          },
+          "lora_inference": {
+            "device": "cpu",
+            "lora_mode": "standard",
+            "scaling": 0.5,
+            "rank_ratio": 1,
+            "use_bias": true,
+            "alpha": 0
+          }
+        }
+      },
+      "status": "planned"
+    },
+    {
+      "dataset": "qqp",
+      "driver_method": "RBLA+",
+      "implementation": "rbla_plus_rank_scale",
+      "source_config": "src/test/rbla+/experiment/rank_match/dirichlet_0_4/qqp/qqp_dirichlet_0_4_rank_correct_rbla_plus_rank_scale.yaml",
+      "resolved_source_config": {
+        "runner": {
+          "general": {
+            "device": "cuda:0",
+            "training_rounds": 100,
+            "train_optimization": {
+              "cudnn_benchmark": true,
+              "pin_memory": true,
+              "fused_optimizer": false,
+              "torch_compile": false,
+              "non_blocking_transfer": true
+            }
+          },
+          "training_logger": {
+            "name": "train",
+            "path": "./experiment_results/",
+            "prefix": "",
+            "save_weights": false
+          },
+          "client_nodes": {
+            "group-1": {
+              "number": 10,
+              "id_prefix": "client",
+              "link_to": "server-1"
+            }
+          },
+          "server_node": {
+            "id": "server-1"
+          },
+          "strategy": {
+            "role": "runner",
+            "strategy_name": "rbla_plus_rank_scale"
+          }
+        },
+        "client_yaml": {
+          "role": "client",
+          "training_logger": {
+            "name": "train",
+            "path": "./experiment_results/",
+            "prefix": "",
+            "save_weights": false
+          },
+          "data_loader": {
+            "name": "qqp",
+            "root": ".dataset",
+            "split": "",
+            "batch_size": 64,
+            "shuffle": true,
+            "num_workers": 0,
+            "is_download": true,
+            "is_load_train_set": true,
+            "is_load_test_set": true,
+            "task_type": "nlp",
+            "vocab_size": "None"
+          },
+          "nn_model": {
+            "name": "tiny_bert_lora",
+            "pretrained_model": "prajjwal1/bert-tiny",
+            "num_classes": 2,
+            "pad_id": 0,
+            "lora_r": 8,
+            "lora_alpha": 16,
+            "lora_dropout": 0.1,
+            "merge_weights": false,
+            "lora_embedding": true
+          },
+          "loss_func": {
+            "type": "CrossEntropyLoss",
+            "reduction": "mean",
+            "weight": "None"
+          },
+          "optimizer": {
+            "type": "AdamW",
+            "lr": 0.0001,
+            "weight_decay": 0.05,
+            "momentum": null,
+            "nesterov": null,
+            "betas": [
+              0.9,
+              0.999
+            ],
+            "amsgrad": false,
+            "eps": 1e-8,
+            "alpha": null,
+            "centered": null
+          },
+          "training": {
+            "epochs": 1,
+            "batch_size": 64,
+            "shuffle": true,
+            "lr": 0.1
+          },
+          "trainer": {
+            "use": "glue",
+            "trainer_type": "glue",
+            "device": "cuda"
+          },
+          "strategy": {
+            "role": "client",
+            "strategy_name": "rbla_plus_rank_scale"
+          },
+          "tokenizer": {
+            "type": "bert",
+            "use_hf_tokenizer": true,
+            "pretrained": "bert-base-uncased",
+            "use_fast": true,
+            "return_type": "tokens",
+            "max_len": 256
+          }
+        },
+        "server_yaml": {
+          "role": "server",
+          "general": {
+            "device": "cuda:0",
+            "training_rounds": 100,
+            "train_optimization": {
+              "cudnn_benchmark": true,
+              "pin_memory": true,
+              "fused_optimizer": false,
+              "torch_compile": false,
+              "non_blocking_transfer": true
+            }
+          },
+          "training_logger": {
+            "name": "train",
+            "path": "./experiment_results/",
+            "prefix": "",
+            "save_weights": false
+          },
+          "data_loader": {
+            "name": "qqp",
+            "root": ".dataset",
+            "split": "",
+            "batch_size": 64,
+            "shuffle": true,
+            "num_workers": 0,
+            "is_download": true,
+            "is_load_train_set": true,
+            "is_load_test_set": true,
+            "task_type": "nlp",
+            "vocab_size": "None"
+          },
+          "nn_model": {
+            "name": "tiny_bert_lora",
+            "pretrained_model": "prajjwal1/bert-tiny",
+            "num_classes": 2,
+            "pad_id": 0,
+            "lora_r": 8,
+            "lora_alpha": 16,
+            "lora_dropout": 0.1,
+            "merge_weights": false,
+            "lora_embedding": true
+          },
+          "loss_func": {
+            "type": "CrossEntropyLoss",
+            "reduction": "mean",
+            "weight": "None"
+          },
+          "optimizer": {
+            "type": "AdamW",
+            "lr": 0.0001,
+            "weight_decay": 0.05,
+            "momentum": null,
+            "nesterov": null,
+            "betas": [
+              0.9,
+              0.999
+            ],
+            "amsgrad": false,
+            "eps": 1e-8,
+            "alpha": null,
+            "centered": null
+          },
+          "training": {
+            "epochs": 1,
+            "batch_size": 64,
+            "shuffle": true,
+            "lr": 0.1
+          },
+          "trainer": {
+            "use": "glue",
+            "trainer_type": "glue",
+            "device": "cuda"
+          },
+          "tokenizer": {
+            "type": "bert",
+            "use_hf_tokenizer": true,
+            "pretrained": "bert-base-uncased",
+            "use_fast": true,
+            "return_type": "tokens",
+            "max_len": 256
+          },
+          "data_distribution": {
+            "use": "qqp_dirichlet_0_4",
+            "custom_define": {
+              "qqp_dirichlet_0_4": [
+                [
+                  52300,
+                  4800
+                ],
+                [
+                  41200,
+                  11500
+                ],
+                [
+                  31500,
+                  3200
+                ],
+                [
+                  18400,
+                  24100
+                ],
+                [
+                  29800,
+                  8900
+                ],
+                [
+                  9100,
+                  31200
+                ],
+                [
+                  15600,
+                  18500
+                ],
+                [
+                  3100,
+                  21400
+                ],
+                [
+                  21400,
+                  4300
+                ],
+                [
+                  7068,
+                  6478
+                ]
+              ]
+            }
+          },
+          "client_selection": {
+            "method": "random",
+            "round": 1,
+            "client_selection_round": 1,
+            "number": 10,
+            "random_seed": 42
+          },
+          "strategy": {
+            "role": "server",
+            "strategy_name": "rbla_plus_rank_scale"
+          },
+          "aggregation": {
+            "method": "sp_plus",
+            "device": "cpu",
+            "is_wbab": false,
+            "pad_mode": "nan"
+          },
+          "canonicalization": {
+            "enabled": true,
+            "start_round": 0,
+            "interval": 1,
+            "deterministic_sign": true,
+            "svd_fallback": true,
+            "log_diagnostics": true,
+            "ordering": "singular_value",
+            "overcomplete_policy": "zero_pad",
+            "activation_chunk_size": 4096,
+            "activation_fallback": true
+          },
+          "rank_distribution": {
+            "rank_ratio_list": [
+              1,
+              0.9242,
+              0.6143,
+              0.7486,
+              0.6832,
+              0.7107,
+              0.6039,
+              0.4386,
+              0.4593,
+              0.25
+            ]
+          },
+          "lora_inference": {
+            "device": "cpu",
+            "lora_mode": "standard",
+            "scaling": 0.5,
+            "rank_ratio": 1,
+            "use_bias": true,
+            "alpha": 0
+          }
+        }
+      },
+      "status": "planned"
+    }
+  ],
+  "measurement_requirements": {
+    "snapshot_dtype": "Preserve production dtype; high-precision error reference is separate",
+    "snapshot_location": "aggregator._aggregated_weight after _do_aggregation and before _after_aggregation canonicalization",
+    "snapshot_contents": "raw aggregated A/B before this round's spectral reordering, all non-LoRA model state, client shape/rank/scaling profiles, server scaling, provenance and hash",
+    "upload_scale_alignment": "already determined by the driver path; do not reapply or undo during broadcast comparison",
+    "error_updates": "actual s_i * B_i @ A_i with layer-correct orientation and convolution matricization",
+    "production_diagonal_replay": "same-named broadcast branch must reproduce real client outputs within declared numeric tolerance",
+    "isolation": "shadow broadcast/evaluation must not mutate real model/client state, optimizer, RNG, counters, caches, or training timing",
+    "four_cell_runtime": "broadcast-only timing and incremental memory, from the same resident aggregate within each trajectory/round",
+    "full_server_runtime": "reported separately for the two actual complete driver paths; no fake off-diagonal full-server recomputation"
+  },
+  "evidence_source": "docs/rbla_plus_correct_selection_2026-09-15.json",
+  "accuracy_claim_status": "Historical case selection only; new broadcast cross-accuracies and six paired training runs have not been measured.",
+  "aggregate_snapshot_update_indices": [
+    1,
+    10,
+    50,
+    101
+  ],
+  "accuracy_summary": {
+    "primary": "macro average of held-out accuracy across the ten client models after broadcast",
+    "retain": "per-client accuracy, actual complete rank profile, scaling, dataset split; original server accuracy separately",
+    "evaluation_data": "same full held-out set and preprocessing for both broadcasts and both trajectories",
+    "deduplication": "allowed only when entire post-broadcast model state, layer profiles and evaluation settings match; average still counts every client"
+  },
+  "attribution": {
+    "cifar10": "All actual scalings are one: within-path broadcast differences isolate spectral redistribution including factor truncation",
+    "mnli_qqp": "Actual broadcast comparison includes spectral redistribution and downlink scaling; do not label it a pure isolated SP+ contribution"
+  }
+}

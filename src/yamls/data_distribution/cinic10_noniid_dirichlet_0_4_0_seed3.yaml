@@ -1,0 +1,28 @@
+# Seeded Dirichlet training-data distribution.
+# dataset=cinic10; alpha=0.4; seed=3; clients=10; split=train
+# Column label IDs: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+# Column label names: ["airplane", "automobile", "bird", "cat", "deer", "dog", "frog", "horse", "ship", "truck"]
+# Class totals: [9000, 9000, 9000, 9000, 9000, 9000, 9000, 9000, 9000, 9000]; total_samples=90000
+# Source budget: src/yamls/data_distribution/cinic10_noniid_dirichlet_0_4_10.yaml
+# Training split follows DatasetLoader_Cinic10: flwrlabs/cinic10, split=train.
+# RNG: Python 3.9 random.Random(seed); reset for each dataset/alpha/seed.
+# Per class in ascending label order: draw 10 gammavariate(alpha, 1.0)
+# weights, then random.choices(range(10), weights=weights, k=class_total).
+# Redraw the whole matrix with the continuing RNG if any client is empty; attempts=1.
+# Client sample counts: [10659, 4285, 12108, 8726, 7986, 8573, 13255, 7819, 5205, 11384]
+
+data_distribution:
+  use: cinic10_dirichlet_0_4_0_seed3
+  custom_define:
+    cinic10_dirichlet_0_4_0_seed3: [
+      [161, 126, 1617, 0, 2897, 589, 1628, 446, 552, 2643],
+      [471, 487, 479, 247, 0, 0, 299, 250, 1734, 318],
+      [1870, 1634, 67, 679, 2275, 506, 1950, 57, 3070, 0],
+      [0, 2870, 43, 3438, 12, 1825, 8, 283, 218, 29],
+      [208, 0, 1895, 22, 1, 388, 15, 1099, 2192, 2166],
+      [2057, 387, 3856, 431, 89, 0, 673, 1, 409, 670],
+      [1166, 43, 2, 749, 2884, 5428, 829, 25, 112, 2017],
+      [2162, 1166, 11, 565, 85, 100, 4, 3711, 12, 3],
+      [301, 0, 984, 6, 530, 81, 1793, 59, 392, 1059],
+      [604, 2287, 46, 2863, 227, 83, 1801, 3069, 309, 95]
+    ]

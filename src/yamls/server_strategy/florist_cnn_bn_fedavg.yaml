@@ -1,0 +1,5 @@
+# Must match the client BatchNorm policy; the FLoRIST SVD core is unchanged.
+strategy:
+  role: server
+  strategy_name: florist
+  batchnorm_mode: fedavg

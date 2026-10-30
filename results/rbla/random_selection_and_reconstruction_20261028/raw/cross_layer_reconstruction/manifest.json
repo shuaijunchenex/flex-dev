@@ -1,0 +1,1612 @@
+{
+  "format": "rbla_cross_layer_reconstruction_collection_v1",
+  "created_utc": "2026-10-27T08:44:28.259939+00:00",
+  "entry_seed": 42,
+  "rounds": [
+    9,
+    19,
+    29,
+    39,
+    49,
+    59,
+    69,
+    79,
+    89,
+    100
+  ],
+  "training_rounds": 100,
+  "round_semantics": "logged round 0..100; update_index=round+1",
+  "expected_snapshot_count": 40,
+  "device": "cuda:0",
+  "output_dir": "C:\\Users\\FlexRunner\\work\\chatgpt_output\\rbla_priority_switch_20261027_190116\\experiment\\cross_layer_reconstruction",
+  "entry_sha256": "cb4a832df6438958725d0c3beb1225ebcdedabede49b1234d1c6b853355197c0",
+  "offline_analysis": "not run by this entry",
+  "cases": [
+    {
+      "case_id": "cifar10_rbla",
+      "dataset": "cifar10",
+      "driver": "rbla",
+      "config": "C:\\Users\\FlexRunner\\work\\flex-src\\src\\test\\rbla+\\ablation\\spectum_ablation\\experiment\\cifar10_rbla.yaml",
+      "output_dir": "C:\\Users\\FlexRunner\\work\\chatgpt_output\\rbla_priority_switch_20261027_190116\\experiment\\cross_layer_reconstruction\\cifar10_rbla",
+      "source_sha256": {
+        "C:\\Users\\FlexRunner\\work\\flex-src\\src\\test\\rbla+\\ablation\\spectum_ablation\\experiment\\cifar10_rbla.yaml": "0c7958260435ff978aa520f53ef87eb19b5e9a18aa12e0d9de016e7ffad9f784",
+        "C:\\Users\\FlexRunner\\work\\flex-src\\src\\test\\rbla+\\ablation\\spectum_ablation\\aggregation\\aggregation_rbla.yaml": "d8580f94361ee3a0c2bde5a613777adfdb853e4a4c0e1b9dd6ba62caa5ae8237",
+        "C:\\Users\\FlexRunner\\work\\flex-src\\src\\yamls\\client_selection\\random.yaml": "55b59385e42c473034e7fcd144fc7abfbd8382726f23a2576673159d02af1dc8",
+        "C:\\Users\\FlexRunner\\work\\flex-src\\src\\yamls\\dataset_loader\\cifar10.yaml": "2f158cf6e4572ac0723a4ea66ca28e2e04f6ff1d7ee21934fa479b707983ad31",
+        "C:\\Users\\FlexRunner\\work\\flex-src\\src\\yamls\\data_distribution\\cifar10_noniid_dirichlet_0_4_10.yaml": "d144ee1acd3844c014054e0efd00220b9b050e87d35dd954bca30c629b785569",
+        "C:\\Users\\FlexRunner\\work\\flex-src\\src\\yamls\\loss_func\\cross_entropy.yaml": "9da50b0677443cdeb10133f4cc71178da44af5a901f4a3ae195e82098e4517a6",
+        "C:\\Users\\FlexRunner\\work\\flex-src\\src\\yamls\\lora_inference\\base_lora_inference.yaml": "f35638fe491830b4b21710bf3e829e437a3087ec66630b6ca53f9add84047fab",
+        "C:\\Users\\FlexRunner\\work\\flex-src\\src\\yamls\\nn_model\\nn_model_cifar10_lora_cnn.yaml": "2735053b4862f37b160dbd7380d78d878e94bc5ce81e0dd85172c3bedcf040db",
+        "C:\\Users\\FlexRunner\\work\\flex-src\\src\\yamls\\fl_nodes\\default_10_clients.yaml": "693dd4629f1a2c72a74499abe8b9eb0d1ec1d4e2dcbaaa4f29601e5b0e507d9e",
+        "C:\\Users\\FlexRunner\\work\\flex-src\\src\\yamls\\optimizer\\adam_1e3.yaml": "e81168379e578c814d48b4d199939e54b1c900c1f1e7f73a5e001cd4f04a803c",
+        "C:\\Users\\FlexRunner\\work\\flex-src\\src\\yamls\\client_strategy\\rbla.yaml": "ca02fca2f2d9d60e956dc18fb2178c5d34039af37edf9757cb569a15a5e21072",
+        "C:\\Users\\FlexRunner\\work\\flex-src\\src\\yamls\\server_strategy\\rbla.yaml": "5477a13621b6b7a239e06b62a6502ab0ab27e7e743e103398756912943e66486",
+        "C:\\Users\\FlexRunner\\work\\flex-src\\src\\test\\rbla+\\ablation\\spectum_ablation\\runner_strategy\\rbla_spectum.yaml": "32d72741d7e2d1d0c60b0c1fff740e7a8748423bd9084a47e5462a52854e3055",
+        "C:\\Users\\FlexRunner\\work\\flex-src\\src\\yamls\\trainer\\standard_trainer_amp.yaml": "ba1b80abc9e79dec85af25475f3d1540b2963834b03103ed4a2bf81eeb094bc9",
+        "C:\\Users\\FlexRunner\\work\\flex-src\\src\\test\\rbla+\\ablation\\spectum_ablation\\training_logger\\spectum.yaml": "58ca7181edfd2862b029f53213b839795fa3ef9512e3eec991563513524da1ae",
+        "C:\\Users\\FlexRunner\\work\\flex-src\\src\\yamls\\training\\training_epoch5.yaml": "6ccc4b4d48c8c1f2f992973c8d5aad2a2df5b28d5edc1c52f3347a97ab028c17",
+        "C:\\Users\\FlexRunner\\work\\flex-src\\src\\yamls\\general\\general_round100_cuda.yaml": "2383f06ec9143827365e9b7742e2d8f9b7401cd61f265f3eed8011611482dea9",
+        "C:\\Users\\FlexRunner\\work\\flex-src\\src\\yamls\\rank_distribution\\het_rank_cifar10_dirichlet_0_4_10_correct.yaml": "e4a2d352a944f6185dc9da8f31286801a2f2d00883e7c4e14e815af2926d7282",
+        "C:\\Users\\FlexRunner\\work\\flex-src\\src\\yamls\\role\\server.yaml": "ae4bfb716154dbbba7ee6c2a10b940917731b3b68b8819a7b53e7fdd1b3cd9a6",
+        "C:\\Users\\FlexRunner\\work\\flex-src\\src\\yamls\\role\\client.yaml": "1fd2ca35cdf22df0ab183212dfefaf1f2f12a3b2442067fb041f372b868556cf"
+      },
+      "effective_config": {
+        "runner": {
+          "general": {
+            "device": "cuda:0",
+            "training_rounds": 100,
+            "train_optimization": {
+              "cudnn_benchmark": true,
+              "pin_memory": true,
+              "fused_optimizer": false,
+              "torch_compile": false,
+              "non_blocking_transfer": true
+            }
+          },
+          "training_logger": {
+            "name": "train",
+            "path": "C:\\Users\\FlexRunner\\work\\chatgpt_output\\rbla_priority_switch_20261027_190116\\experiment\\cross_layer_reconstruction\\cifar10_rbla",
+            "prefix": "cifar10_rbla_",
+            "save_weights": false
+          },
+          "client_nodes": {
+            "group-1": {
+              "number": 10,
+              "id_prefix": "client",
+              "link_to": "server-1"
+            }
+          },
+          "server_node": {
+            "id": "server-1"
+          },
+          "strategy": {
+            "role": "runner",
+            "strategy_name": "rbla_spectum",
+            "server_memory": {
+              "save_inputs": true,
+              "rounds": [
+                9,
+                19,
+                29,
+                39,
+                49,
+                59,
+                69,
+                79,
+                89,
+                100
+              ],
+              "input_kind": "training_checkpoint"
+            }
+          }
+        },
+        "client_yaml": {
+          "role": "client",
+          "training_logger": {
+            "name": "train",
+            "path": "C:\\Users\\FlexRunner\\work\\chatgpt_output\\rbla_priority_switch_20261027_190116\\experiment\\cross_layer_reconstruction\\cifar10_rbla",
+            "prefix": "cifar10_rbla_",
+            "save_weights": false
+          },
+          "data_loader": {
+            "name": "cifar10",
+            "root": "C:\\Users\\FlexRunner\\work\\flex-src\\.dataset",
+            "split": "",
+            "batch_size": 64,
+            "shuffle": true,
+            "num_workers": 0,
+            "is_download": true,
+            "is_load_train_set": true,
+            "is_load_test_set": true,
+            "task_type": "cv"
+          },
+          "nn_model": {
+            "name": "cifar_lora_cnn",
+            "input_dim": 0,
+            "hidden_dim": 0,
+            "output_dim": 0,
+            "softmax_dim": 1,
+            "lora_mode": "standard",
+            "rank_ratio": 1,
+            "lora_rank_conv": 64,
+            "lora_rank_fc": 16,
+            "lora_alpha_conv": 64,
+            "lora_alpha_fc": 16,
+            "lora_dropout": 0.0,
+            "dropout": 0.25,
+            "merge_weights": false,
+            "use_bias": true,
+            "share_model": false
+          },
+          "loss_func": {
+            "type": "CrossEntropyLoss",
+            "reduction": "mean",
+            "weight": "None"
+          },
+          "optimizer": {
+            "type": "Adam",
+            "lr": 0.001,
+            "weight_decay": 0.0001,
+            "momentum": 0.9,
+            "nesterov": false,
+            "betas": [
+              0.9,
+              0.999
+            ],
+            "amsgrad": false,
+            "eps": "1e-8",
+            "alpha": "None",
+            "centered": "None"
+          },
+          "training": {
+            "epochs": 5,
+            "batch_size": 64,
+            "shuffle": true,
+            "lr": 0.01
+          },
+          "trainer": {
+            "trainer_type": "standard",
+            "save_path": "C:\\Users\\FlexRunner\\work\\chatgpt_output\\rbla_priority_switch_20261027_190116\\experiment\\cross_layer_reconstruction\\cifar10_rbla\\trainer",
+            "use_amp": true
+          },
+          "strategy": {
+            "role": "client",
+            "strategy_name": "rbla"
+          }
+        },
+        "edge_yaml": {},
+        "server_yaml": {
+          "role": "server",
+          "general": {
+            "device": "cuda:0",
+            "training_rounds": 100,
+            "train_optimization": {
+              "cudnn_benchmark": true,
+              "pin_memory": true,
+              "fused_optimizer": false,
+              "torch_compile": false,
+              "non_blocking_transfer": true
+            }
+          },
+          "training_logger": {
+            "name": "train",
+            "path": "C:\\Users\\FlexRunner\\work\\chatgpt_output\\rbla_priority_switch_20261027_190116\\experiment\\cross_layer_reconstruction\\cifar10_rbla",
+            "prefix": "cifar10_rbla_",
+            "save_weights": false
+          },
+          "data_loader": {
+            "name": "cifar10",
+            "root": "C:\\Users\\FlexRunner\\work\\flex-src\\.dataset",
+            "split": "",
+            "batch_size": 64,
+            "shuffle": true,
+            "num_workers": 0,
+            "is_download": true,
+            "is_load_train_set": true,
+            "is_load_test_set": true,
+            "task_type": "cv"
+          },
+          "nn_model": {
+            "name": "cifar_lora_cnn",
+            "input_dim": 0,
+            "hidden_dim": 0,
+            "output_dim": 0,
+            "softmax_dim": 1,
+            "lora_mode": "standard",
+            "rank_ratio": 1,
+            "lora_rank_conv": 64,
+            "lora_rank_fc": 16,
+            "lora_alpha_conv": 64,
+            "lora_alpha_fc": 16,
+            "lora_dropout": 0.0,
+            "dropout": 0.25,
+            "merge_weights": false,
+            "use_bias": true,
+            "share_model": false
+          },
+          "loss_func": {
+            "type": "CrossEntropyLoss",
+            "reduction": "mean",
+            "weight": "None"
+          },
+          "optimizer": {
+            "type": "Adam",
+            "lr": 0.001,
+            "weight_decay": 0.0001,
+            "momentum": 0.9,
+            "nesterov": false,
+            "betas": [
+              0.9,
+              0.999
+            ],
+            "amsgrad": false,
+            "eps": "1e-8",
+            "alpha": "None",
+            "centered": "None"
+          },
+          "training": {
+            "epochs": 5,
+            "batch_size": 64,
+            "shuffle": true,
+            "lr": 0.01
+          },
+          "trainer": {
+            "trainer_type": "standard",
+            "save_path": "C:\\Users\\FlexRunner\\work\\chatgpt_output\\rbla_priority_switch_20261027_190116\\experiment\\cross_layer_reconstruction\\cifar10_rbla\\trainer",
+            "use_amp": true
+          },
+          "data_distribution": {
+            "use": "cifar10_dirichlet_0_4",
+            "custom_define": {
+              "cifar10_dirichlet_0_4": [
+                [
+                  220,
+                  59,
+                  39,
+                  2,
+                  1468,
+                  20,
+                  0,
+                  26,
+                  54,
+                  29
+                ],
+                [
+                  1296,
+                  182,
+                  2477,
+                  897,
+                  5,
+                  37,
+                  121,
+                  1283,
+                  1465,
+                  9
+                ],
+                [
+                  24,
+                  23,
+                  1557,
+                  0,
+                  664,
+                  1592,
+                  5,
+                  92,
+                  27,
+                  0
+                ],
+                [
+                  2,
+                  1,
+                  201,
+                  647,
+                  701,
+                  266,
+                  2414,
+                  276,
+                  643,
+                  617
+                ],
+                [
+                  720,
+                  4097,
+                  1,
+                  892,
+                  225,
+                  611,
+                  209,
+                  1083,
+                  164,
+                  963
+                ],
+                [
+                  0,
+                  66,
+                  0,
+                  111,
+                  0,
+                  1117,
+                  86,
+                  8,
+                  2,
+                  1268
+                ],
+                [
+                  2256,
+                  522,
+                  68,
+                  1560,
+                  0,
+                  625,
+                  188,
+                  196,
+                  1159,
+                  167
+                ],
+                [
+                  36,
+                  6,
+                  622,
+                  91,
+                  63,
+                  47,
+                  313,
+                  1,
+                  54,
+                  953
+                ],
+                [
+                  131,
+                  0,
+                  30,
+                  78,
+                  1751,
+                  20,
+                  0,
+                  632,
+                  394,
+                  987
+                ],
+                [
+                  315,
+                  44,
+                  5,
+                  722,
+                  123,
+                  665,
+                  1664,
+                  1403,
+                  1038,
+                  7
+                ]
+              ]
+            }
+          },
+          "client_selection": {
+            "method": "random",
+            "round": 1,
+            "client_selection_round": 1,
+            "number": 10,
+            "random_seed": 42
+          },
+          "strategy": {
+            "role": "server",
+            "strategy_name": "rbla"
+          },
+          "aggregation": {
+            "retain_pre_canonicalization": true,
+            "method": "rbla",
+            "device": "cpu",
+            "is_wbab": false,
+            "pad_mode": "nan"
+          },
+          "canonicalization": {
+            "enabled": false,
+            "start_round": 0,
+            "interval": 1,
+            "deterministic_sign": true,
+            "svd_fallback": true,
+            "log_diagnostics": true,
+            "ordering": "singular_value",
+            "overcomplete_policy": "error",
+            "activation_chunk_size": 4096,
+            "activation_fallback": true
+          },
+          "rank_distribution": {
+            "rank_ratio_list": [
+              0.25,
+              0.873,
+              0.47,
+              0.6598,
+              1.0,
+              0.3289,
+              0.7633,
+              0.2786,
+              0.4741,
+              0.683
+            ]
+          },
+          "lora_inference": {
+            "device": "cpu",
+            "lora_mode": "standard",
+            "scaling": 0.5,
+            "rank_ratio": 1,
+            "use_bias": true,
+            "alpha": 0
+          }
+        }
+      },
+      "command": [
+        "C:\\Users\\FlexRunner\\miniconda3\\envs\\flex_env\\python.exe",
+        "-u",
+        "-B",
+        "C:\\Users\\FlexRunner\\work\\flex-src\\src\\test\\rbla+\\rbla_cross_layer_reconstruction_experiment.py",
+        "--worker",
+        "cifar10_rbla",
+        "--output-dir",
+        "C:\\Users\\FlexRunner\\work\\chatgpt_output\\rbla_priority_switch_20261027_190116\\experiment\\cross_layer_reconstruction\\cifar10_rbla",
+        "--device",
+        "cuda:0",
+        "--data-root",
+        "C:\\Users\\FlexRunner\\work\\flex-src\\.dataset"
+      ]
+    },
+    {
+      "case_id": "cifar10_rbla_plus",
+      "dataset": "cifar10",
+      "driver": "rbla_plus_rank_scale",
+      "config": "C:\\Users\\FlexRunner\\work\\flex-src\\src\\test\\rbla+\\ablation\\spectum_ablation\\experiment\\cifar10_rbla_plus.yaml",
+      "output_dir": "C:\\Users\\FlexRunner\\work\\chatgpt_output\\rbla_priority_switch_20261027_190116\\experiment\\cross_layer_reconstruction\\cifar10_rbla_plus",
+      "source_sha256": {
+        "C:\\Users\\FlexRunner\\work\\flex-src\\src\\test\\rbla+\\ablation\\spectum_ablation\\experiment\\cifar10_rbla_plus.yaml": "29fb07d666bd6c0be776727ec8f18e2f5c7d0b5b1e8af0cea3b96fb972e16009",
+        "C:\\Users\\FlexRunner\\work\\flex-src\\src\\test\\rbla+\\ablation\\spectum_ablation\\aggregation\\aggregation_sp_plus.yaml": "d408e5a47f96e8f8945a3b07ae41a3fbc5a74a2f88ad7653aa081ab12d5baf54",
+        "C:\\Users\\FlexRunner\\work\\flex-src\\src\\yamls\\client_selection\\random.yaml": "55b59385e42c473034e7fcd144fc7abfbd8382726f23a2576673159d02af1dc8",
+        "C:\\Users\\FlexRunner\\work\\flex-src\\src\\yamls\\dataset_loader\\cifar10.yaml": "2f158cf6e4572ac0723a4ea66ca28e2e04f6ff1d7ee21934fa479b707983ad31",
+        "C:\\Users\\FlexRunner\\work\\flex-src\\src\\yamls\\data_distribution\\cifar10_noniid_dirichlet_0_4_10.yaml": "d144ee1acd3844c014054e0efd00220b9b050e87d35dd954bca30c629b785569",
+        "C:\\Users\\FlexRunner\\work\\flex-src\\src\\yamls\\loss_func\\cross_entropy.yaml": "9da50b0677443cdeb10133f4cc71178da44af5a901f4a3ae195e82098e4517a6",
+        "C:\\Users\\FlexRunner\\work\\flex-src\\src\\yamls\\lora_inference\\base_lora_inference.yaml": "f35638fe491830b4b21710bf3e829e437a3087ec66630b6ca53f9add84047fab",
+        "C:\\Users\\FlexRunner\\work\\flex-src\\src\\yamls\\nn_model\\nn_model_cifar10_lora_cnn.yaml": "2735053b4862f37b160dbd7380d78d878e94bc5ce81e0dd85172c3bedcf040db",
+        "C:\\Users\\FlexRunner\\work\\flex-src\\src\\yamls\\fl_nodes\\default_10_clients.yaml": "693dd4629f1a2c72a74499abe8b9eb0d1ec1d4e2dcbaaa4f29601e5b0e507d9e",
+        "C:\\Users\\FlexRunner\\work\\flex-src\\src\\yamls\\optimizer\\adam_1e3.yaml": "e81168379e578c814d48b4d199939e54b1c900c1f1e7f73a5e001cd4f04a803c",
+        "C:\\Users\\FlexRunner\\work\\flex-src\\src\\yamls\\client_strategy\\rbla_plus_rank_scale.yaml": "f8cf3d98e9f9a39124c12d6e4ca4cbf9922a13098c3a08326c5b4a49aab6bad8",
+        "C:\\Users\\FlexRunner\\work\\flex-src\\src\\yamls\\server_strategy\\rbla_plus_rank_scale.yaml": "7f83ee3c078b63a1def0b60f066a88d7645eddbc2f1a6f97f67ff5e1d26274cb",
+        "C:\\Users\\FlexRunner\\work\\flex-src\\src\\test\\rbla+\\ablation\\spectum_ablation\\runner_strategy\\rbla_plus_spectum.yaml": "09bbfbb5d8c3392250a9ddeb25431e89fd2330d7dbbfb2a31f589eddbf5bfd97",
+        "C:\\Users\\FlexRunner\\work\\flex-src\\src\\yamls\\trainer\\standard_trainer_amp.yaml": "ba1b80abc9e79dec85af25475f3d1540b2963834b03103ed4a2bf81eeb094bc9",
+        "C:\\Users\\FlexRunner\\work\\flex-src\\src\\test\\rbla+\\ablation\\spectum_ablation\\training_logger\\spectum.yaml": "58ca7181edfd2862b029f53213b839795fa3ef9512e3eec991563513524da1ae",
+        "C:\\Users\\FlexRunner\\work\\flex-src\\src\\yamls\\training\\training_epoch5.yaml": "6ccc4b4d48c8c1f2f992973c8d5aad2a2df5b28d5edc1c52f3347a97ab028c17",
+        "C:\\Users\\FlexRunner\\work\\flex-src\\src\\yamls\\general\\general_round100_cuda.yaml": "2383f06ec9143827365e9b7742e2d8f9b7401cd61f265f3eed8011611482dea9",
+        "C:\\Users\\FlexRunner\\work\\flex-src\\src\\yamls\\rank_distribution\\het_rank_cifar10_dirichlet_0_4_10_correct.yaml": "e4a2d352a944f6185dc9da8f31286801a2f2d00883e7c4e14e815af2926d7282",
+        "C:\\Users\\FlexRunner\\work\\flex-src\\src\\yamls\\role\\server.yaml": "ae4bfb716154dbbba7ee6c2a10b940917731b3b68b8819a7b53e7fdd1b3cd9a6",
+        "C:\\Users\\FlexRunner\\work\\flex-src\\src\\yamls\\role\\client.yaml": "1fd2ca35cdf22df0ab183212dfefaf1f2f12a3b2442067fb041f372b868556cf"
+      },
+      "effective_config": {
+        "runner": {
+          "general": {
+            "device": "cuda:0",
+            "training_rounds": 100,
+            "train_optimization": {
+              "cudnn_benchmark": true,
+              "pin_memory": true,
+              "fused_optimizer": false,
+              "torch_compile": false,
+              "non_blocking_transfer": true
+            }
+          },
+          "training_logger": {
+            "name": "train",
+            "path": "C:\\Users\\FlexRunner\\work\\chatgpt_output\\rbla_priority_switch_20261027_190116\\experiment\\cross_layer_reconstruction\\cifar10_rbla_plus",
+            "prefix": "cifar10_rbla_plus_",
+            "save_weights": false
+          },
+          "client_nodes": {
+            "group-1": {
+              "number": 10,
+              "id_prefix": "client",
+              "link_to": "server-1"
+            }
+          },
+          "server_node": {
+            "id": "server-1"
+          },
+          "strategy": {
+            "role": "runner",
+            "strategy_name": "rbla_plus_spectum",
+            "server_memory": {
+              "save_inputs": true,
+              "rounds": [
+                9,
+                19,
+                29,
+                39,
+                49,
+                59,
+                69,
+                79,
+                89,
+                100
+              ],
+              "input_kind": "training_checkpoint"
+            }
+          }
+        },
+        "client_yaml": {
+          "role": "client",
+          "training_logger": {
+            "name": "train",
+            "path": "C:\\Users\\FlexRunner\\work\\chatgpt_output\\rbla_priority_switch_20261027_190116\\experiment\\cross_layer_reconstruction\\cifar10_rbla_plus",
+            "prefix": "cifar10_rbla_plus_",
+            "save_weights": false
+          },
+          "data_loader": {
+            "name": "cifar10",
+            "root": "C:\\Users\\FlexRunner\\work\\flex-src\\.dataset",
+            "split": "",
+            "batch_size": 64,
+            "shuffle": true,
+            "num_workers": 0,
+            "is_download": true,
+            "is_load_train_set": true,
+            "is_load_test_set": true,
+            "task_type": "cv"
+          },
+          "nn_model": {
+            "name": "cifar_lora_cnn",
+            "input_dim": 0,
+            "hidden_dim": 0,
+            "output_dim": 0,
+            "softmax_dim": 1,
+            "lora_mode": "standard",
+            "rank_ratio": 1,
+            "lora_rank_conv": 64,
+            "lora_rank_fc": 16,
+            "lora_alpha_conv": 64,
+            "lora_alpha_fc": 16,
+            "lora_dropout": 0.0,
+            "dropout": 0.25,
+            "merge_weights": false,
+            "use_bias": true,
+            "share_model": false
+          },
+          "loss_func": {
+            "type": "CrossEntropyLoss",
+            "reduction": "mean",
+            "weight": "None"
+          },
+          "optimizer": {
+            "type": "Adam",
+            "lr": 0.001,
+            "weight_decay": 0.0001,
+            "momentum": 0.9,
+            "nesterov": false,
+            "betas": [
+              0.9,
+              0.999
+            ],
+            "amsgrad": false,
+            "eps": "1e-8",
+            "alpha": "None",
+            "centered": "None"
+          },
+          "training": {
+            "epochs": 5,
+            "batch_size": 64,
+            "shuffle": true,
+            "lr": 0.01
+          },
+          "trainer": {
+            "trainer_type": "standard",
+            "save_path": "C:\\Users\\FlexRunner\\work\\chatgpt_output\\rbla_priority_switch_20261027_190116\\experiment\\cross_layer_reconstruction\\cifar10_rbla_plus\\trainer",
+            "use_amp": true
+          },
+          "strategy": {
+            "role": "client",
+            "strategy_name": "rbla_plus_rank_scale"
+          }
+        },
+        "edge_yaml": {},
+        "server_yaml": {
+          "role": "server",
+          "general": {
+            "device": "cuda:0",
+            "training_rounds": 100,
+            "train_optimization": {
+              "cudnn_benchmark": true,
+              "pin_memory": true,
+              "fused_optimizer": false,
+              "torch_compile": false,
+              "non_blocking_transfer": true
+            }
+          },
+          "training_logger": {
+            "name": "train",
+            "path": "C:\\Users\\FlexRunner\\work\\chatgpt_output\\rbla_priority_switch_20261027_190116\\experiment\\cross_layer_reconstruction\\cifar10_rbla_plus",
+            "prefix": "cifar10_rbla_plus_",
+            "save_weights": false
+          },
+          "data_loader": {
+            "name": "cifar10",
+            "root": "C:\\Users\\FlexRunner\\work\\flex-src\\.dataset",
+            "split": "",
+            "batch_size": 64,
+            "shuffle": true,
+            "num_workers": 0,
+            "is_download": true,
+            "is_load_train_set": true,
+            "is_load_test_set": true,
+            "task_type": "cv"
+          },
+          "nn_model": {
+            "name": "cifar_lora_cnn",
+            "input_dim": 0,
+            "hidden_dim": 0,
+            "output_dim": 0,
+            "softmax_dim": 1,
+            "lora_mode": "standard",
+            "rank_ratio": 1,
+            "lora_rank_conv": 64,
+            "lora_rank_fc": 16,
+            "lora_alpha_conv": 64,
+            "lora_alpha_fc": 16,
+            "lora_dropout": 0.0,
+            "dropout": 0.25,
+            "merge_weights": false,
+            "use_bias": true,
+            "share_model": false
+          },
+          "loss_func": {
+            "type": "CrossEntropyLoss",
+            "reduction": "mean",
+            "weight": "None"
+          },
+          "optimizer": {
+            "type": "Adam",
+            "lr": 0.001,
+            "weight_decay": 0.0001,
+            "momentum": 0.9,
+            "nesterov": false,
+            "betas": [
+              0.9,
+              0.999
+            ],
+            "amsgrad": false,
+            "eps": "1e-8",
+            "alpha": "None",
+            "centered": "None"
+          },
+          "training": {
+            "epochs": 5,
+            "batch_size": 64,
+            "shuffle": true,
+            "lr": 0.01
+          },
+          "trainer": {
+            "trainer_type": "standard",
+            "save_path": "C:\\Users\\FlexRunner\\work\\chatgpt_output\\rbla_priority_switch_20261027_190116\\experiment\\cross_layer_reconstruction\\cifar10_rbla_plus\\trainer",
+            "use_amp": true
+          },
+          "data_distribution": {
+            "use": "cifar10_dirichlet_0_4",
+            "custom_define": {
+              "cifar10_dirichlet_0_4": [
+                [
+                  220,
+                  59,
+                  39,
+                  2,
+                  1468,
+                  20,
+                  0,
+                  26,
+                  54,
+                  29
+                ],
+                [
+                  1296,
+                  182,
+                  2477,
+                  897,
+                  5,
+                  37,
+                  121,
+                  1283,
+                  1465,
+                  9
+                ],
+                [
+                  24,
+                  23,
+                  1557,
+                  0,
+                  664,
+                  1592,
+                  5,
+                  92,
+                  27,
+                  0
+                ],
+                [
+                  2,
+                  1,
+                  201,
+                  647,
+                  701,
+                  266,
+                  2414,
+                  276,
+                  643,
+                  617
+                ],
+                [
+                  720,
+                  4097,
+                  1,
+                  892,
+                  225,
+                  611,
+                  209,
+                  1083,
+                  164,
+                  963
+                ],
+                [
+                  0,
+                  66,
+                  0,
+                  111,
+                  0,
+                  1117,
+                  86,
+                  8,
+                  2,
+                  1268
+                ],
+                [
+                  2256,
+                  522,
+                  68,
+                  1560,
+                  0,
+                  625,
+                  188,
+                  196,
+                  1159,
+                  167
+                ],
+                [
+                  36,
+                  6,
+                  622,
+                  91,
+                  63,
+                  47,
+                  313,
+                  1,
+                  54,
+                  953
+                ],
+                [
+                  131,
+                  0,
+                  30,
+                  78,
+                  1751,
+                  20,
+                  0,
+                  632,
+                  394,
+                  987
+                ],
+                [
+                  315,
+                  44,
+                  5,
+                  722,
+                  123,
+                  665,
+                  1664,
+                  1403,
+                  1038,
+                  7
+                ]
+              ]
+            }
+          },
+          "client_selection": {
+            "method": "random",
+            "round": 1,
+            "client_selection_round": 1,
+            "number": 10,
+            "random_seed": 42
+          },
+          "strategy": {
+            "role": "server",
+            "strategy_name": "rbla_plus_rank_scale"
+          },
+          "aggregation": {
+            "retain_pre_canonicalization": true,
+            "method": "sp_plus",
+            "device": "cpu",
+            "is_wbab": false,
+            "pad_mode": "nan"
+          },
+          "canonicalization": {
+            "enabled": true,
+            "start_round": 0,
+            "interval": 1,
+            "deterministic_sign": true,
+            "svd_fallback": true,
+            "log_diagnostics": true,
+            "ordering": "singular_value",
+            "overcomplete_policy": "zero_pad",
+            "activation_chunk_size": 4096,
+            "activation_fallback": true
+          },
+          "rank_distribution": {
+            "rank_ratio_list": [
+              0.25,
+              0.873,
+              0.47,
+              0.6598,
+              1.0,
+              0.3289,
+              0.7633,
+              0.2786,
+              0.4741,
+              0.683
+            ]
+          },
+          "lora_inference": {
+            "device": "cpu",
+            "lora_mode": "standard",
+            "scaling": 0.5,
+            "rank_ratio": 1,
+            "use_bias": true,
+            "alpha": 0
+          }
+        }
+      },
+      "command": [
+        "C:\\Users\\FlexRunner\\miniconda3\\envs\\flex_env\\python.exe",
+        "-u",
+        "-B",
+        "C:\\Users\\FlexRunner\\work\\flex-src\\src\\test\\rbla+\\rbla_cross_layer_reconstruction_experiment.py",
+        "--worker",
+        "cifar10_rbla_plus",
+        "--output-dir",
+        "C:\\Users\\FlexRunner\\work\\chatgpt_output\\rbla_priority_switch_20261027_190116\\experiment\\cross_layer_reconstruction\\cifar10_rbla_plus",
+        "--device",
+        "cuda:0",
+        "--data-root",
+        "C:\\Users\\FlexRunner\\work\\flex-src\\.dataset"
+      ]
+    },
+    {
+      "case_id": "mnli_rbla",
+      "dataset": "mnli",
+      "driver": "rbla",
+      "config": "C:\\Users\\FlexRunner\\work\\flex-src\\src\\test\\rbla+\\ablation\\spectum_ablation\\experiment\\mnli_rbla.yaml",
+      "output_dir": "C:\\Users\\FlexRunner\\work\\chatgpt_output\\rbla_priority_switch_20261027_190116\\experiment\\cross_layer_reconstruction\\mnli_rbla",
+      "source_sha256": {
+        "C:\\Users\\FlexRunner\\work\\flex-src\\src\\test\\rbla+\\ablation\\spectum_ablation\\experiment\\mnli_rbla.yaml": "e98ff59d2338c67e7ad5fff64c659db52002deb75e5bff0c9d77e3827d6754c4",
+        "C:\\Users\\FlexRunner\\work\\flex-src\\src\\test\\rbla+\\ablation\\spectum_ablation\\aggregation\\aggregation_rbla.yaml": "d8580f94361ee3a0c2bde5a613777adfdb853e4a4c0e1b9dd6ba62caa5ae8237",
+        "C:\\Users\\FlexRunner\\work\\flex-src\\src\\yamls\\client_selection\\random.yaml": "55b59385e42c473034e7fcd144fc7abfbd8382726f23a2576673159d02af1dc8",
+        "C:\\Users\\FlexRunner\\work\\flex-src\\src\\yamls\\dataset_loader\\mnli.yaml": "f52f76c9060bbaa7f94f5a2909bd7a0983a49daa460945cd0e4f0a8424b4ba19",
+        "C:\\Users\\FlexRunner\\work\\flex-src\\src\\yamls\\data_distribution\\mnli_noniid_dirichlet_0_4_10.yaml": "e30928c1b9b87991a63878ae7136bcdaf1d07fe352164cba18ec850ebb067eae",
+        "C:\\Users\\FlexRunner\\work\\flex-src\\src\\yamls\\loss_func\\cross_entropy.yaml": "9da50b0677443cdeb10133f4cc71178da44af5a901f4a3ae195e82098e4517a6",
+        "C:\\Users\\FlexRunner\\work\\flex-src\\src\\yamls\\lora_inference\\base_lora_inference.yaml": "f35638fe491830b4b21710bf3e829e437a3087ec66630b6ca53f9add84047fab",
+        "C:\\Users\\FlexRunner\\work\\flex-src\\src\\yamls\\nn_model\\transformer_tinybert_3class_lora_r8.yaml": "92d067652290265c434aff024eae93347050aca9e768474c233c7f9ee73eef86",
+        "C:\\Users\\FlexRunner\\work\\flex-src\\src\\yamls\\fl_nodes\\default_10_clients.yaml": "693dd4629f1a2c72a74499abe8b9eb0d1ec1d4e2dcbaaa4f29601e5b0e507d9e",
+        "C:\\Users\\FlexRunner\\work\\flex-src\\src\\yamls\\optimizer\\adamw_1e4.yaml": "5691d957d303d0d20ca9f4fc79c5b314e595b5f8a913b730999dce2ac5e5bd31",
+        "C:\\Users\\FlexRunner\\work\\flex-src\\src\\yamls\\client_strategy\\rbla.yaml": "ca02fca2f2d9d60e956dc18fb2178c5d34039af37edf9757cb569a15a5e21072",
+        "C:\\Users\\FlexRunner\\work\\flex-src\\src\\yamls\\server_strategy\\rbla.yaml": "5477a13621b6b7a239e06b62a6502ab0ab27e7e743e103398756912943e66486",
+        "C:\\Users\\FlexRunner\\work\\flex-src\\src\\test\\rbla+\\ablation\\spectum_ablation\\runner_strategy\\rbla_spectum.yaml": "32d72741d7e2d1d0c60b0c1fff740e7a8748423bd9084a47e5462a52854e3055",
+        "C:\\Users\\FlexRunner\\work\\flex-src\\src\\yamls\\trainer\\glue_trainer.yaml": "b27a55029e8470bcff3d89eb20d46c649c6d5a720fe8f2c5fed7a5a432572028",
+        "C:\\Users\\FlexRunner\\work\\flex-src\\src\\test\\rbla+\\ablation\\spectum_ablation\\training_logger\\spectum.yaml": "58ca7181edfd2862b029f53213b839795fa3ef9512e3eec991563513524da1ae",
+        "C:\\Users\\FlexRunner\\work\\flex-src\\src\\yamls\\training\\training_epoch1.yaml": "8eec7dd17c27c3958bad7581b1350b819ec9b37746361cd53e2358e620e7630f",
+        "C:\\Users\\FlexRunner\\work\\flex-src\\src\\yamls\\general\\general_round100_cuda.yaml": "2383f06ec9143827365e9b7742e2d8f9b7401cd61f265f3eed8011611482dea9",
+        "C:\\Users\\FlexRunner\\work\\flex-src\\src\\yamls\\rank_distribution\\het_rank_mnli_dirichlet_0_4_10_correct.yaml": "14f88eafea78d24fc0267a79723cdc21bf58e18c4b7aa7bf60ee590757fbafda",
+        "C:\\Users\\FlexRunner\\work\\flex-src\\src\\yamls\\role\\server.yaml": "ae4bfb716154dbbba7ee6c2a10b940917731b3b68b8819a7b53e7fdd1b3cd9a6",
+        "C:\\Users\\FlexRunner\\work\\flex-src\\src\\yamls\\role\\client.yaml": "1fd2ca35cdf22df0ab183212dfefaf1f2f12a3b2442067fb041f372b868556cf",
+        "C:\\Users\\FlexRunner\\work\\flex-src\\src\\yamls\\tokenlizer\\tinybert_tokenizer.yaml": "6916a84ede6dc62cfdc0e4d97b6322d393c4fca447749d12a1815075655d0545"
+      },
+      "effective_config": {
+        "runner": {
+          "general": {
+            "device": "cuda:0",
+            "training_rounds": 100,
+            "train_optimization": {
+              "cudnn_benchmark": true,
+              "pin_memory": true,
+              "fused_optimizer": false,
+              "torch_compile": false,
+              "non_blocking_transfer": true
+            }
+          },
+          "training_logger": {
+            "name": "train",
+            "path": "C:\\Users\\FlexRunner\\work\\chatgpt_output\\rbla_priority_switch_20261027_190116\\experiment\\cross_layer_reconstruction\\mnli_rbla",
+            "prefix": "mnli_rbla_",
+            "save_weights": false
+          },
+          "client_nodes": {
+            "group-1": {
+              "number": 10,
+              "id_prefix": "client",
+              "link_to": "server-1"
+            }
+          },
+          "server_node": {
+            "id": "server-1"
+          },
+          "strategy": {
+            "role": "runner",
+            "strategy_name": "rbla_spectum",
+            "server_memory": {
+              "save_inputs": true,
+              "rounds": [
+                9,
+                19,
+                29,
+                39,
+                49,
+                59,
+                69,
+                79,
+                89,
+                100
+              ],
+              "input_kind": "training_checkpoint"
+            }
+          }
+        },
+        "client_yaml": {
+          "role": "client",
+          "training_logger": {
+            "name": "train",
+            "path": "C:\\Users\\FlexRunner\\work\\chatgpt_output\\rbla_priority_switch_20261027_190116\\experiment\\cross_layer_reconstruction\\mnli_rbla",
+            "prefix": "mnli_rbla_",
+            "save_weights": false
+          },
+          "data_loader": {
+            "name": "mnli",
+            "root": "C:\\Users\\FlexRunner\\work\\flex-src\\.dataset",
+            "split": "",
+            "batch_size": 64,
+            "shuffle": true,
+            "num_workers": 0,
+            "is_download": true,
+            "is_load_train_set": true,
+            "is_load_test_set": true,
+            "task_type": "nlp",
+            "vocab_size": "None"
+          },
+          "nn_model": {
+            "name": "tiny_bert_lora",
+            "pretrained_model": "prajjwal1/bert-tiny",
+            "num_classes": 3,
+            "pad_id": 0,
+            "lora_r": 8,
+            "lora_alpha": 16,
+            "lora_dropout": 0.1,
+            "merge_weights": false,
+            "lora_embedding": true
+          },
+          "loss_func": {
+            "type": "CrossEntropyLoss",
+            "reduction": "mean",
+            "weight": "None"
+          },
+          "optimizer": {
+            "type": "AdamW",
+            "lr": 0.0001,
+            "weight_decay": 0.05,
+            "momentum": null,
+            "nesterov": null,
+            "betas": [
+              0.9,
+              0.999
+            ],
+            "amsgrad": false,
+            "eps": 1e-08,
+            "alpha": null,
+            "centered": null
+          },
+          "training": {
+            "epochs": 1,
+            "batch_size": 64,
+            "shuffle": true,
+            "lr": 0.1
+          },
+          "trainer": {
+            "use": "glue",
+            "trainer_type": "glue",
+            "device": "cuda"
+          },
+          "strategy": {
+            "role": "client",
+            "strategy_name": "rbla"
+          },
+          "tokenizer": {
+            "type": "bert",
+            "use_hf_tokenizer": true,
+            "pretrained": "bert-base-uncased",
+            "use_fast": true,
+            "return_type": "tokens",
+            "max_len": 256
+          }
+        },
+        "edge_yaml": {},
+        "server_yaml": {
+          "role": "server",
+          "general": {
+            "device": "cuda:0",
+            "training_rounds": 100,
+            "train_optimization": {
+              "cudnn_benchmark": true,
+              "pin_memory": true,
+              "fused_optimizer": false,
+              "torch_compile": false,
+              "non_blocking_transfer": true
+            }
+          },
+          "training_logger": {
+            "name": "train",
+            "path": "C:\\Users\\FlexRunner\\work\\chatgpt_output\\rbla_priority_switch_20261027_190116\\experiment\\cross_layer_reconstruction\\mnli_rbla",
+            "prefix": "mnli_rbla_",
+            "save_weights": false
+          },
+          "data_loader": {
+            "name": "mnli",
+            "root": "C:\\Users\\FlexRunner\\work\\flex-src\\.dataset",
+            "split": "",
+            "batch_size": 64,
+            "shuffle": true,
+            "num_workers": 0,
+            "is_download": true,
+            "is_load_train_set": true,
+            "is_load_test_set": true,
+            "task_type": "nlp",
+            "vocab_size": "None"
+          },
+          "nn_model": {
+            "name": "tiny_bert_lora",
+            "pretrained_model": "prajjwal1/bert-tiny",
+            "num_classes": 3,
+            "pad_id": 0,
+            "lora_r": 8,
+            "lora_alpha": 16,
+            "lora_dropout": 0.1,
+            "merge_weights": false,
+            "lora_embedding": true
+          },
+          "loss_func": {
+            "type": "CrossEntropyLoss",
+            "reduction": "mean",
+            "weight": "None"
+          },
+          "optimizer": {
+            "type": "AdamW",
+            "lr": 0.0001,
+            "weight_decay": 0.05,
+            "momentum": null,
+            "nesterov": null,
+            "betas": [
+              0.9,
+              0.999
+            ],
+            "amsgrad": false,
+            "eps": 1e-08,
+            "alpha": null,
+            "centered": null
+          },
+          "training": {
+            "epochs": 1,
+            "batch_size": 64,
+            "shuffle": true,
+            "lr": 0.1
+          },
+          "trainer": {
+            "use": "glue",
+            "trainer_type": "glue",
+            "device": "cuda"
+          },
+          "tokenizer": {
+            "type": "bert",
+            "use_hf_tokenizer": true,
+            "pretrained": "bert-base-uncased",
+            "use_fast": true,
+            "return_type": "tokens",
+            "max_len": 256
+          },
+          "data_distribution": {
+            "use": "mnli_dirichlet_0_4",
+            "custom_define": {
+              "mnli_dirichlet_0_4": [
+                [
+                  32725,
+                  3927,
+                  10472
+                ],
+                [
+                  19635,
+                  6545,
+                  15708
+                ],
+                [
+                  2618,
+                  39270,
+                  6545
+                ],
+                [
+                  45815,
+                  2618,
+                  1309
+                ],
+                [
+                  10472,
+                  32725,
+                  3927
+                ],
+                [
+                  1309,
+                  15708,
+                  45816
+                ],
+                [
+                  5236,
+                  1309,
+                  23563
+                ],
+                [
+                  7854,
+                  19635,
+                  2618
+                ],
+                [
+                  3927,
+                  6545,
+                  19635
+                ],
+                [
+                  1308,
+                  2618,
+                  1310
+                ]
+              ]
+            }
+          },
+          "client_selection": {
+            "method": "random",
+            "round": 1,
+            "client_selection_round": 1,
+            "number": 10,
+            "random_seed": 42
+          },
+          "strategy": {
+            "role": "server",
+            "strategy_name": "rbla"
+          },
+          "aggregation": {
+            "retain_pre_canonicalization": true,
+            "method": "rbla",
+            "device": "cpu",
+            "is_wbab": false,
+            "pad_mode": "nan"
+          },
+          "canonicalization": {
+            "enabled": false,
+            "start_round": 0,
+            "interval": 1,
+            "deterministic_sign": true,
+            "svd_fallback": true,
+            "log_diagnostics": true,
+            "ordering": "singular_value",
+            "overcomplete_policy": "error",
+            "activation_chunk_size": 4096,
+            "activation_fallback": true
+          },
+          "rank_distribution": {
+            "rank_ratio_list": [
+              0.795445,
+              0.727264,
+              0.81249,
+              0.829535,
+              0.795445,
+              1.0,
+              0.573871,
+              0.573858,
+              0.573858,
+              0.25
+            ]
+          },
+          "lora_inference": {
+            "device": "cpu",
+            "lora_mode": "standard",
+            "scaling": 0.5,
+            "rank_ratio": 1,
+            "use_bias": true,
+            "alpha": 0
+          }
+        }
+      },
+      "command": [
+        "C:\\Users\\FlexRunner\\miniconda3\\envs\\flex_env\\python.exe",
+        "-u",
+        "-B",
+        "C:\\Users\\FlexRunner\\work\\flex-src\\src\\test\\rbla+\\rbla_cross_layer_reconstruction_experiment.py",
+        "--worker",
+        "mnli_rbla",
+        "--output-dir",
+        "C:\\Users\\FlexRunner\\work\\chatgpt_output\\rbla_priority_switch_20261027_190116\\experiment\\cross_layer_reconstruction\\mnli_rbla",
+        "--device",
+        "cuda:0",
+        "--data-root",
+        "C:\\Users\\FlexRunner\\work\\flex-src\\.dataset"
+      ]
+    },
+    {
+      "case_id": "mnli_rbla_plus",
+      "dataset": "mnli",
+      "driver": "rbla_plus_rank_scale",
+      "config": "C:\\Users\\FlexRunner\\work\\flex-src\\src\\test\\rbla+\\ablation\\spectum_ablation\\experiment\\mnli_rbla_plus.yaml",
+      "output_dir": "C:\\Users\\FlexRunner\\work\\chatgpt_output\\rbla_priority_switch_20261027_190116\\experiment\\cross_layer_reconstruction\\mnli_rbla_plus",
+      "source_sha256": {
+        "C:\\Users\\FlexRunner\\work\\flex-src\\src\\test\\rbla+\\ablation\\spectum_ablation\\experiment\\mnli_rbla_plus.yaml": "b2503455e4c75ac1a6379a18f0ed99fe3baac02f87ebc4ede1129fc5462c16e8",
+        "C:\\Users\\FlexRunner\\work\\flex-src\\src\\test\\rbla+\\ablation\\spectum_ablation\\aggregation\\aggregation_sp_plus.yaml": "d408e5a47f96e8f8945a3b07ae41a3fbc5a74a2f88ad7653aa081ab12d5baf54",
+        "C:\\Users\\FlexRunner\\work\\flex-src\\src\\yamls\\client_selection\\random.yaml": "55b59385e42c473034e7fcd144fc7abfbd8382726f23a2576673159d02af1dc8",
+        "C:\\Users\\FlexRunner\\work\\flex-src\\src\\yamls\\dataset_loader\\mnli.yaml": "f52f76c9060bbaa7f94f5a2909bd7a0983a49daa460945cd0e4f0a8424b4ba19",
+        "C:\\Users\\FlexRunner\\work\\flex-src\\src\\yamls\\data_distribution\\mnli_noniid_dirichlet_0_4_10.yaml": "e30928c1b9b87991a63878ae7136bcdaf1d07fe352164cba18ec850ebb067eae",
+        "C:\\Users\\FlexRunner\\work\\flex-src\\src\\yamls\\loss_func\\cross_entropy.yaml": "9da50b0677443cdeb10133f4cc71178da44af5a901f4a3ae195e82098e4517a6",
+        "C:\\Users\\FlexRunner\\work\\flex-src\\src\\yamls\\lora_inference\\base_lora_inference.yaml": "f35638fe491830b4b21710bf3e829e437a3087ec66630b6ca53f9add84047fab",
+        "C:\\Users\\FlexRunner\\work\\flex-src\\src\\yamls\\nn_model\\transformer_tinybert_3class_lora_r8.yaml": "92d067652290265c434aff024eae93347050aca9e768474c233c7f9ee73eef86",
+        "C:\\Users\\FlexRunner\\work\\flex-src\\src\\yamls\\fl_nodes\\default_10_clients.yaml": "693dd4629f1a2c72a74499abe8b9eb0d1ec1d4e2dcbaaa4f29601e5b0e507d9e",
+        "C:\\Users\\FlexRunner\\work\\flex-src\\src\\yamls\\optimizer\\adamw_1e4.yaml": "5691d957d303d0d20ca9f4fc79c5b314e595b5f8a913b730999dce2ac5e5bd31",
+        "C:\\Users\\FlexRunner\\work\\flex-src\\src\\yamls\\client_strategy\\rbla_plus_rank_scale.yaml": "f8cf3d98e9f9a39124c12d6e4ca4cbf9922a13098c3a08326c5b4a49aab6bad8",
+        "C:\\Users\\FlexRunner\\work\\flex-src\\src\\yamls\\server_strategy\\rbla_plus_rank_scale.yaml": "7f83ee3c078b63a1def0b60f066a88d7645eddbc2f1a6f97f67ff5e1d26274cb",
+        "C:\\Users\\FlexRunner\\work\\flex-src\\src\\test\\rbla+\\ablation\\spectum_ablation\\runner_strategy\\rbla_plus_spectum.yaml": "09bbfbb5d8c3392250a9ddeb25431e89fd2330d7dbbfb2a31f589eddbf5bfd97",
+        "C:\\Users\\FlexRunner\\work\\flex-src\\src\\yamls\\trainer\\glue_trainer.yaml": "b27a55029e8470bcff3d89eb20d46c649c6d5a720fe8f2c5fed7a5a432572028",
+        "C:\\Users\\FlexRunner\\work\\flex-src\\src\\test\\rbla+\\ablation\\spectum_ablation\\training_logger\\spectum.yaml": "58ca7181edfd2862b029f53213b839795fa3ef9512e3eec991563513524da1ae",
+        "C:\\Users\\FlexRunner\\work\\flex-src\\src\\yamls\\training\\training_epoch1.yaml": "8eec7dd17c27c3958bad7581b1350b819ec9b37746361cd53e2358e620e7630f",
+        "C:\\Users\\FlexRunner\\work\\flex-src\\src\\yamls\\general\\general_round100_cuda.yaml": "2383f06ec9143827365e9b7742e2d8f9b7401cd61f265f3eed8011611482dea9",
+        "C:\\Users\\FlexRunner\\work\\flex-src\\src\\yamls\\rank_distribution\\het_rank_mnli_dirichlet_0_4_10_correct.yaml": "14f88eafea78d24fc0267a79723cdc21bf58e18c4b7aa7bf60ee590757fbafda",
+        "C:\\Users\\FlexRunner\\work\\flex-src\\src\\yamls\\role\\server.yaml": "ae4bfb716154dbbba7ee6c2a10b940917731b3b68b8819a7b53e7fdd1b3cd9a6",
+        "C:\\Users\\FlexRunner\\work\\flex-src\\src\\yamls\\role\\client.yaml": "1fd2ca35cdf22df0ab183212dfefaf1f2f12a3b2442067fb041f372b868556cf",
+        "C:\\Users\\FlexRunner\\work\\flex-src\\src\\yamls\\tokenlizer\\tinybert_tokenizer.yaml": "6916a84ede6dc62cfdc0e4d97b6322d393c4fca447749d12a1815075655d0545"
+      },
+      "effective_config": {
+        "runner": {
+          "general": {
+            "device": "cuda:0",
+            "training_rounds": 100,
+            "train_optimization": {
+              "cudnn_benchmark": true,
+              "pin_memory": true,
+              "fused_optimizer": false,
+              "torch_compile": false,
+              "non_blocking_transfer": true
+            }
+          },
+          "training_logger": {
+            "name": "train",
+            "path": "C:\\Users\\FlexRunner\\work\\chatgpt_output\\rbla_priority_switch_20261027_190116\\experiment\\cross_layer_reconstruction\\mnli_rbla_plus",
+            "prefix": "mnli_rbla_plus_",
+            "save_weights": false
+          },
+          "client_nodes": {
+            "group-1": {
+              "number": 10,
+              "id_prefix": "client",
+              "link_to": "server-1"
+            }
+          },
+          "server_node": {
+            "id": "server-1"
+          },
+          "strategy": {
+            "role": "runner",
+            "strategy_name": "rbla_plus_spectum",
+            "server_memory": {
+              "save_inputs": true,
+              "rounds": [
+                9,
+                19,
+                29,
+                39,
+                49,
+                59,
+                69,
+                79,
+                89,
+                100
+              ],
+              "input_kind": "training_checkpoint"
+            }
+          }
+        },
+        "client_yaml": {
+          "role": "client",
+          "training_logger": {
+            "name": "train",
+            "path": "C:\\Users\\FlexRunner\\work\\chatgpt_output\\rbla_priority_switch_20261027_190116\\experiment\\cross_layer_reconstruction\\mnli_rbla_plus",
+            "prefix": "mnli_rbla_plus_",
+            "save_weights": false
+          },
+          "data_loader": {
+            "name": "mnli",
+            "root": "C:\\Users\\FlexRunner\\work\\flex-src\\.dataset",
+            "split": "",
+            "batch_size": 64,
+            "shuffle": true,
+            "num_workers": 0,
+            "is_download": true,
+            "is_load_train_set": true,
+            "is_load_test_set": true,
+            "task_type": "nlp",
+            "vocab_size": "None"
+          },
+          "nn_model": {
+            "name": "tiny_bert_lora",
+            "pretrained_model": "prajjwal1/bert-tiny",
+            "num_classes": 3,
+            "pad_id": 0,
+            "lora_r": 8,
+            "lora_alpha": 16,
+            "lora_dropout": 0.1,
+            "merge_weights": false,
+            "lora_embedding": true
+          },
+          "loss_func": {
+            "type": "CrossEntropyLoss",
+            "reduction": "mean",
+            "weight": "None"
+          },
+          "optimizer": {
+            "type": "AdamW",
+            "lr": 0.0001,
+            "weight_decay": 0.05,
+            "momentum": null,
+            "nesterov": null,
+            "betas": [
+              0.9,
+              0.999
+            ],
+            "amsgrad": false,
+            "eps": 1e-08,
+            "alpha": null,
+            "centered": null
+          },
+          "training": {
+            "epochs": 1,
+            "batch_size": 64,
+            "shuffle": true,
+            "lr": 0.1
+          },
+          "trainer": {
+            "use": "glue",
+            "trainer_type": "glue",
+            "device": "cuda"
+          },
+          "strategy": {
+            "role": "client",
+            "strategy_name": "rbla_plus_rank_scale"
+          },
+          "tokenizer": {
+            "type": "bert",
+            "use_hf_tokenizer": true,
+            "pretrained": "bert-base-uncased",
+            "use_fast": true,
+            "return_type": "tokens",
+            "max_len": 256
+          }
+        },
+        "edge_yaml": {},
+        "server_yaml": {
+          "role": "server",
+          "general": {
+            "device": "cuda:0",
+            "training_rounds": 100,
+            "train_optimization": {
+              "cudnn_benchmark": true,
+              "pin_memory": true,
+              "fused_optimizer": false,
+              "torch_compile": false,
+              "non_blocking_transfer": true
+            }
+          },
+          "training_logger": {
+            "name": "train",
+            "path": "C:\\Users\\FlexRunner\\work\\chatgpt_output\\rbla_priority_switch_20261027_190116\\experiment\\cross_layer_reconstruction\\mnli_rbla_plus",
+            "prefix": "mnli_rbla_plus_",
+            "save_weights": false
+          },
+          "data_loader": {
+            "name": "mnli",
+            "root": "C:\\Users\\FlexRunner\\work\\flex-src\\.dataset",
+            "split": "",
+            "batch_size": 64,
+            "shuffle": true,
+            "num_workers": 0,
+            "is_download": true,
+            "is_load_train_set": true,
+            "is_load_test_set": true,
+            "task_type": "nlp",
+            "vocab_size": "None"
+          },
+          "nn_model": {
+            "name": "tiny_bert_lora",
+            "pretrained_model": "prajjwal1/bert-tiny",
+            "num_classes": 3,
+            "pad_id": 0,
+            "lora_r": 8,
+            "lora_alpha": 16,
+            "lora_dropout": 0.1,
+            "merge_weights": false,
+            "lora_embedding": true
+          },
+          "loss_func": {
+            "type": "CrossEntropyLoss",
+            "reduction": "mean",
+            "weight": "None"
+          },
+          "optimizer": {
+            "type": "AdamW",
+            "lr": 0.0001,
+            "weight_decay": 0.05,
+            "momentum": null,
+            "nesterov": null,
+            "betas": [
+              0.9,
+              0.999
+            ],
+            "amsgrad": false,
+            "eps": 1e-08,
+            "alpha": null,
+            "centered": null
+          },
+          "training": {
+            "epochs": 1,
+            "batch_size": 64,
+            "shuffle": true,
+            "lr": 0.1
+          },
+          "trainer": {
+            "use": "glue",
+            "trainer_type": "glue",
+            "device": "cuda"
+          },
+          "tokenizer": {
+            "type": "bert",
+            "use_hf_tokenizer": true,
+            "pretrained": "bert-base-uncased",
+            "use_fast": true,
+            "return_type": "tokens",
+            "max_len": 256
+          },
+          "data_distribution": {
+            "use": "mnli_dirichlet_0_4",
+            "custom_define": {
+              "mnli_dirichlet_0_4": [
+                [
+                  32725,
+                  3927,
+                  10472
+                ],
+                [
+                  19635,
+                  6545,
+                  15708
+                ],
+                [
+                  2618,
+                  39270,
+                  6545
+                ],
+                [
+                  45815,
+                  2618,
+                  1309
+                ],
+                [
+                  10472,
+                  32725,
+                  3927
+                ],
+                [
+                  1309,
+                  15708,
+                  45816
+                ],
+                [
+                  5236,
+                  1309,
+                  23563
+                ],
+                [
+                  7854,
+                  19635,
+                  2618
+                ],
+                [
+                  3927,
+                  6545,
+                  19635
+                ],
+                [
+                  1308,
+                  2618,
+                  1310
+                ]
+              ]
+            }
+          },
+          "client_selection": {
+            "method": "random",
+            "round": 1,
+            "client_selection_round": 1,
+            "number": 10,
+            "random_seed": 42
+          },
+          "strategy": {
+            "role": "server",
+            "strategy_name": "rbla_plus_rank_scale"
+          },
+          "aggregation": {
+            "retain_pre_canonicalization": true,
+            "method": "sp_plus",
+            "device": "cpu",
+            "is_wbab": false,
+            "pad_mode": "nan"
+          },
+          "canonicalization": {
+            "enabled": true,
+            "start_round": 0,
+            "interval": 1,
+            "deterministic_sign": true,
+            "svd_fallback": true,
+            "log_diagnostics": true,
+            "ordering": "singular_value",
+            "overcomplete_policy": "zero_pad",
+            "activation_chunk_size": 4096,
+            "activation_fallback": true
+          },
+          "rank_distribution": {
+            "rank_ratio_list": [
+              0.795445,
+              0.727264,
+              0.81249,
+              0.829535,
+              0.795445,
+              1.0,
+              0.573871,
+              0.573858,
+              0.573858,
+              0.25
+            ]
+          },
+          "lora_inference": {
+            "device": "cpu",
+            "lora_mode": "standard",
+            "scaling": 0.5,
+            "rank_ratio": 1,
+            "use_bias": true,
+            "alpha": 0
+          }
+        }
+      },
+      "command": [
+        "C:\\Users\\FlexRunner\\miniconda3\\envs\\flex_env\\python.exe",
+        "-u",
+        "-B",
+        "C:\\Users\\FlexRunner\\work\\flex-src\\src\\test\\rbla+\\rbla_cross_layer_reconstruction_experiment.py",
+        "--worker",
+        "mnli_rbla_plus",
+        "--output-dir",
+        "C:\\Users\\FlexRunner\\work\\chatgpt_output\\rbla_priority_switch_20261027_190116\\experiment\\cross_layer_reconstruction\\mnli_rbla_plus",
+        "--device",
+        "cuda:0",
+        "--data-root",
+        "C:\\Users\\FlexRunner\\work\\flex-src\\.dataset"
+      ]
+    }
+  ]
+}

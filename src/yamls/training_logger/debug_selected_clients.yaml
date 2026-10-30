@@ -1,0 +1,9 @@
+#-----------------------------
+# Training logger with selected-client logging enabled (debug)
+#-----------------------------
+training_logger:
+  name: "train"
+  path: "./experiment_results/"     # Log path
+  prefix: ""                       # Log file name prefix
+  save_weights: false              # Whether to save model weights (.pt) after each round
+  log_selected_clients: true       # Log selected client IDs per round to a separate CSV

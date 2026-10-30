@@ -1,0 +1,29 @@
+# Seeded Dirichlet training-data distribution.
+# dataset=rte; alpha=0.4; seed=1; clients=10; split=train
+# Column label IDs: [0, 1]
+# Column label names: ["entailment", "not_entailment"]
+# Class totals: [1249, 1241]; total_samples=2490
+# Source: .dataset/glue/rte/0.0.0/bcdcba79d07bc864c1c254ccfcedcce55bcc9a8c/glue-train.arrow
+# Source SHA256: e23cc8fcb595681fdea534aa528d987fd9a1fd16bd6604dfaa66421efbc9b337
+# Only the training split is partitioned; validation is reserved for evaluation.
+# RNG: Python 3.9 random.Random(seed); reset for each dataset/alpha/seed.
+# Per class in ascending label order: draw 10 gammavariate(alpha, 1.0)
+# weights, then random.choices(range(10), weights=weights, k=class_total).
+# Redraw the whole matrix with the continuing RNG if any client is empty; attempts=1.
+# Client sample counts: [599, 187, 239, 79, 239, 47, 41, 570, 4, 485]
+
+data_distribution:
+  use: rte_dirichlet_0_4_0_seed1
+  custom_define:
+    rte_dirichlet_0_4_0_seed1: [
+      [2, 597],
+      [169, 18],
+      [54, 185],
+      [0, 79],
+      [184, 55],
+      [43, 4],
+      [10, 31],
+      [330, 240],
+      [0, 4],
+      [457, 28]
+    ]

@@ -1,0 +1,10 @@
+#-----------------------------
+# NN Model - CIFAR-10 CNN (FedAvg paper, McMahan et al., 2017)
+# Input: 3 × 24 × 24 (after RandomCrop)
+#-----------------------------
+nn_model:
+  name: cifar10_cnn_brenden
+  num_classes: 10
+  in_channels: 3
+  input_size: 24
+  share_model: True

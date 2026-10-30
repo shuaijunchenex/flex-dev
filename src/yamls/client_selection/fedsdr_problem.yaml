@@ -1,0 +1,12 @@
+#-----------------------------
+# Client node selection - FedSDR (problem_methods only)
+#-----------------------------
+client_selection:
+  method: fedsdr
+  round: 1
+  # Use more participants in extreme non-IID to avoid label-coverage collapse.
+  # Keep even for FedSDR's 2-per-group selection logic.
+  number: 4
+  random_seed: 42
+  fedsdr_group_update_period: 1
+  fedsdr_eps: 0.000001

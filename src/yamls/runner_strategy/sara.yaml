@@ -1,0 +1,7 @@
+#-----------------------------
+# SARA runner strategy
+#-----------------------------
+strategy:
+  role: "runner"
+  strategy_name: "sara"
+  strategy_name: sara

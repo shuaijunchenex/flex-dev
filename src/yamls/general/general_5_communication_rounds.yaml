@@ -1,0 +1,5 @@
+# All current LoRA runners iterate from zero through training_rounds inclusive.
+# A value of 4 therefore executes exactly five communication rounds (0--4).
+general:
+  device: cpu
+  training_rounds: 4

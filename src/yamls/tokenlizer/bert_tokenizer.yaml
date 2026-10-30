@@ -1,0 +1,10 @@
+# HuggingFace BERT tokenizer configuration
+# Set use_hf_tokenizer to true to enable HF-based pipeline in fed_node_vars
+
+tokenizer:
+  type: bert               # handled by TokenizerBuilder -> HF AutoTokenizer
+  use_hf_tokenizer: true   # triggers HF path in prepare_vocab_tokenizer/prepare_vocab
+  pretrained: bert-base-uncased
+  use_fast: true
+  return_type: tokens      # tokens | ids (HF collate uses the HF tokenizer directly)
+  max_len: 256             # optional truncation length for encode path

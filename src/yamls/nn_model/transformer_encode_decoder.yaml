@@ -1,0 +1,8 @@
+#-----------------------------
+# Generic Encoder-Decoder Transformer (BART-style)
+#-----------------------------
+nn_model:
+  name: transformer_encode_decoder_classification
+  pretrained_model: "facebook/bart-base"
+  num_classes: 2 # Adjust based on dataset: IMDB/SST2/MRPC=2, DBpedia=14
+  pad_id: 1

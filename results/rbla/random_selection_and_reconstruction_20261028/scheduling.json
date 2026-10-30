@@ -1,0 +1,99 @@
+{
+  "initial_mode": "serial",
+  "two_worker_trial": "CIFAR10 only",
+  "trial": {
+    "updated_at": "2026-10-27T20:33:02+11:00",
+    "phase": "completed",
+    "required_pair_seconds": 240,
+    "required_solo_seconds": 120,
+    "comparison": "parallel_FLoRA/solo_FLoRA + parallel_RBLA/solo_RBLA; > 1.10 keeps CNN concurrency at 2",
+    "pair_measured_seconds": 245.0,
+    "latest_rounds": {
+      "random_selection/cifar10_flora": 85,
+      "random_selection/cifar10_rbla": 13
+    },
+    "pair_seconds": 245.03236174583435,
+    "pair_first": {
+      "t": 1793092994.0085506,
+      "at": "2026-10-27T20:23:14+11:00",
+      "cpu_pct": 85.6,
+      "ram_available_gib": 23.409805297851562,
+      "gpu": {
+        "util_pct": 10.0,
+        "used_mib": 4823.0,
+        "total_mib": 16303.0,
+        "temp_c": 41.0,
+        "power_w": 57.3
+      },
+      "workers": {
+        "random_selection/cifar10_flora": {
+          "pid": 19576,
+          "rounds": 68,
+          "samples": 344896,
+          "rss_gib": 3.0044784545898438
+        },
+        "random_selection/cifar10_rbla": {
+          "pid": 100500,
+          "rounds": 3,
+          "samples": 18191,
+          "rss_gib": 2.8839683532714844
+        }
+      },
+      "total_random_selection_samples": 875517
+    },
+    "pair_last": {
+      "t": 1793093239.0409124,
+      "at": "2026-10-27T20:27:19+11:00",
+      "cpu_pct": 93.3,
+      "ram_available_gib": 22.83333969116211,
+      "gpu": {
+        "util_pct": 10.0,
+        "used_mib": 4785.0,
+        "total_mib": 16303.0,
+        "temp_c": 42.0,
+        "power_w": 47.28
+      },
+      "workers": {
+        "random_selection/cifar10_flora": {
+          "pid": 19576,
+          "rounds": 85,
+          "samples": 433356,
+          "rss_gib": 3.0047149658203125
+        },
+        "random_selection/cifar10_rbla": {
+          "pid": 100500,
+          "rounds": 13,
+          "samples": 67775,
+          "rss_gib": 3.0090065002441406
+        }
+      },
+      "total_random_selection_samples": 1013561
+    },
+    "pair_sample_rates": {
+      "random_selection/cifar10_flora": 361.01353865966996,
+      "random_selection/cifar10_rbla": 202.35694439182765
+    },
+    "solo_first": {
+      "t": 1793093462.362733,
+      "rounds": 27,
+      "samples": 136404
+    },
+    "solo_elapsed_seconds": 120.2,
+    "solo_new_rounds": 10,
+    "decision": "parallel_cnn",
+    "solo_last": {
+      "t": 1793093582.5928888,
+      "rounds": 37,
+      "samples": 189898
+    },
+    "solo_sample_rates": {
+      "random_selection/cifar10_flora": 459.78277915554133,
+      "random_selection/cifar10_rbla": 444.9299726813077
+    },
+    "normalized_throughput": 1.239989095968018,
+    "max_parallel": 2
+  },
+  "returned_to_serial_at": "2026-10-27T20:49:15+11:00",
+  "note": "Already active workers finished without interruption. Later runs were serial. Concurrent per-case wall times are not isolated algorithm timing benchmarks.",
+  "old_fedss_batch": "Paused: 52/144 complete, 92 remaining; excluded from this result bundle."
+}

@@ -1,0 +1,9 @@
+#-----------------------------
+# NN Model - MNIST CNN (Brendan McMahan CNN variant, 3-channel input for RGB datasets)
+#-----------------------------
+nn_model:
+  name: cnn_brenden_rgb
+  num_classes: 10
+  in_channels: 3
+  input_size: 32
+  share_model: True

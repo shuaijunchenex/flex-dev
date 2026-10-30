@@ -1,0 +1,91 @@
+{
+  "state": "completed",
+  "completed": [
+    {
+      "snapshot": "$RUN_ROOT/diagnostics/collection/cifar10_rbla/server_inputs/cifar10_rbla_-train-20261027_191620-3631f7579eb89ca9-round0009-server-input.pt",
+      "snapshot_sha256": "51714e44f8ce5566eded39e4aed80b7a8d571d1834ea8822141ec1b439abdb16",
+      "round": 9,
+      "driver_method": "rbla",
+      "report": "$RUN_ROOT/diagnostics/checkpoints/0000.json"
+    },
+    {
+      "snapshot": "$RUN_ROOT/diagnostics/collection/cifar10_rbla/server_inputs/cifar10_rbla_-train-20261027_191620-3631f7579eb89ca9-round0019-server-input.pt",
+      "snapshot_sha256": "be650ce172cff2ff6af79dcb0b46bd2b6b7a63ac2203ffbaca67afe08d639661",
+      "round": 19,
+      "driver_method": "rbla",
+      "report": "$RUN_ROOT/diagnostics/checkpoints/0001.json"
+    },
+    {
+      "snapshot": "$RUN_ROOT/diagnostics/collection/cifar10_rbla/server_inputs/cifar10_rbla_-train-20261027_191620-3631f7579eb89ca9-round0029-server-input.pt",
+      "snapshot_sha256": "f45b706cda7c93cc7344b5b12c32861086af98e97b002ddee3cb3bc7c9ce4861",
+      "round": 29,
+      "driver_method": "rbla",
+      "report": "$RUN_ROOT/diagnostics/checkpoints/0002.json"
+    },
+    {
+      "snapshot": "$RUN_ROOT/diagnostics/collection/cifar10_rbla/server_inputs/cifar10_rbla_-train-20261027_191620-3631f7579eb89ca9-round0039-server-input.pt",
+      "snapshot_sha256": "473fb6f7f44940a9e0e3f8a935576511a2d7da4f03d2b4488a5e961573c7cc51",
+      "round": 39,
+      "driver_method": "rbla",
+      "report": "$RUN_ROOT/diagnostics/checkpoints/0003.json"
+    },
+    {
+      "snapshot": "$RUN_ROOT/diagnostics/collection/cifar10_rbla/server_inputs/cifar10_rbla_-train-20261027_191620-3631f7579eb89ca9-round0049-server-input.pt",
+      "snapshot_sha256": "efad40dc7058393db5a84e67601ed032daeabb7d83be7d9604ea544e9d142761",
+      "round": 49,
+      "driver_method": "rbla",
+      "report": "$RUN_ROOT/diagnostics/checkpoints/0004.json"
+    },
+    {
+      "snapshot": "$RUN_ROOT/diagnostics/collection/cifar10_rbla/server_inputs/cifar10_rbla_-train-20261027_191620-3631f7579eb89ca9-round0059-server-input.pt",
+      "snapshot_sha256": "d459c6a01e07e922356c2c247635f23fedd82a32f94176f8697cd57fc58508ae",
+      "round": 59,
+      "driver_method": "rbla",
+      "report": "$RUN_ROOT/diagnostics/checkpoints/0005.json"
+    },
+    {
+      "snapshot": "$RUN_ROOT/diagnostics/collection/cifar10_rbla/server_inputs/cifar10_rbla_-train-20261027_191620-3631f7579eb89ca9-round0069-server-input.pt",
+      "snapshot_sha256": "fb795122817f86914d56af189c6737b3dfaa9da7cc13c0d128aefad7de69281c",
+      "round": 69,
+      "driver_method": "rbla",
+      "report": "$RUN_ROOT/diagnostics/checkpoints/0006.json"
+    },
+    {
+      "snapshot": "$RUN_ROOT/diagnostics/collection/cifar10_rbla/server_inputs/cifar10_rbla_-train-20261027_191620-3631f7579eb89ca9-round0079-server-input.pt",
+      "snapshot_sha256": "4f032ae94b244ffd0fe112001b8830c1387514aaf44426fe49f65b8e44234151",
+      "round": 79,
+      "driver_method": "rbla",
+      "report": "$RUN_ROOT/diagnostics/checkpoints/0007.json"
+    },
+    {
+      "snapshot": "$RUN_ROOT/diagnostics/collection/cifar10_rbla/server_inputs/cifar10_rbla_-train-20261027_191620-3631f7579eb89ca9-round0089-server-input.pt",
+      "snapshot_sha256": "958e25d1ee0110c9b37edeef01f48c734d9e491891b053a7ad8115e2c9ef961a",
+      "round": 89,
+      "driver_method": "rbla",
+      "report": "$RUN_ROOT/diagnostics/checkpoints/0008.json"
+    },
+    {
+      "snapshot": "$RUN_ROOT/diagnostics/collection/cifar10_rbla/server_inputs/cifar10_rbla_-train-20261027_191620-3631f7579eb89ca9-round0100-server-input.pt",
+      "snapshot_sha256": "cf1207f00bdc3aa299d4dbc5725eb2c1aa0ed8dd969f930a87caca3b57023b60",
+      "round": 100,
+      "driver_method": "rbla",
+      "report": "$RUN_ROOT/diagnostics/checkpoints/0009.json"
+    }
+  ],
+  "skipped": [],
+  "failed": [],
+  "invalid_treatments": [],
+  "present_rounds": [
+    9,
+    19,
+    29,
+    39,
+    49,
+    59,
+    69,
+    79,
+    89,
+    100
+  ],
+  "missing_requested_rounds": []
+}

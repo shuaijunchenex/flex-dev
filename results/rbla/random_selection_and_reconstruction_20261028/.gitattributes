@@ -1,0 +1,4 @@
+# Preserve original result bytes and their recorded SHA-256 hashes.
+raw/** -text whitespace=cr-at-eol
+checkpoint_assets.json -text
+CHECKPOINT_SHA256SUMS.txt -text

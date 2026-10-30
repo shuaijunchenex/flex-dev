@@ -1,0 +1,16 @@
+{
+  "state": "completed",
+  "completed_updates": 101,
+  "num_clients": 100,
+  "clients_per_round": 10,
+  "selection_sha256": "a74f105aeea4c4dbc942a5736dd34dc09f919a50327514c6dd8221c09ffd13a3",
+  "peak_accuracy": 0.5616912888436068,
+  "round_metrics": "C:\\Users\\FlexRunner\\work\\chatgpt_output\\rbla_priority_switch_20261027_190116\\experiment\\random_selection\\mnli_rbla\\round_metrics.csv",
+  "payload_scope": "tensor bytes in simulator messages before client extraction; excludes wire overhead",
+  "download_scope": "latest pre-training payload for selected clients; initialization separate",
+  "broadcast_scope": "actual all-client materialization; not logical selected-only communication",
+  "case_id": "mnli_rbla",
+  "dataset": "mnli",
+  "method": "rbla",
+  "partition_sha256": "a1af4a9edf45563eebd3c4659cb7da469b51803a72defac36a1045fbbfe9bcb6"
+}

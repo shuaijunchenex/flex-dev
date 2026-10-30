@@ -1,0 +1,4 @@
+strategy:
+  role: runner
+  strategy_name: rbla_strong_a_analysis
+

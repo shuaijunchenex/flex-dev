@@ -1,0 +1,6 @@
+#-----------------------------
+# Aggregation section args — FLoRG
+#-----------------------------
+aggregation:
+  method: florg
+  device: cpu

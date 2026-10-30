@@ -1,0 +1,9 @@
+# Data-volume normalized rank distribution (rank match).
+# dataset=svhn; alpha=0.1; seed=1; clients=10
+# Source: src/yamls/data_distribution/svhn_noniid_dirichlet_0_1_0_seed1.yaml
+# rank_ratio_i = round(client_samples_i / max(client_samples), 2); order follows source rows.
+# Client sample counts: [5262, 3646, 6759, 6100, 4365, 6227, 8062, 6225, 13625, 12986]
+# Maximum client sample count: 13625
+# Rank ratios are rounded to two decimal places.
+rank_distribution:
+  rank_ratio_list: [0.39, 0.27, 0.50, 0.45, 0.32, 0.46, 0.59, 0.46, 1.00, 0.95]

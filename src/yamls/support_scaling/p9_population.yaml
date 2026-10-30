@@ -1,0 +1,3 @@
+support_scaling:
+  scaling_type: population
+  gamma: 1.0

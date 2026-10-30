@@ -1,0 +1,9 @@
+# Data-volume normalized rank distribution (rank match).
+# dataset=imdb; alpha=0.4; seed=2; clients=10
+# Source: src/yamls/data_distribution/imdb_noniid_dirichlet_0_4_0_seed2.yaml
+# rank_ratio_i = round(client_samples_i / max(client_samples), 2); order follows source rows.
+# Client sample counts: [959, 1661, 1232, 1185, 780, 7409, 631, 4382, 800, 5961]
+# Maximum client sample count: 7409
+# Rank ratios are rounded to two decimal places.
+rank_distribution:
+  rank_ratio_list: [0.13, 0.22, 0.17, 0.16, 0.11, 1.00, 0.09, 0.59, 0.11, 0.80]

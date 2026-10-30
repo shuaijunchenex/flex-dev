@@ -1,0 +1,110 @@
+{
+  "README.md": {
+    "bytes": 1849,
+    "sha256": "0205a4ed7c01f21f31098ee419105d5ca5beb3c2856a6fb4848a7bb9fe4b0645"
+  },
+  "analysis.json": {
+    "bytes": 61482,
+    "sha256": "1cc1c7322d037f6877209429ccfb98c972538e79f8c67b26417dcd4f67a36e6b"
+  },
+  "analysis.txt": {
+    "bytes": 3799,
+    "sha256": "706041cae181939123f291c3eb6e1fab13dd3e6a38bc02c0cf81f4170ce12bdb"
+  },
+  "analyze_diagnostics.py": {
+    "bytes": 5766,
+    "sha256": "80d5aff1f26dc97acfc25c636e0638d4cd0defc65e4a6ee7db5335ffa736d2cf"
+  },
+  "command.json": {
+    "bytes": 619,
+    "sha256": "d694bef6740d45612854a069bfd39b1d08b3975522c1c2d7e847a3638957c63f"
+  },
+  "diagnostics/checkpoints/0000.json": {
+    "bytes": 838674,
+    "sha256": "7a4262e4c2c83d0447af21f87818d6e519faaf265d8ffabe300d48c0a2408b75"
+  },
+  "diagnostics/checkpoints/0001.json": {
+    "bytes": 838462,
+    "sha256": "20e3050466115e041243db5dadb110e5d14dc9fdb9170ddd07a79ec1ee5cb6d7"
+  },
+  "diagnostics/checkpoints/0002.json": {
+    "bytes": 838188,
+    "sha256": "c3db7b1404b33ae017b9f3e81b97ef44b78937b7193b75e2d96e3011dfbe20b9"
+  },
+  "diagnostics/checkpoints/0003.json": {
+    "bytes": 837971,
+    "sha256": "6ea123c7036d76dc01f3f532da956a4eca1769e337189534055f582de3094b04"
+  },
+  "diagnostics/checkpoints/0004.json": {
+    "bytes": 838078,
+    "sha256": "bfea3504a1f7ced104293e325debae85f3c7f835120375a73bbebb74d1d5db9d"
+  },
+  "diagnostics/checkpoints/0005.json": {
+    "bytes": 838464,
+    "sha256": "8c84758e7a8873adb9221258e3f1143a29e6162ec1d27a91d25b33b13a8f8d3e"
+  },
+  "diagnostics/checkpoints/0006.json": {
+    "bytes": 838492,
+    "sha256": "3122424461ed4bd3c948e669e00e8e62469036a672a7de325165962ece1bc099"
+  },
+  "diagnostics/checkpoints/0007.json": {
+    "bytes": 838468,
+    "sha256": "5f30eddcd1739cbb43189ecb6e85ce6f9f52860c68f0c2c8ff8b44ab8f5b2b74"
+  },
+  "diagnostics/checkpoints/0008.json": {
+    "bytes": 838271,
+    "sha256": "abf410e06cf46037f0753c5b8a56230cd9eda3cc5cb47b0d351ede3f87257986"
+  },
+  "diagnostics/checkpoints/0009.json": {
+    "bytes": 838206,
+    "sha256": "973b8095d517c481969f6adbd3b194c063ff339de118ad4b37ab7daf3568fea1"
+  },
+  "diagnostics/collection/cifar10_rbla/cifar10_rbla_-train-20261027_191620-3631f7579eb89ca9-rbla-broadcast-accuracy.csv": {
+    "bytes": 77432,
+    "sha256": "8d6b44079863631dfaef409276794495d551b22aa24f2f7874782fae41ea3841"
+  },
+  "diagnostics/collection/cifar10_rbla/cifar10_rbla_-train-20261027_191620-3631f7579eb89ca9-rbla_plus_rank_scale-broadcast-accuracy.csv": {
+    "bytes": 78367,
+    "sha256": "9c22652dc9184b13001a80960335c40f7ca2f8e51d021021811677690c4a16a3"
+  },
+  "diagnostics/collection/cifar10_rbla/cifar10_rbla_-train-20261027_191620-3631f7579eb89ca9.csv": {
+    "bytes": 33146,
+    "sha256": "84c40d236ee37982fa66db675b3eae81b4eeeeb9fe934116a9d8c485f28ca287"
+  },
+  "diagnostics/evaluations.csv": {
+    "bytes": 1281759,
+    "sha256": "bd0015678d3fda48ca83554e34ebfa3224dc6633a9c91d9b7d5e50fe0e917e18"
+  },
+  "diagnostics/layer_metrics.csv": {
+    "bytes": 3373014,
+    "sha256": "b53e83e7140993bb5c2049ff3fd088dbad5b3f44e1aff1a50b417e9cd5e33923"
+  },
+  "diagnostics/manifest.json": {
+    "bytes": 502746,
+    "sha256": "d8c0ef4d0d7cd72f7c6e671510a611786910dbd7314a640d551d5b3d83f246b2"
+  },
+  "diagnostics/status.json": {
+    "bytes": 4029,
+    "sha256": "1778af716c5b65f4f741ba7014b0438b9c78483bd39a5c2ba4dd967adf56a094"
+  },
+  "diagnostics/summary.md": {
+    "bytes": 33645,
+    "sha256": "f0b30f247d76939bf312bd8608666132113001bcfdf20c08674425247e9fb768"
+  },
+  "execution.log": {
+    "bytes": 933,
+    "sha256": "278a278b1736d5c7d50327a7ff4f37ac4b94586488667b3063aaf5b892777f7f"
+  },
+  "numerical_audit.json": {
+    "bytes": 331,
+    "sha256": "7cb27acf2e7da4cba8d861ab1cf096f607659afa1b4efe87f1bf7c2ee6f22f06"
+  },
+  "paired_contrasts.csv": {
+    "bytes": 12867,
+    "sha256": "3d290f43b3d4e2e893b5f9303412efee91582822795e6c0575db137aff6ccd5a"
+  },
+  "scope_budget_summary.csv": {
+    "bytes": 1179,
+    "sha256": "b5dfb4f4916b661d33d590c98ad62e3f6c7d6440db32876a385fa59679dab8dd"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "norm_layer_comparisons": 720,
+  "statuses": [
+    "matched"
+  ],
+  "all_matched": true,
+  "max_relative_norm_error": 1.1878845773694025e-07,
+  "relative_tolerances": [
+    5e-05
+  ],
+  "probe_rows": 1200,
+  "probe_samples": [
+    "128"
+  ],
+  "min_support_zero_max_relative_response_error": 0.0,
+  "errors_log_exists": false
+}

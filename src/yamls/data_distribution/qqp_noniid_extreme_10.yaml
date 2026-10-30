@@ -1,0 +1,21 @@
+#-----------------------------
+# Data distribution section (QQP extreme non-iid, 10 clients)
+# Each client owns samples of a single label
+#-----------------------------
+data_distribution:
+
+  use: custom
+
+  custom_define:
+    custom: [
+       [45894, 0],
+       [45894, 0],
+       [45894, 0],
+       [45893, 0],
+       [45893, 0],
+       [0, 26876],
+       [0, 26876],
+       [0, 26876],
+       [0, 26875],
+       [0, 26875]
+    ]

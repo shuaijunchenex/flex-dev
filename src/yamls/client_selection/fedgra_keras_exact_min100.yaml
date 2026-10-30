@@ -1,0 +1,12 @@
+#-----------------------------
+# Client node selection — FedGRA KerasFL metric profile with min_participate_round=100
+#-----------------------------
+client_selection:
+  method: fedgra
+  round: 1
+  client_selection_round: 1
+  number: 2
+  random_seed: 42
+  fedgra_mode: all_participate
+  fedgra_metric_profile: keras
+  min_participate_round: 100

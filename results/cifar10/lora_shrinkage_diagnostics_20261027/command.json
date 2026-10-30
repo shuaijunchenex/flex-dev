@@ -1,0 +1,26 @@
+{
+  "argv": [
+    "$PYTHON",
+    "-u",
+    "-B",
+    "$REPO_ROOT/src/test/rbla+/rbla_cifar10_diagnostics.py",
+    "--collect",
+    "--device",
+    "mps",
+    "--data-root",
+    "$REPO_ROOT/.dataset",
+    "--output-dir",
+    "$RUN_ROOT/diagnostics"
+  ],
+  "cwd": "$RUN_ROOT",
+  "repo_commit": "f287c112ac5c467e4544aafbf0400e5f7ad4c163",
+  "data_root": "$REPO_ROOT/.dataset",
+  "train_samples": 50000,
+  "test_samples": 10000,
+  "snapshots_found_in_repo_and_run_roots": 0,
+  "snapshot_search_roots": [
+    "/Users/chensj/Documents/GitHub",
+    "/Users/chensj/Documents/experiment-runs"
+  ],
+  "changes_to_source": false
+}

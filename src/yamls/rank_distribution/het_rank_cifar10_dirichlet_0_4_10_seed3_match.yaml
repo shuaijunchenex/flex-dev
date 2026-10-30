@@ -1,0 +1,9 @@
+# Data-volume normalized rank distribution (rank match).
+# dataset=cifar10; alpha=0.4; seed=3; clients=10
+# Source: src/yamls/data_distribution/cifar10_noniid_dirichlet_0_4_0_seed3.yaml
+# rank_ratio_i = round(client_samples_i / max(client_samples), 2); order follows source rows.
+# Client sample counts: [9730, 1753, 5896, 3352, 1965, 5733, 2414, 6055, 5944, 7158]
+# Maximum client sample count: 9730
+# Rank ratios are rounded to two decimal places.
+rank_distribution:
+  rank_ratio_list: [1.00, 0.18, 0.61, 0.34, 0.20, 0.59, 0.25, 0.62, 0.61, 0.74]

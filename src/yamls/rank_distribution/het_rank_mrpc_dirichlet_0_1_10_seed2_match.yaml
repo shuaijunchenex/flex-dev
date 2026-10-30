@@ -1,0 +1,9 @@
+# Data-volume normalized rank distribution (rank match).
+# dataset=mrpc; alpha=0.1; seed=2; clients=10
+# Source: src/yamls/data_distribution/mrpc_noniid_dirichlet_0_1_0_seed2.yaml
+# rank_ratio_i = round(client_samples_i / max(client_samples), 2); order follows source rows.
+# Client sample counts: [268, 1108, 39, 311, 562, 9, 33, 1711, 1, 34]
+# Maximum client sample count: 1711
+# Rank ratios are rounded to two decimal places.
+rank_distribution:
+  rank_ratio_list: [0.16, 0.65, 0.02, 0.18, 0.33, 0.01, 0.02, 1.00, 0.00, 0.02]

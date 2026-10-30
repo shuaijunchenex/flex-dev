@@ -1,0 +1,14 @@
+#-----------------------------
+# Qwen2.5-0.5B with LoRA for sequence classification
+#-----------------------------
+nn_model:
+  name: qwen2_5_0_5b_lora
+  pretrained_model: "Qwen/Qwen2.5-0.5B"
+  num_classes: 2
+  # LoRA parameters
+  lora_r: 16
+  lora_alpha: 16
+  lora_dropout: 0.1
+  merge_weights: true
+  lora_embedding: false
+  # lora_target_modules: ["q_proj", "v_proj"]   # uncomment to restrict LoRA to Q/V only

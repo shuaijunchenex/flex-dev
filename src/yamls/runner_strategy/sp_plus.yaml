@@ -1,0 +1,4 @@
+strategy:
+  role: "runner"
+  strategy_name: "sp_plus"
+

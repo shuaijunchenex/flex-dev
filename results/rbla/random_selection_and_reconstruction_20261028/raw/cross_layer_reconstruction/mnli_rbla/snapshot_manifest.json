@@ -1,0 +1,102 @@
+{
+  "case_id": "mnli_rbla",
+  "dataset": "mnli",
+  "driver": "rbla",
+  "run_id": "mnli_rbla_-train-20261028_115344-2c5cb9d9bcd248ee",
+  "rounds": [
+    9,
+    19,
+    29,
+    39,
+    49,
+    59,
+    69,
+    79,
+    89,
+    100
+  ],
+  "snapshots": [
+    {
+      "round": 9,
+      "update_index": 10,
+      "path": "C:\\Users\\FlexRunner\\work\\chatgpt_output\\rbla_priority_switch_20261027_190116\\experiment\\cross_layer_reconstruction\\mnli_rbla\\server_inputs\\mnli_rbla_-train-20261028_115344-2c5cb9d9bcd248ee-round0009-server-input.pt",
+      "sha256": "8e933241c755e3de0011ed7ee55a632c011366c999408102d2481e8dffc63133",
+      "bytes": 202664397,
+      "layer_count": 17
+    },
+    {
+      "round": 19,
+      "update_index": 20,
+      "path": "C:\\Users\\FlexRunner\\work\\chatgpt_output\\rbla_priority_switch_20261027_190116\\experiment\\cross_layer_reconstruction\\mnli_rbla\\server_inputs\\mnli_rbla_-train-20261028_115344-2c5cb9d9bcd248ee-round0019-server-input.pt",
+      "sha256": "e7dae0cb17f4368964df501d162cc5857924fbe7ca4336210a920d7ebe5d4821",
+      "bytes": 202664397,
+      "layer_count": 17
+    },
+    {
+      "round": 29,
+      "update_index": 30,
+      "path": "C:\\Users\\FlexRunner\\work\\chatgpt_output\\rbla_priority_switch_20261027_190116\\experiment\\cross_layer_reconstruction\\mnli_rbla\\server_inputs\\mnli_rbla_-train-20261028_115344-2c5cb9d9bcd248ee-round0029-server-input.pt",
+      "sha256": "ef328b3d399262709513f45d67d58be103c0dab0e735782a545a5025caf30879",
+      "bytes": 202664397,
+      "layer_count": 17
+    },
+    {
+      "round": 39,
+      "update_index": 40,
+      "path": "C:\\Users\\FlexRunner\\work\\chatgpt_output\\rbla_priority_switch_20261027_190116\\experiment\\cross_layer_reconstruction\\mnli_rbla\\server_inputs\\mnli_rbla_-train-20261028_115344-2c5cb9d9bcd248ee-round0039-server-input.pt",
+      "sha256": "f92581bc6e292b6d7c9b9f6c20b9783919032c8bf124168a8e7d41c8f00dffd2",
+      "bytes": 202664397,
+      "layer_count": 17
+    },
+    {
+      "round": 49,
+      "update_index": 50,
+      "path": "C:\\Users\\FlexRunner\\work\\chatgpt_output\\rbla_priority_switch_20261027_190116\\experiment\\cross_layer_reconstruction\\mnli_rbla\\server_inputs\\mnli_rbla_-train-20261028_115344-2c5cb9d9bcd248ee-round0049-server-input.pt",
+      "sha256": "ef4d8040b1790c797fd641aa45def817b0275b1b9be46978872b0610325600b0",
+      "bytes": 202664397,
+      "layer_count": 17
+    },
+    {
+      "round": 59,
+      "update_index": 60,
+      "path": "C:\\Users\\FlexRunner\\work\\chatgpt_output\\rbla_priority_switch_20261027_190116\\experiment\\cross_layer_reconstruction\\mnli_rbla\\server_inputs\\mnli_rbla_-train-20261028_115344-2c5cb9d9bcd248ee-round0059-server-input.pt",
+      "sha256": "da546aceb093e98960cd51fe1a9b23945a5d70b0ecdd172f4a96107186f3289e",
+      "bytes": 202664397,
+      "layer_count": 17
+    },
+    {
+      "round": 69,
+      "update_index": 70,
+      "path": "C:\\Users\\FlexRunner\\work\\chatgpt_output\\rbla_priority_switch_20261027_190116\\experiment\\cross_layer_reconstruction\\mnli_rbla\\server_inputs\\mnli_rbla_-train-20261028_115344-2c5cb9d9bcd248ee-round0069-server-input.pt",
+      "sha256": "30a241c3277c5c18f3354b11b0b2a79f10adcea6b60df360936bb316d92433c9",
+      "bytes": 202664397,
+      "layer_count": 17
+    },
+    {
+      "round": 79,
+      "update_index": 80,
+      "path": "C:\\Users\\FlexRunner\\work\\chatgpt_output\\rbla_priority_switch_20261027_190116\\experiment\\cross_layer_reconstruction\\mnli_rbla\\server_inputs\\mnli_rbla_-train-20261028_115344-2c5cb9d9bcd248ee-round0079-server-input.pt",
+      "sha256": "36a690e784de9e8719ce8941f723d23e2d7b84d4b121f48b2a126df0bc79385d",
+      "bytes": 202664397,
+      "layer_count": 17
+    },
+    {
+      "round": 89,
+      "update_index": 90,
+      "path": "C:\\Users\\FlexRunner\\work\\chatgpt_output\\rbla_priority_switch_20261027_190116\\experiment\\cross_layer_reconstruction\\mnli_rbla\\server_inputs\\mnli_rbla_-train-20261028_115344-2c5cb9d9bcd248ee-round0089-server-input.pt",
+      "sha256": "95fef065f750094988cd1ee5c45fae5c724beee07a7439db8a1017fe4038458e",
+      "bytes": 202664397,
+      "layer_count": 17
+    },
+    {
+      "round": 100,
+      "update_index": 101,
+      "path": "C:\\Users\\FlexRunner\\work\\chatgpt_output\\rbla_priority_switch_20261027_190116\\experiment\\cross_layer_reconstruction\\mnli_rbla\\server_inputs\\mnli_rbla_-train-20261028_115344-2c5cb9d9bcd248ee-round0100-server-input.pt",
+      "sha256": "f3f939243f6ebb5e2bab86511fdc9865361ec5c99a90a9d3713f2a8d924f1bf7",
+      "bytes": 202664397,
+      "layer_count": 17
+    }
+  ],
+  "state": "collected",
+  "analysis_state": "not_run"
+}

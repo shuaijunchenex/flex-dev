@@ -1,0 +1,5 @@
+#-----------------------------
+# Adaptive SARA trainer
+#-----------------------------
+trainer:
+  trainer_type: adaptive_sara

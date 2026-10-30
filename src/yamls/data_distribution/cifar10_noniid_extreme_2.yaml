@@ -1,0 +1,14 @@
+#-----------------------------
+# Data distribution section (CIFAR10 extreme non-iid, 2 clients)
+# Client 1 owns all samples of labels 0-4
+# Client 2 owns all samples of labels 5-9
+#-----------------------------
+data_distribution:
+
+  use: custom
+
+  custom_define:
+    custom: [
+       [5000, 5000, 5000, 5000, 5000, 0, 0, 0, 0, 0],    # Client 1: labels 0-4
+       [0, 0, 0, 0, 0, 5000, 5000, 5000, 5000, 5000]     # Client 2: labels 5-9
+    ]

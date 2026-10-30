@@ -1,0 +1,16 @@
+#-----------------------------
+# SARA alignment with coverage-aware slot-wise anchoring
+#-----------------------------
+sara:
+  lambda_slot_0: 0.1
+  lambda_slot_min: 0.01
+  slot_weight_type: "coverage_aware"
+  lambda_tail: 0.1
+  coverage_eta: 1.0
+
+  lambda_sub_0: 0.1
+  lambda_sub_min: 0.01
+
+  beta: 0.01
+  warmup_rounds: 5
+  enable_rank_expansion: false
