@@ -1,0 +1,11 @@
+#-----------------------------
+# Aggregation section args
+#-----------------------------
+data_handler:
+    type: "noniid"
+    data_volum_list: None
+    verify_allocate: True
+    distribution: "mnist_lt"
+    batch_size: 64
+    shuffle: False
+    num_workers: 0      

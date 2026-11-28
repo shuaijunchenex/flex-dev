@@ -1,0 +1,11 @@
+#-----------------------------
+# Hybrid Conv + Transformer Model
+#-----------------------------
+nn_model:
+  name: transformer_hybrid_imdb
+  vocab_size: 30000
+  embed_dim: 128
+  num_heads: 4
+  num_layers: 2
+  num_classes: 2
+  pad_id: 0

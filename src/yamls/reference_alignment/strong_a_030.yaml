@@ -1,0 +1,3 @@
+reference_alignment:
+  lambda_a: 0.30
+  eps: 1.0e-8

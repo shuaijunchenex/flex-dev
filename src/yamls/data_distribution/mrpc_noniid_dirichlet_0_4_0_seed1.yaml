@@ -1,0 +1,29 @@
+# Seeded Dirichlet training-data distribution.
+# dataset=mrpc; alpha=0.4; seed=1; clients=10; split=train
+# Column label IDs: [0, 1]
+# Column label names: ["not_paraphrase", "paraphrase"]
+# Class totals: [1323, 2753]; total_samples=4076
+# Source: .dataset/datasets/MRPC/msr_paraphrase_train.txt
+# Source SHA256: 60a9b09084528f0673eedee2b69cb941920f0b8cd0eeccefc464a98768457f89
+# Matches the MRPC loader's original 4076-row training set (HF train + validation).
+# RNG: Python 3.9 random.Random(seed); reset for each dataset/alpha/seed.
+# Per class in ascending label order: draw 10 gammavariate(alpha, 1.0)
+# weights, then random.choices(range(10), weights=weights, k=class_total).
+# Redraw the whole matrix with the continuing RNG if any client is empty; attempts=1.
+# Client sample counts: [22, 605, 279, 19, 312, 615, 417, 1028, 303, 476]
+
+data_distribution:
+  use: mrpc_dirichlet_0_4_0_seed1
+  custom_define:
+    mrpc_dirichlet_0_4_0_seed1: [
+      [2, 20],
+      [176, 429],
+      [59, 220],
+      [0, 19],
+      [198, 114],
+      [47, 568],
+      [12, 405],
+      [353, 675],
+      [0, 303],
+      [476, 0]
+    ]

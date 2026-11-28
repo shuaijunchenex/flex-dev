@@ -1,0 +1,4 @@
+training_logger:
+  name: train
+  path: H:/chatgpt_output/cola_fedss_backbones_20261119/
+  save_weights: false

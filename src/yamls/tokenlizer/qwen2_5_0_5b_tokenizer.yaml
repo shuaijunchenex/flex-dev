@@ -1,0 +1,8 @@
+# Qwen2.5-0.5B tokenizer (BPE, GPT-2 style)
+tokenizer:
+  type: bert                # handled by TokenizerBuilder -> HF AutoTokenizer
+  use_hf_tokenizer: true
+  pretrained: Qwen/Qwen2.5-0.5B
+  use_fast: true
+  return_type: tokens
+  max_len: 128

@@ -1,0 +1,42 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36212.18
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "usyd-learning", "flex\usyd-learning.pyproj", "{F15FC23C-6B6D-4D3B-A333-9D15509354BF}"
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "unit_test", "unit_test\unit_test.pyproj", "{2773946E-24C7-4882-8141-D315C9BE5764}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".soulution", ".soulution", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+	ProjectSection(SolutionItems) = preProject
+		..\package build & deploy.bat = ..\package build & deploy.bat
+		..\pyproject.toml = ..\pyproject.toml
+		..\README.md = ..\README.md
+	EndProjectSection
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "test_xxx", "test\test_xxx.pyproj", "{9DAF5998-FD16-455C-9288-D8DD3D0EA120}"
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "unittest_ml", "unittest_ml\unittest_ml.pyproj", "{81E42BE1-ECD2-4750-8A48-8C089052E2CA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F15FC23C-6B6D-4D3B-A333-9D15509354BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F15FC23C-6B6D-4D3B-A333-9D15509354BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2773946E-24C7-4882-8141-D315C9BE5764}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2773946E-24C7-4882-8141-D315C9BE5764}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9DAF5998-FD16-455C-9288-D8DD3D0EA120}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9DAF5998-FD16-455C-9288-D8DD3D0EA120}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81E42BE1-ECD2-4750-8A48-8C089052E2CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81E42BE1-ECD2-4750-8A48-8C089052E2CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5639E43C-69FF-45A5-BF38-B6C3AAD72771}
+	EndGlobalSection
+EndGlobal

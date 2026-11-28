@@ -1,0 +1,27 @@
+# Seeded Dirichlet training-data distribution.
+# dataset=sst2; alpha=0.8; seed=1; clients=10; split=train
+# Column label IDs: [0, 1]
+# Column label names: ["negative","positive"]
+# Class totals: [29780, 37569]; total_samples=67349
+# Source: .dataset/hf_datasets/glue/sst2/0.0.0/bcdcba79d07bc864c1c254ccfcedcce55bcc9a8c/glue-train.arrow
+# RNG: Python 3.9 random.Random(seed); reset for each dataset/alpha/seed.
+# Per class in ascending label order: draw 10 gammavariate(alpha, 1.0)
+# weights, then random.choices(range(10), weights=weights, k=class_total).
+# Redraw the whole matrix with the continuing RNG if any client is empty; attempts=1.
+# Client sample counts: [5314, 4857, 3295, 9423, 11939, 7178, 7688, 1853, 14971, 831]
+
+data_distribution:
+  use: sst2_dirichlet_0_8_0_seed1
+  custom_define:
+    sst2_dirichlet_0_8_0_seed1: [
+      [426, 4888],
+      [3470, 1387],
+      [2092, 1203],
+      [241, 9182],
+      [4548, 7391],
+      [3519, 3659],
+      [6524, 1164],
+      [46, 1807],
+      [8157, 6814],
+      [757, 74]
+    ]

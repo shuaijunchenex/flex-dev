@@ -1,0 +1,6 @@
+aggregation:
+  method: rbla_p9_freeze_a_support_scaling
+  device: cpu
+  pad_mode: nan
+  scaling_type: population
+  gamma: 1.0

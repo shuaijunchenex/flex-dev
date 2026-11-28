@@ -1,0 +1,3 @@
+rank_distribution:
+  # 基于 agnews Dirichlet alpha=0.8 计算的 rank_ratio 列表
+  rank_ratio_list: [0.86, 0.43, 0.08, 0.54, 1.00, 0.44, 0.30, 0.14, 0.41, 0.83]

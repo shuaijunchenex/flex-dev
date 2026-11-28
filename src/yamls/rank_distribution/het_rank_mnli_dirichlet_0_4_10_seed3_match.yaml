@@ -1,0 +1,9 @@
+# Data-volume normalized rank distribution (rank match).
+# dataset=mnli; alpha=0.4; seed=3; clients=10
+# Source: src/yamls/data_distribution/mnli_noniid_dirichlet_0_4_0_seed3.yaml
+# rank_ratio_i = round(client_samples_i / max(client_samples), 2); order follows source rows.
+# Client sample counts: [55357, 27062, 69871, 18986, 45439, 43998, 26438, 70568, 17921, 17062]
+# Maximum client sample count: 70568
+# Rank ratios are rounded to two decimal places.
+rank_distribution:
+  rank_ratio_list: [0.78, 0.38, 0.99, 0.27, 0.64, 0.62, 0.37, 1.00, 0.25, 0.24]

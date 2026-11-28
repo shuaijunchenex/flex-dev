@@ -1,0 +1,6 @@
+#-----------------------------
+# Aggregation section args — RoLoRA
+#-----------------------------
+aggregation:
+  method: rolora
+  device: cpu

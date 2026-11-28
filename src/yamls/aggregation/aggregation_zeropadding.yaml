@@ -1,0 +1,6 @@
+#-----------------------------
+# Aggregation section args — ZeroPadding
+#-----------------------------
+aggregation:
+  method: zeropadding
+  device: cpu

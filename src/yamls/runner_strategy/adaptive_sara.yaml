@@ -1,0 +1,6 @@
+#-----------------------------
+# Adaptive SARA runner strategy
+#-----------------------------
+strategy:
+  role: runner
+  strategy_name: adaptive_sara

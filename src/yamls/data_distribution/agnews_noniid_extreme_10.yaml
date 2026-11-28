@@ -1,0 +1,21 @@
+#-----------------------------
+# Data distribution section (AGNEWS extreme non-iid, 10 clients)
+# Each client owns samples of a single label
+#-----------------------------
+data_distribution:
+
+  use: custom
+
+  custom_define:
+    custom: [
+       [10000, 0, 0, 0],
+       [10000, 0, 0, 0],
+       [10000, 0, 0, 0],
+       [0, 10000, 0, 0],
+       [0, 10000, 0, 0],
+       [0, 10000, 0, 0],
+       [0, 0, 15000, 0],
+       [0, 0, 15000, 0],
+       [0, 0, 0, 15000],
+       [0, 0, 0, 15000]
+    ]

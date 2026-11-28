@@ -1,0 +1,8 @@
+#-----------------------------
+# DistilRoBERTa (smallest RoBERTa variant) for classification
+#-----------------------------
+nn_model:
+  name: transformer_classification
+  pretrained_model: "distilroberta-base"
+  num_classes: 2  # adjust per dataset if needed
+  pad_id: 0

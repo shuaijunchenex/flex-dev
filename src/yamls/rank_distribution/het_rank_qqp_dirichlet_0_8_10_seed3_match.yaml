@@ -1,0 +1,9 @@
+# Data-volume normalized rank distribution (rank match).
+# dataset=qqp; alpha=0.8; seed=3; clients=10
+# Source: src/yamls/data_distribution/qqp_noniid_dirichlet_0_8_0_seed3.yaml
+# rank_ratio_i = round(client_samples_i / max(client_samples), 2); order follows source rows.
+# Client sample counts: [10580, 32425, 28075, 37110, 8379, 124401, 56059, 18653, 19556, 28608]
+# Maximum client sample count: 124401
+# Rank ratios are rounded to two decimal places.
+rank_distribution:
+  rank_ratio_list: [0.09, 0.26, 0.23, 0.30, 0.07, 1.00, 0.45, 0.15, 0.16, 0.23]

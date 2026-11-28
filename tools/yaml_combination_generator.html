@@ -1,0 +1,1544 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>FL YAML 组合生成器</title>
+<style>
+  :root {
+    --bg: #1e1e1e; --panel: #252526; --panel2: #2d2d30; --border: #3c3c3c;
+    --text: #d4d4d4; --muted: #9d9d9d; --accent: #0e639c; --accent2: #1177bb;
+    --green: #4ec9b0; --yellow: #dcdcaa; --red: #f48771;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; font-family: "Segoe UI", system-ui, sans-serif;
+    background: var(--bg); color: var(--text); font-size: 14px;
+  }
+  header {
+    padding: 12px 20px; background: var(--panel); border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+  }
+  header h1 { font-size: 16px; margin: 0; font-weight: 600; }
+  header .spacer { flex: 1; }
+  button {
+    background: var(--accent); color: #fff; border: none; padding: 6px 12px;
+    border-radius: 4px; cursor: pointer; font-size: 13px;
+  }
+  button:hover { background: var(--accent2); }
+  button.ghost { background: transparent; border: 1px solid var(--border); color: var(--text); }
+  button.ghost:hover { background: var(--panel2); }
+  button.mini { padding: 1px 6px; font-size: 12px; line-height: 1.4; }
+  .layout { display: flex; flex: 1; min-height: 0; overflow: hidden; }
+  .page-wrap { display: flex; flex-direction: column; height: 100vh; }
+  .roles { flex: 1; overflow-y: auto; padding: 16px; display: grid;
+           grid-template-columns: repeat(2, 1fr); gap: 16px; align-content: start; }
+  .preview { width: 40%; min-width: 360px; border-left: 1px solid var(--border);
+             display: flex; flex-direction: column; background: var(--panel); }
+  .preview .pv-head { padding: 10px 16px; border-bottom: 1px solid var(--border);
+                      display: flex; align-items: center; gap: 10px; }
+  .preview pre { flex: 1; margin: 0; padding: 16px; overflow: auto; font-size: 12.5px;
+                 font-family: "Cascadia Code", Consolas, monospace; white-space: pre;
+                 color: var(--text); line-height: 1.5; }
+  .preview-guide { flex: 1; display: flex; align-items: center; justify-content: center;
+                   padding: 28px; overflow: auto; }
+  .preview-guide-card { width: 100%; max-width: 520px; padding: 24px; border: 1px dashed var(--border);
+                        border-radius: 8px; background: var(--bg); }
+  .preview-guide-card h3 { margin: 0 0 10px; color: var(--green); font-size: 16px; }
+  .preview-guide-card p { margin: 0 0 16px; color: var(--muted); line-height: 1.6; }
+  .preview-guide-card ol { margin: 0; padding-left: 22px; line-height: 1.8; }
+  .preview-guide-card code { color: var(--yellow); font-family: "Cascadia Code", Consolas, monospace; }
+  .role-card { background: var(--panel); border: 1px solid var(--border); border-radius: 6px;
+               display: flex; flex-direction: column; overflow: hidden; max-height: 48vh; }
+  .role-card > h2 { font-size: 14px; margin: 0; padding: 10px 14px; background: var(--panel2);
+                    border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 8px;
+                    flex-shrink: 0; }
+  .role-card > h2 .cnt { color: var(--muted); font-weight: normal; font-size: 12px; }
+  .role-body { display: flex; gap: 10px; padding: 12px; overflow-y: auto; flex: 1; min-height: 0; }
+  .selected, .available { flex: 1; min-width: 0; }
+  .col-title { font-size: 11px; text-transform: uppercase; letter-spacing: .5px;
+               color: var(--muted); margin-bottom: 6px; position: sticky; top: 0; background: var(--panel);
+               z-index: 1; padding: 2px 0; }
+  .sel-list { list-style: none; margin: 0; padding: 0; min-height: 40px; }
+  .sel-list li { display: flex; align-items: center; gap: 4px; padding: 3px 6px;
+                 background: var(--panel2); border: 1px solid var(--border); border-radius: 4px;
+                 margin-bottom: 4px; font-size: 12.5px; }
+  .sel-list li .nm { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+                     color: var(--green); }
+  .sel-list li .catbadge { font-size: 10px; color: var(--muted); }
+  .avail-groups { max-height: none; overflow-y: visible; padding-right: 4px; }
+  .avail-cat { margin-bottom: 8px; }
+  .avail-cat .cat-name { font-size: 11px; color: var(--yellow); margin: 4px 0 3px; font-weight: 600; }
+  .chip { display: inline-block; margin: 2px; padding: 2px 8px; font-size: 12px;
+          background: var(--panel2); border: 1px solid var(--border); border-radius: 12px;
+          cursor: pointer; color: var(--text); }
+  .chip:hover { background: var(--accent); border-color: var(--accent); }
+  .chip.used { opacity: .4; }
+  .empty-hint { color: var(--muted); font-size: 12px; font-style: italic; padding: 4px 0; }
+  input[type=file] { display: none; }
+  .file-label { background: transparent; border: 1px solid var(--border); color: var(--text);
+                padding: 6px 12px; border-radius: 4px; cursor: pointer; font-size: 13px; }
+  .file-label:hover { background: var(--panel2); }
+  .toast { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+           background: var(--green); color: #1e1e1e; padding: 8px 18px; border-radius: 4px;
+           font-weight: 600; opacity: 0; transition: opacity .3s; pointer-events: none; }
+  .toast.show { opacity: 1; }
+
+  /* Path editor panel */
+  .path-panel { background: var(--panel); border-bottom: 1px solid var(--border); }
+  .path-toggle { padding: 8px 20px; cursor: pointer; display: flex; align-items: center; gap: 8px;
+                 user-select: none; font-size: 13px; color: var(--muted); }
+  .path-toggle:hover { background: var(--panel2); }
+  .path-toggle .arrow { transition: transform .2s; font-size: 10px; }
+  .path-toggle.open .arrow { transform: rotate(90deg); }
+  .path-toggle .pt-title { font-weight: 600; color: var(--text); }
+  .path-toggle .pt-count { font-size: 11px; }
+  .path-body { display: none; padding: 4px 20px 14px; }
+  .path-body.open { display: block; }
+  .path-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(420px, 1fr)); gap: 6px 20px; }
+  .path-row { display: flex; align-items: center; gap: 8px; }
+  .path-row label { min-width: 220px; font-size: 12px; color: var(--yellow); font-family: "Cascadia Code", Consolas, monospace;
+                    overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .path-row input { flex: 1; background: var(--panel2); border: 1px solid var(--border); color: var(--text);
+                    padding: 4px 8px; font-size: 12px; font-family: "Cascadia Code", Consolas, monospace;
+                    border-radius: 3px; min-width: 0; }
+  .path-row input:focus { border-color: var(--accent); outline: none; }
+
+  /* Mini-YAML preview modal */
+  .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.55);
+                    z-index: 100; align-items: center; justify-content: center; }
+  .modal-overlay.open { display: flex; }
+  .modal { background: var(--panel); border: 1px solid var(--border); border-radius: 8px;
+           width: 680px; max-width: 90vw; max-height: 80vh; display: flex; flex-direction: column; }
+  .modal-head { display: flex; align-items: center; gap: 10px; padding: 12px 16px;
+                border-bottom: 1px solid var(--border); }
+  .modal-head .modal-title { flex: 1; font-size: 14px; font-weight: 600; color: var(--green);
+                              font-family: "Cascadia Code", Consolas, monospace; overflow: hidden;
+                              text-overflow: ellipsis; white-space: nowrap; }
+  .modal-head .modal-cat { font-size: 11px; color: var(--muted); }
+  .modal pre { margin: 0; padding: 16px; overflow: auto; font-size: 12.5px;
+               font-family: "Cascadia Code", Consolas, monospace; white-space: pre;
+               color: var(--text); line-height: 1.5; flex: 1; }
+  .modal-foot { padding: 8px 16px; border-top: 1px solid var(--border); font-size: 11px; color: var(--muted);
+                display: flex; align-items: center; gap: 12px; }
+  .chip-preview { cursor: zoom-in; }
+  .sel-list li .nm { cursor: zoom-in; }
+  .chip-preview:hover, .sel-list li .nm:hover { text-decoration: underline; }
+  .yamls-dir-label { background: transparent; border: 1px solid var(--border); color: var(--text);
+                     padding: 6px 12px; border-radius: 4px; cursor: pointer; font-size: 13px; }
+  .yamls-dir-label:hover { background: var(--panel2); }
+  .yamls-dir-label.loaded { border-color: var(--green); color: var(--green); }
+
+  /* View tabs */
+  .tabs { display: flex; gap: 4px; }
+  .tab { padding: 6px 14px; border-radius: 4px 4px 0 0; cursor: pointer; font-size: 13px;
+         background: transparent; border: 1px solid transparent; color: var(--muted); }
+  .tab:hover { background: var(--panel2); color: var(--text); }
+  .tab.active { background: var(--panel2); color: var(--text); border-color: var(--border); border-bottom-color: var(--panel2); }
+
+  /* File manager */
+  .fm-layout { display: flex; flex: 1; min-height: 0; overflow: hidden; }
+  .fm-tree { width: 340px; min-width: 260px; overflow-y: auto; border-right: 1px solid var(--border);
+             background: var(--panel); padding: 8px 0; }
+  .fm-editor { flex: 1; display: flex; flex-direction: column; min-width: 0; background: var(--bg); }
+  .fm-toolbar { display: flex; align-items: center; gap: 8px; padding: 8px 14px;
+                border-bottom: 1px solid var(--border); background: var(--panel); }
+  .fm-toolbar .fm-cur { flex: 1; font-size: 12.5px; color: var(--green); font-family: "Cascadia Code", Consolas, monospace;
+                        overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .fm-toolbar .dot { color: var(--yellow); font-size: 16px; line-height: 1; }
+  .fm-editor textarea { flex: 1; resize: none; border: none; outline: none; padding: 14px;
+                        background: var(--bg); color: var(--text); font-size: 13px; line-height: 1.5;
+                        font-family: "Cascadia Code", Consolas, monospace; tab-size: 2; }
+  .fm-editor .fm-placeholder { flex: 1; display: flex; align-items: center; justify-content: center;
+                               color: var(--muted); font-size: 14px; }
+  .fm-node { user-select: none; }
+  .fm-dir-row, .fm-file-row { display: flex; align-items: center; gap: 6px; padding: 3px 10px;
+                              cursor: pointer; font-size: 13px; }
+  .fm-dir-row:hover, .fm-file-row:hover { background: var(--panel2); }
+  .fm-file-row.active { background: var(--accent); }
+  .fm-file-row.active .fm-fname { color: #fff; }
+  .fm-dir-row .fm-arrow { font-size: 9px; width: 10px; transition: transform .15s; color: var(--muted); }
+  .fm-dir-row.open .fm-arrow { transform: rotate(90deg); }
+  .fm-dir-row .fm-dname { color: var(--yellow); font-weight: 600; }
+  .fm-dir-row .fm-add { margin-left: auto; opacity: 0; font-size: 12px; color: var(--muted);
+                        padding: 0 6px; border-radius: 3px; }
+  .fm-dir-row:hover .fm-add { opacity: 1; }
+  .fm-dir-row .fm-add:hover { background: var(--accent); color: #fff; }
+  .fm-file-row .fm-fname { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+                           color: var(--text); }
+  .fm-file-row .fm-unsaved { color: var(--yellow); font-size: 14px; }
+  .fm-children { margin-left: 14px; }
+  .fm-children.collapsed { display: none; }
+  .fm-empty { color: var(--muted); font-size: 13px; padding: 20px; text-align: center; line-height: 1.7; }
+  button.danger { background: #6d2a2a; }
+  button.danger:hover { background: #a13a3a; }
+  button:disabled { opacity: .4; cursor: default; }
+</style>
+</head>
+<body>
+<div class="page-wrap">
+<header>
+  <h1 data-i18n="title">FL YAML 组��生成器</h1>
+  <div class="tabs">
+    <div class="tab active" id="tab-gen" data-i18n="genTab">组合生成器</div>
+    <div class="tab" id="tab-fm" data-i18n="fmTab">YAML 管理</div>
+  </div>
+  <span style="color:var(--muted);font-size:12px" id="tpl-info"></span>
+  <div class="spacer"></div>
+  <button class="ghost" id="btn-lang" style="min-width:42px">EN</button>
+  <label class="file-label"><span data-i18n="loadTemplate">载入模板 YAML</span><input type="file" id="tpl-file" accept=".yaml,.yml" /></label>
+  <label class="yamls-dir-label" id="yamls-dir-label">
+    <span data-i18n="loadYamlsDir">载入 yamls 目录</span>
+    <input type="file" id="yamls-dir-input" webkitdirectory directory multiple style="display:none" />
+  </label>
+  <button class="ghost" id="btn-copy" data-i18n="copy">复制</button>
+  <button id="btn-download" data-i18n="download">下载 YAML</button>
+</header>
+
+<div class="path-panel">
+  <div class="path-toggle" id="path-toggle">
+    <span class="arrow">▶</span>
+    <span class="pt-title" data-i18n="pathConfig">路径配置</span>
+    <span class="pt-count" id="path-count"></span>
+  </div>
+  <div class="path-body" id="path-body">
+    <div class="path-grid" id="path-grid"></div>
+  </div>
+</div>
+
+<div id="gen-view" style="display:flex;flex-direction:column;flex:1;min-height:0">
+<div class="layout">
+  <div class="roles" id="roles"></div>
+  <div class="preview">
+    <div class="pv-head">
+      <strong data-i18n="preview">预览</strong>
+      <span style="color:var(--muted);font-size:12px" data-i18n="previewHint">(路径 + 注册表 + yaml_combination 完整输出)</span>
+    </div>
+    <div class="preview-guide" id="preview-guide"></div>
+    <pre id="preview"></pre>
+  </div>
+</div>
+</div>
+
+<div id="fm-view" class="fm-layout" style="display:none">
+  <div class="fm-tree" id="fm-tree">
+    <div class="fm-empty" id="fm-empty" data-i18n="fmEmpty">点击右上角「打开可编辑目录」选择 yamls 文件夹</div>
+  </div>
+  <div class="fm-editor">
+    <div class="fm-toolbar">
+      <button class="ghost" id="fm-open-dir" data-i18n="openWritableDir">打开可编辑目录</button>
+      <span class="fm-cur" id="fm-cur"></span>
+      <button id="fm-save" data-i18n="fmSave" disabled>保存</button>
+      <button class="ghost" id="fm-rename" data-i18n="fmRename" disabled>重命名</button>
+      <button class="danger" id="fm-delete" data-i18n="fmDelete" disabled>删除</button>
+    </div>
+    <div class="fm-placeholder" id="fm-placeholder" data-i18n="fmSelectFile">选择左侧文件以编辑</div>
+    <textarea id="fm-textarea" spellcheck="false" style="display:none"></textarea>
+  </div>
+</div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<!-- Mini-YAML preview modal -->
+<div class="modal-overlay" id="modal-overlay">
+  <div class="modal">
+    <div class="modal-head">
+      <span class="modal-title" id="modal-title"></span>
+      <span class="modal-cat" id="modal-cat"></span>
+      <button class="ghost mini" id="modal-close">✕</button>
+    </div>
+    <pre id="modal-content"></pre>
+    <div class="modal-foot" id="modal-foot"></div>
+  </div>
+</div>
+
+<!-- 默认模板：你当前的配置，原样嵌入，无需转义 -->
+<script type="text/plain" id="default-template">
+yaml_folder_aggreation_path: ../../yamls/aggregation/
+yaml_folder_client_selection_path: ../../yamls/client_selection/
+yaml_folder_dataset_loader_path: ../../yamls/dataset_loader/
+yaml_folder_data_distribution_path: ../../yamls/data_distribution/
+yaml_folder_loss_func_path: ../../yamls/loss_func/
+yaml_folder_lora_inference_path: ../../yamls/lora_inference/
+yaml_folder_nn_model_path: ../../yamls/nn_model/
+yaml_folder_fl_nodes_path: ../../yamls/fl_nodes/
+yaml_folder_optimizer_path: ../../yamls/optimizer/
+yaml_folder_client_strategy_path: ../../yamls/client_strategy/
+yaml_folder_server_strategy_path: ../../yamls/server_strategy/
+yaml_folder_runner_strategy_path: ../../yamls/runner_strategy/
+yaml_folder_trainer_path: ../../yamls/trainer/
+yaml_folder_training_logger_path: ../../yamls/training_logger/
+yaml_folder_training_path: ../../yamls/training/
+yaml_folder_general_path: ../../yamls/general/
+yaml_folder_rank_distribution_path: ../../yamls/rank_distribution/
+yaml_folder_role_path: ../../yamls/role/
+
+yaml_folder_role_files:
+- server.yaml: role_server
+- client.yaml: role_client
+
+yaml_folder_aggreation_files:
+- aggregation_fedavg.yaml: aggregation_fedavg
+- aggregation_close_optimal.yaml: aggregation_close_optimal
+- aggregation_flora.yaml: aggregation_flora
+- aggregation_fedsalora.yaml: aggregation_fedsalora
+- aggregation_ffalora.yaml: aggregation_ffalora
+- aggregation_rbla.yaml: aggregation_rbla
+- aggregation_rolora.yaml: aggregation_rolora
+
+yaml_folder_client_selection_files:
+- random.yaml: client_selection_random
+- all_participate.yaml: all_participate
+
+yaml_folder_dataset_loader_files:
+- cifar10.yaml: dataset_loader_cifar10
+
+yaml_folder_data_distribution_files:
+- cifar10_noniid_extreme_2.yaml: cifar10_noniid_extreme_2
+- cifar10_noniid_dirichlet_0_1_10.yaml: cifar10_noniid_dirichlet_0_1_10
+- cifar10_noniid_dirichlet_1_0_10.yaml: cifar10_noniid_dirichlet_1_0_10
+- cifar10_noniid_dirichlet_0_4_10.yaml: cifar10_noniid_dirichlet_0_4_10
+
+yaml_folder_loss_func_files:
+- cross_entropy.yaml: cross_entropy
+
+yaml_folder_nn_model_files:
+- nn_model_cifar10_lora_cnn.yaml: nn_model_cifar10_lora_cnn
+
+yaml_folder_lora_inference_files:
+- base_lora_inference.yaml: base_lora_inference_mode
+
+yaml_folder_fl_nodes_files:
+- 2_clients.yaml: fl_nodes_2_clients
+- default_10_clients.yaml: fl_nodes_10_clients
+
+yaml_folder_optimizer_files:
+- adamw_1e4.yaml: adamw_1e4
+- adamw_2e5.yaml: adamw_2e5
+- adamw_5e5.yaml: adamw_5e5
+- sgd.yaml: sgd
+- adamw_test.yaml: adamw_test
+
+yaml_folder_training_files:
+- training_epoch1.yaml: training_epoch1
+- training_epoch2.yaml: training_epoch2
+- training_epoch3.yaml: training_epoch3
+- training_epoch5.yaml: training_epoch5
+- training_epoch10.yaml: training_epoch10
+
+yaml_folder_client_strategy_files:
+- fedavg.yaml: fedavg_client_strategy
+- rbla.yaml: rbla_client_strategy
+- sp.yaml: sp_client_strategy
+
+
+yaml_folder_server_strategy_files:
+- fedavg.yaml: fedavg_server_strategy
+- rbla.yaml: rbla_server_strategy
+- sp.yaml: sp_server_strategy
+
+yaml_folder_runner_strategy_files:
+- fedavg.yaml: fedavg_runner_strategy
+- rbla.yaml: rbla_runner_strategy
+- sp.yaml: sp_runner_strategy
+
+yaml_folder_trainer_files:
+- pipeline_test_trainer.yaml: trainer_pipeline_test
+- standard_trainer.yaml: trainer_standard
+yaml_folder_training_logger_files:
+- standard_training_logger.yaml: training_logger
+yaml_folder_general_files:
+- general_round10.yaml: general_round10
+- general_round30.yaml: general_round30
+- general_round60.yaml: general_round60
+- general_round100.yaml: general_round100
+- general_round150.yaml: general_round150
+- general_round300.yaml: general_round300
+yaml_folder_rank_distribution_files:
+- rank001.yaml: rank_distribution_001_homogeneous
+- rank002.yaml: rank_distribution_002_homogeneous
+- rank003.yaml: rank_distribution_003_homogeneous
+- rank004.yaml: rank_distribution_004_homogeneous
+- rank005.yaml: rank_distribution_005_homogeneous
+- rank006.yaml: rank_distribution_006_homogeneous
+- rank007.yaml: rank_distribution_007_homogeneous
+- rank100.yaml: rank_distribution_100_homogeneous
+- het_rank.yaml: rank_distribution_het_rank
+yaml_combination:
+  runner:
+  - general_round100
+  - training_logger
+  - fl_nodes_10_clients
+  - rbla_runner_strategy
+
+  client_yaml:
+  - role_client
+  - training_logger
+  - dataset_loader_cifar10
+  - nn_model_cifar10_lora_cnn
+  - cross_entropy
+  - adamw_2e5
+  - training_epoch5
+  - cifar10_noniid_dirichlet_0_4_10
+  - rbla_client_strategy
+  - trainer_pipeline_test
+
+  edge_yaml: []
+
+  server_yaml:
+  - role_server
+  - general_round100
+  - training_logger
+  - dataset_loader_cifar10
+  - nn_model_cifar10_lora_cnn
+  - cross_entropy
+  - adamw_5e5
+  - training_epoch5
+  - cifar10_noniid_dirichlet_0_4_10
+  - trainer_standard
+  - client_selection_random
+  - rbla_server_strategy
+  - aggregation_rbla
+  - rank_distribution_100_homogeneous
+  - base_lora_inference_mode
+</script>
+
+<script type="text/plain" id="legacy-script">
+"use strict";
+
+// ==================== i18n ====================
+const I18N = {
+  zh: {
+    title: "FL YAML 组合生成器",
+    loadTemplate: "载入模板 YAML",
+    copy: "复制",
+    download: "下载 YAML",
+    pathConfig: "路径配置",
+    pathCount: n => `(${n} 条)`,
+    preview: "预览",
+    previewHint: "(路径 + 注册表 + yaml_combination 完整输出)",
+    selected: "已选（顺序=覆盖优先级）",
+    available: "可用组件",
+    emptyHint: "（空）从右侧点击添加",
+    addChip: role => `点击添加到 ${role}`,
+    templateLoaded: name => `已载入: ${name}`,
+    toastLoaded: "模板已载入",
+    toastCopied: "已复制到剪贴板",
+    toastCopyFail: "复制失败，请手动选择",
+    toastDownloaded: "已下载 fl_combination.yaml",
+    defaultTpl: "默认模板（你的当前配置）",
+    loadYamlsDir: "载入 yamls 目录",
+    yamlsDirLoaded: "yamls 已载入",
+    yamlsDirNone: "未载入 yamls",
+    modalFootFile: fname => `文件: ${fname}`,
+    modalFootNotFound: "（未找到文件内容，请先载入 yamls 目录）",
+    noContent: "（无法读取文件内容）",
+    previewChip: "右键/Ctrl+点击 预览",
+    genTab: "组合生成器",
+    fmTab: "YAML 管理",
+    fmEmpty: "点击右上角「打开可编辑目录」选择 yamls 文件夹",
+    openWritableDir: "打开可编辑目录",
+    fmSave: "保存",
+    fmRename: "重命名",
+    fmDelete: "删除",
+    fmSelectFile: "选择左侧文件以编辑",
+    fmNewFileTip: "在此文件夹新建 yaml",
+    fmDirOpened: n => `已打开目录（${n} 个 yaml）`,
+    fmNotSupported: "当前浏览器不支持可写目录（请用 Chrome/Edge）。已改用只读载入。",
+    fmSaved: "已保存",
+    fmDeleted: "已删除",
+    fmRenamed: "已重命名",
+    fmCreated: "已新建",
+    fmConfirmDelete: name => `确定删除 ${name} ？此操作会从磁盘移除文件。`,
+    fmPromptRename: "新文件名：",
+    fmPromptNewFile: "新 yaml 文件名（可省略 .yaml）：",
+    fmUnsavedConfirm: "当前文件有未保存修改，确定放弃？",
+    fmNameExists: "同名文件已存在",
+    fmWriteFail: "写入失败：",
+  },
+  en: {
+    title: "FL YAML Combination Generator",
+    loadTemplate: "Load Template YAML",
+    copy: "Copy",
+    download: "Download YAML",
+    pathConfig: "Path Configuration",
+    pathCount: n => `(${n} entries)`,
+    preview: "Preview",
+    previewHint: "(paths + registry + yaml_combination full output)",
+    selected: "Selected (order = override priority)",
+    available: "Available Components",
+    emptyHint: "(empty) click right to add",
+    addChip: role => `Click to add to ${role}`,
+    templateLoaded: name => `Loaded: ${name}`,
+    toastLoaded: "Template loaded",
+    toastCopied: "Copied to clipboard",
+    toastCopyFail: "Copy failed, please select manually",
+    toastDownloaded: "Downloaded fl_combination.yaml",
+    defaultTpl: "Default template (your current config)",
+    loadYamlsDir: "Load yamls dir",
+    yamlsDirLoaded: "yamls loaded",
+    yamlsDirNone: "No yamls loaded",
+    modalFootFile: fname => `File: ${fname}`,
+    modalFootNotFound: "(File content not found — load yamls directory first)",
+    noContent: "(Cannot read file content)",
+    previewChip: "Right-click / Ctrl+click to preview",
+    genTab: "Combination Generator",
+    fmTab: "YAML Manager",
+    fmEmpty: "Click 'Open editable dir' at top-right to pick the yamls folder",
+    openWritableDir: "Open editable dir",
+    fmSave: "Save",
+    fmRename: "Rename",
+    fmDelete: "Delete",
+    fmSelectFile: "Select a file on the left to edit",
+    fmNewFileTip: "New yaml in this folder",
+    fmDirOpened: n => `Directory opened (${n} yaml files)`,
+    fmNotSupported: "This browser doesn't support writable dirs (use Chrome/Edge). Falling back to read-only.",
+    fmSaved: "Saved",
+    fmDeleted: "Deleted",
+    fmRenamed: "Renamed",
+    fmCreated: "Created",
+    fmConfirmDelete: name => `Delete ${name}? This removes the file from disk.`,
+    fmPromptRename: "New file name:",
+    fmPromptNewFile: "New yaml file name (.yaml optional):",
+    fmUnsavedConfirm: "Current file has unsaved changes. Discard?",
+    fmNameExists: "A file with that name already exists",
+    fmWriteFail: "Write failed: ",
+  }
+};
+
+let lang = localStorage.getItem("fl-yaml-lang") || "zh";
+
+function t(key, ...args) {
+  const v = I18N[lang]?.[key] ?? I18N.zh[key] ?? key;
+  return typeof v === "function" ? v(...args) : v;
+}
+
+function switchLang() {
+  lang = lang === "zh" ? "en" : "zh";
+  localStorage.setItem("fl-yaml-lang", lang);
+  document.getElementById("btn-lang").textContent = lang === "zh" ? "EN" : "中文";
+  updateStaticText();
+  renderPaths();
+  render();
+  renderPreview();
+  // re-apply tpl-info
+  const info = document.getElementById("tpl-info");
+  if (info.dataset.name) {
+    info.textContent = t("templateLoaded", info.dataset.name);
+  } else {
+    info.textContent = t("defaultTpl");
+  }
+  // re-apply yamls-dir label
+  const dirLabel = document.getElementById("yamls-dir-label");
+  if (yamlsDirLoaded) {
+    const cnt = Object.keys(_yamlsFileCache).length;
+    dirLabel.querySelector("span").textContent = t("yamlsDirLoaded") + ` (${cnt})`;
+  } else {
+    dirLabel.querySelector("span").textContent = t("loadYamlsDir");
+  }
+  // re-render file-manager tree (updates empty-state text)
+  if (typeof renderFmTree === "function") renderFmTree();
+}
+
+function updateStaticText() {
+  document.querySelectorAll("[data-i18n]").forEach(el => {
+    const key = el.getAttribute("data-i18n");
+    el.textContent = t(key);
+  });
+  document.title = t("title");
+}
+
+// ==================== Constants ====================
+const ROLE_KEYS = ["runner", "client_yaml", "edge_yaml", "server_yaml"];
+const ROLE_LABELS = {
+  runner: "runner", client_yaml: "client_yaml",
+  edge_yaml: "edge_yaml", server_yaml: "server_yaml",
+};
+
+// Parsed state
+let headerText = "";
+let pathEntries = [];
+let categories = [];
+let nameToCat = {};
+let selections = { runner: [], client_yaml: [], edge_yaml: [], server_yaml: [] };
+
+// Mini-YAML preview: logical_name → { filename, cat, content }
+let miniYamlMap = {};
+let yamlsDirLoaded = false;
+
+function parseTemplate(text) {
+  const lines = text.split(/\r?\n/);
+  const cats = [];
+  const n2c = {};
+  const nameToFile = {};           // logical name → physical yaml filename
+  const sel = { runner: [], client_yaml: [], edge_yaml: [], server_yaml: [] };
+  const paths = [];                  // ordered yaml_folder_*_path entries
+
+  let curCat = null;         // current *_files category
+  let inCombination = false;
+  let curRole = null;
+  let combStartIdx = -1;
+
+  const fileHeaderRe = /^yaml_folder_(.+?)_files:\s*(?:\[\])?\s*$/;
+  const pathRe = /^(yaml_folder_.+?_path):\s*(.+?)\s*$/;
+  const itemRe = /^-\s*(.+?):\s*(.+?)\s*$/;         // "- file.yaml: logical"
+  const combRe = /^yaml_combination:\s*$/;
+  const roleRe = /^\s{2}(\w+):\s*(\[\])?\s*$/;      // 2-space indented role key
+  const roleItemRe = /^\s{2,}-\s*(.+?)\s*$/;
+
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i];
+
+    if (!inCombination && combRe.test(line)) {
+      inCombination = true;
+      combStartIdx = i;
+      curCat = null;
+      continue;
+    }
+
+    if (!inCombination) {
+      // Collect path lines
+      const pm = line.match(pathRe);
+      if (pm) {
+        paths.push({ key: pm[1], value: pm[2] });
+        curCat = null;
+        continue;
+      }
+      const fh = line.match(fileHeaderRe);
+      if (fh) {
+        curCat = { cat: fh[1], names: [] };
+        cats.push(curCat);
+        continue;
+      }
+      // path lines or blank lines reset the current files block only on non-item lines
+      if (curCat && itemRe.test(line)) {
+        const m = line.match(itemRe);
+        const logical = m[2].trim();
+        const filename = m[1].trim();
+        curCat.names.push(logical);
+        n2c[logical] = curCat.cat;
+        nameToFile[logical] = filename;
+      } else if (!/^-\s/.test(line)) {
+        // a non-list line ends the current files block
+        if (!/^\s*$/.test(line)) curCat = null;
+      }
+      continue;
+    }
+
+    // inside yaml_combination
+    const rm = line.match(roleRe);
+    if (rm && ROLE_KEYS.includes(rm[1])) {
+      curRole = rm[1];
+      if (!sel[curRole]) sel[curRole] = [];
+      continue;
+    }
+    const ri = line.match(roleItemRe);
+    if (ri && curRole) {
+      sel[curRole].push(ri[1].trim());
+    }
+  }
+
+  // headerText = everything before yaml_combination: with path lines stripped
+  // (paths are now stored separately and rendered from pathEntries)
+  let header;
+  if (combStartIdx >= 0) {
+    header = lines.slice(0, combStartIdx)
+      .filter(l => !pathRe.test(l))
+      .join("\n").replace(/\s+$/, "") + "\n";
+  } else {
+    header = lines.filter(l => !pathRe.test(l))
+      .join("\n").replace(/\s+$/, "") + "\n";
+  }
+
+  return { header, cats, n2c, sel, paths, nameToFile };
+}
+
+function loadTemplate(text) {
+  const parsed = parseTemplate(text);
+  headerText = parsed.header;
+  pathEntries = parsed.paths;
+  categories = parsed.cats;
+  nameToCat = parsed.n2c;
+  selections = parsed.sel;
+  _nameToFile = parsed.nameToFile;
+  for (const k of ROLE_KEYS) if (!selections[k]) selections[k] = [];
+  // A template reload replaces all parsed categories.  Re-apply files from an
+  // already opened yamls directory so dynamically discovered YAMLs do not
+  // disappear when the user loads the directory before loading the template.
+  if (Object.keys(_yamlsFileCache).length > 0) syncCategoriesFromDisk();
+  // Debug: dump parsed state
+  console.debug("[loadTemplate] Parsed state:",
+    "\n  paths:", pathEntries.length,
+    "\n  categories:", categories.map(c => `${c.cat}(${c.names.length})`).join(", "),
+    "\n  selections:", Object.fromEntries(ROLE_KEYS.map(r => [r, (selections[r]||[]).length])),
+    "\n  selections detail:", JSON.stringify(selections, null, 2));
+  rebuildMiniYamlMap();
+  renderPaths();
+  render();
+  renderPreview();
+}
+
+function catOf(name) { return nameToCat[name] || "?"; }
+
+// ---------- Sync categories from disk ----------
+// After loading the yamls directory, scan for files not registered in the template
+// and add them to the appropriate category automatically.
+function syncCategoriesFromDisk() {
+  if (Object.keys(_yamlsFileCache).length === 0) return;
+
+  // Remove entries produced by the previous scan so deleted or renamed files
+  // disappear when the directory is opened again.
+  if (_diskDiscoveredNames.size > 0) {
+    for (const category of categories) {
+      category.names = category.names.filter(name => !_diskDiscoveredNames.has(name));
+    }
+    for (const name of _diskDiscoveredNames) {
+      delete nameToCat[name];
+      delete _nameToFile[name];
+    }
+    _diskDiscoveredNames.clear();
+  }
+
+  // Build directory → category mapping from pathEntries
+  // e.g. "yaml_folder_aggreation_path" + "../../yamls/aggregation/" → "aggregation" → "aggreation"
+  const dirToCat = {};
+  for (const p of pathEntries) {
+    const catMatch = p.key.match(/^yaml_folder_(.+?)_path$/);
+    if (!catMatch) continue;
+    const cleanPath = p.value.replace(/[\/\\]+$/, "");
+    const dirMatch = cleanPath.match(/([^\/\\]+)$/);
+    if (dirMatch) {
+      dirToCat[dirMatch[1]] = catMatch[1];
+    }
+  }
+
+  const knownLogicals = new Set(Object.keys(nameToCat));
+  const knownFilesByCategory = new Set(
+    Object.entries(_nameToFile).map(([logical, filename]) => `${nameToCat[logical]}\n${filename}`)
+  );
+  let addedCount = 0;
+
+  // Scan cache keys that include a directory path (e.g. "rank_distribution/rank001.yaml")
+  for (const key of Object.keys(_yamlsFileCache)) {
+    if (!key.includes("/")) continue;
+    const slashIdx = key.lastIndexOf("/");
+    const dir = key.substring(0, slashIdx);
+    const filename = key.substring(slashIdx + 1);
+    if (!/\.(yaml|yml)$/i.test(filename)) continue;
+
+    const cat = dirToCat[dir];
+    if (!cat) continue;
+    // Registered files can have aliases that are not derivable from filenames.
+    if (knownFilesByCategory.has(`${cat}\n${filename}`)) continue;
+
+    // Generate logical name: category_basename
+    const basename = filename.replace(/\.(yaml|yml)$/i, "");
+    const logical = cat + "_" + basename;
+
+    if (knownLogicals.has(logical)) continue; // already registered
+
+    // Add to category (create category if it doesn't exist yet)
+    let category = categories.find(c => c.cat === cat);
+    if (!category) {
+      category = { cat: cat, names: [] };
+      categories.push(category);
+    }
+    category.names.push(logical);
+    nameToCat[logical] = cat;
+    _nameToFile[logical] = filename;
+    _diskDiscoveredNames.add(logical);
+    knownLogicals.add(logical);
+    addedCount++;
+  }
+
+  if (addedCount > 0) {
+    console.debug(`[syncFromDisk] Added ${addedCount} new file(s) from disk:`,
+      categories.map(c => `${c.cat}(${c.names.length})`).join(", "));
+    rebuildMiniYamlMap();
+    render();
+    renderPreview();
+  }
+}
+
+// ---------- Mini-YAML file mapping ----------
+let _nameToFile = {};   // logical name → physical yaml filename (from registry)
+let _diskDiscoveredNames = new Set();
+
+// Stored file contents from loaded directory: relative path → text
+let _yamlsFileCache = {};
+
+function catToPathKey(cat) {
+  // Map category (from _files header) back to the path key
+  // e.g. "aggreation" → "yaml_folder_aggreation_path"
+  return "yaml_folder_" + cat + "_path";
+}
+
+function getCatPath(cat) {
+  // Find the path value for a category, e.g. "../../yamls/aggregation/"
+  const key = catToPathKey(cat);
+  for (const p of pathEntries) {
+    if (p.key === key) return p.value;
+  }
+  return null;
+}
+
+function rebuildMiniYamlMap() {
+  // Rebuild miniYamlMap from categories + nameToFile + pathEntries
+  miniYamlMap = {};
+  for (const c of categories) {
+    let catPath = getCatPath(c.cat);
+    // Ensure trailing slash so path + filename is well-formed
+    if (catPath && !catPath.endsWith("/") && !catPath.endsWith("\\")) {
+      catPath += "/";
+    }
+    for (const logical of c.names) {
+      const filename = _nameToFile[logical] || (logical + ".yaml");
+      const relPath = catPath ? catPath + filename : filename;
+      // Normalize: strip leading ../ or ./ , use forward slashes
+      let normalized = relPath.replace(/\\/g, "/");
+      // Strip leading relative path prefixes like ../../ or ./
+      normalized = normalized.replace(/^(\.\.?\/)+/, "");
+      // Also try the subpath after "yamls/" if present
+      const yamlsIdx = normalized.indexOf("yamls/");
+      const subPath = yamlsIdx >= 0 ? normalized.substring(yamlsIdx + 6) : null;
+
+      // Try multiple cache keys: full normalized path, subpath after yamls/, bare filename
+      let content = _yamlsFileCache[normalized] || null;
+      if (!content && subPath) content = _yamlsFileCache[subPath] || null;
+      if (!content) content = _yamlsFileCache[filename] || null;
+
+      // Debug: log cache keys and match status
+      if (!content) {
+        console.debug(`[miniYaml] MISS: logical="${logical}" file="${filename}" cat="${c.cat}" normalized="${normalized}" subPath="${subPath || 'N/A'}"`);
+      }
+
+      miniYamlMap[logical] = {
+        filename: filename,
+        cat: c.cat,
+        relPath: normalized,
+        content: content,
+      };
+    }
+  }
+  // Debug summary
+  const total = Object.keys(miniYamlMap).length;
+  const found = Object.values(miniYamlMap).filter(v => v.content).length;
+  console.debug(`[miniYaml] Rebuilt: ${found}/${total} files matched (${total - found} missing)`);
+}
+
+// Load yamls directory from user-selected folder
+document.getElementById("yamls-dir-input").addEventListener("change", async (e) => {
+  const files = Array.from(e.target.files).filter(f => f.name.endsWith(".yaml") || f.name.endsWith(".yml"));
+  _yamlsFileCache = {};
+  const readPromises = files.map(f => {
+    return f.text().then(text => {
+      // Store by filename and by relative path
+      _yamlsFileCache[f.name] = text;
+      // Also store by relative path (e.g. "rank_distribution/rank001.yaml")
+      if (f.webkitRelativePath) {
+        let rel = f.webkitRelativePath.replace(/\\/g, "/");
+        // Strip path up to and including the innermost "yamls/" prefix
+        const yIdx = rel.lastIndexOf("yamls/");
+        if (yIdx >= 0) {
+          rel = rel.substring(yIdx + 6);  // e.g. "rank_distribution/rank001.yaml"
+        }
+        // rel is now the path relative to the yamls/ directory
+        _yamlsFileCache[rel] = text;
+      }
+    });
+  });
+  await Promise.all(readPromises);
+  yamlsDirLoaded = true;
+  console.debug("[yamls-dir] Cache keys:", Object.keys(_yamlsFileCache));
+  syncCategoriesFromDisk();
+  rebuildMiniYamlMap();
+  render();
+  const label = document.getElementById("yamls-dir-label");
+  label.classList.add("loaded");
+  label.querySelector("span").textContent = t("yamlsDirLoaded") + ` (${files.length})`;
+  toast(t("yamlsDirLoaded") + ` (${files.length})`);
+  // Allow selecting the same directory again after files on disk change.
+  // Without clearing the input, browsers may not emit another change event.
+  e.target.value = "";
+});
+
+// ---------- Modal ----------
+function openMiniYaml(logicalName) {
+  const info = miniYamlMap[logicalName];
+  const overlay = document.getElementById("modal-overlay");
+  const title = document.getElementById("modal-title");
+  const cat = document.getElementById("modal-cat");
+  const content = document.getElementById("modal-content");
+  const foot = document.getElementById("modal-foot");
+
+  title.textContent = logicalName;
+  cat.textContent = info ? info.cat : catOf(logicalName);
+
+  if (info && info.content) {
+    content.textContent = info.content;
+    foot.textContent = t("modalFootFile", info.filename);
+  } else {
+    content.textContent = info
+      ? t("modalFootNotFound")
+      : t("noContent");
+    foot.textContent = info
+      ? t("modalFootFile", info.filename) + " — " + t("modalFootNotFound")
+      : "";
+  }
+  overlay.classList.add("open");
+}
+
+function closeMiniYaml() {
+  document.getElementById("modal-overlay").classList.remove("open");
+}
+
+document.getElementById("modal-close").addEventListener("click", closeMiniYaml);
+document.getElementById("modal-overlay").addEventListener("click", (e) => {
+  if (e.target === e.currentTarget) closeMiniYaml();
+});
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") closeMiniYaml();
+});
+
+// ==================== View switching ====================
+let currentView = "gen";  // "gen" | "fm"
+
+function switchView(view) {
+  currentView = view;
+  document.getElementById("gen-view").style.display = view === "gen" ? "flex" : "none";
+  document.getElementById("fm-view").style.display = view === "fm" ? "flex" : "none";
+  // path panel only relevant for generator
+  document.querySelector(".path-panel").style.display = view === "gen" ? "" : "none";
+  document.getElementById("tab-gen").classList.toggle("active", view === "gen");
+  document.getElementById("tab-fm").classList.toggle("active", view === "fm");
+}
+
+document.getElementById("tab-gen").addEventListener("click", () => switchView("gen"));
+document.getElementById("tab-fm").addEventListener("click", () => switchView("fm"));
+
+// ==================== File Manager (File System Access API) ====================
+let fmRootHandle = null;          // FileSystemDirectoryHandle
+let fmTree = null;                // tree of { name, kind, handle, parentHandle, children }
+let fmCurrent = null;             // { node, handle, parentHandle }
+let fmDirty = false;
+const fmExpanded = new Set();     // set of dir paths that are expanded
+
+const FS_SUPPORTED = typeof window.showDirectoryPicker === "function";
+
+async function fmOpenDir() {
+  if (!FS_SUPPORTED) {
+    toast(t("fmNotSupported"));
+    // Fall back to read-only directory input
+    document.getElementById("yamls-dir-input").click();
+    return;
+  }
+  try {
+    fmRootHandle = await window.showDirectoryPicker({ mode: "readwrite" });
+  } catch (err) {
+    if (err && err.name === "AbortError") return; // user cancelled
+    // Likely blocked on file:// origin — fall back to read-only
+    toast(t("fmNotSupported"));
+    document.getElementById("yamls-dir-input").click();
+    return;
+  }
+  // Ensure write permission
+  if (fmRootHandle.requestPermission) {
+    const perm = await fmRootHandle.requestPermission({ mode: "readwrite" });
+    if (perm !== "granted") { toast(t("fmNotSupported")); }
+  }
+  fmTree = await fmReadDir(fmRootHandle, fmRootHandle.name, null);
+  fmExpanded.add(fmTree.path);
+  const count = fmCountYaml(fmTree);
+  // sync into preview cache so combination previews also reflect disk
+  _yamlsFileCache = {};
+  await fmSyncCacheFromTree(fmTree);
+  syncCategoriesFromDisk();
+  rebuildMiniYamlMap();
+  renderFmTree();
+  toast(t("fmDirOpened", count));
+}
+
+async function fmReadDir(dirHandle, name, parentHandle, pathPrefix = "") {
+  const path = pathPrefix ? pathPrefix + "/" + name : name;
+  const node = { name, kind: "dir", handle: dirHandle, parentHandle, path, children: [] };
+  const entries = [];
+  for await (const entry of dirHandle.values()) entries.push(entry);
+  // sort: dirs first, then files, alphabetical
+  entries.sort((a, b) => {
+    if (a.kind !== b.kind) return a.kind === "directory" ? -1 : 1;
+    return a.name.localeCompare(b.name);
+  });
+  for (const entry of entries) {
+    if (entry.kind === "directory") {
+      node.children.push(await fmReadDir(entry, entry.name, dirHandle, path));
+    } else if (entry.name.endsWith(".yaml") || entry.name.endsWith(".yml")) {
+      node.children.push({
+        name: entry.name, kind: "file", handle: entry,
+        parentHandle: dirHandle, path: path + "/" + entry.name, children: null,
+      });
+    }
+  }
+  return node;
+}
+
+function fmCountYaml(node) {
+  if (node.kind === "file") return 1;
+  return node.children.reduce((s, c) => s + fmCountYaml(c), 0);
+}
+
+async function fmSyncCacheFromTree(node) {
+  if (node.kind === "file") {
+    try {
+      const f = await node.handle.getFile();
+      const text = await f.text();
+      _yamlsFileCache[node.name] = text;
+      // also store by "<folder>/<file>" for relPath matching
+      const parts = node.path.split("/");
+      if (parts.length >= 2) {
+        _yamlsFileCache[parts.slice(-2).join("/")] = text;
+      }
+    } catch {}
+    return;
+  }
+  for (const c of node.children) await fmSyncCacheFromTree(c);
+}
+
+function renderFmTree() {
+  const root = document.getElementById("fm-tree");
+  root.innerHTML = "";
+  if (!fmTree) {
+    const empty = document.createElement("div");
+    empty.className = "fm-empty";
+    empty.textContent = t("fmEmpty");
+    root.appendChild(empty);
+    return;
+  }
+  root.appendChild(fmRenderNode(fmTree));
+}
+
+function fmRenderNode(node) {
+  const wrap = document.createElement("div");
+  wrap.className = "fm-node";
+
+  if (node.kind === "dir") {
+    const row = document.createElement("div");
+    const isOpen = fmExpanded.has(node.path);
+    row.className = "fm-dir-row" + (isOpen ? " open" : "");
+    const arrow = document.createElement("span");
+    arrow.className = "fm-arrow";
+    arrow.textContent = "▶";
+    const dname = document.createElement("span");
+    dname.className = "fm-dname";
+    dname.textContent = node.name;
+    const add = document.createElement("span");
+    add.className = "fm-add";
+    add.textContent = "＋";
+    add.title = t("fmNewFileTip");
+    add.onclick = (e) => { e.stopPropagation(); fmNewFile(node); };
+    row.appendChild(arrow);
+    row.appendChild(dname);
+    row.appendChild(add);
+    row.onclick = () => {
+      if (fmExpanded.has(node.path)) fmExpanded.delete(node.path);
+      else fmExpanded.add(node.path);
+      renderFmTree();
+    };
+    wrap.appendChild(row);
+
+    const childrenBox = document.createElement("div");
+    childrenBox.className = "fm-children" + (isOpen ? "" : " collapsed");
+    for (const c of node.children) childrenBox.appendChild(fmRenderNode(c));
+    wrap.appendChild(childrenBox);
+  } else {
+    const row = document.createElement("div");
+    const active = fmCurrent && fmCurrent.node === node;
+    row.className = "fm-file-row" + (active ? " active" : "");
+    const fname = document.createElement("span");
+    fname.className = "fm-fname";
+    fname.textContent = node.name;
+    row.appendChild(fname);
+    if (active && fmDirty) {
+      const dot = document.createElement("span");
+      dot.className = "fm-unsaved";
+      dot.textContent = "●";
+      row.appendChild(dot);
+    }
+    row.onclick = () => fmOpenFile(node);
+    wrap.appendChild(row);
+  }
+  return wrap;
+}
+
+async function fmOpenFile(node) {
+  if (fmDirty && !confirm(t("fmUnsavedConfirm"))) return;
+  let text = "";
+  try {
+    const f = await node.handle.getFile();
+    text = await f.text();
+  } catch (e) { text = ""; }
+  fmCurrent = node;
+  fmDirty = false;
+  const ta = document.getElementById("fm-textarea");
+  ta.value = text;
+  ta.style.display = "";
+  document.getElementById("fm-placeholder").style.display = "none";
+  document.getElementById("fm-cur").textContent = node.path;
+  fmUpdateToolbar();
+  renderFmTree();
+}
+
+function fmUpdateToolbar() {
+  const has = !!fmCurrent;
+  document.getElementById("fm-save").disabled = !has || !fmDirty;
+  document.getElementById("fm-rename").disabled = !has;
+  document.getElementById("fm-delete").disabled = !has;
+}
+
+document.getElementById("fm-textarea").addEventListener("input", () => {
+  fmDirty = true;
+  fmUpdateToolbar();
+  renderFmTree();
+});
+
+async function fmSave() {
+  if (!fmCurrent) return;
+  const text = document.getElementById("fm-textarea").value;
+  try {
+    const writable = await fmCurrent.handle.createWritable();
+    await writable.write(text);
+    await writable.close();
+    fmDirty = false;
+    _yamlsFileCache[fmCurrent.name] = text;
+    const parts = fmCurrent.path.split("/");
+    if (parts.length >= 2) _yamlsFileCache[parts.slice(-2).join("/")] = text;
+    rebuildMiniYamlMap();
+    fmUpdateToolbar();
+    renderFmTree();
+    toast(t("fmSaved"));
+  } catch (e) {
+    toast(t("fmWriteFail") + e.message);
+  }
+}
+
+async function fmDelete() {
+  if (!fmCurrent) return;
+  const node = fmCurrent;
+  if (!confirm(t("fmConfirmDelete", node.name))) return;
+  try {
+    await node.parentHandle.removeEntry(node.name);
+    // remove from tree
+    fmRemoveNodeFromTree(node);
+    delete _yamlsFileCache[node.name];
+    fmCurrent = null;
+    fmDirty = false;
+    document.getElementById("fm-textarea").style.display = "none";
+    document.getElementById("fm-textarea").value = "";
+    document.getElementById("fm-placeholder").style.display = "flex";
+    document.getElementById("fm-cur").textContent = "";
+    rebuildMiniYamlMap();
+    fmUpdateToolbar();
+    renderFmTree();
+    toast(t("fmDeleted"));
+  } catch (e) {
+    toast(t("fmWriteFail") + e.message);
+  }
+}
+
+async function fmRename() {
+  if (!fmCurrent) return;
+  const node = fmCurrent;
+  let newName = prompt(t("fmPromptRename"), node.name);
+  if (!newName) return;
+  newName = newName.trim();
+  if (!/\.(ya?ml)$/i.test(newName)) newName += ".yaml";
+  if (newName === node.name) return;
+  // check existence
+  const parentNode = fmFindParent(node);
+  if (parentNode && parentNode.children.some(c => c.name === newName)) {
+    toast(t("fmNameExists")); return;
+  }
+  try {
+    const text = document.getElementById("fm-textarea").value;
+    // create new, write, delete old
+    const newHandle = await node.parentHandle.getFileHandle(newName, { create: true });
+    const w = await newHandle.createWritable();
+    await w.write(text);
+    await w.close();
+    await node.parentHandle.removeEntry(node.name);
+    // update tree node in place
+    delete _yamlsFileCache[node.name];
+    const oldPath = node.path;
+    node.name = newName;
+    node.handle = newHandle;
+    node.path = oldPath.substring(0, oldPath.lastIndexOf("/") + 1) + newName;
+    _yamlsFileCache[newName] = text;
+    // re-sort siblings
+    if (parentNode) fmSortChildren(parentNode);
+    document.getElementById("fm-cur").textContent = node.path;
+    rebuildMiniYamlMap();
+    renderFmTree();
+    toast(t("fmRenamed"));
+  } catch (e) {
+    toast(t("fmWriteFail") + e.message);
+  }
+}
+
+async function fmNewFile(dirNode) {
+  let name = prompt(t("fmPromptNewFile"), "new_config.yaml");
+  if (!name) return;
+  name = name.trim();
+  if (!/\.(ya?ml)$/i.test(name)) name += ".yaml";
+  if (dirNode.children.some(c => c.name === name)) { toast(t("fmNameExists")); return; }
+  try {
+    const handle = await dirNode.handle.getFileHandle(name, { create: true });
+    const w = await handle.createWritable();
+    await w.write("");
+    await w.close();
+    const fileNode = {
+      name, kind: "file", handle, parentHandle: dirNode.handle,
+      path: dirNode.path + "/" + name, children: null,
+    };
+    dirNode.children.push(fileNode);
+    fmSortChildren(dirNode);
+    fmExpanded.add(dirNode.path);
+    _yamlsFileCache[name] = "";
+    rebuildMiniYamlMap();
+    renderFmTree();
+    fmOpenFile(fileNode);
+    toast(t("fmCreated"));
+  } catch (e) {
+    toast(t("fmWriteFail") + e.message);
+  }
+}
+
+function fmSortChildren(dirNode) {
+  dirNode.children.sort((a, b) => {
+    if (a.kind !== b.kind) return a.kind === "dir" ? -1 : 1;
+    return a.name.localeCompare(b.name);
+  });
+}
+
+function fmFindParent(node, cur = fmTree) {
+  if (!cur || cur.kind !== "dir") return null;
+  if (cur.children.includes(node)) return cur;
+  for (const c of cur.children) {
+    if (c.kind === "dir") {
+      const found = fmFindParent(node, c);
+      if (found) return found;
+    }
+  }
+  return null;
+}
+
+function fmRemoveNodeFromTree(node) {
+  const parent = fmFindParent(node);
+  if (parent) parent.children = parent.children.filter(c => c !== node);
+}
+
+document.getElementById("fm-open-dir").addEventListener("click", fmOpenDir);
+document.getElementById("fm-save").addEventListener("click", fmSave);
+document.getElementById("fm-delete").addEventListener("click", fmDelete);
+document.getElementById("fm-rename").addEventListener("click", fmRename);
+document.addEventListener("keydown", (e) => {
+  if ((e.ctrlKey || e.metaKey) && e.key === "s" && currentView === "fm") {
+    e.preventDefault();
+    if (fmCurrent && fmDirty) fmSave();
+  }
+});
+
+// ---------- Path editor ----------
+function renderPaths() {
+  const grid = document.getElementById("path-grid");
+  grid.innerHTML = "";
+  document.getElementById("path-count").textContent = t("pathCount", pathEntries.length);
+  pathEntries.forEach((entry, idx) => {
+    const row = document.createElement("div");
+    row.className = "path-row";
+    const label = document.createElement("label");
+    label.textContent = entry.key;
+    label.title = entry.key;
+    const input = document.createElement("input");
+    input.type = "text";
+    input.value = entry.value;
+    input.dataset.idx = idx;
+    input.addEventListener("input", (e) => {
+      pathEntries[parseInt(e.target.dataset.idx)].value = e.target.value;
+      renderPreview();
+    });
+    row.appendChild(label);
+    row.appendChild(input);
+    grid.appendChild(row);
+  });
+}
+
+// Path toggle
+document.getElementById("path-toggle").addEventListener("click", () => {
+  const toggle = document.getElementById("path-toggle");
+  const body = document.getElementById("path-body");
+  toggle.classList.toggle("open");
+  body.classList.toggle("open");
+});
+
+// ---------- Role cards ----------
+
+function render() {
+  const root = document.getElementById("roles");
+  root.innerHTML = "";
+  for (const role of ROLE_KEYS) {
+    root.appendChild(buildRoleCard(role));
+  }
+}
+
+function buildRoleCard(role) {
+  const card = document.createElement("div");
+  card.className = "role-card";
+
+  const h = document.createElement("h2");
+  h.innerHTML = `<span>${ROLE_LABELS[role]}</span>` +
+                `<span class="cnt">(${selections[role].length})</span>`;
+  card.appendChild(h);
+
+  const body = document.createElement("div");
+  body.className = "role-body";
+
+  // Selected column (ordered)
+  const selCol = document.createElement("div");
+  selCol.className = "selected";
+  selCol.innerHTML = `<div class="col-title">${t("selected")}</div>`;
+  const ul = document.createElement("ul");
+  ul.className = "sel-list";
+  if (selections[role].length === 0) {
+    const hint = document.createElement("div");
+    hint.className = "empty-hint";
+    hint.textContent = t("emptyHint");
+    selCol.appendChild(hint);
+  } else {
+    selections[role].forEach((name, idx) => {
+      const li = document.createElement("li");
+      const nm = document.createElement("span");
+      nm.className = "nm";
+      nm.textContent = name;
+      nm.title = t("previewChip");
+      nm.onclick = () => openMiniYaml(name);
+      const badge = document.createElement("span");
+      badge.className = "catbadge";
+      badge.textContent = catOf(name);
+      li.appendChild(nm);
+      li.appendChild(badge);
+      li.appendChild(mkBtn("↑", () => move(role, idx, -1)));
+      li.appendChild(mkBtn("↓", () => move(role, idx, 1)));
+      li.appendChild(mkBtn("×", () => removeAt(role, idx)));
+      ul.appendChild(li);
+    });
+    selCol.appendChild(ul);
+  }
+
+  // Available column (grouped by category)
+  const availCol = document.createElement("div");
+  availCol.className = "available";
+  availCol.innerHTML = `<div class="col-title">${t("available")}</div>`;
+  const groups = document.createElement("div");
+  groups.className = "avail-groups";
+  for (const c of categories) {
+    if (c.names.length === 0) continue;
+    const g = document.createElement("div");
+    g.className = "avail-cat";
+    const cn = document.createElement("div");
+    cn.className = "cat-name";
+    cn.textContent = c.cat;
+    g.appendChild(cn);
+    for (const name of c.names) {
+      const chip = document.createElement("span");
+      chip.className = "chip chip-preview" + (selections[role].includes(name) ? " used" : "");
+      chip.textContent = name;
+      chip.title = t("addChip", role) + " / " + t("previewChip");
+      chip.onclick = (e) => {
+        if (e.ctrlKey || e.metaKey) { openMiniYaml(name); }
+        else { addName(role, name); }
+      };
+      chip.oncontextmenu = (e) => { e.preventDefault(); openMiniYaml(name); };
+      g.appendChild(chip);
+    }
+    groups.appendChild(g);
+  }
+  availCol.appendChild(groups);
+
+  body.appendChild(selCol);
+  body.appendChild(availCol);
+  card.appendChild(body);
+  return card;
+}
+
+function mkBtn(label, fn) {
+  const b = document.createElement("button");
+  b.className = "mini ghost";
+  b.textContent = label;
+  b.onclick = fn;
+  return b;
+}
+
+function addName(role, name) {
+  if (selections[role].includes(name)) return;
+  selections[role].push(name);
+  render(); renderPreview();
+}
+function removeAt(role, idx) {
+  selections[role].splice(idx, 1);
+  render(); renderPreview();
+}
+function move(role, idx, dir) {
+  const j = idx + dir;
+  const arr = selections[role];
+  if (j < 0 || j >= arr.length) return;
+  [arr[idx], arr[j]] = [arr[j], arr[idx]];
+  render(); renderPreview();
+}
+
+function buildCombination() {
+  let out = "yaml_combination:\n";
+  const order = ["runner", "client_yaml", "edge_yaml", "server_yaml"];
+  order.forEach((role, i) => {
+    const arr = selections[role] || [];
+    if (arr.length === 0) {
+      out += `  ${role}: []\n`;
+    } else {
+      out += `  ${role}:\n`;
+      for (const name of arr) out += `  - ${name}\n`;
+    }
+    if (i < order.length - 1) out += "\n";
+  });
+  return out;
+}
+
+function buildRegistryHeader() {
+  // Rebuild every yaml_folder_*_files block from the same category state used
+  // by the Available Components UI. This keeps generated YAML registrations in
+  // sync with files discovered from disk instead of copying the stale template.
+  const lines = headerText.split(/\r?\n/);
+  const fileHeaderRe = /^yaml_folder_(.+?)_files:\s*(?:\[\])?\s*$/;
+  const itemRe = /^-\s*(.+?):\s*(.+?)\s*$/;
+  const emitted = new Set();
+  const out = [];
+
+  for (let i = 0; i < lines.length; i++) {
+    const match = lines[i].match(fileHeaderRe);
+    if (!match) {
+      out.push(lines[i]);
+      continue;
+    }
+
+    const cat = match[1];
+    const category = categories.find(c => c.cat === cat);
+    const names = category ? category.names : [];
+    emitted.add(cat);
+    if (names.length === 0) {
+      out.push(`yaml_folder_${cat}_files: []`);
+    } else {
+      out.push(`yaml_folder_${cat}_files:`);
+      for (const logical of names) {
+        out.push(`- ${_nameToFile[logical] || logical + ".yaml"}: ${logical}`);
+      }
+    }
+
+    // Discard the old registry items; they were replaced from current state.
+    while (i + 1 < lines.length && itemRe.test(lines[i + 1])) i++;
+  }
+
+  // A directory may correspond to a path that had no *_files block at all.
+  // Append those newly discovered categories so the generated YAML is valid.
+  for (const category of categories) {
+    if (emitted.has(category.cat)) continue;
+    if (out.length > 0 && out[out.length - 1] !== "") out.push("");
+    if (category.names.length === 0) {
+      out.push(`yaml_folder_${category.cat}_files: []`);
+    } else {
+      out.push(`yaml_folder_${category.cat}_files:`);
+      for (const logical of category.names) {
+        out.push(`- ${_nameToFile[logical] || logical + ".yaml"}: ${logical}`);
+      }
+    }
+  }
+
+  return out.join("\n").replace(/\s+$/, "") + "\n";
+}
+
+function fullYaml() {
+  // Reconstruct paths + the live file registry + current combination.
+  let pathText = "";
+  for (const p of pathEntries) {
+    pathText += `${p.key}: ${p.value}\n`;
+  }
+  return pathText + buildRegistryHeader() + buildCombination();
+}
+
+function renderPreview() {
+  const yaml = fullYaml();
+  document.getElementById("preview").textContent = yaml;
+  // Update preview header with role item counts
+  const pvHead = document.querySelector(".pv-head");
+  let existingCounts = pvHead.querySelector(".pv-counts");
+  if (!existingCounts) {
+    existingCounts = document.createElement("span");
+    existingCounts.className = "pv-counts";
+    existingCounts.style.cssText = "color:var(--green);font-size:12px;margin-left:12px";
+    pvHead.appendChild(existingCounts);
+  }
+  const counts = ROLE_KEYS.map(r => `${r}:${(selections[r]||[]).length}`).join("  ");
+  existingCounts.textContent = counts;
+  // Also log to console for debugging
+  console.debug(`[preview] Output ${yaml.length} chars, selections:`,
+    Object.fromEntries(ROLE_KEYS.map(r => [r, (selections[r]||[]).length])));
+}
+
+function toast(msg) {
+  const el = document.getElementById("toast");
+  el.textContent = msg;
+  el.classList.add("show");
+  setTimeout(() => el.classList.remove("show"), 1400);
+}
+
+// Wire up controls
+document.getElementById("btn-lang").addEventListener("click", switchLang);
+
+document.getElementById("tpl-file").addEventListener("change", (e) => {
+  const f = e.target.files[0];
+  if (!f) return;
+  const r = new FileReader();
+  r.onload = () => {
+    loadTemplate(r.result);
+    const info = document.getElementById("tpl-info");
+    info.dataset.name = f.name;
+    info.textContent = t("templateLoaded", f.name);
+    toast(t("toastLoaded"));
+  };
+  r.readAsText(f);
+});
+
+document.getElementById("btn-copy").addEventListener("click", async () => {
+  try {
+    await navigator.clipboard.writeText(fullYaml());
+    toast(t("toastCopied"));
+  } catch { toast(t("toastCopyFail")); }
+});
+
+document.getElementById("btn-download").addEventListener("click", () => {
+  const blob = new Blob([fullYaml()], { type: "text/yaml" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "fl_combination.yaml";
+  a.click();
+  URL.revokeObjectURL(url);
+  toast(t("toastDownloaded"));
+});
+
+// Boot with embedded default template
+loadTemplate(document.getElementById("default-template").textContent);
+document.getElementById("btn-lang").textContent = lang === "zh" ? "EN" : "中文";
+document.getElementById("tpl-info").textContent = t("defaultTpl");
+updateStaticText();
+</script>
+<script src="./yaml_combination_generator.js"></script>
+</body>
+</html>

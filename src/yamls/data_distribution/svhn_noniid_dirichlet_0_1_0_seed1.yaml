@@ -1,0 +1,28 @@
+# Seeded Dirichlet training-data distribution.
+# dataset=svhn; alpha=0.1; seed=1; clients=10; split=train
+# Column label IDs: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+# Column label names: ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+# Class totals: [4948, 13861, 10585, 8497, 7458, 6882, 5727, 5595, 5045, 4659]; total_samples=73257
+# Source budget: src/yamls/data_distribution/svhn_noniid_dirichlet_0_1_10.yaml
+# Training split follows torchvision.datasets.SVHN(split="train"); excludes test and extra.
+# RNG: Python 3.9 random.Random(seed); reset for each dataset/alpha/seed.
+# Per class in ascending label order: draw 10 gammavariate(alpha, 1.0)
+# weights, then random.choices(range(10), weights=weights, k=class_total).
+# Redraw the whole matrix with the continuing RNG if any client is empty; attempts=1.
+# Client sample counts: [5262, 3646, 6759, 6100, 4365, 6227, 8062, 6225, 13625, 12986]
+
+data_distribution:
+  use: svhn_dirichlet_0_1_0_seed1
+  custom_define:
+    svhn_dirichlet_0_1_0_seed1: [
+      [0, 282, 0, 0, 71, 3583, 1101, 0, 13, 212],
+      [508, 22, 541, 2228, 0, 229, 110, 0, 5, 3],
+      [4, 39, 0, 0, 71, 2428, 0, 3637, 555, 25],
+      [98, 2, 4785, 0, 16, 0, 0, 1152, 47, 0],
+      [0, 23, 1583, 48, 281, 591, 94, 0, 1, 1744],
+      [1229, 299, 115, 0, 0, 0, 0, 660, 1421, 2503],
+      [497, 2852, 3012, 91, 845, 16, 609, 140, 0, 0],
+      [3, 0, 0, 3234, 261, 35, 2679, 6, 7, 0],
+      [0, 20, 549, 2896, 5913, 0, 1134, 0, 2996, 117],
+      [2609, 10322, 0, 0, 0, 0, 0, 0, 0, 55]
+    ]

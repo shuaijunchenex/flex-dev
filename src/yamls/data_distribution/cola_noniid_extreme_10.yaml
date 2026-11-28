@@ -1,0 +1,21 @@
+#-----------------------------
+# Data distribution section (COLA extreme non-iid, 10 clients)
+# Each client owns samples of a single label
+#-----------------------------
+data_distribution:
+
+  use: custom
+
+  custom_define:
+    custom: [
+       [506, 0],
+       [506, 0],
+       [506, 0],
+       [505, 0],
+       [505, 0],
+       [0, 1205],
+       [0, 1205],
+       [0, 1204],
+       [0, 1204],
+       [0, 1204]
+    ]

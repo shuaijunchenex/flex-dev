@@ -1,0 +1,3 @@
+trainer:
+  trainer_type: "glue_test"   # Trains on ONE sample only — for glue pipeline verification
+  save_path: "./.training_results/"

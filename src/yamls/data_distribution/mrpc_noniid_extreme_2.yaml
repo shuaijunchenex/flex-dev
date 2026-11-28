@@ -1,0 +1,13 @@
+#-----------------------------
+# Data distribution section (MRPC extreme non-iid)
+# Each client owns all samples of a single label
+#-----------------------------
+data_distribution:
+
+  use: custom
+
+  custom_define:
+    custom: [
+       [1323, 0],    # Client 1: label 0
+       [0, 2753]     # Client 2: label 1
+    ]

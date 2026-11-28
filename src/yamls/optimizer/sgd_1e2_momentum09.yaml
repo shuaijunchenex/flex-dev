@@ -1,0 +1,12 @@
+# SGD optimizer ablation with lr=0.01 and momentum=0.9.
+optimizer:
+  type: SGD
+  lr: 0.01
+  weight_decay: 0.0001
+  momentum: 0.9
+  nesterov: false
+  betas: [0.9, 0.999]
+  amsgrad: false
+  eps: 1e-8
+  alpha: None
+  centered: None

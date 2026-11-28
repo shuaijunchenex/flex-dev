@@ -1,0 +1,7 @@
+# QQP Dirichlet alpha=0.4, data-volume/rank mismatch.
+# Client volumes, ordered by client.1..client.10: [57100, 52700, 34700, 42500, 38700, 40300, 34100, 24500, 25700, 13546]
+# rho_mismatch_i = 1.25 - rho_correct_i
+# rho_correct_i = 0.25 + 0.75 * (n_i - n_min) / (n_max - n_min)
+# n_min=13546; n_max=57100; volume-rank Spearman=-1.0
+rank_distribution:
+  rank_ratio_list: [0.2500, 0.3258, 0.6357, 0.5014, 0.5668, 0.5393, 0.6461, 0.8114, 0.7907, 1.0000]

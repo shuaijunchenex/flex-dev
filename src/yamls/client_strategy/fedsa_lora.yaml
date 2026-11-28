@@ -1,0 +1,4 @@
+strategy:
+  role: client
+  strategy_name: fedsa_lora
+  evaluation_loader: shared_test

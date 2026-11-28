@@ -1,0 +1,13 @@
+#-----------------------------
+# general section args
+#-----------------------------
+general:
+  device: cuda:0
+  training_rounds: 100      # Training round
+  train_optimization:
+    cudnn_benchmark: true
+    pin_memory: true
+    fused_optimizer: false
+    torch_compile: false
+    non_blocking_transfer: true
+

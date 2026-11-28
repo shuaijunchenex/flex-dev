@@ -1,0 +1,8 @@
+#-----------------------------
+# TinyBERT (prajjwal1/bert-tiny) - 4-Class Classification
+#-----------------------------
+nn_model:
+  name: tiny_bert
+  pretrained_model: "prajjwal1/bert-tiny"
+  num_classes: 4
+  pad_id: 0

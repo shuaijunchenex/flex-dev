@@ -1,0 +1,6 @@
+# CNN adaptation: LoRA uses FLoRIST; BatchNorm floats use sample-weighted FedAvg.
+# Fixed-momentum BN counters use max over positive-sample participants.
+strategy:
+  role: client
+  strategy_name: florist
+  batchnorm_mode: fedavg

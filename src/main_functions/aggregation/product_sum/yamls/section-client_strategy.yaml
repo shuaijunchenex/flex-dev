@@ -1,0 +1,3 @@
+strategy:
+  role: "client"
+  strategy_name: "fedavg"

@@ -1,0 +1,8 @@
+#-----------------------------
+# Loss function section args
+#-----------------------------
+loss_func:
+  type: CrossEntropyLoss  # Options: CrossEntropyLoss, MSELoss, etc.
+  reduction: mean         # Options: mean, sum, none
+  weight: None            # Optional: Define class weights for imbalanced datasets
+

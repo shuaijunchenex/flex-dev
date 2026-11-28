@@ -1,0 +1,14 @@
+{
+  "state": "passed",
+  "trajectory_files": 18,
+  "unique_rounds_per_trajectory": 101,
+  "round_sequence": "0..100 inclusive",
+  "finite_accuracy_and_loss": true,
+  "random_selection_partition_and_client_sequence_match_across_methods": true,
+  "checkpoint_files": 40,
+  "checkpoint_hashes_match_worker_manifests": true,
+  "source_file_count": 182,
+  "git_data_files": 124,
+  "source_commit": "7f634e2a19748cd521f2c0f2deb6eb5cbc7ce451",
+  "validated_at": "2026-10-28T20:06:31+11:00"
+}

@@ -1,0 +1,15 @@
+#-----------------------------
+# Data loader section args — Tiny-ImageNet
+# 64x64 RGB, 200 classes, 100k train / 10k val images
+# Source: HuggingFace zh-plus/tiny-imagenet (auto-downloaded on first use)
+# Cache: <root>/hf_datasets/  (set root below)
+#-----------------------------
+data_loader:
+  name: tiny_imagenet
+  root: ".dataset"      # HF cache stored at <root>/hf_datasets/
+  split: ""
+  batch_size: 64
+  shuffle: True
+  num_workers: 0
+  is_download: True             # Auto-downloaded via HuggingFace datasets
+  task_type: cv

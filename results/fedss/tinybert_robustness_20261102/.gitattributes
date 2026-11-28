@@ -1,0 +1,2 @@
+# Preserve original CSV bytes and recorded SHA-256 hashes.
+raw_csvs/** -text whitespace=cr-at-eol

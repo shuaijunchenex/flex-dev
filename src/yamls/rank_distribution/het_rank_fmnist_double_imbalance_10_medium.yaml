@@ -1,0 +1,7 @@
+# Controlled double-imbalance rank distribution.
+# dataset=fmnist; assignment=medium; ordered by client.1..client.10
+# client volumes: [600, 1266, 2016, 2873, 3873, 5073, 6573, 8573, 11573, 17580]
+# ratio multiset is shared by correct, medium, and mismatch
+# volume-rank Spearman: +0.006060606
+rank_distribution:
+  rank_ratio_list: [0.2794, 0.5138, 0.6022, 0.7347, 0.2500, 0.3125, 1.0000, 0.4476, 0.3504, 0.3946]

@@ -1,0 +1,5 @@
+# Data-volume normalized rank distribution.
+# dataset=mnist; alpha=0.8; rank_ratio_i = client_samples_i / max_samples
+# client sample counts: [6670, 7283, 4034, 8136, 5835, 3373, 3654, 5286, 9074, 6655]
+rank_distribution:
+  rank_ratio_list: [0.7351, 0.8026, 0.4446, 0.8966, 0.6430, 0.3717, 0.4027, 0.5825, 1.0000, 0.7334]

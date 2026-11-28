@@ -1,0 +1,27 @@
+# Seeded Dirichlet training-data distribution.
+# dataset=mnli; alpha=0.8; seed=2; clients=10; split=train
+# Column label IDs: [0, 1, 2]
+# Column label names: ["entailment","neutral","contradiction"]
+# Class totals: [130899, 130900, 130903]; total_samples=392702
+# Source: .dataset/glue/mnli/0.0.0/bcdcba79d07bc864c1c254ccfcedcce55bcc9a8c/glue-train.arrow
+# RNG: Python 3.9 random.Random(seed); reset for each dataset/alpha/seed.
+# Per class in ascending label order: draw 10 gammavariate(alpha, 1.0)
+# weights, then random.choices(range(10), weights=weights, k=class_total).
+# Redraw the whole matrix with the continuing RNG if any client is empty; attempts=1.
+# Client sample counts: [28221, 33140, 18866, 21622, 29982, 93026, 48249, 19098, 14070, 86428]
+
+data_distribution:
+  use: mnli_dirichlet_0_8_0_seed2
+  custom_define:
+    mnli_dirichlet_0_8_0_seed2: [
+      [694, 22179, 5348],
+      [23990, 8447, 703],
+      [15408, 3391, 67],
+      [12691, 5524, 3407],
+      [8788, 20788, 406],
+      [45966, 32267, 14793],
+      [9149, 12, 39088],
+      [388, 6446, 12264],
+      [9630, 964, 3476],
+      [4195, 30882, 51351]
+    ]

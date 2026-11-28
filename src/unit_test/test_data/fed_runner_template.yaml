@@ -1,0 +1,40 @@
+# general
+general:
+  training_rounds: 50      # Training round
+
+# Logger
+logger:
+  name: "train"
+  path: "./.training_results/"     # Log path
+  prefix: ""              # Log file name prefix
+
+# define all node yaml config files
+node_yamls:
+  client_yaml: ./test_data/node_config_template_client.yaml          #client node yaml config file
+  edge_yaml:
+  server_yaml: ./test_data/node_config_template_server.yaml
+
+# Define client nodes with node id and config file which reference to node_yamls section
+client_nodes:
+  group-1:                 # Node group id
+    number: 2
+    id_prefix: client      # Client id format: <prefix>.<number> i.e. client.1, client.2 etc
+    yaml: client_yaml      # Reference to node yamls
+    link_to: server.1
+  group-2:
+    number: 3
+    id_prefix: client      # Client id format: <prefix>.<number> i.e. client.1, client.2 etc
+    yaml: client_yaml      # Reference to node yamls
+    link_to: server-1
+
+# Define edge nodes
+edge_nodes:
+  number: 1
+  id_prefix: edge        # Edge id format: <prefix>.<number> i.e. edge.1, edge.2 etc
+  yaml: edge_yaml        # Reference to node yamls
+  link_to: server-1
+  
+# Define server node, only ONE node
+server_node:
+  id: server-1         # Server node id
+  yaml: server_yaml    # Reference to node yamls

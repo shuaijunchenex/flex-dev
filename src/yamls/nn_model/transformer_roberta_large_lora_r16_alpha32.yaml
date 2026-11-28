@@ -1,0 +1,17 @@
+#-----------------------------
+# RoBERTa-large with LoRA (r=16, alpha=32) for sequence classification
+#-----------------------------
+nn_model:
+  name: roberta_large_lora
+  pretrained_model: "roberta-large"
+  num_classes: 2
+  pad_id: 1
+  # LoRA parameters aligned with the DistilRoBERTa RTE configuration
+  lora_r: 16
+  lora_alpha: 32
+  lora_dropout: 0.1
+  merge_weights: false
+  lora_embedding: true
+  freeze_base_model: true
+  train_classifier: true
+  # lora_target_modules: ["query", "value"]   # uncomment to restrict LoRA to Q/V only

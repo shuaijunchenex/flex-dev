@@ -1,0 +1,12 @@
+#-----------------------------
+# Tiny Transformer from scratch
+#-----------------------------
+nn_model:
+  name: transformer_tiny_scratch_imdb
+  vocab_size: 20000
+  embed_dim: 128
+  num_heads: 4
+  num_layers: 2
+  num_classes: 2
+  pad_id: 0
+  max_seq_len: 256

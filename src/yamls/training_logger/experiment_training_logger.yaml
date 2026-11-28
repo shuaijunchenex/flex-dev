@@ -1,0 +1,8 @@
+#-----------------------------
+# Training logger section args
+#-----------------------------
+training_logger:
+  name: "train"
+  path: "./experiment_results/"     # Log path
+  prefix: ""              # Log file name prefix
+  save_weights: false     # Whether to save model weights (.pt) after each round

@@ -1,0 +1,15 @@
+#-----------------------------
+# Data loader section args
+#-----------------------------
+data_loader:
+  name: agnews
+  root: ".dataset"
+  split: "train"
+  batch_size: 64
+  shuffle: True
+  num_workers: 0
+  is_download: True
+  is_load_train_set: True
+  is_load_test_set: True
+  task_type: nlp
+  vocab_size: None

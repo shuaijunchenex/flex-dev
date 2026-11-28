@@ -1,0 +1,14 @@
+#-----------------------------
+#define globle NN Model and paras
+#-----------------------------
+nn_model:
+  name: imdb_lora_transformer
+  input_dim: 0
+  hidden_dim: 0
+  output_dim: 0
+  softmax_dim : 1
+  lora_mode: standard
+  rank_ratio: 1
+
+  # Share model bentween nodes
+  share_model: False

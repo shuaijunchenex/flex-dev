@@ -1,0 +1,8 @@
+nn_model:
+  name: florg_mlp
+  input_features: 784
+  hidden_features: 200
+  num_classes: 10
+  lora_rank: 4
+  basis_seed: 0
+  share_model: false

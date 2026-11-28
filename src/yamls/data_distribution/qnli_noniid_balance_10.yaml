@@ -1,0 +1,15 @@
+#-----------------------------
+# Data distribution section (QNLI 10 clients balance)
+# Use every QNLI training sample while keeping client volumes nearly equal.
+# Label counts: label 0 = 52377, label 1 = 52366, total = 104743.
+#-----------------------------
+data_distribution:
+
+  use: custom
+
+  custom_define:
+    custom: [
+       [5238, 5237], [5238, 5237], [5238, 5237],
+       [5238, 5236], [5238, 5236], [5238, 5236], [5238, 5236],
+       [5237, 5237], [5237, 5237], [5237, 5237]
+    ]

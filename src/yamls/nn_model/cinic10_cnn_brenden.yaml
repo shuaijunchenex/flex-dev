@@ -1,0 +1,11 @@
+#-----------------------------
+# NN Model - CINIC-10 / CIFAR-10 CNN (Brendan McMahan variant, ReLU activations)
+# Input: 3 × 32 × 32
+# Output: logits (no softmax)
+#-----------------------------
+nn_model:
+  name: cinic10_cnn_brenden
+  num_classes: 10
+  in_channels: 3
+  input_size: 32
+  share_model: True

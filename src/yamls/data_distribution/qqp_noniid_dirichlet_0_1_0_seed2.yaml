@@ -1,0 +1,27 @@
+# Seeded Dirichlet training-data distribution.
+# dataset=qqp; alpha=0.1; seed=2; clients=10; split=train
+# Column label IDs: [0, 1]
+# Column label names: ["not_duplicate","duplicate"]
+# Class totals: [229468, 134378]; total_samples=363846
+# Source: .dataset/glue/qqp/0.0.0/bcdcba79d07bc864c1c254ccfcedcce55bcc9a8c/glue-train.arrow
+# RNG: Python 3.9 random.Random(seed); reset for each dataset/alpha/seed.
+# Per class in ascending label order: draw 10 gammavariate(alpha, 1.0)
+# weights, then random.choices(range(10), weights=weights, k=class_total).
+# Redraw the whole matrix with the continuing RNG if any client is empty; attempts=4.
+# Client sample counts: [101770, 11156, 3380, 35886, 27173, 95595, 1255, 86829, 144, 658]
+
+data_distribution:
+  use: qqp_dirichlet_0_1_0_seed2
+  custom_define:
+    qqp_dirichlet_0_1_0_seed2: [
+      [54869, 46901],
+      [11156, 0],
+      [1318, 2062],
+      [35886, 0],
+      [27172, 1],
+      [95594, 1],
+      [1242, 13],
+      [1429, 85400],
+      [144, 0],
+      [658, 0]
+    ]

@@ -1,0 +1,3 @@
+rank_distribution:
+  # 基于 QMNIST Dirichlet alpha=0.1 计算的 rank_ratio 列表
+  rank_ratio_list: [0.1282, 0.2409, 0.2740, 0.0253, 0.1932, 1.0000, 0.5670, 0.5985, 0.2933, 0.2882]

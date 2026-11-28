@@ -1,0 +1,3 @@
+rank_distribution:
+  # 基于 qqp Dirichlet alpha=0.8 计算的 rank_ratio 列表
+  rank_ratio_list: [1.00, 0.82, 0.81, 0.81, 0.80, 0.78, 0.75, 0.72, 0.67, 0.60]

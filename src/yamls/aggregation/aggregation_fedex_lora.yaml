@@ -1,0 +1,4 @@
+aggregation:
+  method: fedex_lora
+  device: cpu
+  weighting_mode: uniform

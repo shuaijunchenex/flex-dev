@@ -1,0 +1,25 @@
+#-----------------------------
+# Data distribution section — SVHN extreme non-IID (10 clients)
+# Each client holds ALL training samples of exactly ONE digit class.
+# SVHN train split label counts (torchvision standard, digit 0–9):
+#   0: 4948   1:13861   2:10585   3: 8497   4: 7458
+#   5: 6882   6: 5727   7: 5595   8: 5045   9: 4659
+# Total: 73,257
+#-----------------------------
+data_distribution:
+
+  use: custom
+
+  custom_define:
+    custom: [
+      [ 4948,     0,     0,     0,     0,     0,     0,     0,     0,     0],
+      [    0, 13861,     0,     0,     0,     0,     0,     0,     0,     0],
+      [    0,     0, 10585,     0,     0,     0,     0,     0,     0,     0],
+      [    0,     0,     0,  8497,     0,     0,     0,     0,     0,     0],
+      [    0,     0,     0,     0,  7458,     0,     0,     0,     0,     0],
+      [    0,     0,     0,     0,     0,  6882,     0,     0,     0,     0],
+      [    0,     0,     0,     0,     0,     0,  5727,     0,     0,     0],
+      [    0,     0,     0,     0,     0,     0,     0,  5595,     0,     0],
+      [    0,     0,     0,     0,     0,     0,     0,     0,  5045,     0],
+      [    0,     0,     0,     0,     0,     0,     0,     0,     0,  4659]
+    ]

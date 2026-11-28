@@ -1,0 +1,7 @@
+# SVHN Dirichlet alpha=0.4, data-volume/rank mismatch.
+# Client volumes, ordered by client.1..client.10: [2801, 11669, 6701, 7240, 17272, 3205, 9096, 2987, 4989, 7297]
+# rho_mismatch_i = 1.25 - rho_correct_i
+# rho_correct_i = 0.25 + 0.75 * (n_i - n_min) / (n_max - n_min)
+# n_min=2801; n_max=17272; volume-rank Spearman=-1.0
+rank_distribution:
+  rank_ratio_list: [1.0000, 0.5404, 0.7979, 0.7699, 0.2500, 0.9791, 0.6737, 0.9904, 0.8866, 0.7670]

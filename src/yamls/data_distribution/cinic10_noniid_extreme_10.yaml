@@ -1,0 +1,25 @@
+#-----------------------------
+# Data distribution section — CINIC-10 extreme non-IID (10 clients)
+# Each client holds ALL training samples of exactly ONE class.
+# CINIC-10 train split: 90,000 images, 9,000 per class (balanced).
+# Classes (same order as CIFAR-10):
+#   0:airplane  1:automobile  2:bird  3:cat  4:deer
+#   5:dog       6:frog        7:horse 8:ship  9:truck
+#-----------------------------
+data_distribution:
+
+  use: custom
+
+  custom_define:
+    custom: [
+      [9000,    0,    0,    0,    0,    0,    0,    0,    0,    0],
+      [   0, 9000,    0,    0,    0,    0,    0,    0,    0,    0],
+      [   0,    0, 9000,    0,    0,    0,    0,    0,    0,    0],
+      [   0,    0,    0, 9000,    0,    0,    0,    0,    0,    0],
+      [   0,    0,    0,    0, 9000,    0,    0,    0,    0,    0],
+      [   0,    0,    0,    0,    0, 9000,    0,    0,    0,    0],
+      [   0,    0,    0,    0,    0,    0, 9000,    0,    0,    0],
+      [   0,    0,    0,    0,    0,    0,    0, 9000,    0,    0],
+      [   0,    0,    0,    0,    0,    0,    0,    0, 9000,    0],
+      [   0,    0,    0,    0,    0,    0,    0,    0,    0, 9000]
+    ]

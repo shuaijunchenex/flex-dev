@@ -1,0 +1,234 @@
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>f15fc23c-6b6d-4d3b-a333-9d15509354bf</ProjectGuid>
+    <ProjectHome>.</ProjectHome>
+    <StartupFile>simu_switcher.py</StartupFile>
+    <SearchPath>
+    </SearchPath>
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <Name>ml-simu-switcher</Name>
+    <RootNamespace>ml-simu-switcher</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="fed_node\fed_node_vars.py" />
+    <Compile Include="fed_node\fed_node_event_args.py" />
+    <Compile Include="fed_node\fed_node_edge.py" />
+    <Compile Include="fed_node\fed_node_server.py" />
+    <Compile Include="fed_node\fed_node_client.py" />
+    <Compile Include="fed_node\fed_node.py" />
+    <Compile Include="fed_node\fed_node_type.py" />
+    <Compile Include="fed_node\__init__.py" />
+    <Compile Include="fed_runner\client_manger.py" />
+    <Compile Include="fed_runner\fed_runner.py" />
+    <Compile Include="fed_runner\runners\fedavg_runner.py" />
+    <Compile Include="fed_runner\__init__.py" />
+    <Compile Include="fed_strategy\base_strategy.py" />
+    <Compile Include="fed_strategy\client_strategy.py" />
+    <Compile Include="fed_strategy\client_strategy_impl\todo\light_weight_client_observation\svd_ab.py" />
+    <Compile Include="fed_strategy\client_strategy_impl\todo\light_weight_client_observation\w_init_ab.py" />
+    <Compile Include="fed_strategy\client_strategy_impl\todo\light_weight_client_observation\w_svd_ab.py" />
+    <Compile Include="fed_strategy\client_strategy_impl\todo\lora_aggregation\sum_time_client.py" />
+    <Compile Include="fed_strategy\client_strategy_impl\todo\lora_aggregation\time_sum_client.py" />
+    <Compile Include="fed_strategy\client_strategy_impl\todo\rbla_client.py" />
+    <Compile Include="fed_strategy\client_strategy_impl\_fedavg_client.py" />
+    <Compile Include="fed_strategy\client_strategy_impl\_rbla_client.py" />
+    <Compile Include="fed_strategy\client_strategy_impl\__init__.py" />    <Compile Include="fed_strategy\client_strategy_impl\_rblasa_client.py" />    <Compile Include="fed_strategy\runner_strategy.py" />
+    <Compile Include="fed_strategy\runner_strategy_impl\_fedavg_runner_strategy.py" />
+    <Compile Include="fed_strategy\runner_strategy_impl\_rbla_runner_strategy.py" />
+    <Compile Include="fed_strategy\runner_strategy_impl\_rblasa_runner_strategy.py" />
+    <Compile Include="fed_strategy\runner_strategy_impl\__init__.py" />
+    <Compile Include="fed_strategy\server_strategy.py" />
+    <Compile Include="fed_strategy\server_strategy_impl\_fedavg_server.py" />
+    <Compile Include="fed_strategy\server_strategy_impl\_rbla_server.py" />
+    <Compile Include="fed_strategy\server_strategy_impl\__init__.py" />
+    <Compile Include="fed_strategy\strategy_args.py" />
+    <Compile Include="fed_strategy\strategy_factory.py" />
+    <Compile Include="fed_strategy\__init__.py" />
+    <Compile Include="fl_algorithms\aggregation\fed_aggregator_abc.py" />
+    <Compile Include="fl_algorithms\aggregation\fed_aggregator_args.py" />
+    <Compile Include="fl_algorithms\aggregation\fed_aggregator_facotry.py" />
+    <Compile Include="fl_algorithms\aggregation\methods\_fed_aggregator_fedavg.py" />
+    <Compile Include="fl_algorithms\aggregation\methods\_fed_aggregator_flexlora.py" />
+    <Compile Include="fl_algorithms\aggregation\methods\_fed_aggregator_rbla.py" />
+    <Compile Include="fl_algorithms\noniid\noniid_dataloader.py" />
+    <Compile Include="fl_algorithms\noniid\noniid_data_generator.py" />
+    <Compile Include="fl_algorithms\noniid\noniid_distribution_generator.py" />
+    <Compile Include="fl_algorithms\selection\fed_client_selector_args.py" />
+    <Compile Include="fl_algorithms\selection\fed_client_selector_factory.py" />
+    <Compile Include="fl_algorithms\selection\fed_client_selector_abc.py" />
+    <Compile Include="fl_algorithms\selection\methods\_fed_client_selector_all.py" />
+    <Compile Include="fl_algorithms\selection\methods\_fed_client_selector_high_loss.py" />
+    <Compile Include="fl_algorithms\selection\methods\_fed_client_selector_low_loss.py" />
+    <Compile Include="fl_algorithms\selection\methods\_fed_client_selector_random.py" />
+    <Compile Include="fl_algorithms\__init__.py" />
+    <Compile Include="ml_algorithms\lora\impl\lora_git.py" />
+    <Compile Include="ml_algorithms\lora\impl\rbla.py" />
+    <Compile Include="ml_algorithms\lora\lora_args.py" />
+    <Compile Include="ml_algorithms\lora\impl\lora_linear.py" />
+    <Compile Include="ml_algorithms\lora\impl\lora_ms.py" />
+    <Compile Include="ml_algorithms\rblasa\__init__.py" />
+    <Compile Include="ml_algorithms\rblasa\alignment.py" />
+    <Compile Include="ml_algorithms\lora\lora_utils.py" />
+    <Compile Include="ml_algorithms\lora\__init__.py" />
+    <Compile Include="ml_algorithms\lora\matrix_approximator.py" />
+    <Compile Include="ml_algorithms\model_adaptor\adaptors\lora_wbab_adaptor.py" />
+    <Compile Include="ml_algorithms\model_adaptor\model_adaptor_abc.py" />
+    <Compile Include="ml_algorithms\model_adaptor\model_adaptor_src.py" />
+    <Compile Include="ml_algorithms\model_extractor.py" />
+    <Compile Include="ml_algorithms\__init__.py" />
+    <Compile Include="ml_data_loader\dataset_loader.py" />
+    <Compile Include="ml_data_loader\dataset_loader_args.py" />
+    <Compile Include="ml_data_loader\dataset_loader_factory.py" />
+    <Compile Include="ml_data_loader\dataset_loader_util.py" />
+    <Compile Include="ml_data_loader\loader\_dataset_loader_agnews.py" />
+    <Compile Include="ml_data_loader\loader\_dataset_loader_cifar10.py" />
+    <Compile Include="ml_data_loader\loader\_dataset_loader_cifar100.py" />
+    <Compile Include="ml_data_loader\loader\_dataset_loader_custom.py" />
+    <Compile Include="ml_data_loader\loader\_dataset_loader_dbpedia.py" />
+    <Compile Include="ml_data_loader\loader\_dataset_loader_emnist.py" />
+    <Compile Include="ml_data_loader\loader\_dataset_loader_fmnist.py" />
+    <Compile Include="ml_data_loader\loader\_dataset_loader_imagenet.py" />
+    <Compile Include="ml_data_loader\loader\_dataset_loader_imdb.py" />
+    <Compile Include="ml_data_loader\loader\_dataset_loader_kmnist.py" />
+    <Compile Include="ml_data_loader\loader\_dataset_loader_mnist.py" />
+    <Compile Include="ml_data_loader\loader\_dataset_loader_qmnist.py" />
+    <Compile Include="ml_data_loader\loader\_dataset_loader_stl10.py" />
+    <Compile Include="ml_data_loader\loader\_dataset_loader_svhn.py" />
+    <Compile Include="ml_data_loader\loader\_dataset_loader_yahooanswers.py" />
+    <Compile Include="ml_data_loader\__init__.py" />
+    <Compile Include="ml_data_loader\dataset_custom.py" />
+    <Compile Include="ml_data_process\data_handler\data_handler_args.py" />
+    <Compile Include="ml_data_process\data_distribution.py" />
+    <Compile Include="ml_data_process\data_handler\data_handler.py" />
+    <Compile Include="ml_data_process\data_handler\data_handler_noniid.py" />
+    <Compile Include="ml_data_process\weight_handler\weight_handler.py" />
+    <Compile Include="ml_data_process\__init__.py" />
+    <Compile Include="ml_models\lora\_nn_model_simple_lora_cnn.py" />
+    <Compile Include="ml_models\mobilenet\_nn_model_thin_mobilenet.py" />
+    <Compile Include="ml_models\models\_nn_model_capstone_mlp.py" />
+    <Compile Include="ml_models\models\_nn_model_cifar_convnet.py" />
+    <Compile Include="ml_models\models\_nn_model_mnist_nn_brenden.py" />
+    <Compile Include="ml_models\lora\_nn_model_simple_lora_mlp.py" />
+    <Compile Include="ml_models\models\_nn_model_simple_mlp.py" />
+    <Compile Include="ml_models\nn_model.py" />
+    <Compile Include="ml_models\nn_model_abc.py" />
+    <Compile Include="ml_models\nn_model_args.py" />
+    <Compile Include="ml_models\nn_model_factory.py" />
+    <Compile Include="ml_models\transformer\_nn_model_multi_head_self_attention.py" />
+    <Compile Include="ml_models\transformer\_nn_model_transformer_encoder.py" />
+    <Compile Include="ml_models\vit\_nn_model_simple_vit.py" />
+    <Compile Include="ml_models\vit\_nn_model_vit.py" />
+    <Compile Include="ml_models\__init__.py" />
+    <Compile Include="ml_utils\functions.py" />
+    <Compile Include="ml_utils\batch_summary.py" />
+    <Compile Include="ml_utils\console.py" />
+    <Compile Include="ml_utils\app_entry.py" />
+    <Compile Include="ml_utils\global_const.py" />
+    <Compile Include="ml_utils\dict_path.py" />
+    <Compile Include="ml_utils\filename_helper.py" />
+    <Compile Include="ml_utils\key_value_map.py" />
+    <Compile Include="ml_utils\model_parameter_counter.py" />
+    <Compile Include="ml_utils\model_utils.py" />
+    <Compile Include="ml_utils\object_map.py" />
+    <Compile Include="ml_utils\key_value_args.py" />
+    <Compile Include="ml_utils\event_handler\event_args.py" />
+    <Compile Include="ml_utils\event_handler\event_handler.py" />
+    <Compile Include="ml_simu_switcher\simu_node.py" />
+    <Compile Include="ml_simu_switcher\simu_node_connect_event_args.py" />
+    <Compile Include="ml_simu_switcher\simu_node_data.py" />
+    <Compile Include="ml_simu_switcher\simu_node_data_event_args.py" />
+    <Compile Include="ml_simu_switcher\simu_node_disconnect_event_args.py" />
+    <Compile Include="ml_simu_switcher\simu_switcher.py" />
+    <Compile Include="ml_simu_switcher\simu_switcher_default.py" />
+    <Compile Include="ml_simu_switcher\__init__.py" />
+    <Compile Include="ml_utils\csv_data_recorder.py" />
+    <Compile Include="ml_utils\config_loader.py" />
+    <Compile Include="ml_utils\multi_handlers.py" />
+    <Compile Include="ml_utils\filename_maker.py" />
+    <Compile Include="ml_utils\handlers.py" />
+    <Compile Include="ml_utils\figure_plotter.py" />
+    <Compile Include="ml_utils\startup_init.py" />
+    <Compile Include="ml_algorithms\loss_function_builder.py" />
+    <Compile Include="ml_algorithms\mcda.py" />
+    <Compile Include="ml_algorithms\metric_calculator.py" />
+    <Compile Include="ml_models\model_utils.py" />
+    <Compile Include="ml_algorithms\optimizer_builder.py" />
+    <Compile Include="ml_utils\string.py" />
+    <Compile Include="ml_utils\text_logger.py" />
+    <Compile Include="ml_utils\training_logger.py" />
+    <Compile Include="ml_utils\__init__.py" />
+    <Compile Include="model_trainer\model_evaluator.py" />
+    <Compile Include="model_trainer\model_trainer.py" />
+    <Compile Include="model_trainer\model_trainer_args.py" />
+    <Compile Include="model_trainer\model_trainer_factory.py" />
+    <Compile Include="model_trainer\trainer\_model_trainer_standard.py" />
+    <Compile Include="model_trainer\trainer\_model_trainer_rblasa.py" />
+    <Compile Include="model_trainer\__init__.py" />
+    <Compile Include="__init__.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="fed_node\" />
+    <Folder Include="fed_runner\" />
+    <Folder Include="fed_runner\runners\" />
+    <Folder Include="fed_runner\runner_strategy\" />
+    <Folder Include="fed_runner\runner_strategy\impl\" />
+    <Folder Include="fed_strategy\" />
+    <Folder Include="fed_strategy\client_strategy_impl\" />
+    <Folder Include="fed_strategy\client_strategy_impl\todo\" />
+    <Folder Include="fed_strategy\client_strategy_impl\todo\light_weight_client_observation\" />
+    <Folder Include="fed_strategy\client_strategy_impl\todo\lora_aggregation\" />
+    <Folder Include="fed_strategy\runner_strategy_impl\" />
+    <Folder Include="fed_strategy\server_strategy_impl\" />
+    <Folder Include="fl_algorithms\" />
+    <Folder Include="fl_algorithms\aggregation\" />
+    <Folder Include="fl_algorithms\aggregation\methods\" />
+    <Folder Include="fl_algorithms\noniid\" />
+    <Folder Include="fl_algorithms\selection\" />
+    <Folder Include="fl_algorithms\selection\methods\" />
+    <Folder Include="ml_algorithms\" />
+    <Folder Include="ml_algorithms\lora\" />
+    <Folder Include="ml_algorithms\lora\impl\" />
+    <Folder Include="ml_algorithms\model_adaptor\" />
+    <Folder Include="ml_algorithms\model_adaptor\adaptors\" />
+    <Folder Include="ml_data_loader\" />
+    <Folder Include="ml_data_loader\loader\" />
+    <Folder Include="ml_data_process\data_handler\" />
+    <Folder Include="ml_data_process\weight_handler\" />
+    <Folder Include="ml_models\" />
+    <Folder Include="ml_models\models\" />
+    <Folder Include="ml_models\lora\" />
+    <Folder Include="ml_models\mobilenet\" />
+    <Folder Include="ml_models\transformer\" />
+    <Folder Include="ml_models\vit\" />
+    <Folder Include="ml_simu_switcher\" />
+    <Folder Include="ml_utils\event_handler\" />
+    <Folder Include="ml_utils\" />
+    <Folder Include="ml_data_process\" />
+    <Folder Include="model_trainer\" />
+    <Folder Include="model_trainer\trainer\" />
+    <Folder Include="model_trainer\trainer\__pycache__\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="model_trainer\trainer\__pycache__\_model_trainer_standard.cpython-313.pyc" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
+  <!-- Uncomment the CoreCompile target to enable the Build command in
+       Visual Studio and specify your pre- and post-build commands in
+       the BeforeBuild and AfterBuild targets below. -->
+  <!--<Target Name="CoreCompile" />-->
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+</Project>

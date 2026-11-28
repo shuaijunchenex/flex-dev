@@ -1,0 +1,6 @@
+#-----------------------------
+# Adaptive SARA client strategy
+#-----------------------------
+strategy:
+  strategy_name: adaptive_sara
+  role: client

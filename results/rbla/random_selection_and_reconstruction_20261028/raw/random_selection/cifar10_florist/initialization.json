@@ -1,0 +1,5 @@
+{
+  "broadcast_recipients": 100,
+  "payload_all_clients_bytes": 116040800,
+  "scope": "initial simulator distribution to all clients; excluded from round downloads"
+}

@@ -1,0 +1,4 @@
+aggregation:
+  method: florist
+  device: cpu
+  threshold: 0.9

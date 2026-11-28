@@ -1,0 +1,12 @@
+#-----------------------------
+# Client node selection - PyramidFL
+#-----------------------------
+client_selection:
+  method: pyramidfl
+  round: 1
+  client_selection_round: 1
+  number: 2
+  random_seed: 42
+  pyramidfl_use_system_utility_in_explore: false
+  pyramidfl_force_one_explore_when_k2: true
+  init_T: 3600.0  # Initial preferred round duration (seconds) - GPU/CUDA default

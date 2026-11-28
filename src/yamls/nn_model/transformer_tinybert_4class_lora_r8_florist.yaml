@@ -1,0 +1,13 @@
+# FLoRIST phase 1; copied from transformer_tinybert_4class_lora_r8.yaml.
+# Only embedding LoRA is disabled; all original linear targets are retained.
+# The FLoRIST strategy freezes non-LoRA parameters (no extra head whitelist).
+nn_model:
+  name: tiny_bert_lora
+  pretrained_model: prajjwal1/bert-tiny
+  num_classes: 4
+  pad_id: 0
+  lora_r: 8
+  lora_alpha: 16
+  lora_dropout: 0.1
+  merge_weights: false
+  lora_embedding: false

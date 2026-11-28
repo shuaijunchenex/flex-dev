@@ -1,0 +1,10 @@
+# HuggingFace DistilRoBERTa tokenizer configuration
+# Set use_hf_tokenizer to true to enable HF-based pipeline
+
+tokenizer:
+  type: bert                # handled by TokenizerBuilder -> HF AutoTokenizer
+  use_hf_tokenizer: true
+  pretrained: distilroberta-base
+  use_fast: true
+  return_type: tokens       # tokens | ids (HF collate uses the HF tokenizer directly)
+  max_len: 256              # optional truncation length

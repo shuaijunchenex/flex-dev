@@ -1,0 +1,4 @@
+aggregation:
+  method: fedsa_lora
+  device: cpu
+  weighting_mode: uniform

@@ -1,0 +1,7 @@
+# Cost-matched Dirichlet rank distribution.
+# dataset=fmnist; alpha=0.8; assignment=medium
+# client volumes, ordered by client.1..client.10: [4911, 5290, 5433, 2930, 7972, 6969, 7145, 7924, 5147, 6279]
+# all assignments share one ratio multiset and total LoRA parameter cost
+# volume-rank Spearman: +0.006060606; aggregate LoRA parameters: 1238920
+rank_distribution:
+  rank_ratio_list: [0.7000, 0.9000, 0.1000, 0.2000, 0.5000, 1.0000, 0.6000, 0.4000, 0.8000, 0.3000]

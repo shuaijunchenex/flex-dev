@@ -1,0 +1,4 @@
+nn_model:
+  name: mnist_nn_brenden
+  split_cut: fc1    # the client keeps fc1, the server keeps fc2 and fc3
+  share_model: False

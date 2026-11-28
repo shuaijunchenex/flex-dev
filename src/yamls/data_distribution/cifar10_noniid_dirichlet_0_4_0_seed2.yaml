@@ -1,0 +1,28 @@
+# Seeded Dirichlet training-data distribution.
+# dataset=cifar10; alpha=0.4; seed=2; clients=10; split=train
+# Column label IDs: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+# Column label names: ["airplane", "automobile", "bird", "cat", "deer", "dog", "frog", "horse", "ship", "truck"]
+# Class totals: [5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000]; total_samples=50000
+# Source budget: src/yamls/data_distribution/cifar10_noniid_dirichlet_0_4_10.yaml
+# Training split follows torchvision.datasets.CIFAR10(train=True).
+# RNG: Python 3.9 random.Random(seed); reset for each dataset/alpha/seed.
+# Per class in ascending label order: draw 10 gammavariate(alpha, 1.0)
+# weights, then random.choices(range(10), weights=weights, k=class_total).
+# Redraw the whole matrix with the continuing RNG if any client is empty; attempts=1.
+# Client sample counts: [5649, 2716, 6231, 5137, 4544, 12672, 4379, 2484, 4383, 1805]
+
+data_distribution:
+  use: cifar10_dirichlet_0_4_0_seed2
+  custom_define:
+    cifar10_dirichlet_0_4_0_seed2: [
+      [2, 1570, 158, 68, 19, 79, 361, 14, 21, 3357],
+      [632, 311, 357, 266, 853, 69, 16, 199, 9, 4],
+      [491, 0, 543, 12, 14, 793, 257, 3532, 567, 22],
+      [459, 465, 2422, 6, 3, 842, 70, 101, 742, 27],
+      [192, 307, 14, 1137, 604, 695, 674, 627, 230, 64],
+      [2411, 233, 407, 433, 2642, 2344, 1456, 4, 2153, 589],
+      [208, 422, 29, 2016, 315, 38, 185, 504, 363, 299],
+      [1, 880, 734, 53, 54, 16, 82, 12, 535, 117],
+      [269, 738, 281, 367, 242, 124, 1460, 2, 380, 520],
+      [335, 74, 55, 642, 254, 0, 439, 5, 0, 1]
+    ]

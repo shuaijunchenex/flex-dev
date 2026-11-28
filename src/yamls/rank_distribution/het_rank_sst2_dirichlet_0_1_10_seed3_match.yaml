@@ -1,0 +1,9 @@
+# Data-volume normalized rank distribution (rank match).
+# dataset=sst2; alpha=0.1; seed=3; clients=10
+# Source: src/yamls/data_distribution/sst2_noniid_dirichlet_0_1_0_seed3.yaml
+# rank_ratio_i = round(client_samples_i / max(client_samples), 2); order follows source rows.
+# Client sample counts: [325, 34490, 1850, 905, 82, 19, 19653, 4254, 1293, 4478]
+# Maximum client sample count: 34490
+# Rank ratios are rounded to two decimal places.
+rank_distribution:
+  rank_ratio_list: [0.01, 1.00, 0.05, 0.03, 0.00, 0.00, 0.57, 0.12, 0.04, 0.13]

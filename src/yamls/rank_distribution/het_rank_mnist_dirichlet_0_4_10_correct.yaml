@@ -1,0 +1,5 @@
+# Data-volume/rank matched configuration for MNIST Dirichlet alpha=0.4.
+# Sample counts: [3799, 9003, 4244, 4592, 6661, 5335, 3960, 9977, 3345, 9084]
+# Direct min-max ratios with rho_min=0.25, ordered by client 0..9.
+rank_distribution:
+  rank_ratio_list: [0.3013, 0.8899, 0.3517, 0.3910, 0.6250, 0.4750, 0.3195, 1.0000, 0.2500, 0.8990]

@@ -1,0 +1,21 @@
+# Standalone SP+ aggregation (the former RBLA + canonicalization path).
+aggregation:
+  method: sp_plus
+  device: cpu
+  is_wbab: false
+  pad_mode: nan
+
+canonicalization:
+  enabled: true
+  start_round: 0
+  interval: 1
+  deterministic_sign: true
+  svd_fallback: true
+  log_diagnostics: true
+  ordering: singular_value
+  # zero_pad canonicalizes the effective thin rank, then restores the original
+  # LoRA tensor shape with trailing zero slots. Set to error for strict checks.
+  overcomplete_policy: zero_pad
+  activation_chunk_size: 4096
+  activation_fallback: true
+

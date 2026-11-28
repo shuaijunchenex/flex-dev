@@ -1,0 +1,4 @@
+aggregation:
+  method: rbla_refdiag
+  device: cpu
+  pad_mode: nan

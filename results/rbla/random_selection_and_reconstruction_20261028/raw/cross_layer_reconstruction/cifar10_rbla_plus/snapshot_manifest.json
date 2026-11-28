@@ -1,0 +1,102 @@
+{
+  "case_id": "cifar10_rbla_plus",
+  "dataset": "cifar10",
+  "driver": "rbla_plus_rank_scale",
+  "run_id": "cifar10_rbla_plus_-train-20261028_082414-da74f8a5cf4c1a69",
+  "rounds": [
+    9,
+    19,
+    29,
+    39,
+    49,
+    59,
+    69,
+    79,
+    89,
+    100
+  ],
+  "snapshots": [
+    {
+      "round": 9,
+      "update_index": 10,
+      "path": "C:\\Users\\FlexRunner\\work\\chatgpt_output\\rbla_priority_switch_20261027_190116\\experiment\\cross_layer_reconstruction\\cifar10_rbla_plus\\server_inputs\\cifar10_rbla_plus_-train-20261028_082414-da74f8a5cf4c1a69-round0009-server-input.pt",
+      "sha256": "5e0dac4c9193089553f92fe33efc035d519f12d441b3ed3e07e2494ad370c198",
+      "bytes": 25091203,
+      "layer_count": 7
+    },
+    {
+      "round": 19,
+      "update_index": 20,
+      "path": "C:\\Users\\FlexRunner\\work\\chatgpt_output\\rbla_priority_switch_20261027_190116\\experiment\\cross_layer_reconstruction\\cifar10_rbla_plus\\server_inputs\\cifar10_rbla_plus_-train-20261028_082414-da74f8a5cf4c1a69-round0019-server-input.pt",
+      "sha256": "863182369c153686bdbec0efb430019e8d241825bbe6caa81b4d421cc4c7987e",
+      "bytes": 25091203,
+      "layer_count": 7
+    },
+    {
+      "round": 29,
+      "update_index": 30,
+      "path": "C:\\Users\\FlexRunner\\work\\chatgpt_output\\rbla_priority_switch_20261027_190116\\experiment\\cross_layer_reconstruction\\cifar10_rbla_plus\\server_inputs\\cifar10_rbla_plus_-train-20261028_082414-da74f8a5cf4c1a69-round0029-server-input.pt",
+      "sha256": "3b71d241375b0e3e76cd933b32c74a7e6224853b70e0f941d59326a81b164ad3",
+      "bytes": 25091203,
+      "layer_count": 7
+    },
+    {
+      "round": 39,
+      "update_index": 40,
+      "path": "C:\\Users\\FlexRunner\\work\\chatgpt_output\\rbla_priority_switch_20261027_190116\\experiment\\cross_layer_reconstruction\\cifar10_rbla_plus\\server_inputs\\cifar10_rbla_plus_-train-20261028_082414-da74f8a5cf4c1a69-round0039-server-input.pt",
+      "sha256": "9ab290d2d9e1d610706709fca2f72df10fa4c44a930ce3d60a909e7d675f866b",
+      "bytes": 25091203,
+      "layer_count": 7
+    },
+    {
+      "round": 49,
+      "update_index": 50,
+      "path": "C:\\Users\\FlexRunner\\work\\chatgpt_output\\rbla_priority_switch_20261027_190116\\experiment\\cross_layer_reconstruction\\cifar10_rbla_plus\\server_inputs\\cifar10_rbla_plus_-train-20261028_082414-da74f8a5cf4c1a69-round0049-server-input.pt",
+      "sha256": "8d940aada7f88f899b3f4e651361673e2d66126f4631157888fcd0eb988e0d63",
+      "bytes": 25091203,
+      "layer_count": 7
+    },
+    {
+      "round": 59,
+      "update_index": 60,
+      "path": "C:\\Users\\FlexRunner\\work\\chatgpt_output\\rbla_priority_switch_20261027_190116\\experiment\\cross_layer_reconstruction\\cifar10_rbla_plus\\server_inputs\\cifar10_rbla_plus_-train-20261028_082414-da74f8a5cf4c1a69-round0059-server-input.pt",
+      "sha256": "7af8a63f4e3d5d633010f22fcf013035c01a091e90da98c5b84a5e61f7c16577",
+      "bytes": 25091203,
+      "layer_count": 7
+    },
+    {
+      "round": 69,
+      "update_index": 70,
+      "path": "C:\\Users\\FlexRunner\\work\\chatgpt_output\\rbla_priority_switch_20261027_190116\\experiment\\cross_layer_reconstruction\\cifar10_rbla_plus\\server_inputs\\cifar10_rbla_plus_-train-20261028_082414-da74f8a5cf4c1a69-round0069-server-input.pt",
+      "sha256": "e42f79ba1ec90604ec383c7b685ee1385ffed406b4f6d8f8d287050c21d5def2",
+      "bytes": 25091203,
+      "layer_count": 7
+    },
+    {
+      "round": 79,
+      "update_index": 80,
+      "path": "C:\\Users\\FlexRunner\\work\\chatgpt_output\\rbla_priority_switch_20261027_190116\\experiment\\cross_layer_reconstruction\\cifar10_rbla_plus\\server_inputs\\cifar10_rbla_plus_-train-20261028_082414-da74f8a5cf4c1a69-round0079-server-input.pt",
+      "sha256": "ef8eb5fef7c889a99a70a1bf33810b7945b0f6addd48333c289469d06d498a26",
+      "bytes": 25091203,
+      "layer_count": 7
+    },
+    {
+      "round": 89,
+      "update_index": 90,
+      "path": "C:\\Users\\FlexRunner\\work\\chatgpt_output\\rbla_priority_switch_20261027_190116\\experiment\\cross_layer_reconstruction\\cifar10_rbla_plus\\server_inputs\\cifar10_rbla_plus_-train-20261028_082414-da74f8a5cf4c1a69-round0089-server-input.pt",
+      "sha256": "1f1bbcdea89f1b11e19f03596404c343425f5f85a377cc5c0c2b2f7bf011ef68",
+      "bytes": 25091203,
+      "layer_count": 7
+    },
+    {
+      "round": 100,
+      "update_index": 101,
+      "path": "C:\\Users\\FlexRunner\\work\\chatgpt_output\\rbla_priority_switch_20261027_190116\\experiment\\cross_layer_reconstruction\\cifar10_rbla_plus\\server_inputs\\cifar10_rbla_plus_-train-20261028_082414-da74f8a5cf4c1a69-round0100-server-input.pt",
+      "sha256": "52a6055554cedc6ba277d11e8b9c6d7c64645cb71c8d2858cbbc18f4604e0f5d",
+      "bytes": 25091203,
+      "layer_count": 7
+    }
+  ],
+  "state": "collected",
+  "analysis_state": "not_run"
+}

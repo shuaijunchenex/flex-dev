@@ -1,0 +1,5 @@
+aggregation:
+  method: florg_gram
+  device: cpu
+  weighting_mode: uniform
+  align: true

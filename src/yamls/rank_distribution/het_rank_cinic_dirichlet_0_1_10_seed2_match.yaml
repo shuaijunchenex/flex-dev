@@ -1,0 +1,9 @@
+# Data-volume normalized rank distribution (rank match).
+# dataset=cinic10; alpha=0.1; seed=2; clients=10
+# Source: src/yamls/data_distribution/cinic10_noniid_dirichlet_0_1_0_seed2.yaml
+# rank_ratio_i = round(client_samples_i / max(client_samples), 2); order follows source rows.
+# Client sample counts: [33658, 13716, 8872, 2278, 7771, 7044, 15077, 510, 996, 78]
+# Maximum client sample count: 33658
+# Rank ratios are rounded to two decimal places.
+rank_distribution:
+  rank_ratio_list: [1.00, 0.41, 0.26, 0.07, 0.23, 0.21, 0.45, 0.02, 0.03, 0.00]

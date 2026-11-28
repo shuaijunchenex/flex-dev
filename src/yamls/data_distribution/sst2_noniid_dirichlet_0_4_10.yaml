@@ -1,0 +1,20 @@
+#-----------------------------
+# Data distribution section (SST2 Dirichlet alpha=0.4, 10 clients)
+#-----------------------------
+data_distribution:
+
+  use: sst2_dirichlet_0_4
+
+  custom_define:
+    sst2_dirichlet_0_4: [
+      [4794, 15216],
+      [7987, 188],
+      [20, 4],
+      [4481, 4505],
+      [45, 941],
+      [642, 175],
+      [2579, 1757],
+      [1007, 4242],
+      [1758, 9874],
+      [6519, 615]
+    ]

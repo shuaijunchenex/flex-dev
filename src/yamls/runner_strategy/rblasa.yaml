@@ -1,0 +1,6 @@
+#-----------------------------
+# rblasa runner strategy
+#-----------------------------
+strategy:
+  role: "runner"
+  strategy_name: rblasa

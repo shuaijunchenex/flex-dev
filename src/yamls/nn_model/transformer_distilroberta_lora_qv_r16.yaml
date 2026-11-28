@@ -1,0 +1,13 @@
+nn_model:
+  name: distilroberta_lora
+  pretrained_model: distilroberta-base
+  num_classes: 2
+  pad_id: 1
+  lora_r: 16
+  lora_alpha: 32
+  lora_dropout: 0.1
+  lora_target_modules: [query, value]
+  lora_embedding: false
+  merge_weights: false
+  freeze_base_model: true
+  train_classifier: true

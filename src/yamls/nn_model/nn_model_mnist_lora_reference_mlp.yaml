@@ -1,0 +1,9 @@
+# MNIST model isolated for RBLA reference-frame validation.
+nn_model:
+  name: mnist_lora_reference_mlp
+  rank_ratio: 1.0
+  base_rank_hidden: 160
+  base_rank_output: 100
+  lora_scale: 1.0
+  use_bias: true
+  share_model: false

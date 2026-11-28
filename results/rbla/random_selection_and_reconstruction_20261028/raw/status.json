@@ -1,0 +1,26 @@
+{
+  "state": "completed",
+  "analysis_state": "not_run",
+  "total_training_paths": 18,
+  "tasks": [
+    {
+      "name": "random_selection",
+      "state": "completed",
+      "output_dir": "C:\\Users\\FlexRunner\\work\\chatgpt_output\\rbla_priority_switch_20261027_190116\\experiment\\random_selection",
+      "returncode": 0,
+      "status_file": "C:\\Users\\FlexRunner\\work\\chatgpt_output\\rbla_priority_switch_20261027_190116\\experiment\\random_selection\\status.json"
+    },
+    {
+      "name": "cross_layer_reconstruction",
+      "state": "collected",
+      "output_dir": "C:\\Users\\FlexRunner\\work\\chatgpt_output\\rbla_priority_switch_20261027_190116\\experiment\\cross_layer_reconstruction",
+      "returncode": 0,
+      "status_file": "C:\\Users\\FlexRunner\\work\\chatgpt_output\\rbla_priority_switch_20261027_190116\\experiment\\cross_layer_reconstruction\\status.json"
+    }
+  ],
+  "updated_at": "2026-10-28T18:15:38+11:00",
+  "scheduler": "external_parallel_trial",
+  "max_parallel": 1,
+  "active_workers": [],
+  "finished_at": "2026-10-28T18:15:38+11:00"
+}

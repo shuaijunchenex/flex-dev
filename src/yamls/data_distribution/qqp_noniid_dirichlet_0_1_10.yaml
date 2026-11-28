@@ -1,0 +1,20 @@
+#-----------------------------
+# Data distribution section (QQP Dirichlet alpha=0.1, 10 clients)
+#-----------------------------
+data_distribution:
+
+  use: qqp_dirichlet_0_1
+
+  custom_define:
+    qqp_dirichlet_0_1: [
+      [170000,    100], # Client 1 (样本最多)
+      [ 43000,    200], # Client 2
+      [ 12000,     50], # Client 3
+      [  3500,     10], # Client 4
+      [   800,      5], # Client 5
+      [   120, 105000], # Client 6
+      [    40,  22000], # Client 7
+      [     8,   6000], # Client 8
+      [     0,    900], # Client 9
+      [     0,    113]  # Client 10
+    ]

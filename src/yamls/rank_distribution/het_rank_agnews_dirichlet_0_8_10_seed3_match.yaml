@@ -1,0 +1,9 @@
+# Data-volume normalized rank distribution (rank match).
+# dataset=agnews; alpha=0.8; seed=3; clients=10
+# Source: src/yamls/data_distribution/agnews_noniid_dirichlet_0_8_0_seed3.yaml
+# rank_ratio_i = round(client_samples_i / max(client_samples), 2); order follows source rows.
+# Client sample counts: [7339, 2002, 26173, 2632, 2143, 19981, 11399, 13074, 17476, 17781]
+# Maximum client sample count: 26173
+# Rank ratios are rounded to two decimal places.
+rank_distribution:
+  rank_ratio_list: [0.28, 0.08, 1.00, 0.10, 0.08, 0.76, 0.44, 0.50, 0.67, 0.68]

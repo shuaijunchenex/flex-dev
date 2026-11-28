@@ -1,0 +1,8 @@
+#-----------------------------
+# Generic Decoder-only Transformer (GPT-style)
+#-----------------------------
+nn_model:
+  name: transformer_decoder_classification
+  pretrained_model: "gpt2"
+  num_classes: 2 # Adjust based on dataset: IMDB/SST2/MRPC=2, DBpedia=14
+  pad_id: 50256

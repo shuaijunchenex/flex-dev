@@ -1,0 +1,7 @@
+# IMDb Dirichlet alpha=0.4, data-volume/rank matched.
+# Client volumes, ordered by client.1..client.10: [7079, 3409, 10, 3379, 332, 327, 1665, 1836, 4027, 2936]
+# rho_i = 0.25 + 0.75 * (n_i - n_min) / (n_max - n_min)
+# n_min=10; n_max=7079; volume-rank Spearman=+1.0
+rank_distribution:
+  rank_ratio_list: [1.0000, 0.6106, 0.2500, 0.6074, 0.2842, 0.2836, 0.4256, 0.4437, 0.6762, 0.5604]
+

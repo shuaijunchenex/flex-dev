@@ -1,0 +1,8 @@
+# section-tokenizer-basic_english.yaml
+tokenizer:
+  type: basic_english
+  root: "../../../.dataset"
+  min_freq: 2
+  max_vocab: 30000
+  lower: True
+  use_hf_tokenizer: false

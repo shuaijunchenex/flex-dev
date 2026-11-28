@@ -1,0 +1,9 @@
+# HuggingFace RoBERTa-large tokenizer configuration with max length 256
+
+tokenizer:
+  type: bert
+  use_hf_tokenizer: true
+  pretrained: roberta-large
+  use_fast: true
+  return_type: tokens
+  max_len: 256

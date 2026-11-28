@@ -1,0 +1,1601 @@
+{
+  "case_id": "mnli_rbla",
+  "source_sha256": {
+    "C:\\Users\\FlexRunner\\work\\flex-src\\src\\test\\rbla+\\experiment\\rank_match\\dirichlet_0_4\\mnli\\mnli_dirichlet_0_4_rank_correct_rbla.yaml": "906092b5bb5bd5220757bd71497d406830f8bb81e5b99cb852c78e81167b408d",
+    "C:\\Users\\FlexRunner\\work\\flex-src\\src\\yamls\\aggregation\\aggregation_rbla.yaml": "9afeb9d7305cb46670408e910b1d1ca33760256afa0062b0f9614ed0481c4b11",
+    "C:\\Users\\FlexRunner\\work\\flex-src\\src\\yamls\\client_selection\\random.yaml": "55b59385e42c473034e7fcd144fc7abfbd8382726f23a2576673159d02af1dc8",
+    "C:\\Users\\FlexRunner\\work\\flex-src\\src\\yamls\\dataset_loader\\mnli.yaml": "f52f76c9060bbaa7f94f5a2909bd7a0983a49daa460945cd0e4f0a8424b4ba19",
+    "C:\\Users\\FlexRunner\\work\\flex-src\\src\\yamls\\data_distribution\\mnli_noniid_dirichlet_0_4_10.yaml": "e30928c1b9b87991a63878ae7136bcdaf1d07fe352164cba18ec850ebb067eae",
+    "C:\\Users\\FlexRunner\\work\\flex-src\\src\\yamls\\loss_func\\cross_entropy.yaml": "9da50b0677443cdeb10133f4cc71178da44af5a901f4a3ae195e82098e4517a6",
+    "C:\\Users\\FlexRunner\\work\\flex-src\\src\\yamls\\lora_inference\\base_lora_inference.yaml": "f35638fe491830b4b21710bf3e829e437a3087ec66630b6ca53f9add84047fab",
+    "C:\\Users\\FlexRunner\\work\\flex-src\\src\\yamls\\nn_model\\transformer_tinybert_3class_lora_r8.yaml": "92d067652290265c434aff024eae93347050aca9e768474c233c7f9ee73eef86",
+    "C:\\Users\\FlexRunner\\work\\flex-src\\src\\yamls\\fl_nodes\\default_10_clients.yaml": "693dd4629f1a2c72a74499abe8b9eb0d1ec1d4e2dcbaaa4f29601e5b0e507d9e",
+    "C:\\Users\\FlexRunner\\work\\flex-src\\src\\yamls\\optimizer\\adamw_1e4.yaml": "5691d957d303d0d20ca9f4fc79c5b314e595b5f8a913b730999dce2ac5e5bd31",
+    "C:\\Users\\FlexRunner\\work\\flex-src\\src\\yamls\\client_strategy\\rbla.yaml": "ca02fca2f2d9d60e956dc18fb2178c5d34039af37edf9757cb569a15a5e21072",
+    "C:\\Users\\FlexRunner\\work\\flex-src\\src\\yamls\\server_strategy\\rbla.yaml": "5477a13621b6b7a239e06b62a6502ab0ab27e7e743e103398756912943e66486",
+    "C:\\Users\\FlexRunner\\work\\flex-src\\src\\yamls\\runner_strategy\\rbla.yaml": "afb53349cf5327c3a5cc29b81c9a7b216d10bf0ba94ae1b3fa64eedbe21afc74",
+    "C:\\Users\\FlexRunner\\work\\flex-src\\src\\yamls\\trainer\\glue_trainer.yaml": "b27a55029e8470bcff3d89eb20d46c649c6d5a720fe8f2c5fed7a5a432572028",
+    "C:\\Users\\FlexRunner\\work\\flex-src\\src\\yamls\\training_logger\\experiment_training_logger.yaml": "194d9913ed82f4101dbd462db3b29d07344d69a1e2ab57fbe2ceac98029016ec",
+    "C:\\Users\\FlexRunner\\work\\flex-src\\src\\yamls\\training\\training_epoch1.yaml": "8eec7dd17c27c3958bad7581b1350b819ec9b37746361cd53e2358e620e7630f",
+    "C:\\Users\\FlexRunner\\work\\flex-src\\src\\yamls\\general\\general_round100_cuda.yaml": "2383f06ec9143827365e9b7742e2d8f9b7401cd61f265f3eed8011611482dea9",
+    "C:\\Users\\FlexRunner\\work\\flex-src\\src\\yamls\\rank_distribution\\het_rank_mnli_dirichlet_0_4_10_correct.yaml": "14f88eafea78d24fc0267a79723cdc21bf58e18c4b7aa7bf60ee590757fbafda",
+    "C:\\Users\\FlexRunner\\work\\flex-src\\src\\yamls\\role\\server.yaml": "ae4bfb716154dbbba7ee6c2a10b940917731b3b68b8819a7b53e7fdd1b3cd9a6",
+    "C:\\Users\\FlexRunner\\work\\flex-src\\src\\yamls\\role\\client.yaml": "1fd2ca35cdf22df0ab183212dfefaf1f2f12a3b2442067fb041f372b868556cf",
+    "C:\\Users\\FlexRunner\\work\\flex-src\\src\\yamls\\tokenlizer\\tinybert_tokenizer.yaml": "6916a84ede6dc62cfdc0e4d97b6322d393c4fca447749d12a1815075655d0545"
+  },
+  "effective_config": {
+    "runner": {
+      "general": {
+        "device": "cuda:0",
+        "training_rounds": 100,
+        "train_optimization": {
+          "cudnn_benchmark": true,
+          "pin_memory": true,
+          "fused_optimizer": false,
+          "torch_compile": false,
+          "non_blocking_transfer": true
+        }
+      },
+      "training_logger": {
+        "name": "train",
+        "path": "C:\\Users\\FlexRunner\\work\\chatgpt_output\\rbla_priority_switch_20261027_190116\\experiment\\random_selection\\mnli_rbla",
+        "prefix": "random_selection_mnli_rbla_",
+        "save_weights": false,
+        "log_selected_clients": true
+      },
+      "client_nodes": {
+        "group-1": {
+          "number": 100,
+          "id_prefix": "client",
+          "link_to": "server-1"
+        }
+      },
+      "server_node": {
+        "id": "server-1"
+      },
+      "strategy": {
+        "role": "runner",
+        "strategy_name": "rbla"
+      }
+    },
+    "client_yaml": {
+      "role": "client",
+      "training_logger": {
+        "name": "train",
+        "path": "C:\\Users\\FlexRunner\\work\\chatgpt_output\\rbla_priority_switch_20261027_190116\\experiment\\random_selection\\mnli_rbla",
+        "prefix": "random_selection_mnli_rbla_",
+        "save_weights": false,
+        "log_selected_clients": true
+      },
+      "data_loader": {
+        "name": "mnli",
+        "root": "C:\\Users\\FlexRunner\\work\\flex-src\\.dataset",
+        "split": "",
+        "batch_size": 64,
+        "shuffle": true,
+        "num_workers": 0,
+        "is_download": true,
+        "is_load_train_set": true,
+        "is_load_test_set": true,
+        "task_type": "nlp",
+        "vocab_size": "None"
+      },
+      "nn_model": {
+        "name": "tiny_bert_lora",
+        "pretrained_model": "prajjwal1/bert-tiny",
+        "num_classes": 3,
+        "pad_id": 0,
+        "lora_r": 8,
+        "lora_alpha": 16,
+        "lora_dropout": 0.1,
+        "merge_weights": false,
+        "lora_embedding": true
+      },
+      "loss_func": {
+        "type": "CrossEntropyLoss",
+        "reduction": "mean",
+        "weight": "None"
+      },
+      "optimizer": {
+        "type": "AdamW",
+        "lr": 0.0001,
+        "weight_decay": 0.05,
+        "momentum": null,
+        "nesterov": null,
+        "betas": [
+          0.9,
+          0.999
+        ],
+        "amsgrad": false,
+        "eps": 1e-08,
+        "alpha": null,
+        "centered": null
+      },
+      "training": {
+        "epochs": 1,
+        "batch_size": 64,
+        "shuffle": true,
+        "lr": 0.1
+      },
+      "trainer": {
+        "use": "glue",
+        "trainer_type": "glue",
+        "device": "cuda"
+      },
+      "strategy": {
+        "role": "client",
+        "strategy_name": "rbla"
+      },
+      "tokenizer": {
+        "type": "bert",
+        "use_hf_tokenizer": true,
+        "pretrained": "bert-base-uncased",
+        "use_fast": true,
+        "return_type": "tokens",
+        "max_len": 256
+      }
+    },
+    "edge_yaml": {},
+    "server_yaml": {
+      "role": "server",
+      "general": {
+        "device": "cuda:0",
+        "training_rounds": 100,
+        "train_optimization": {
+          "cudnn_benchmark": true,
+          "pin_memory": true,
+          "fused_optimizer": false,
+          "torch_compile": false,
+          "non_blocking_transfer": true
+        }
+      },
+      "training_logger": {
+        "name": "train",
+        "path": "C:\\Users\\FlexRunner\\work\\chatgpt_output\\rbla_priority_switch_20261027_190116\\experiment\\random_selection\\mnli_rbla",
+        "prefix": "random_selection_mnli_rbla_",
+        "save_weights": false,
+        "log_selected_clients": true
+      },
+      "data_loader": {
+        "name": "mnli",
+        "root": "C:\\Users\\FlexRunner\\work\\flex-src\\.dataset",
+        "split": "",
+        "batch_size": 64,
+        "shuffle": true,
+        "num_workers": 0,
+        "is_download": true,
+        "is_load_train_set": true,
+        "is_load_test_set": true,
+        "task_type": "nlp",
+        "vocab_size": "None"
+      },
+      "nn_model": {
+        "name": "tiny_bert_lora",
+        "pretrained_model": "prajjwal1/bert-tiny",
+        "num_classes": 3,
+        "pad_id": 0,
+        "lora_r": 8,
+        "lora_alpha": 16,
+        "lora_dropout": 0.1,
+        "merge_weights": false,
+        "lora_embedding": true
+      },
+      "loss_func": {
+        "type": "CrossEntropyLoss",
+        "reduction": "mean",
+        "weight": "None"
+      },
+      "optimizer": {
+        "type": "AdamW",
+        "lr": 0.0001,
+        "weight_decay": 0.05,
+        "momentum": null,
+        "nesterov": null,
+        "betas": [
+          0.9,
+          0.999
+        ],
+        "amsgrad": false,
+        "eps": 1e-08,
+        "alpha": null,
+        "centered": null
+      },
+      "training": {
+        "epochs": 1,
+        "batch_size": 64,
+        "shuffle": true,
+        "lr": 0.1
+      },
+      "trainer": {
+        "use": "glue",
+        "trainer_type": "glue",
+        "device": "cuda"
+      },
+      "tokenizer": {
+        "type": "bert",
+        "use_hf_tokenizer": true,
+        "pretrained": "bert-base-uncased",
+        "use_fast": true,
+        "return_type": "tokens",
+        "max_len": 256
+      },
+      "data_distribution": {
+        "use": "custom",
+        "custom_define": {
+          "custom": [
+            [
+              2356,
+              5800,
+              0
+            ],
+            [
+              3894,
+              112,
+              244
+            ],
+            [
+              15,
+              2634,
+              3741
+            ],
+            [
+              2203,
+              6757,
+              169
+            ],
+            [
+              22,
+              2,
+              723
+            ],
+            [
+              313,
+              2,
+              824
+            ],
+            [
+              1216,
+              3108,
+              434
+            ],
+            [
+              466,
+              4045,
+              223
+            ],
+            [
+              902,
+              3073,
+              12
+            ],
+            [
+              3146,
+              2578,
+              1129
+            ],
+            [
+              2039,
+              3819,
+              7569
+            ],
+            [
+              12955,
+              73,
+              10
+            ],
+            [
+              2383,
+              786,
+              3487
+            ],
+            [
+              25,
+              1319,
+              53
+            ],
+            [
+              1989,
+              40,
+              587
+            ],
+            [
+              228,
+              63,
+              482
+            ],
+            [
+              586,
+              1956,
+              1082
+            ],
+            [
+              21,
+              5233,
+              12
+            ],
+            [
+              93,
+              58,
+              125
+            ],
+            [
+              490,
+              56,
+              3610
+            ],
+            [
+              3282,
+              600,
+              20
+            ],
+            [
+              352,
+              1416,
+              2831
+            ],
+            [
+              60,
+              36,
+              659
+            ],
+            [
+              2484,
+              193,
+              104
+            ],
+            [
+              1597,
+              1804,
+              2853
+            ],
+            [
+              532,
+              784,
+              1458
+            ],
+            [
+              22,
+              42,
+              267
+            ],
+            [
+              1413,
+              208,
+              1716
+            ],
+            [
+              893,
+              1193,
+              54
+            ],
+            [
+              1172,
+              409,
+              9
+            ],
+            [
+              909,
+              106,
+              5
+            ],
+            [
+              0,
+              469,
+              79
+            ],
+            [
+              81,
+              95,
+              2799
+            ],
+            [
+              3761,
+              1041,
+              198
+            ],
+            [
+              1,
+              236,
+              85
+            ],
+            [
+              177,
+              972,
+              36
+            ],
+            [
+              890,
+              1367,
+              3650
+            ],
+            [
+              1353,
+              795,
+              575
+            ],
+            [
+              2997,
+              5473,
+              572
+            ],
+            [
+              1,
+              718,
+              365
+            ],
+            [
+              1724,
+              2975,
+              13
+            ],
+            [
+              33,
+              3846,
+              29
+            ],
+            [
+              42,
+              18,
+              55
+            ],
+            [
+              504,
+              3920,
+              0
+            ],
+            [
+              178,
+              173,
+              4933
+            ],
+            [
+              18,
+              54,
+              821
+            ],
+            [
+              5773,
+              3506,
+              330
+            ],
+            [
+              143,
+              342,
+              46
+            ],
+            [
+              2423,
+              1238,
+              464
+            ],
+            [
+              505,
+              336,
+              5115
+            ],
+            [
+              10,
+              255,
+              2
+            ],
+            [
+              529,
+              1887,
+              2016
+            ],
+            [
+              178,
+              78,
+              1608
+            ],
+            [
+              60,
+              45,
+              56
+            ],
+            [
+              2188,
+              3768,
+              368
+            ],
+            [
+              456,
+              526,
+              0
+            ],
+            [
+              982,
+              8,
+              4
+            ],
+            [
+              8,
+              497,
+              18
+            ],
+            [
+              2,
+              49,
+              945
+            ],
+            [
+              225,
+              107,
+              5168
+            ],
+            [
+              10,
+              690,
+              1429
+            ],
+            [
+              42,
+              754,
+              1053
+            ],
+            [
+              925,
+              131,
+              422
+            ],
+            [
+              10283,
+              1383,
+              176
+            ],
+            [
+              2383,
+              1626,
+              1169
+            ],
+            [
+              612,
+              2,
+              1
+            ],
+            [
+              8057,
+              848,
+              4011
+            ],
+            [
+              613,
+              4033,
+              6827
+            ],
+            [
+              260,
+              2557,
+              1477
+            ],
+            [
+              3175,
+              805,
+              546
+            ],
+            [
+              27,
+              1090,
+              326
+            ],
+            [
+              15,
+              284,
+              203
+            ],
+            [
+              162,
+              467,
+              389
+            ],
+            [
+              1911,
+              1280,
+              6
+            ],
+            [
+              10,
+              303,
+              1008
+            ],
+            [
+              86,
+              0,
+              0
+            ],
+            [
+              845,
+              591,
+              48
+            ],
+            [
+              3280,
+              157,
+              3068
+            ],
+            [
+              213,
+              1310,
+              107
+            ],
+            [
+              178,
+              1259,
+              112
+            ],
+            [
+              110,
+              2497,
+              4526
+            ],
+            [
+              32,
+              2023,
+              612
+            ],
+            [
+              507,
+              2741,
+              7358
+            ],
+            [
+              4969,
+              28,
+              84
+            ],
+            [
+              778,
+              543,
+              177
+            ],
+            [
+              2382,
+              1416,
+              336
+            ],
+            [
+              327,
+              2168,
+              0
+            ],
+            [
+              1958,
+              273,
+              3494
+            ],
+            [
+              7531,
+              1,
+              392
+            ],
+            [
+              19,
+              749,
+              2850
+            ],
+            [
+              21,
+              590,
+              959
+            ],
+            [
+              1059,
+              490,
+              90
+            ],
+            [
+              60,
+              8,
+              5215
+            ],
+            [
+              2441,
+              3075,
+              12042
+            ],
+            [
+              636,
+              3455,
+              1753
+            ],
+            [
+              0,
+              349,
+              479
+            ],
+            [
+              40,
+              12,
+              85
+            ],
+            [
+              21,
+              1899,
+              140
+            ],
+            [
+              1558,
+              4652,
+              59
+            ],
+            [
+              63,
+              1262,
+              3032
+            ]
+          ]
+        }
+      },
+      "client_selection": {
+        "method": "random",
+        "round": 1,
+        "client_selection_round": 1,
+        "number": 10,
+        "random_seed": 42,
+        "independent_rng": true
+      },
+      "strategy": {
+        "role": "server",
+        "strategy_name": "rbla",
+        "evaluate_aggregate_rank": true
+      },
+      "aggregation": {
+        "method": "rbla",
+        "device": "cpu",
+        "is_wbab": false,
+        "pad_mode": "nan"
+      },
+      "canonicalization": {
+        "enabled": false,
+        "start_round": 0,
+        "interval": 1,
+        "deterministic_sign": true,
+        "svd_fallback": true,
+        "log_diagnostics": true,
+        "ordering": "singular_value",
+        "overcomplete_policy": "error",
+        "activation_chunk_size": 4096,
+        "activation_fallback": true
+      },
+      "rank_distribution": {
+        "rank_ratio_list": [
+          0.5964114,
+          0.42874313,
+          0.5206044,
+          0.63817823,
+          0.27837397,
+          0.29520089,
+          0.45054945,
+          0.44951923,
+          0.41745364,
+          0.54047905,
+          0.82267342,
+          0.80597527,
+          0.53202266,
+          0.30627576,
+          0.35860234,
+          0.27949004,
+          0.40187157,
+          0.47235577,
+          0.25815591,
+          0.4247081,
+          0.41380495,
+          0.44372424,
+          0.27871738,
+          0.3656851,
+          0.51476648,
+          0.36538462,
+          0.26051683,
+          0.38955185,
+          0.33816964,
+          0.31456044,
+          0.29009272,
+          0.26983173,
+          0.37401271,
+          0.4609375,
+          0.26013049,
+          0.29717548,
+          0.49987122,
+          0.3631954,
+          0.63444368,
+          0.29283997,
+          0.44857486,
+          0.4140625,
+          0.25124485,
+          0.43621223,
+          0.47312843,
+          0.28464114,
+          0.65878262,
+          0.26910199,
+          0.4233774,
+          0.50197459,
+          0.25776957,
+          0.43655563,
+          0.32632212,
+          0.25321944,
+          0.51777129,
+          0.28846154,
+          0.28897665,
+          0.26875859,
+          0.2890625,
+          0.48240041,
+          0.33769746,
+          0.32567823,
+          0.30975275,
+          0.75463599,
+          0.4685783,
+          0.27270776,
+          0.80073832,
+          0.73879636,
+          0.43063187,
+          0.44059066,
+          0.30825034,
+          0.26785714,
+          0.29000687,
+          0.38354224,
+          0.30301339,
+          0.25,
+          0.3100103,
+          0.52554087,
+          0.31627747,
+          0.31280048,
+          0.55249828,
+          0.36079155,
+          0.70157967,
+          0.46441449,
+          0.31061126,
+          0.42376374,
+          0.35340831,
+          0.49205872,
+          0.58645261,
+          0.40161401,
+          0.31370192,
+          0.3166638,
+          0.47308551,
+          1.0,
+          0.4971669,
+          0.28185096,
+          0.25218922,
+          0.33473558,
+          0.51541037,
+          0.4333362
+        ]
+      },
+      "lora_inference": {
+        "device": "cpu",
+        "lora_mode": "standard",
+        "scaling": 0.5,
+        "rank_ratio": 1,
+        "use_bias": true,
+        "alpha": 0
+      }
+    }
+  },
+  "partition_plan": {
+    "dataset": "mnli",
+    "seed": 42,
+    "alpha": 0.4,
+    "num_clients": 100,
+    "class_labels": [
+      0,
+      1,
+      2
+    ],
+    "class_totals": [
+      130899,
+      130900,
+      130903
+    ],
+    "counts": [
+      [
+        2356,
+        5800,
+        0
+      ],
+      [
+        3894,
+        112,
+        244
+      ],
+      [
+        15,
+        2634,
+        3741
+      ],
+      [
+        2203,
+        6757,
+        169
+      ],
+      [
+        22,
+        2,
+        723
+      ],
+      [
+        313,
+        2,
+        824
+      ],
+      [
+        1216,
+        3108,
+        434
+      ],
+      [
+        466,
+        4045,
+        223
+      ],
+      [
+        902,
+        3073,
+        12
+      ],
+      [
+        3146,
+        2578,
+        1129
+      ],
+      [
+        2039,
+        3819,
+        7569
+      ],
+      [
+        12955,
+        73,
+        10
+      ],
+      [
+        2383,
+        786,
+        3487
+      ],
+      [
+        25,
+        1319,
+        53
+      ],
+      [
+        1989,
+        40,
+        587
+      ],
+      [
+        228,
+        63,
+        482
+      ],
+      [
+        586,
+        1956,
+        1082
+      ],
+      [
+        21,
+        5233,
+        12
+      ],
+      [
+        93,
+        58,
+        125
+      ],
+      [
+        490,
+        56,
+        3610
+      ],
+      [
+        3282,
+        600,
+        20
+      ],
+      [
+        352,
+        1416,
+        2831
+      ],
+      [
+        60,
+        36,
+        659
+      ],
+      [
+        2484,
+        193,
+        104
+      ],
+      [
+        1597,
+        1804,
+        2853
+      ],
+      [
+        532,
+        784,
+        1458
+      ],
+      [
+        22,
+        42,
+        267
+      ],
+      [
+        1413,
+        208,
+        1716
+      ],
+      [
+        893,
+        1193,
+        54
+      ],
+      [
+        1172,
+        409,
+        9
+      ],
+      [
+        909,
+        106,
+        5
+      ],
+      [
+        0,
+        469,
+        79
+      ],
+      [
+        81,
+        95,
+        2799
+      ],
+      [
+        3761,
+        1041,
+        198
+      ],
+      [
+        1,
+        236,
+        85
+      ],
+      [
+        177,
+        972,
+        36
+      ],
+      [
+        890,
+        1367,
+        3650
+      ],
+      [
+        1353,
+        795,
+        575
+      ],
+      [
+        2997,
+        5473,
+        572
+      ],
+      [
+        1,
+        718,
+        365
+      ],
+      [
+        1724,
+        2975,
+        13
+      ],
+      [
+        33,
+        3846,
+        29
+      ],
+      [
+        42,
+        18,
+        55
+      ],
+      [
+        504,
+        3920,
+        0
+      ],
+      [
+        178,
+        173,
+        4933
+      ],
+      [
+        18,
+        54,
+        821
+      ],
+      [
+        5773,
+        3506,
+        330
+      ],
+      [
+        143,
+        342,
+        46
+      ],
+      [
+        2423,
+        1238,
+        464
+      ],
+      [
+        505,
+        336,
+        5115
+      ],
+      [
+        10,
+        255,
+        2
+      ],
+      [
+        529,
+        1887,
+        2016
+      ],
+      [
+        178,
+        78,
+        1608
+      ],
+      [
+        60,
+        45,
+        56
+      ],
+      [
+        2188,
+        3768,
+        368
+      ],
+      [
+        456,
+        526,
+        0
+      ],
+      [
+        982,
+        8,
+        4
+      ],
+      [
+        8,
+        497,
+        18
+      ],
+      [
+        2,
+        49,
+        945
+      ],
+      [
+        225,
+        107,
+        5168
+      ],
+      [
+        10,
+        690,
+        1429
+      ],
+      [
+        42,
+        754,
+        1053
+      ],
+      [
+        925,
+        131,
+        422
+      ],
+      [
+        10283,
+        1383,
+        176
+      ],
+      [
+        2383,
+        1626,
+        1169
+      ],
+      [
+        612,
+        2,
+        1
+      ],
+      [
+        8057,
+        848,
+        4011
+      ],
+      [
+        613,
+        4033,
+        6827
+      ],
+      [
+        260,
+        2557,
+        1477
+      ],
+      [
+        3175,
+        805,
+        546
+      ],
+      [
+        27,
+        1090,
+        326
+      ],
+      [
+        15,
+        284,
+        203
+      ],
+      [
+        162,
+        467,
+        389
+      ],
+      [
+        1911,
+        1280,
+        6
+      ],
+      [
+        10,
+        303,
+        1008
+      ],
+      [
+        86,
+        0,
+        0
+      ],
+      [
+        845,
+        591,
+        48
+      ],
+      [
+        3280,
+        157,
+        3068
+      ],
+      [
+        213,
+        1310,
+        107
+      ],
+      [
+        178,
+        1259,
+        112
+      ],
+      [
+        110,
+        2497,
+        4526
+      ],
+      [
+        32,
+        2023,
+        612
+      ],
+      [
+        507,
+        2741,
+        7358
+      ],
+      [
+        4969,
+        28,
+        84
+      ],
+      [
+        778,
+        543,
+        177
+      ],
+      [
+        2382,
+        1416,
+        336
+      ],
+      [
+        327,
+        2168,
+        0
+      ],
+      [
+        1958,
+        273,
+        3494
+      ],
+      [
+        7531,
+        1,
+        392
+      ],
+      [
+        19,
+        749,
+        2850
+      ],
+      [
+        21,
+        590,
+        959
+      ],
+      [
+        1059,
+        490,
+        90
+      ],
+      [
+        60,
+        8,
+        5215
+      ],
+      [
+        2441,
+        3075,
+        12042
+      ],
+      [
+        636,
+        3455,
+        1753
+      ],
+      [
+        0,
+        349,
+        479
+      ],
+      [
+        40,
+        12,
+        85
+      ],
+      [
+        21,
+        1899,
+        140
+      ],
+      [
+        1558,
+        4652,
+        59
+      ],
+      [
+        63,
+        1262,
+        3032
+      ]
+    ],
+    "client_volumes": [
+      8156,
+      4250,
+      6390,
+      9129,
+      747,
+      1139,
+      4758,
+      4734,
+      3987,
+      6853,
+      13427,
+      13038,
+      6656,
+      1397,
+      2616,
+      773,
+      3624,
+      5266,
+      276,
+      4156,
+      3902,
+      4599,
+      755,
+      2781,
+      6254,
+      2774,
+      331,
+      3337,
+      2140,
+      1590,
+      1020,
+      548,
+      2975,
+      5000,
+      322,
+      1185,
+      5907,
+      2723,
+      9042,
+      1084,
+      4712,
+      3908,
+      115,
+      4424,
+      5284,
+      893,
+      9609,
+      531,
+      4125,
+      5956,
+      267,
+      4432,
+      1864,
+      161,
+      6324,
+      982,
+      994,
+      523,
+      996,
+      5500,
+      2129,
+      1849,
+      1478,
+      11842,
+      5178,
+      615,
+      12916,
+      11473,
+      4294,
+      4526,
+      1443,
+      502,
+      1018,
+      3197,
+      1321,
+      86,
+      1484,
+      6505,
+      1630,
+      1549,
+      7133,
+      2667,
+      10606,
+      5081,
+      1498,
+      4134,
+      2495,
+      5725,
+      7924,
+      3618,
+      1570,
+      1639,
+      5283,
+      17558,
+      5844,
+      828,
+      137,
+      2060,
+      6269,
+      4357
+    ],
+    "rank_ratios": [
+      0.5964114,
+      0.42874313,
+      0.5206044,
+      0.63817823,
+      0.27837397,
+      0.29520089,
+      0.45054945,
+      0.44951923,
+      0.41745364,
+      0.54047905,
+      0.82267342,
+      0.80597527,
+      0.53202266,
+      0.30627576,
+      0.35860234,
+      0.27949004,
+      0.40187157,
+      0.47235577,
+      0.25815591,
+      0.4247081,
+      0.41380495,
+      0.44372424,
+      0.27871738,
+      0.3656851,
+      0.51476648,
+      0.36538462,
+      0.26051683,
+      0.38955185,
+      0.33816964,
+      0.31456044,
+      0.29009272,
+      0.26983173,
+      0.37401271,
+      0.4609375,
+      0.26013049,
+      0.29717548,
+      0.49987122,
+      0.3631954,
+      0.63444368,
+      0.29283997,
+      0.44857486,
+      0.4140625,
+      0.25124485,
+      0.43621223,
+      0.47312843,
+      0.28464114,
+      0.65878262,
+      0.26910199,
+      0.4233774,
+      0.50197459,
+      0.25776957,
+      0.43655563,
+      0.32632212,
+      0.25321944,
+      0.51777129,
+      0.28846154,
+      0.28897665,
+      0.26875859,
+      0.2890625,
+      0.48240041,
+      0.33769746,
+      0.32567823,
+      0.30975275,
+      0.75463599,
+      0.4685783,
+      0.27270776,
+      0.80073832,
+      0.73879636,
+      0.43063187,
+      0.44059066,
+      0.30825034,
+      0.26785714,
+      0.29000687,
+      0.38354224,
+      0.30301339,
+      0.25,
+      0.3100103,
+      0.52554087,
+      0.31627747,
+      0.31280048,
+      0.55249828,
+      0.36079155,
+      0.70157967,
+      0.46441449,
+      0.31061126,
+      0.42376374,
+      0.35340831,
+      0.49205872,
+      0.58645261,
+      0.40161401,
+      0.31370192,
+      0.3166638,
+      0.47308551,
+      1.0,
+      0.4971669,
+      0.28185096,
+      0.25218922,
+      0.33473558,
+      0.51541037,
+      0.4333362
+    ],
+    "allocation": "numpy.default_rng.dirichlet+multinomial; reject-empty",
+    "rank_rule": "0.25+0.75*(n_i-n_min)/(n_max-n_min)",
+    "plan_sha256": "485d603aeace64787c4f582b8dda92fc16c27f7c6882b8d416293a5f42929900"
+  },
+  "seed": 42,
+  "actual_device": "cuda:0"
+}
